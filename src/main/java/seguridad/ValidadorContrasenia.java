@@ -41,6 +41,7 @@ public class ValidadorContrasenia {
 
     }
 
+    // Aca valido que NO este denetro el archivo de contreseña malas
     private boolean esContrasenaBuena(String contraseniaIngresada) {
 
         boolean contrasenaValida = true;

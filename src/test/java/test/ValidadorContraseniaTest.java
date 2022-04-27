@@ -96,6 +96,7 @@ public class ValidadorContraseniaTest {
         FileReader entrada = null;
         try {
             String linea = "";
+           // entrada = new FileReader("../resources/peoresContrasenias.txt");
             entrada = new FileReader("E:\\Google Drive\\Facu\\Diseño de Sistemas\\TP Anual\\2022-mi-no-mino-grupo-05\\src\\main\\resources\\peoresContrasenias.txt");
             BufferedReader br = new BufferedReader(entrada);
             while ((linea = br.readLine()) != null) {

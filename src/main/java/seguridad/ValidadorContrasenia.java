@@ -68,19 +68,5 @@ public class ValidadorContrasenia {
 
         return contrasenaValida;
     }
-
-    public byte[] encriptarContrasenia(String contrasenia) {
-        try {
-            return MessageDigest.getInstance("MD5").digest(contrasenia.getBytes(StandardCharsets.UTF_8));
-        }
-        catch (NoSuchAlgorithmException e){
-            try {
-                throw new SeguridadException("No se pudo crear la cuenta");
-            } catch (SeguridadException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return new byte[0];
-    }
 }
 

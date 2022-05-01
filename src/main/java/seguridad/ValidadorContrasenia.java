@@ -29,7 +29,7 @@ public class ValidadorContrasenia {
         pattern = Pattern.compile(PASSWORD_PATTERN);
     }
 
-    public boolean validadContrasenia(final String password) {
+    public boolean validarContrasenia(final String password) {
 
         boolean goodPass = esContrasenaBuena(password);
 

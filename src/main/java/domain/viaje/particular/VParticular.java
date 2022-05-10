@@ -1,8 +1,9 @@
 package domain.viaje.particular;
 
 import domain.Direccion;
+import domain.viaje.Trameable;
 
-public class VParticular {
+public class VParticular implements Trameable {
     private Combustible tipoCombustible;
     private Particular tipoParticular;
     private Direccion direccionInicio;
@@ -13,5 +14,10 @@ public class VParticular {
     public Integer consumo(){
         //TODO
         return 0;
+    }
+
+    @Override
+    public Integer calcularDistanciaTramo() {
+        return null;
     }
 }

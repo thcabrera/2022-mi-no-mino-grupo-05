@@ -1,4 +1,4 @@
-package test;
+package domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

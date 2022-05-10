@@ -1,4 +1,4 @@
 package domain.viaje.particular;
 
-public class Moto {
+public class Moto extends Particular {
 }

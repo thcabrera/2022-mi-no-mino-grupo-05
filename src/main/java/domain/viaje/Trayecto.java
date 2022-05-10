@@ -1,5 +1,9 @@
 package domain.viaje;
 
-public class Trayecto {
+import domain.Direccion;
 
+import java.util.List;
+
+public class Trayecto {
+    private List<Trameable> tramos;
 }

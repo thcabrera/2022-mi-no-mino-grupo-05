@@ -15,7 +15,7 @@ public class LColectivo extends Linea {
     }
 
     public void agregarParadas(Parada ... newParadas) {
-        Collections.addAll(this.paradas, newParadas);
+            Collections.addAll(this.paradas, newParadas);
     }
 
     public List<Parada> getParadas(){

@@ -4,8 +4,9 @@ package domain.viaje;
 import domain.viaje.publico.LColectivo;
 import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,30 +14,43 @@ import java.util.List;
 
 
 public class PublicoTest {
-    @Test
-    public void lineaTiene6Paradas() {
-        LColectivo tresSiete = new LColectivo("37");
+    private Parada cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi;
+    private LColectivo tresSiete;
+    private List<Parada> paradasIntermedias;
+    private Parada unaParada;
+    private Parada otraParada;
 
-        Parada cortina = new Parada("Cortina");
-        Parada marmokix = new Parada("Marmokix");
-        Parada corrientes = new Parada("Corrientes");
-        Parada mozart = new Parada("Mozart");
-        Parada tito_y_eze = new Parada("tito_y_eze");
-        Parada lenny_y_Alberdi = new Parada("lenny");
+    @BeforeEach
+    void setupThis()  {
+        tresSiete = new LColectivo("37");
+        unaParada = new Parada("alexelcapo");
+        otraParada = new Parada("marmogilazo");
+        cortina = new Parada("Cortina");
+        marmokix = new Parada("Marmokix");
+        corrientes = new Parada("Corrientes");
+        mozart = new Parada("Mozart");
+        xokas = new Parada("Xokas");
+        lenny_y_Alberdi = new Parada("Lenny");
 
-        List<Parada> paradasIntermedias = new ArrayList<>();
-        paradasIntermedias.add(marmokix);
-        paradasIntermedias.add(corrientes);
-        paradasIntermedias.add(mozart);
-
-        tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, tito_y_eze, lenny_y_Alberdi);
-
-        // Test de paradas intermedias
-        Assert.assertEquals(paradasIntermedias, tresSiete.getParadasIntermedias(marmokix, tito_y_eze));
-
-
-        // para ver si funcion en assertArrayEquals
-        //Assert.assertEquals( [cortina, marmokix, corrientes, mozart, tito_y_eze, lenny_y_Alberdi], tresSiete.getParadas() );
-        //Assert.assertArrayEquals([cortina, marmokix, corrientes, mozart, tito_y_eze, lenny_y_Alberdi]);
+        paradasIntermedias = new ArrayList<Parada>();
     }
+
+    @Test
+    public void agregoUnaParada() {
+
+        tresSiete.agregarParadas(unaParada);
+        tresSiete.agregarParadas(otraParada);
+        Assertions.assertNotNull(unaParada);
+        Assertions.assertEquals(unaParada, tresSiete.getParadas().get(0));
+    }
+
+    @Test
+    public void lineaTiene3Paradas(){
+        tresSiete.agregarParadas( cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
+        paradasIntermedias.add( marmokix);
+        paradasIntermedias.add(corrientes);
+        paradasIntermedias.add( mozart);
+        Assertions.assertEquals(paradasIntermedias, tresSiete.getParadasIntermedias(marmokix, xokas));
+    }
+
 }

@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class LColectivo extends Linea {
-    private String nombreLinea;
-    private List<Parada> paradas;
-
 
     public LColectivo(String name) {
         this.nombreLinea = name;

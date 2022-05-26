@@ -1,8 +1,6 @@
 package domain.viaje;
 
-
 import domain.viaje.publico.LColectivo;
-import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
@@ -39,7 +37,7 @@ public class PublicoTest {
 
         publicoGenerico = new TPublico(cortina, xokas, tresSiete);
 
-        paradasIntermedias = new ArrayList<Parada>();
+        paradasIntermedias = new ArrayList<>();
     }
 
     @Test

@@ -7,21 +7,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class Linea {
-    private List<Parada> paradas;
-    private String nombreLinea;
+    protected List<Parada> paradas;
+    protected String nombreLinea;
 
     public String getNombreLinea() {
         return nombreLinea;
     }
 
-    public List<Parada> getParadasIntermedias(domain.viaje.publico.Parada inicio, domain.viaje.publico.Parada fin) {
-        int ind_inicial = this.paradas.indexOf(inicio);
-        int ind_final = this.paradas.indexOf(fin);
-
-        return this.paradas
-                .stream()
-                .filter(parada -> this.isBetween(ind_inicial, ind_final, paradas.indexOf(parada)))
-                .collect(Collectors.toList());
+    public List<Parada> getParadasIntermedias(Parada inicio, Parada fin) {
+        int indInicial = this.paradas.indexOf(inicio);
+        int indFinal = this.paradas.indexOf(fin);
+        //if( indInicial < indFinal ){ // IDA
+            return this.paradas.
+                        stream().
+                        filter(parada -> this.isBetween(indInicial, indFinal, paradas.indexOf(parada))).
+                        collect(Collectors.toList());
+        /*}else if(indInicial > indFinal){ //VUELTA
+            return this.paradas.
+                    stream().
+                    filter(parada -> this.isBetween(indFinal, indInicial, paradas.indexOf(parada))).
+                    collect(Collectors.toList());
+        }*/
     }
     public boolean esRecorridoIda(Parada inicio, Parada fin){
         int indInicial = this.paradas.indexOf(inicio);
@@ -38,7 +44,13 @@ public abstract class Linea {
     }
 
     public boolean isBetween(int inicio, int fin, int valor){
-        return (inicio <= valor) && (valor < fin);
+        if(inicio < fin){ // ORDENADO (IDA)
+            return (inicio <= valor) && (valor < fin); //NO QUIERO SABER LA DE FIN
+
+        }
+        else{ //AL REVES (VUELTA)
+            return (fin < valor) && (valor <= inicio); // NO QUIERO SABER LA DE FIN
+        }
     }
 
 

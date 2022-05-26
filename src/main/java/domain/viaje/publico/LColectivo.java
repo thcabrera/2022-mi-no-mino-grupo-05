@@ -13,12 +13,4 @@ public class LColectivo extends Linea {
         this.nombreLinea = name;
         this.paradas = new ArrayList<>();
     }
-
-    public void agregarParadas(Parada ... newParadas) {
-            Collections.addAll(this.paradas, newParadas);
-    }
-
-    public List<Parada> getParadas(){
-        return paradas;
-    }
 }

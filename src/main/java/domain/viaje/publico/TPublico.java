@@ -1,6 +1,7 @@
 package domain.viaje.publico;
 
 import domain.viaje.Trameable;
+import domain.viaje.publico.sentido.SentidoRecorrido;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,15 @@ import java.util.stream.Collectors;
 public class TPublico implements Trameable {
     private Parada paradaInicio;
     private Parada paradaFin;
-    private Linea vehiculo;
+    private Linea linea;
+
+    private SentidoRecorrido sentido;
+
+    public TPublico(Parada paradaInicio, Parada paradaFin, Linea linea) {
+        this.paradaInicio = paradaInicio;
+        this.paradaFin = paradaFin;
+        this.linea = linea;
+    }
 
     public Integer consumo(){
         //TODO
@@ -23,13 +32,13 @@ public class TPublico implements Trameable {
     }
 
     public List<Parada> solicitarParadasIntermedias(){
-        return vehiculo.getParadasIntermedias(paradaInicio, paradaFin);
+        return linea.getParadasIntermedias(paradaInicio, paradaFin);
     }
 
 
     private Integer calcularDistancia(List<Parada> paradasIntermedias) {
         return paradasIntermedias.stream()
-                .mapToInt(parada -> parada.getDistanciaSigParada())
+                .mapToInt(parada -> parada.getDistanciaSigParada()) // (Parada :: getDistanciaSigParada :: ) equivalente a (p -> p.getDistanciaSigParada())
                 .sum();
     }
 }

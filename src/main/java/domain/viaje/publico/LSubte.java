@@ -1,5 +1,10 @@
 package domain.viaje.publico;
 
-public class LSubte extends Linea {
+import java.util.ArrayList;
 
+public class LSubte extends Linea {
+    public LSubte(String name) {
+        this.nombreLinea = name;
+        this.paradas = new ArrayList<>();
+    }
 }

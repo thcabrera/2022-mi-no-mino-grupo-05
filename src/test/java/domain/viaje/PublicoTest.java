@@ -3,6 +3,7 @@ package domain.viaje;
 import domain.viaje.publico.LColectivo;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
+import domain.viaje.publico.sentido.SentidoRecorrido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +18,14 @@ public class PublicoTest {
     private Parada unaParada;
     private Parada otraParada;
 
-    private TPublico publicoGenerico;
+    private TPublico tramoPublicoDeIda;
+    private TPublico tramoPublicoDeVuelta;
 
     @BeforeEach
     void setupThis()  {
         tresSiete = new LColectivo("37");
-        unaParada = new Parada("alexelcapo");
-        otraParada = new Parada("marmogilazo");
+        unaParada = new Parada("UnaParada");
+        otraParada = new Parada("OtraParada");
         cortina = new Parada("Cortina");
         marmokix = new Parada("Marmokix");
         corrientes = new Parada("Corrientes");
@@ -34,8 +36,11 @@ public class PublicoTest {
         marmokix.setDistanciaSigParada(100);
         corrientes.setDistanciaSigParada(100);
         mozart.setDistanciaSigParada(100);
-
-        publicoGenerico = new TPublico(cortina, xokas, tresSiete);
+        marmokix.setDistanciaAntParada(100);
+        corrientes.setDistanciaAntParada(100);
+        mozart.setDistanciaAntParada(100);
+        tramoPublicoDeIda = new TPublico(cortina, xokas, tresSiete);
+        tramoPublicoDeVuelta = new TPublico(mozart, cortina, tresSiete);
 
         paradasIntermedias = new ArrayList<>();
     }
@@ -50,20 +55,39 @@ public class PublicoTest {
     }
 
     @Test
-    public void lineaTiene3ParadasIntermedias(){
+    public void lineaTiene3ParadasIntermediasDeIda(){
 
-        tresSiete.agregarParadas( cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
-        paradasIntermedias.add( marmokix);
+        tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
+        paradasIntermedias.add(marmokix);
         paradasIntermedias.add(corrientes);
-        paradasIntermedias.add( mozart);
-        Assertions.assertEquals(paradasIntermedias, tresSiete.getParadasIntermedias(marmokix, xokas));
+        paradasIntermedias.add(mozart);
+        SentidoRecorrido sentido = tresSiete.getSentidoRecorrido(marmokix, xokas);
+        Assertions.assertEquals(paradasIntermedias, tresSiete.getParadasIntermedias(marmokix, xokas, sentido));
     }
 
     @Test
-    public void recorridoPublicoTieneUnaDistancia(){
-        tresSiete.agregarParadas( cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
+    public void lineaTiene3ParadasIntermediasDeVuelta(){
 
-        Assertions.assertEquals(400, publicoGenerico.calcularDistanciaTramo());
+        tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
+        paradasIntermedias.add(corrientes);
+        paradasIntermedias.add(mozart);
+        paradasIntermedias.add(xokas);
+        SentidoRecorrido sentido = tresSiete.getSentidoRecorrido(xokas, marmokix);
+        Assertions.assertEquals(paradasIntermedias, tresSiete.getParadasIntermedias(xokas, marmokix, sentido));
+    }
+
+    @Test
+    public void recorridoPublicoDeIdaTieneUnaDistancia(){
+        tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
+
+        Assertions.assertEquals(400, tramoPublicoDeIda.calcularDistanciaTramo());
+    }
+
+    @Test
+    public void recorridoPublicoDeVueltaTieneUnaDistancia(){
+        tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
+
+        Assertions.assertEquals(300, tramoPublicoDeVuelta.calcularDistanciaTramo());
     }
 
 }

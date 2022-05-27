@@ -11,7 +11,6 @@ public class TPublico implements Trameable {
     private Parada paradaInicio;
     private Parada paradaFin;
     private Linea linea;
-
     private SentidoRecorrido sentido;
 
     public TPublico(Parada paradaInicio, Parada paradaFin, Linea linea) {
@@ -32,13 +31,20 @@ public class TPublico implements Trameable {
     }
 
     public List<Parada> solicitarParadasIntermedias(){
-        return linea.getParadasIntermedias(paradaInicio, paradaFin);
+        sentido = this.obtenerSentido();
+        return linea.getParadasIntermedias(paradaInicio, paradaFin, sentido);
     }
-
 
     private Integer calcularDistancia(List<Parada> paradasIntermedias) {
         return paradasIntermedias.stream()
-                .mapToInt(parada -> parada.getDistanciaSigParada()) // (Parada :: getDistanciaSigParada :: ) equivalente a (p -> p.getDistanciaSigParada())
+                .mapToInt(parada -> sentido.getDistanciaProxParada(parada))
                 .sum();
     }
+
+    private SentidoRecorrido obtenerSentido(){
+        return linea.getSentidoRecorrido(paradaInicio,paradaFin);
+    }
 }
+
+
+

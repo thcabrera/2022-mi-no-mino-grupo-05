@@ -1,6 +1,8 @@
 package domain.viaje.publico;
 
+import domain.viaje.publico.sentido.Ida;
 import domain.viaje.publico.sentido.SentidoRecorrido;
+import domain.viaje.publico.sentido.Vuelta;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,25 +16,23 @@ public abstract class Linea {
         return nombreLinea;
     }
 
-    public List<Parada> getParadasIntermedias(Parada inicio, Parada fin) {
+    public List<Parada> getParadasIntermedias(Parada inicio, Parada fin, SentidoRecorrido sentido) {
         int indInicial = this.paradas.indexOf(inicio);
         int indFinal = this.paradas.indexOf(fin);
-        //if( indInicial < indFinal ){ // IDA
-            return this.paradas.
-                        stream().
-                        filter(parada -> this.isBetween(indInicial, indFinal, paradas.indexOf(parada))).
-                        collect(Collectors.toList());
-        /*}else if(indInicial > indFinal){ //VUELTA
-            return this.paradas.
+        return this.paradas.
                     stream().
-                    filter(parada -> this.isBetween(indFinal, indInicial, paradas.indexOf(parada))).
+                    filter(parada -> sentido.isBetween(indInicial, indFinal, paradas.indexOf(parada))).
                     collect(Collectors.toList());
-        }*/
     }
-    public boolean esRecorridoIda(Parada inicio, Parada fin){
+
+    public SentidoRecorrido getSentidoRecorrido(Parada inicio, Parada fin){
         int indInicial = this.paradas.indexOf(inicio);
         int indFinal = this.paradas.indexOf(fin);
-        return  indInicial < indFinal;
+        if (indInicial < indFinal) {
+            return new Ida();
+        }else {
+            return new Vuelta();
+        }
     }
 
     public void agregarParadas(Parada ... newParadas) {
@@ -42,16 +42,5 @@ public abstract class Linea {
     public List<Parada> getParadas(){
         return paradas;
     }
-
-    public boolean isBetween(int inicio, int fin, int valor){
-        if(inicio < fin){ // ORDENADO (IDA)
-            return (inicio <= valor) && (valor < fin); //NO QUIERO SABER LA DE FIN
-
-        }
-        else{ //AL REVES (VUELTA)
-            return (fin < valor) && (valor <= inicio); // NO QUIERO SABER LA DE FIN
-        }
-    }
-
 
 }

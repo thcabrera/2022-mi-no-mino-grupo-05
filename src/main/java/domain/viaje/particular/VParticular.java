@@ -5,7 +5,7 @@ import domain.viaje.Trameable;
 
 public class VParticular implements Trameable {
     private Combustible tipoCombustible;
-    private Particular tipoParticular;
+    private TipoParticular tipoParticular;
     private Direccion direccionInicio;
     private Direccion direccionFin;
     private Integer idDeViaje;

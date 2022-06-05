@@ -1,4 +1,4 @@
 package domain.viaje.particular;
 
-public class Auto extends Particular {
+public class Auto extends TipoParticular {
 }

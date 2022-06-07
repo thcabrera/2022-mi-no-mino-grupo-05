@@ -1,4 +1,4 @@
-package test;
+package domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,55 +37,55 @@ public class ValidadorContraseniaTest {
 
     @Test
     public void testPassIncorrecta1() {
-        Boolean res = validadorContrasenia.validadContrasenia(passIncorrecta1);
+        Boolean res = validadorContrasenia.validarContrasenia(passIncorrecta1);
         Assertions.assertEquals(false, res);
     }
 
     @Test
     public void testPassIncorrecta2() {
-        Boolean res = validadorContrasenia.validadContrasenia(passIncorrecta2);
+        Boolean res = validadorContrasenia.validarContrasenia(passIncorrecta2);
         Assertions.assertEquals(false, res);
     }
 
     @Test
     public void testPassIncorrecta3() {
-        Boolean res = validadorContrasenia.validadContrasenia(passIncorrecta3);
+        Boolean res = validadorContrasenia.validarContrasenia(passIncorrecta3);
         Assertions.assertEquals(false, res);
     }
 
     @Test
     public void testPassIncorrecta4() {
-        Boolean res = validadorContrasenia.validadContrasenia(passIncorrecta4);
+        Boolean res = validadorContrasenia.validarContrasenia(passIncorrecta4);
         Assertions.assertEquals(false, res);
     }
 
     @Test
     public void testPassIncorrecta5() {
-        Boolean res = validadorContrasenia.validadContrasenia(passIncorrecta5);
+        Boolean res = validadorContrasenia.validarContrasenia(passIncorrecta5);
         Assertions.assertEquals(false, res);
     }
 
     @Test
     public void testPassCorrecta1() {
-        Boolean res = validadorContrasenia.validadContrasenia(passCorrecta1);
+        Boolean res = validadorContrasenia.validarContrasenia(passCorrecta1);
         Assertions.assertEquals(true, res);
     }
 
     @Test
     public void testPassCorrecta2() {
-        Boolean res = validadorContrasenia.validadContrasenia(passCorrecta2);
+        Boolean res = validadorContrasenia.validarContrasenia(passCorrecta2);
         Assertions.assertEquals(true, res);
     }
 
     @Test
     public void testPassCorrecta3() {
-        Boolean res = validadorContrasenia.validadContrasenia(passCorrecta3);
+        Boolean res = validadorContrasenia.validarContrasenia(passCorrecta3);
         Assertions.assertEquals(true, res);
     }
 
     @Test
     public void testPeorContrasena1() {
-        Boolean res = validadorContrasenia.validadContrasenia(peorPass1);
+        Boolean res = validadorContrasenia.validarContrasenia(peorPass1);
         Assertions.assertEquals(false, res);
 
     }

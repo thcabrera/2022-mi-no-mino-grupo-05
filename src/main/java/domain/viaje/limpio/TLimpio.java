@@ -1,13 +1,15 @@
 package domain.viaje.limpio;
 
 import domain.Direccion;
+import domain.entidades.Persona;
 import domain.viaje.Trameable;
 
 public class TLimpio implements Trameable {
     public String tipo;
     private Direccion direccionInicio;
     private Direccion direccionFin;
-    private boolean esCompartido = false;
+
+
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -19,6 +21,10 @@ public class TLimpio implements Trameable {
 
     public boolean getEsCompartido(){
         return false;
+    }
+    @Override
+    public Persona getPropietario() {
+        return null;
     }
 
     //  ----------  CONSUMO  ----------

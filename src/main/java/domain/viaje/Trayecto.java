@@ -24,5 +24,9 @@ public class Trayecto {
     public void agregarTramos(Trameable ... tramos){
         Collections.addAll(this.tramos, tramos);
     }
+
+    public List<Trameable> getTramos(){
+        return tramos;
+    }
 }
 

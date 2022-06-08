@@ -1,5 +1,6 @@
 package domain.viaje.publico;
 
+import domain.entidades.Persona;
 import domain.viaje.Trameable;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 
@@ -12,8 +13,6 @@ public class TPublico implements Trameable {
     private Parada paradaFin;
     private Linea linea;
     private SentidoRecorrido sentido;
-
-    private boolean esCompartido = false;
 
     //  ----------  GETTERS & SETTERS  ----------
     public TPublico(Parada paradaInicio, Parada paradaFin, Linea linea) {
@@ -29,7 +28,12 @@ public class TPublico implements Trameable {
     }
 
     public boolean getEsCompartido(){
-        return esCompartido;
+        return false;
+    }
+
+    @Override
+    public Persona getPropietario() {
+        return null;
     }
 
     //  ----------  CALCULO DISTANCIA  ----------

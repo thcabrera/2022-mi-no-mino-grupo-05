@@ -35,7 +35,7 @@ public class SolicitudTest {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
-   //     dirLennySW = new Direccion("mozart", 1999, "Buenos Aires", "comuna 5", "CABA"); // checkearlo para futuros test en los q importe
+        dirLennySW = new Direccion("mozart", 1999, "CIUDAD DE BUENOS AIRES", "VILLA SOLDATI", 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
         empresaDelSectorSecundario = new Clasificacion("EmpresaDelSectorSecundario");
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
@@ -50,7 +50,7 @@ public class SolicitudTest {
 
         lenny.solicitarAlta(lennySoftware, ejecutivo);
 
-        Assertions.assertEquals(0, lennySoftware.miembros().size() );
+        Assertions.assertEquals(0, lennySoftware.getMiembros().size() );
         Assertions.assertEquals(1, lennySoftware.getSolicitudes().size() );
         Assertions.assertTrue(lenny.getListaAreas().size() == 0 );
     }
@@ -58,27 +58,27 @@ public class SolicitudTest {
     @Test
     public void lennyEsAceptadoPorSuOrg() {
         lenny.solicitarAlta(lennySoftware, ejecutivo);
-        lennySoftware.aceptarEmpleado(lenny, sistemas);
+        lennySoftware.aceptarEmpleado(lenny, ejecutivo);
 
-        Assertions.assertEquals(1, lennySoftware.miembros().size() );
-        Assertions.assertTrue(lennySoftware.miembros().contains(lenny) );
+        Assertions.assertEquals(1, lennySoftware.getMiembros().size() );
+        Assertions.assertTrue(lennySoftware.getMiembros().contains(lenny) );
 
-        Assertions.assertTrue(lenny.getListaAreas().contains(sistemas));
+        Assertions.assertTrue(lenny.getListaAreas().contains(ejecutivo));
     }
 
     @Test
     public void titoYLennySonMiembros() {
         lenny.solicitarAlta(lennySoftware, ejecutivo);
-        lennySoftware.aceptarEmpleado(lenny, sistemas);
+        lennySoftware.aceptarEmpleado(lenny, ejecutivo);
 
         tito.solicitarAlta(lennySoftware, coaching);
         lennySoftware.aceptarEmpleado(tito, coaching);
 
-        Assertions.assertEquals(1, sistemas.getMiembros().size() );
+        Assertions.assertEquals(1, ejecutivo.getMiembros().size() );
         Assertions.assertEquals(1, coaching.getMiembros().size() );
 
-        Assertions.assertEquals(2, lennySoftware.miembros().size() );
-        Assertions.assertTrue(lennySoftware.miembros().contains(lenny) && lennySoftware.miembros().contains(tito)  );
+        Assertions.assertEquals(2, lennySoftware.getMiembros().size() );
+        Assertions.assertTrue(lennySoftware.getMiembros().contains(lenny) && lennySoftware.getMiembros().contains(tito)  );
     }
 
 }

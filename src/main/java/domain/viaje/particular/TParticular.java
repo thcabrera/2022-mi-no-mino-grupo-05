@@ -20,8 +20,10 @@ public class TParticular implements Trameable {
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
         this.esCompartido = esCompartido;
+        this.propietario = null;
     }
 
+    @Override
     public Persona getPropietario() {
         return propietario;
     }

@@ -2,8 +2,11 @@ package domain.entidades;
 
 import domain.Direccion;
 import domain.mediciones.consumos.Actividad;
+import domain.viaje.Trameable;
 
+import javax.swing.plaf.PanelUI;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Organizacion {
     private String razonSocial;
@@ -70,11 +73,26 @@ public class Organizacion {
         return area.getMiembros();
     }
 
-    public List<Persona> miembros(){ // TODO: hacer q no tenga contenga repetidos, o q los elimine al final
+    public List<Persona> getMiembros(){ // TODO: hacer q no tenga contenga repetidos, o q los elimine al final
         List<Persona> miembrosTotales = new ArrayList<Persona>();
-        areas.forEach(area-> miembrosTotales.addAll(area.getMiembros()));
+        areas.stream().forEach(area-> miembrosTotales.addAll(area.getMiembros()));
 
         return miembrosTotales;
+    }
+
+    //  ----------  TRAMOS COMPARTIDOS  ----------
+
+    public List<Trameable> getTramosCompartidos() {
+        List<Trameable> tramosCompartidos = new ArrayList<Trameable>();
+        this.getMiembros().stream().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
+
+        return tramosCompartidos
+                .stream()
+                .filter(t -> t.getEsCompartido())
+                .collect(Collectors.toList());
+
+        //List<Trameable> tramosCompartidos = organizacion.getTramosCompartidos();
+        //return (List<Trameable>) tramos.stream().filter(t -> t.getEsCompartido());
     }
 
 

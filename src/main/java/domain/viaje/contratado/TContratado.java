@@ -13,12 +13,18 @@ public class TContratado implements Trameable {
     private boolean esCompartido;
 
     //  ----------  GETTERS & SETTERS  ----------
-    public TContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin) {
+    public TContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin, boolean esCompartido) {
         this.tipoTransporte = tipoTransporte;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
+        this.esCompartido = esCompartido;
+        this.propietario = null;
+    }
+    public void setPropietario(Persona propietario) {
+        this.propietario = propietario;
     }
 
+    @Override
     public Persona getPropietario() {
         return propietario;
     }

@@ -14,6 +14,7 @@ import org.apache.poi.ss.formula.functions.T;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Persona {
     private String nombre;
@@ -72,9 +73,40 @@ public class Persona {
         return new Trayecto(tramos);
     }
 
-    //  ----------  TRAMOS COMPARTIDOS  ----------
+    public List<Trameable> getTramos(){
+        List<Trameable> tramos = new ArrayList<Trameable>();
+        this.trayectos.forEach(trayecto -> tramos.addAll(trayecto.getTramos()));
 
-    public List<Trameable> verTramosCompartidos(List<Trameable> tramos){
-        return (List<Trameable>) tramos.stream().filter(t -> t.getEsCompartido());
+        return tramos;
+    }
+
+    public List<Trameable> getTramosCompartidosPropios(){
+        List<Trameable> tramos = new ArrayList<Trameable>();
+        this.trayectos.forEach(trayecto -> tramos.addAll(trayecto.getTramos()));
+
+        return tramos.stream()
+                .filter(t->t.getEsCompartido() )
+                .filter(t->t.getPropietario().equals(this) )
+                .collect(Collectors.toList());
+
+    }
+
+    //  ----------  TRAMOS COMPARTIDOS  ----------
+    // Flujo de posibilidades
+    //  -Lenny quiere crearlo:
+    //      esCompartido = true;
+    //      tramo1 = new TParticular(,,,,esCompartido);
+    //      tramo1.setPropietario(this);
+    //      lennyTrayecto.add(tramo1);
+
+
+    //  -Marmo quiere sumarse:
+    //      1- preguntar que tramos compartidos hay en la organizacion: getTramosCompartidos
+    //      2- tramoSeleccionado = seleccionarTramo(tramo);
+    //      3- marmoTrayecto.add(tramoSeleccionado);
+
+    public List<Trameable> getTramosCompartidos(Organizacion organizacion){
+        List<Trameable> tramosCompartidos = organizacion.getTramosCompartidos();
+        return tramosCompartidos;
     }
 }

@@ -1,14 +1,16 @@
 package domain.mediciones.importador;
 import domain.mediciones.consumos.*;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -42,14 +44,11 @@ public class ImportarExcel implements AdapterImportadorExcel{
         try {
             //TODO hay que empezar desde la 3era (2da si contamos al 0)
             advanceIteratorTo(2);
-            int cont = 0;
             while (rowIterator.hasNext()) {
-                Actividad actividad = this.siguienteFila();
-                listadoActividades.add(actividad);
-                cont+=1;
-                System.out.println(cont);
-                if(cont == 12)
+                Actividad actividad = this.siguiente();
+                if (actividad == null)
                     break;
+                listadoActividades.add(actividad);
             }
         } catch(Exception e) {
             System.out.println("Archivo de excel no compatible.");
@@ -57,15 +56,10 @@ public class ImportarExcel implements AdapterImportadorExcel{
         }
         return listadoActividades;
     }
-    private Actividad siguienteFila(){
-        Row row = rowIterator.next();
-        Iterator<Cell> cellIterator = row.cellIterator();
-        Actividad actividad = null;
-        Consumo consumo = new Consumo();
 
-        Cell cell = cellIterator.next(); // Tipo de Actividad
-        actividad = obtenerActividad(cell.getStringCellValue());
-        cell = cellIterator.next(); // Tipo de Consumo
+    private Consumo procesarConsumoBase(Iterator<Cell> cellIterator){
+        Cell cell = cellIterator.next(); // Tipo de Consumo
+        Consumo consumo = new Consumo();
         TipoConsumo tipoConsumo = obtenerTipoConsumo(cell.getStringCellValue());
         consumo.setTipoConsumo(tipoConsumo);
 
@@ -76,56 +70,83 @@ public class ImportarExcel implements AdapterImportadorExcel{
         String tipoPeriodicidad = cell.getStringCellValue();
         cell = cellIterator.next(); // Periodo de imputacion
         String periodo = "";
-        if (cell.getCellType() == CellType.STRING)
-            periodo = cell.getStringCellValue();
-        else periodo = String.valueOf(cell.getNumericCellValue());
+        cell.getDateCellValue();
+        if (DateUtil.isCellDateFormatted(cell)){
+            Date date = cell.getDateCellValue();
+            DateFormat df = new SimpleDateFormat("MM/yyyy");
+            periodo = df.format(date);
+        }
+        else periodo = String.valueOf((int) cell.getNumericCellValue());
         Periodicidad periodicidad = obtenerTipoPeriodicidad(tipoPeriodicidad, periodo);
         consumo.setPeriodicidad(periodicidad);
+        return consumo;
+    }
+
+    private Actividad siguiente(){
+        Row row = rowIterator.next();
+        Iterator<Cell> cellIterator = row.cellIterator();
+
+        Actividad actividad = null;
+        Cell celdaActividad = cellIterator.next();
+        switch (celdaActividad.getStringCellValue()){ // Tipo Actividad
+            case "LOGISTICA DE PRODUCTOS Y RESIDUOS":
+                actividad = new Logistica();
+                break;
+            case "COMBUSTIÓN FIJA":
+                actividad = new CombustionFija();
+                break;
+            case "COMBUSTIÓN MÓVIL":
+                actividad = new CombustionMovil();
+                break;
+            case "ELECTRICIDAD": // TO revisar: realmente van a tener barras n ?
+                actividad = new ElectricidadAdqYCons();
+                break;
+            default: //si no es ninguno de los otros casos, retornar null
+                return null;
+        }
+        Consumo consumo = this.procesarConsumoBase(cellIterator);
         actividad.setConsumo(consumo);
         return actividad;
     }
 
-    public TipoConsumo obtenerTipoConsumo(String tipo){
-        return new TipoConsumo();
-    }
-
-    public Actividad obtenerActividad(String tipo){
-
-        Actividad actividad = null;
-
-        switch (tipo){ // Tipo Actividad
-
-            case "Combustion fija":
-                actividad = new CombustionFija();
-                break;
-            case "Combustion móvil":
-            case "Combustión móvil":
-                actividad = new CombustionMovil();
-                break;
-            case "Electricidad": // TO revisar: realmente van a tener barras n ?
-                actividad = new ElectricidadAdqYCons();
-                break;
-            case "Logistica de Productos y residuos":
-                actividad = new Logistica();
-                break;
-            case "Productos y residuos":
-                actividad = new ProductosYResiduos();
+    private TipoConsumo obtenerTipoConsumo(String tipo){
+        switch(tipo) {
+            case ("Gas Natural"):
+                return new TipoConsumo("GAS NATURAL", Unidad.M3);
+            case ("Diesel"):
+            case ("Gasoil"):
+                return new TipoConsumo("GASOIL", Unidad.LT);
+            case ("Kerosene"):
+                return new TipoConsumo("KEROSENE", Unidad.LT);
+            case ("Fuel Oil"):
+                return new TipoConsumo("FUEL OIL", Unidad.LT);
+            case ("Nafta"):
+                return new TipoConsumo("NAFTA", Unidad.LT);
+            case ("Carbon"):
+                return new TipoConsumo("CARBON", Unidad.KG);
+            case ("Carbon de leña"):
+                return new TipoConsumo("CARBON DE LEÑA", Unidad.KG);
+            case ("Leña"):
+                return new TipoConsumo("LEÑA", Unidad.KG);
+            case ("GNC"):
+                return new TipoConsumo("GNC", Unidad.LTS);
+            case ("Electricidad"):
+                return new TipoConsumo("ELECTRICIDAD", Unidad.KWH);
+            case ("Peso total transportados"):
+                return new TipoConsumo("PESO TOTAL TRANSP", Unidad.KG);
         }
-        return actividad;
+    return null;
     }
 
     public Periodicidad obtenerTipoPeriodicidad(String tipo, String periodo){
-        try{
-            switch (tipo) {
-                case "Anual":
-                    return new Anual(periodo);
-                case "Mensual":
-                    return new Mensual(periodo);
-            }
-        }catch (Exception e){
-            // Todo:
-            //  revisar, realmente se puede hacer el try catch? o con meterle un default en el switch
+        switch (tipo) {
+            case "Anual":
+                return new Anual(periodo);
+            case "Mensual":
+                return new Mensual(periodo);
+            default:
+                return null;
         }
-        return null;
     }
+
 }

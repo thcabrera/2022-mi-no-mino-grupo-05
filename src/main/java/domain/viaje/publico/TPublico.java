@@ -13,16 +13,26 @@ public class TPublico implements Trameable {
     private Linea linea;
     private SentidoRecorrido sentido;
 
+    private boolean esCompartido = false;
+
+    //  ----------  GETTERS & SETTERS  ----------
     public TPublico(Parada paradaInicio, Parada paradaFin, Linea linea) {
         this.paradaInicio = paradaInicio;
         this.paradaFin = paradaFin;
         this.linea = linea;
     }
 
+    //  ----------  CONSUMO  ----------
     public Integer consumo(){
         //TODO
         return 0;
     }
+
+    public boolean getEsCompartido(){
+        return esCompartido;
+    }
+
+    //  ----------  CALCULO DISTANCIA  ----------
 
     public Integer calcularDistanciaTramo(){
         List<Parada> paradasIntermedias;

@@ -5,6 +5,8 @@ public class Parada {
     private Integer distanciaSigParada;
     private Integer distanciaAntParada;
 
+    //  ----------  GETTERS & SETTERS  ----------
+
     public Parada(String nombreParada) {
         this.nombre = nombreParada;
     }

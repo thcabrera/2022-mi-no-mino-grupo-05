@@ -32,14 +32,14 @@ public class Organizacion {
 
     //  ----------  SOLICITUD  ----------
 
-    public void aceptarEmpleado(Persona persona, Area area) { //TODO: TESTEAR
+    public void aceptarEmpleado(Persona persona, Area area) {
         Solicitud solicitud = getSolicitudDe(persona, area); // NO Esta funcionando
-        // (solicitud != null) {
+        if (solicitud != null) {
             this.solicitudes.remove(solicitud);
             System.out.printf("%s %s aceptado/a y removido/a de solicitantes correctamente", solicitud.getSolicitante().getNombre(), persona.getApellido());
             area.agregarMiembro(persona);
             persona.altaAceptada(area);
-        //}
+        }
     }
 
     public void rechazarSolicitud(Persona persona, Area area){ // habria q notificar el rechazo de la solicitud a la Persona?
@@ -61,8 +61,8 @@ public class Organizacion {
 
         return solicitud;
     }
-    //------------ AUX -------------------------------
-    public void generarArea(Area nuevaArea){
+    //  ----------  DAR DE ALTA AREAS  ----------
+    public void agregarArea(Area nuevaArea){
         this.areas.add(nuevaArea);
     }
 

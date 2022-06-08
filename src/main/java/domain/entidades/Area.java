@@ -6,14 +6,17 @@ import java.util.List;
 public class Area {
     private Organizacion organizacion;
     private List<Persona> miembros;
+    private String nombre;
+
 
 
     //  ----------  GETTERS & SETTERS  ----------
 
-    public Area(Organizacion organizacion) { //TO: consultar
+    public Area(String nombre, Organizacion organizacion) {
         this.organizacion = organizacion;
+        this.nombre = nombre;
         this.miembros = new ArrayList<Persona>();
-        organizacion.generarArea(this);
+        organizacion.agregarArea(this);
     }
     public List<Persona> getMiembros(){
         return miembros;

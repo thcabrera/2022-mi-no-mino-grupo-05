@@ -33,22 +33,16 @@ public class SolicitudTest {
     @BeforeEach
     void setupThis() {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
-        lenny = new Persona("Lenny", "Guerrisi", 43123123, Documentacion.DNI);
+        lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
         dirLennySW = new Direccion("mozart", 1999, "Buenos Aires", "comuna 5", "CABA"); // checkearlo para futuros test en los q importe
         empresa = new TipoOrg("Empresa");
         empresaDelSectorSecundario = new Clasificacion("EmpresaDelSectorSecundario");
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
 
-        sistemas = new Area(lennySoftware);
-        ejecutivo = new Area(lennySoftware);
-        coaching = new Area(lennySoftware);
-    }
-    @Test
-
-    public void fallanLosSetup() {
-
-        Assertions.assertEquals(0,tito.getListaAreas().size() );
+        sistemas = new Area("Sistemas", lennySoftware);
+        ejecutivo = new Area("Ejecutivo", lennySoftware);
+        coaching = new Area("Coaching", lennySoftware);
     }
 
     @Test

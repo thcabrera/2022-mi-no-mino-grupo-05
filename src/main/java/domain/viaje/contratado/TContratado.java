@@ -10,6 +10,7 @@ public class TContratado implements Trameable {
     private Direccion direccionFin;
 
     private Persona propietario;
+    private boolean esCompartido;
 
     //  ----------  GETTERS & SETTERS  ----------
     public TContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin) {
@@ -20,6 +21,10 @@ public class TContratado implements Trameable {
 
     public Persona getPropietario() {
         return propietario;
+    }
+
+    public boolean getEsCompartido(){
+        return esCompartido;
     }
 
     //  ----------  CONSUMO  ----------

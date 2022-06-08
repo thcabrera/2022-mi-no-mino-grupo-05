@@ -7,6 +7,7 @@ public class TLimpio implements Trameable {
     public String tipo;
     private Direccion direccionInicio;
     private Direccion direccionFin;
+    private boolean esCompartido = false;
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -14,6 +15,10 @@ public class TLimpio implements Trameable {
         this.tipo = tipo;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
+    }
+
+    public boolean getEsCompartido(){
+        return false;
     }
 
     //  ----------  CONSUMO  ----------
@@ -28,4 +33,6 @@ public class TLimpio implements Trameable {
     public Integer calcularDistanciaTramo() {
         return null;
     }
+
+
 }

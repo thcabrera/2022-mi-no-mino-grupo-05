@@ -58,13 +58,10 @@ public class Persona {
         this.listaAreas.add(area);
     }
 
-    public void solicitarUnirse(Trameable tramo){
-
-    }
 
     //  ----------  TRAYECTOS  ----------
 
-    public void agregarTrayecto(Trameable ... tramos){
+    public void darDeAltaTrayecto(Trameable ... tramos){
         Trayecto trayecto = crearTrayectoVacio();
         trayecto.agregarTramos(tramos);
         trayectos.add(trayecto);
@@ -77,16 +74,7 @@ public class Persona {
 
     //  ----------  TRAMOS COMPARTIDOS  ----------
 
-    // Ya existen los tramos compartidos, y ya elegio a CUAL unirse (invocando sumarseATramoCompartido())
-    /*
-    tramo1 = esCompartido, lucas, cama
-    tramo2 = noEs, lean, gol
-    tramo3 = esCompartido, tito, bici
-     */
-
-    public void sumarseATramoCompartido(Trameable tramo){
-        //this.
+    public List<Trameable> verTramosCompartidos(List<Trameable> tramos){
+        return (List<Trameable>) tramos.stream().filter(t -> t.getEsCompartido());
     }
-
-
 }

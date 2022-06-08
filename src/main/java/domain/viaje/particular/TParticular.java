@@ -10,7 +10,6 @@ public class TParticular implements Trameable {
     private Direccion direccionInicio;
     private Direccion direccionFin;
     private Boolean esCompartido;
-
     private Persona propietario;
 
     //  ----------  GETTERS & SETTERS  ----------
@@ -25,6 +24,10 @@ public class TParticular implements Trameable {
 
     public Persona getPropietario() {
         return propietario;
+    }
+
+    public boolean getEsCompartido(){
+        return esCompartido;
     }
 
     //  ----------  CONSUMO  ----------

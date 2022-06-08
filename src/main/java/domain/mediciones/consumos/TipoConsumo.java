@@ -4,7 +4,6 @@ public class TipoConsumo {
 
     private Unidad unidad;
     private String nombre;
-    private Actividad actividad;
 
     public TipoConsumo(String nombre, Unidad unidad){
         this.setNombre(nombre);

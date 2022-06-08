@@ -35,7 +35,7 @@ public class SolicitudTest {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
-        dirLennySW = new Direccion("mozart", 1999, "Buenos Aires", "comuna 5", "CABA"); // checkearlo para futuros test en los q importe
+   //     dirLennySW = new Direccion("mozart", 1999, "Buenos Aires", "comuna 5", "CABA"); // checkearlo para futuros test en los q importe
         empresa = new TipoOrg("Empresa");
         empresaDelSectorSecundario = new Clasificacion("EmpresaDelSectorSecundario");
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);

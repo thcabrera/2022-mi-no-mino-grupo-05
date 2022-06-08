@@ -1,5 +1,4 @@
 package domain.viaje;
-
 import domain.mediciones.consumos.*;
 import domain.mediciones.importador.ImportarExcel;
 import org.junit.jupiter.api.Assertions;
@@ -30,8 +29,12 @@ public class ImportadorTest {
     @Test
     public void mappeaBienTipoConsumo() {
         Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo(),
-                this.actividadFalsa.getConsumo().getTipoConsumo());
+        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getClass(),
+                this.actividadFalsa.getConsumo().getTipoConsumo().getClass());
+        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getNombre(),
+                this.actividadFalsa.getConsumo().getTipoConsumo().getNombre());
+        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getUnidad(),
+                this.actividadFalsa.getConsumo().getTipoConsumo().getUnidad());
     }
 
     @Test
@@ -44,22 +47,10 @@ public class ImportadorTest {
     @Test
     public void mappeaBienPeriodicidad(){
         Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(this.actividadFalsa.getConsumo().getPeriodicidad(),
-                actividad.getConsumo().getPeriodicidad());
-    }
-
-    @Test
-    public void mappeaBienConsumos(){
-        Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(actividad.getConsumo(),
-                this.actividadFalsa.getConsumo());
-    }
-
-    @Test
-    public void mappeaBienActividades(){
-        Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(actividad,
-                this.actividadFalsa);
+        Assertions.assertEquals(this.actividadFalsa.getConsumo().getPeriodicidad().getClass(),
+                actividad.getConsumo().getPeriodicidad().getClass());
+        Assertions.assertEquals(this.actividadFalsa.getConsumo().getPeriodicidad().getPeriodo(),
+                actividad.getConsumo().getPeriodicidad().getPeriodo());
     }
 
     @Test

@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,17 +15,14 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ImportarExcel implements AdapterImportadorExcel{
-
-    private XSSFWorkbook archivoExcel;
-    private XSSFSheet hoja;
     private Iterator<Row> rowIterator;
 
     public ImportarExcel(String path){
         //agregar archivo al HSSFWorkbook()
         try{
             FileInputStream file = new FileInputStream(path);
-            this.archivoExcel = new XSSFWorkbook(file);
-            this.hoja = archivoExcel.getSheetAt(0);
+            XSSFWorkbook archivoExcel = new XSSFWorkbook(file);
+            XSSFSheet hoja = archivoExcel.getSheetAt(0);
             this.rowIterator = hoja.iterator();
         } catch(IOException e){
             e.printStackTrace();
@@ -40,9 +36,8 @@ public class ImportarExcel implements AdapterImportadorExcel{
     }
 
     public ArrayList<Actividad> importar(){
-        ArrayList<Actividad> listadoActividades = new ArrayList<Actividad>();
+        ArrayList<Actividad> listadoActividades = new ArrayList<>();
         try {
-            //TODO hay que empezar desde la 3era (2da si contamos al 0)
             advanceIteratorTo(2);
             while (rowIterator.hasNext()) {
                 Actividad actividad = this.siguiente();
@@ -57,7 +52,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
         return listadoActividades;
     }
 
-    private Consumo procesarConsumoBase(Iterator<Cell> cellIterator){
+    private Consumo procesarConsumo(Iterator<Cell> cellIterator){
         Cell cell = cellIterator.next(); // Tipo de Consumo
         Consumo consumo = new Consumo();
         TipoConsumo tipoConsumo = obtenerTipoConsumo(cell.getStringCellValue());
@@ -69,14 +64,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
         cell = cellIterator.next(); // Consumo -> Periodicidad
         String tipoPeriodicidad = cell.getStringCellValue();
         cell = cellIterator.next(); // Periodo de imputacion
-        String periodo = "";
-        cell.getDateCellValue();
-        if (DateUtil.isCellDateFormatted(cell)){
-            Date date = cell.getDateCellValue();
-            DateFormat df = new SimpleDateFormat("MM/yyyy");
-            periodo = df.format(date);
-        }
-        else periodo = String.valueOf((int) cell.getNumericCellValue());
+        String periodo = this.obtenerPeriodo(cell);
         Periodicidad periodicidad = obtenerTipoPeriodicidad(tipoPeriodicidad, periodo);
         consumo.setPeriodicidad(periodicidad);
         return consumo;
@@ -86,7 +74,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
         Row row = rowIterator.next();
         Iterator<Cell> cellIterator = row.cellIterator();
 
-        Actividad actividad = null;
+        Actividad actividad;
         Cell celdaActividad = cellIterator.next();
         switch (celdaActividad.getStringCellValue()){ // Tipo Actividad
             case "LOGISTICA DE PRODUCTOS Y RESIDUOS":
@@ -104,7 +92,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
             default: //si no es ninguno de los otros casos, retornar null
                 return null;
         }
-        Consumo consumo = this.procesarConsumoBase(cellIterator);
+        Consumo consumo = this.procesarConsumo(cellIterator);
         actividad.setConsumo(consumo);
         return actividad;
     }
@@ -138,7 +126,17 @@ public class ImportarExcel implements AdapterImportadorExcel{
     return null;
     }
 
-    public Periodicidad obtenerTipoPeriodicidad(String tipo, String periodo){
+    private String obtenerPeriodo(Cell cell){
+        if (DateUtil.isCellDateFormatted(cell)){
+            Date date = cell.getDateCellValue();
+            DateFormat df = new SimpleDateFormat("MM/yyyy");
+            return df.format(date);
+        }
+        else return String.valueOf((int) cell.getNumericCellValue());
+
+    }
+
+    private Periodicidad obtenerTipoPeriodicidad(String tipo, String periodo){
         switch (tipo) {
             case "Anual":
                 return new Anual(periodo);

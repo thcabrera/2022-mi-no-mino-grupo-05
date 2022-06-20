@@ -1,13 +1,17 @@
 package domain.entidades;
 
 import domain.Direccion;
-import domain.mediciones.consumos.Actividad;
+import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.swing.plaf.PanelUI;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
 public class Organizacion {
     private String razonSocial;
     private TipoOrg tipo;
@@ -27,10 +31,6 @@ public class Organizacion {
         this.clasificacion = clasificacion;
         this.mediciones  = new ArrayList<Actividad>();
         this.solicitudes  = new ArrayList<Solicitud>();
-    }
-
-    public List<Solicitud>  getSolicitudes(){
-        return this.solicitudes;
     }
 
     //  ----------  SOLICITUD  ----------
@@ -75,7 +75,7 @@ public class Organizacion {
 
     public List<Persona> getMiembros(){ // TODO: hacer q no tenga contenga repetidos, o q los elimine al final
         List<Persona> miembrosTotales = new ArrayList<Persona>();
-        areas.stream().forEach(area-> miembrosTotales.addAll(area.getMiembros()));
+        areas.forEach(area-> miembrosTotales.addAll(area.getMiembros()));
 
         return miembrosTotales;
     }
@@ -84,7 +84,7 @@ public class Organizacion {
 
     public List<Trameable> getTramosCompartidos() {
         List<Trameable> tramosCompartidos = new ArrayList<Trameable>();
-        this.getMiembros().stream().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
+        this.getMiembros().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
 
         return tramosCompartidos
                 .stream()
@@ -95,6 +95,25 @@ public class Organizacion {
         //return (List<Trameable>) tramos.stream().filter(t -> t.getEsCompartido());
     }
 
+    //  ----------  CALCULO HC  ----------
+
+    public Double calculoHC(){
+        return this.calculoHCActividades() + this.calculoHCTrayectos();
+    }
+
+    // no le pedimos el calculo directamente a las areas porque puede ser que una persona
+    // este en multiples áreas
+    private Double calculoHCTrayectos() {
+        return this.getMiembros().stream()
+                    .mapToDouble(miembro -> miembro.calcularHC(this))
+                    .sum();
+    }
+
+    private Double calculoHCActividades() {
+        return this.mediciones.stream()
+                .mapToDouble(Actividad :: calculoHC)
+                .sum();
+    }
 
 
 }

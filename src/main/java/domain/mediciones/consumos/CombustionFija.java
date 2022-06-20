@@ -1,5 +1,7 @@
 package domain.mediciones.consumos;
 
-public class CombustionFija extends Actividad{
+import domain.mediciones.consumos.actividades.Actividad;
+
+public class CombustionFija extends Actividad {
 
 }

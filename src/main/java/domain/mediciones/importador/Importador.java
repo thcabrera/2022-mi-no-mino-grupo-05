@@ -1,6 +1,6 @@
 package domain.mediciones.importador;
 
-import domain.mediciones.consumos.Actividad;
+import domain.mediciones.consumos.actividades.Actividad;
 
 import java.util.ArrayList;
 

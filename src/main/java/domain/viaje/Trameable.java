@@ -10,4 +10,6 @@ public interface Trameable {
     public boolean getEsCompartido();
 
     public Persona getPropietario();
+
+    public Double calculoHC();
 }

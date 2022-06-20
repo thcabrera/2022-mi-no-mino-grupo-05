@@ -1,4 +1,6 @@
 package domain.mediciones.consumos;
 
-public class ElectricidadAdqYCons extends Actividad{
+import domain.mediciones.consumos.actividades.Actividad;
+
+public class ElectricidadAdqYCons extends Actividad {
 }

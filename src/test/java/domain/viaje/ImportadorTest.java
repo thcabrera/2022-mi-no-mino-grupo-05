@@ -1,5 +1,8 @@
 package domain.viaje;
 import domain.mediciones.consumos.*;
+import domain.mediciones.consumos.actividades.Actividad;
+import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
+import domain.mediciones.consumos.tipoConsumo.Unidad;
 import domain.mediciones.importador.ImportarExcel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,5 @@
 package domain.mediciones.importador;
 import domain.mediciones.consumos.*;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -8,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import domain.mediciones.consumos.actividades.Actividad;
+import domain.mediciones.consumos.tipoConsumo.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
@@ -100,28 +101,28 @@ public class ImportarExcel implements AdapterImportadorExcel{
     private TipoConsumo obtenerTipoConsumo(String tipo){
         switch(tipo) {
             case ("Gas Natural"):
-                return new TipoConsumo("GAS NATURAL", Unidad.M3);
+                return new GasNatural();
             case ("Diesel"):
             case ("Gasoil"):
-                return new TipoConsumo("GASOIL", Unidad.LT);
+                return new Gasoil();
             case ("Kerosene"):
-                return new TipoConsumo("KEROSENE", Unidad.LT);
+                return new Kerosene();
             case ("Fuel Oil"):
-                return new TipoConsumo("FUEL OIL", Unidad.LT);
+                return new FuelOil();
             case ("Nafta"):
-                return new TipoConsumo("NAFTA", Unidad.LT);
+                return new Nafta();
             case ("Carbon"):
-                return new TipoConsumo("CARBON", Unidad.KG);
+                return new Carbon();
             case ("Carbon de leña"):
-                return new TipoConsumo("CARBON DE LEÑA", Unidad.KG);
+                return new CarbonLeña();
             case ("Leña"):
-                return new TipoConsumo("LEÑA", Unidad.KG);
+                return new Leña();
             case ("GNC"):
-                return new TipoConsumo("GNC", Unidad.LTS);
+                return new GNC();
             case ("Electricidad"):
-                return new TipoConsumo("ELECTRICIDAD", Unidad.KWH);
+                return new Electricidad();
             case ("Peso total transportados"):
-                return new TipoConsumo("PESO TOTAL TRANSP", Unidad.KG);
+                return new PesoTotal();
         }
     return null;
     }

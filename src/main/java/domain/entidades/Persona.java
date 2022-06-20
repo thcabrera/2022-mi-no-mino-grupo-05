@@ -1,20 +1,16 @@
 package domain.entidades;
 
-import domain.Direccion;
 import domain.viaje.Trameable;
 import domain.viaje.Trayecto;
-import domain.viaje.particular.Combustible;
-import domain.viaje.particular.TParticular;
-import domain.viaje.particular.TipoParticular;
-import domain.viaje.publico.Linea;
-import domain.viaje.publico.Parada;
-import domain.viaje.publico.TPublico;
-import org.apache.poi.ss.formula.functions.T;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+@Getter
+@Setter
 
 public class Persona {
     private String nombre;
@@ -23,22 +19,6 @@ public class Persona {
     private Documentacion tipoDoc;
     private List<Area> listaAreas;
     private List<Trayecto> trayectos;
-
-    //  ----------  GETTERS & SETTERS  ----------
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public Integer getNroDocumento() {
-        return nroDocumento;
-    }
-    public List<Area> getListaAreas() {
-        return this.listaAreas;
-    }
 
     public Persona(String nombre, String apellido, Integer nroDocumento, Documentacion tipoDoc) {
         this.nombre = nombre;
@@ -109,4 +89,14 @@ public class Persona {
         List<Trameable> tramosCompartidos = organizacion.getTramosCompartidos();
         return tramosCompartidos;
     }
+
+    //  ----------  CALCULO HC  ----------
+
+    public Double calcularHC(Organizacion organizacion){
+        return this.trayectos
+                .stream().filter(t -> t.getOrganizacion().equals(organizacion))
+                .mapToDouble(t -> t.calculoHC())
+                .sum();
+    }
+
 }

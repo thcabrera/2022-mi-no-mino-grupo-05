@@ -1,4 +1,4 @@
-package domain.viaje.contratado;
+package domain.viaje.privado.contratado;
 
 public class Servicio {
 

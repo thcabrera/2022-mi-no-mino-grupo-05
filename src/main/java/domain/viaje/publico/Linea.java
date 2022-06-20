@@ -3,14 +3,20 @@ package domain.viaje.publico;
 import domain.viaje.publico.sentido.Ida;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 import domain.viaje.publico.sentido.Vuelta;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
 public abstract class Linea {
     protected List<Parada> paradas;
     protected String nombreLinea;
+
+    protected Double consumo;
 
     public String getNombreLinea() {
         return nombreLinea;
@@ -42,5 +48,7 @@ public abstract class Linea {
     public List<Parada> getParadas(){
         return paradas;
     }
+
+
 
 }

@@ -2,11 +2,10 @@ package domain.viaje;
 
 import domain.Direccion;
 import domain.entidades.*;
-import domain.viaje.contratado.Servicio;
-import domain.viaje.contratado.TContratado;
-import domain.viaje.limpio.TLimpio;
+import domain.viaje.privado.contratado.Servicio;
+import domain.viaje.privado.contratado.TContratado;
+import domain.viaje.privado.limpio.TLimpio;
 import domain.viaje.publico.LColectivo;
-import domain.viaje.publico.LSubte;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;

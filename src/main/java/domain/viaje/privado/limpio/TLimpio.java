@@ -1,10 +1,10 @@
-package domain.viaje.limpio;
+package domain.viaje.privado.limpio;
 
 import domain.Direccion;
 import domain.entidades.Persona;
-import domain.viaje.Trameable;
+import domain.viaje.privado.TPrivado;
 
-public class TLimpio implements Trameable {
+public class TLimpio extends TPrivado {
     public String tipo;
     private Direccion direccionInicio;
     private Direccion direccionFin;

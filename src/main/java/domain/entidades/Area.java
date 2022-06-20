@@ -25,4 +25,10 @@ public class Area {
     public void agregarMiembro(Persona persona){
         miembros.add(persona);
     }
+
+
+    //  ----------  CALCULO HC  ----------
+    public Double calculoHC(){
+        return this.miembros.stream().mapToDouble(p -> p.calcularHC(this.organizacion)).sum();
+    }
 }

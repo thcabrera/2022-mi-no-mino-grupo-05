@@ -58,6 +58,12 @@ public class TPublico implements Trameable {
     private SentidoRecorrido obtenerSentido(){
         return linea.getSentidoRecorrido(paradaInicio,paradaFin);
     }
+
+    //  ----------  CALCULO HC  ----------
+
+    public Double calculoHC(){
+        return this.linea.getConsumo(); // todo falta la suma de cuanto anduvo
+    }
 }
 
 

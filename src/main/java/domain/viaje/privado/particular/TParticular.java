@@ -1,27 +1,31 @@
-package domain.viaje.contratado;
+package domain.viaje.privado.particular;
 
 import domain.Direccion;
 import domain.entidades.Persona;
-import domain.viaje.Trameable;
+import domain.viaje.privado.TPrivado;
 
-public class TContratado implements Trameable {
-    private Servicio tipoTransporte;
+public class TParticular extends TPrivado {
+    private Combustible tipoCombustible;
+    private TipoParticular tipoParticular;
     private Direccion direccionInicio;
     private Direccion direccionFin;
-
+    private Boolean esCompartido;
     private Persona propietario;
-    private boolean esCompartido;
 
     //  ----------  GETTERS & SETTERS  ----------
-    public TContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin, boolean esCompartido) {
-        this.tipoTransporte = tipoTransporte;
+
+    public TParticular(Combustible tipoCombustible, TipoParticular tipoParticular, Direccion direccionInicio, Direccion direccionFin, Boolean esCompartido) {
+        this.tipoCombustible = tipoCombustible;
+        this.tipoParticular = tipoParticular;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
         this.esCompartido = esCompartido;
         this.propietario = null;
     }
-    public void setPropietario(Persona propietario) {
-        this.propietario = propietario;
+
+    @Override
+    public Double calculoHC(){
+        return 0.0;
     }
 
     @Override
@@ -42,7 +46,6 @@ public class TContratado implements Trameable {
     //  ----------  CALCULO DE DISTANCIA  ----------
     @Override
     public Integer calcularDistanciaTramo() {
-        //TODO
         return null;
     }
 }

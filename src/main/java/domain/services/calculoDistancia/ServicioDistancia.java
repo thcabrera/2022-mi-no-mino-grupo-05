@@ -26,11 +26,8 @@ public class ServicioDistancia {
     }
 
 
-    public Distancia calculoDistancia(Direccion inicio, Direccion fin) throws IOException {
+    public Distancia calcularDistanciaTramo(Direccion inicio, Direccion fin) throws IOException {
         return this.adapter.calculoDistancia( inicio, fin);
     }
 
-    /*public Distancia calcular(Direccion direccionInicio, Direccion direccionFin) {
-
-    }*/
 }

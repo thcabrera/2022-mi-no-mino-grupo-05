@@ -25,7 +25,10 @@ public class TContratado extends TPrivado {
     }
 
     @Override
-    public Double calculoHC(){
+    public Double calculoHC(Persona persona){
+        if (this.propietario == persona){
+
+        }
         return 0.0;
     }
 

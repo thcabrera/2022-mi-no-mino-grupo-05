@@ -61,7 +61,7 @@ public class TPublico implements Trameable {
 
     //  ----------  CALCULO HC  ----------
 
-    public Double calculoHC(){
+    public Double calculoHC(Persona persona){
         return this.linea.getConsumo(); // todo falta la suma de cuanto anduvo
     }
 }

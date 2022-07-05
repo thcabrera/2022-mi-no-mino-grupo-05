@@ -50,6 +50,9 @@ public class TramosCompartidosTest {
         tito.solicitarAlta(lennySoftware, coaching);
         lennySoftware.aceptarEmpleado(tito, coaching);
 
+        tito.solicitarAlta(lennySoftware, ejecutivo);
+        lennySoftware.aceptarEmpleado(tito, ejecutivo);
+
         // carga de trayectos
         casa_a_terminal = new TPublico(cortina, retiro, linea34);
         terminal_a_org1 = new TContratado(new Servicio("Remis"), dirMarmoSW, dirLennySW, true);
@@ -71,6 +74,12 @@ public class TramosCompartidosTest {
 
         //Assertions.assertEquals(1, ejecutivo.getMiembros().size() );
         Assertions.assertEquals(1, lennySoftware.getTramosCompartidos().size());
+    }
+    @Test
+    public void titoYLennySeCuentanUnaSolaVez() {
+        lenny.darDeAltaTrayecto(casa_a_terminal, terminal_a_org1, org1_a_org2);//Tpublico-TContratado-TLimpio
+
+        Assertions.assertEquals(2, lennySoftware.getMiembros().size() );
     }
     /*
     @Test

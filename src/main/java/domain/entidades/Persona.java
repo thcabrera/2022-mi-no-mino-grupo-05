@@ -95,7 +95,7 @@ public class Persona {
     public Double calcularHC(Organizacion organizacion){
         return this.trayectos
                 .stream().filter(t -> t.getOrganizacion().equals(organizacion))
-                .mapToDouble(t -> t.calculoHC())
+                .mapToDouble(t -> t.calculoHC(this))
                 .sum();
     }
 

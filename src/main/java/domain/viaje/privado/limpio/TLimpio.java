@@ -28,7 +28,10 @@ public class TLimpio extends TPrivado {
     }
 
     //  ----------  CONSUMO  ----------
-
+    @Override
+    public Double calculoHC(Persona persona){
+        return 0.0;
+    }
     @Override
     public Integer consumo(){
         return 0;

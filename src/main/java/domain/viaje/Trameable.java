@@ -11,5 +11,5 @@ public interface Trameable {
 
     public Persona getPropietario();
 
-    public Double calculoHC();
+    public Double calculoHC(Persona persona);
 }

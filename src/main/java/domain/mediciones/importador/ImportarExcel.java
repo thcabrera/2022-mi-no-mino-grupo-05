@@ -60,7 +60,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
         consumo.setTipoConsumo(tipoConsumo);
 
         cell = cellIterator.next(); // Consumo -> Valor
-        consumo.setValor(((int) cell.getNumericCellValue()));
+        consumo.setValor(( cell.getNumericCellValue())); // WARNING le saque el casteo a int porq no funcionaba  (int)
 
         cell = cellIterator.next(); // Consumo -> Periodicidad
         String tipoPeriodicidad = cell.getStringCellValue();

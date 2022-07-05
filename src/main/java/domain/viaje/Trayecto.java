@@ -2,6 +2,7 @@ package domain.viaje;
 
 import domain.Direccion;
 import domain.entidades.Organizacion;
+import domain.entidades.Persona;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,8 +42,8 @@ public class Trayecto {
 
     //  ----------  CALCULO HC  ----------
 
-    public Double calculoHC(){
-        return tramos.stream().mapToDouble(tramo->tramo.calculoHC()).sum();
+    public Double calculoHC(Persona persona){
+        return tramos.stream().mapToDouble(tramo->tramo.calculoHC(persona)).sum();
     }
 }
 

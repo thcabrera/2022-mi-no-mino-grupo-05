@@ -1,8 +1,10 @@
 package domain.entidades;
 
 import domain.Direccion;
+import domain.entidades.contacto.Contacto;
 import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
+import domain.viaje.Trayecto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +22,7 @@ public class Organizacion {
     private Clasificacion clasificacion;
     private List<Actividad> mediciones;
     private List<Solicitud> solicitudes;
+    private List<Contacto> contactos;
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -77,7 +80,9 @@ public class Organizacion {
         List<Persona> miembrosTotales = new ArrayList<Persona>();
         areas.forEach(area-> miembrosTotales.addAll(area.getMiembros()));
 
-        return miembrosTotales;
+        return miembrosTotales
+                .stream().distinct()
+                .collect(Collectors.toList()); //distinct elimina repetidos
     }
 
     //  ----------  TRAMOS COMPARTIDOS  ----------
@@ -115,5 +120,12 @@ public class Organizacion {
                 .sum();
     }
 
+    //----------- Notificaciones --------------
 
+    public void agregarContactos(Contacto ... contactos){
+        Collections.addAll(this.contactos, contactos);
+    }
+    public void notificar(){
+        this.contactos.forEach(c -> c.notificar());
+    }
 }

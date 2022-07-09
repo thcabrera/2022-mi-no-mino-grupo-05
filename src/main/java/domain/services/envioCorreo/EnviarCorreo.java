@@ -1,8 +1,6 @@
 package domain.services.envioCorreo;
 
-import javax.mail.Address;
-
-import static domain.services.envioCorreo.ConfiguracionServidor.enviarConGMail;
+import static domain.services.envioCorreo.ConfiguracionServidorCorreo.enviarCorreo;
 
 
 public class EnviarCorreo {
@@ -11,7 +9,7 @@ public class EnviarCorreo {
         String asunto = "Correo de prueba enviado desde Java";
         String cuerpo = "Esta es una prueba de correo...";
 
-        enviarConGMail(destinatario, asunto, cuerpo);
+        enviarCorreo(destinatario, asunto, cuerpo);
 
     }
 

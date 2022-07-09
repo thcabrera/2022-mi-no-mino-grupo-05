@@ -8,8 +8,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class ConfiguracionServidor {
-    static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
+public class ConfiguracionServidorCorreo {
+    public static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
         String remitente = "ealfonso@frba.utn.edu.ar";  //Para la dirección nomcuenta@gmail.com
         String clave = "ezequiel1981";
@@ -28,9 +28,7 @@ public class ConfiguracionServidor {
         try {
             message.setFrom(new InternetAddress(remitente));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
-         // Esto quedo feo feo pero lo arrgelmos para enviar mas de un destinatario.
-          //  String destinatario2 = "ealfonso@renatre.org.ar";
-          //  message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario2));
+         // Esto quedo feo feo pero lo arreglemos para enviar mas de un destinatario.//  message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario2));
             message.setSubject(asunto);
             message.setText(cuerpo);
             Transport transport = session.getTransport("smtp");

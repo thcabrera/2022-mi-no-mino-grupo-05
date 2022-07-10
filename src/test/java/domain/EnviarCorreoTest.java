@@ -15,11 +15,10 @@ public class EnviarCorreoTest {
 
     @BeforeEach
     public void init(){
-        destinatario =  "ezequielmalfonso@gmail.com"; //A quien le quieres escribir.
+        destinatario =  "tcabreralavezzi@frba.utn.edu.ar"; //A quien le quieres escribir.
         asunto = "Correo de prueba enviado desde Java";
         cuerpo = "A continuación se deja link de acceso a recomendaciones: \n" +
-                " https://www.huellaCarbono.org.ar/recomendaciones.html";
-
+                "https://www.huellaCarbono.org.ar/recomendaciones.html";
     }
 
     @Test

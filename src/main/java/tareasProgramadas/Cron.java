@@ -15,7 +15,7 @@ public class Cron {
 
         // Create CronTrigger  ==> aca indico cuando arranca
         // Cron para cada segundo "0/1 * * * * ?"
-        // "s m H dM M dW y"
+        // "s m H dM M dW y" -> segundos, minutos, hora, diaMes, Mes, DSemana, Año
         Trigger trigger = newTrigger()
                 .withIdentity("TriggerName", "Group2")
                 .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))

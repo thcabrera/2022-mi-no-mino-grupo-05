@@ -4,7 +4,7 @@ import domain.Direccion;
 import domain.entidades.*;
 import domain.viaje.privado.contratado.Servicio;
 import domain.viaje.privado.contratado.TContratado;
-import domain.viaje.privado.limpio.TLimpio;
+import domain.viaje.privado.contratado.limpio.TLimpio;
 import domain.viaje.publico.LColectivo;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;

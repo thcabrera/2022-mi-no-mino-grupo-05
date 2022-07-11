@@ -12,6 +12,8 @@ public class TContratado extends TPrivado {
     private Persona propietario;
     private boolean esCompartido;
 
+    private  Double consumoPorKM;
+
     //  ----------  GETTERS & SETTERS  ----------
     public TContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin, boolean esCompartido) {
         this.tipoTransporte = tipoTransporte;
@@ -26,10 +28,15 @@ public class TContratado extends TPrivado {
 
     @Override
     public Double calculoHC(Persona persona){
-        if (this.propietario == persona){
-
+        if (this.esElPropietario(persona)){
+            return this.consumoPorKM() * this.calcularDistanciaTramo();
         }
-        return 0.0;
+        else
+            return 0.0;
+    }
+
+    public Boolean esElPropietario(Persona persona){
+        return this.propietario == persona;
     }
 
     @Override
@@ -37,20 +44,12 @@ public class TContratado extends TPrivado {
         return propietario;
     }
 
+    @Override
+    public Double consumoPorKM() {
+        return this.consumoPorKM;
+    }
+
     public boolean getEsCompartido(){
         return esCompartido;
-    }
-
-    //  ----------  CONSUMO  ----------
-    public Integer consumo(){
-        //TODO
-        return 0;
-    }
-
-    //  ----------  CALCULO DE DISTANCIA  ----------
-    @Override
-    public Integer calcularDistanciaTramo() {
-        //TODO
-        return null;
     }
 }

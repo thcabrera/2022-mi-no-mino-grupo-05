@@ -1,4 +1,4 @@
-package domain.viaje.privado.limpio;
+package domain.viaje.privado.contratado.limpio;
 
 import domain.Direccion;
 import domain.entidades.Persona;
@@ -33,15 +33,8 @@ public class TLimpio extends TPrivado {
         return 0.0;
     }
     @Override
-    public Integer consumo(){
-        return 0;
+    public Double consumoPorKM(){
+        return 0.0;
     }
-
-    //  ----------  CALCULO DE DISTANCIA  ----------
-    @Override
-    public Integer calcularDistanciaTramo() {
-        return null;
-    }
-
 
 }

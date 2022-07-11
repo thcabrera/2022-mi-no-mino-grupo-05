@@ -18,6 +18,14 @@ public abstract class Linea {
 
     protected Double consumo;
 
+    public Double getConsumo() {
+        return consumo;
+    }
+
+    public void setConsumo(Double nuevoConsumo) {
+        this.consumo = nuevoConsumo;
+    }
+
     public String getNombreLinea() {
         return nombreLinea;
     }
@@ -36,7 +44,7 @@ public abstract class Linea {
         int indFinal = this.paradas.indexOf(fin);
         if (indInicial < indFinal) {
             return new Ida();
-        }else {
+        } else {
             return new Vuelta();
         }
     }
@@ -48,7 +56,5 @@ public abstract class Linea {
     public List<Parada> getParadas(){
         return paradas;
     }
-
-
 
 }

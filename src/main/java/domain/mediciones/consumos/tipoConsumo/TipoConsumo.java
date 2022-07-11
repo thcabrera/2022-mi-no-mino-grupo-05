@@ -10,7 +10,7 @@ public abstract class TipoConsumo {
 
     private Unidad unidad;
 
-    private FactorEmision factorEmision;
+    private Double factorEmision; //ex FactorEmision (no le vimos mucho)
 
     public TipoConsumo(Unidad unidad){
         this.setUnidad(unidad);
@@ -30,6 +30,6 @@ public abstract class TipoConsumo {
     }
 
     public Double valorFactorEmision() {
-        return this.factorEmision.getValor();
+        return this.factorEmision;
     }
 }

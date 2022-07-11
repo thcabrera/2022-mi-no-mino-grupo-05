@@ -81,14 +81,14 @@ public class TramosCompartidosTest {
 
         Assertions.assertEquals(2, lennySoftware.getMiembros().size() );
     }
-    /*
+/*
     @Test
     public void titoYLennyCompartenTramo() {
         lenny.darDeAltaTrayecto(casa_a_terminal, terminal_a_org1, org1_a_org2);//Tpublico-TContratado-TLimpio
         tito.darDeAltaTrayecto(terminal_a_org1);
 
-        Assertions.assertEquals(1, lennySoftware.getTramosCompartidos().size() );
+        Assertions.assertEquals(2, lennySoftware.getTramosCompartidos().size() );
 
     }
-    */
+*/
 }

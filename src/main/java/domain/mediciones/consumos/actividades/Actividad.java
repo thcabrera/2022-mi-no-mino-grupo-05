@@ -1,6 +1,7 @@
 package domain.mediciones.consumos.actividades;
 
 import domain.mediciones.consumos.Consumo;
+import domain.mediciones.consumos.Periodicidad;
 
 public abstract class Actividad {
     private Consumo consumo;
@@ -22,16 +23,18 @@ public abstract class Actividad {
                 this.getConsumo().getPeriodicidad());
     }
 
-    public Double calculoHC() {
-        return this.datoActividad() * this.factorEmision();
+    public Double calculoHC(Periodicidad periodicidad) {
+        return this.datoActividad(periodicidad) * this.factorEmision();
     }
 
     public Double factorEmision() {
         return consumo.valorFactorEmision();
     }
 
-    public Double datoActividad() {
-        return this.consumo.getValor();
+    public Double datoActividad(Periodicidad periodicidad) {
+        return this.consumo.getValor(periodicidad);
     }
+
+
 
 }

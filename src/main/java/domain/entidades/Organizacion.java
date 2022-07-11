@@ -2,6 +2,7 @@ package domain.entidades;
 
 import domain.Direccion;
 import domain.entidades.contacto.Contacto;
+import domain.mediciones.consumos.Periodicidad;
 import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
 import domain.viaje.Trayecto;
@@ -86,7 +87,7 @@ public class Organizacion {
     }
 
     //  ----------  TRAMOS COMPARTIDOS  ----------
-
+    // No me parece que sirva de nada esta funcion
     public List<Trameable> getTramosCompartidos() {
         List<Trameable> tramosCompartidos = new ArrayList<Trameable>();
         this.getMiembros().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
@@ -102,8 +103,8 @@ public class Organizacion {
 
     //  ----------  CALCULO HC  ----------
 
-    public Double calculoHC(){
-        return this.calculoHCActividades() + this.calculoHCTrayectos();
+    public Double calculoHC(Periodicidad periodo){
+        return this.calculoHCActividades(periodo) + this.calculoHCTrayectos();
     }
 
     // no le pedimos el calculo directamente a las areas porque puede ser que una persona
@@ -114,9 +115,9 @@ public class Organizacion {
                     .sum();
     }
 
-    private Double calculoHCActividades() {
+    private Double calculoHCActividades(Periodicidad periodo) {
         return this.mediciones.stream()
-                .mapToDouble(Actividad :: calculoHC)
+                .mapToDouble(a -> a.calculoHC(periodo))
                 .sum();
     }
 

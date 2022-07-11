@@ -3,12 +3,10 @@ package domain.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Area {
+public class sArea {
     private Organizacion organizacion;
     private List<Persona> miembros;
     private String nombre;
-
-
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -26,9 +24,12 @@ public class Area {
         miembros.add(persona);
     }
 
-
     //  ----------  CALCULO HC  ----------
     public Double calculoHC(){
         return this.miembros.stream().mapToDouble(p -> p.calcularHC(this.organizacion)).sum();
+    }
+
+    public Double indicadorHCporMiembro(){
+        return this.calculoHC() / this.getMiembros().size();
     }
 }

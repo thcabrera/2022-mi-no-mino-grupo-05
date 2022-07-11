@@ -1,5 +1,6 @@
 package domain.entidades;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import domain.viaje.Trameable;
 import domain.viaje.Trayecto;
 import lombok.Getter;
@@ -92,11 +93,15 @@ public class Persona {
 
     //  ----------  CALCULO HC  ----------
 
-    public Double calcularHC(Organizacion organizacion){
+    public Double calcularHC(Organizacion organizacion){ // Cálculo de HC de un miembro de una organización
         return this.trayectos
                 .stream().filter(t -> t.getOrganizacion().equals(organizacion))
                 .mapToDouble(t -> t.calculoHC(this))
                 .sum();
+    }
+
+    public Double impactoEnOrganizacion(Organizacion organizacion){
+        return 100 * this.calcularHC(organizacion) / organizacion.calculoHC(); // Porcentaje de impacto en organizacion
     }
 
 }

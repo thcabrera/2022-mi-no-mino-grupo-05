@@ -1,10 +1,12 @@
 package domain.mediciones.importador;
+import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import domain.mediciones.consumos.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import domain.mediciones.consumos.actividades.Actividad;
@@ -14,6 +16,9 @@ import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import sun.rmi.runtime.Log;
+
+import java.util.function.Predicate;
 
 public class ImportarExcel implements AdapterImportadorExcel{
     private Iterator<Row> rowIterator;
@@ -50,7 +55,8 @@ public class ImportarExcel implements AdapterImportadorExcel{
             System.out.println("Archivo de excel no compatible.");
             e.printStackTrace();
         }
-        return listadoActividades;
+
+        return this.simplificarLogistica(listadoActividades);
     }
 
     private Consumo procesarConsumo(Iterator<Cell> cellIterator){
@@ -78,9 +84,6 @@ public class ImportarExcel implements AdapterImportadorExcel{
         Actividad actividad;
         Cell celdaActividad = cellIterator.next();
         switch (celdaActividad.getStringCellValue()){ // Tipo Actividad
-            case "LOGISTICA DE PRODUCTOS Y RESIDUOS":
-                actividad = new Logistica();
-                break;
             case "COMBUSTIÓN FIJA":
                 actividad = new CombustionFija();
                 break;
@@ -90,6 +93,10 @@ public class ImportarExcel implements AdapterImportadorExcel{
             case "ELECTRICIDAD": // TO revisar: realmente van a tener barras n ?
                 actividad = new ElectricidadAdqYCons();
                 break;
+            case "LOGISTICA DE PRODUCTOS Y RESIDUOS":
+                actividad = new Logistica();
+                //actividad = this.procesarLogistica(actividad, cellIterator);
+                //return actividad;
             default: //si no es ninguno de los otros casos, retornar null
                 return null;
         }
@@ -97,7 +104,6 @@ public class ImportarExcel implements AdapterImportadorExcel{
         actividad.setConsumo(consumo);
         return actividad;
     }
-
     private TipoConsumo obtenerTipoConsumo(String tipo){
         switch(tipo) {
             case ("Gas Natural"):
@@ -114,9 +120,9 @@ public class ImportarExcel implements AdapterImportadorExcel{
             case ("Carbon"):
                 return new Carbon();
             case ("Carbon de leña"):
-                return new CarbonLeña();
+                return new CarbonLeña(); //Cambiar a CarbonLenia
             case ("Leña"):
-                return new Leña();
+                return new Leña(); //Cambiar a Lenia
             case ("GNC"):
                 return new GNC();
             case ("Electricidad"):
@@ -140,12 +146,87 @@ public class ImportarExcel implements AdapterImportadorExcel{
     private Periodicidad obtenerTipoPeriodicidad(String tipo, String periodo){
         switch (tipo) {
             case "Anual":
-                return new Anual(periodo);
+                return new Anual(obtenerAnioPeriodoAnual(periodo));
             case "Mensual":
-                return new Mensual(periodo);
+                return new Mensual(obtenerMesPeriodoMensual(periodo), obtenerAnioPeriodoMensual(periodo));
             default:
                 return null;
         }
     }
 
+    private Integer obtenerAnioPeriodoAnual(String periodo){
+        return Integer.valueOf(periodo);
+    }
+
+    private Integer obtenerMesPeriodoMensual(String periodo){
+        String[] parts = periodo.split("/");
+        String mes = parts[0];
+        return Integer.valueOf(mes);
+    }
+
+    private Integer obtenerAnioPeriodoMensual(String periodo){
+        String[] parts = periodo.split("/");
+        String anio = parts[1];
+        return obtenerAnioPeriodoAnual(anio);
+    }
+
+
+    //-------------- Logistica ------------------------
+/*
+    private ArrayList<Actividad>  simplificarLogistica(ArrayList<Actividad> actividades) { // TODO
+        ArrayList<Actividad> logisticas =  actividades.stream().filter(act -> act.getConsumo().getValor() == 0.0);
+        actividades.removeIf(act -> act.getClass().getSimpleName() == "Logistica"); // ademas de filtrarlas(no tiene side effect, habria q removerlas)
+        Integer i = 0, j = 0;
+
+        for(i = 0; i < logisticas.size(); i++) {
+            for(j=0; j < 4; j++){
+                Logistica aLogistica = procesarCampoLogistica(logisticas.get(i+j)); // EJ en i=0, j=[0-3] saco del 0-3, en i=1 j=[4-7] saco del 4-7
+                actividades.add(aLogistica);
+            }
+
+        }
+        return actividades;
+    }
+    private Logistica procesarCampoLogistica(Actividad actividad){
+        Logistica aLogistica = new Logistica();
+
+        switch (actividad.getConsumo().getTipoConsumo()){
+            case ("categoria"):
+                aLogistica.setCategoria(actividad.getConsumo().getValor()); // COSAS A CHARLAR CON THIAGUITOOOO
+                break;
+            case ("medioTransporte"):
+                aLogistica.setMedioTransporte(actividad.getConsumo().getValor());
+                break;
+            case ("distancia"):
+                aLogistica.setDistanciaMedia(actividad.getConsumo().getValor());
+                break;
+            case ("PESO"):
+                aLogistica.setPeso(actividad.getConsumo().getValor());
+                Consumo aConsumo = new Consumo();
+                aConsumo.setPeriodicidad(actividad.getConsumo().getPeriodicidad());
+                aConsumo.setValor(actividad.getConsumo().getValor());
+                break;
+        }
+        // yo necesito que la categoria sea un enum de producto ej: MATERIA_PRIMA, deberia ser parte de la clase
+        //Tipo Consumo o es mejor hacerlo una clase aparte, o hasta inclusive hacerla mas abstracta y de mayor jerarquia
+    }
+  */      /*
+        ProductoTransportado categoria = leerCategoria();
+        ProductoTransportado medioTransporte = leerCategoria();
+        ProductoTransportado distanciaMedia = leerCategoria();
+        ProductoTransportado peso = leerCategoria();
+
+        //acordate que periodicidad esta dentro de la clase Consumo
+        Periodicidad periodicidad = leerPeriodicidad();
+        //Periodo imputacion???
+
+        return new Logistica(categoria, medioTransporte, distanciaMedia, peso);
+        */
+
+    /*
+    private ArrayList<Actividad> removeAndReturn(ArrayList<Actividad> actividades, Predicate comparator){
+        ArrayList<Actividad> logisticas =  actividades.stream().filter(comparator);
+        actividades.removeIf(comparator);
+        return logisticas;
+    }*/
 }

@@ -72,5 +72,18 @@ public class SolicitudTest {
         Assertions.assertTrue(lennySoftware.getMiembros().contains(lenny) && lennySoftware.getMiembros().contains(tito)  );
     }
 
+    @Test
+    public void getMiembrosNoTieneRepetidos(){
+        lenny.solicitarAlta(lennySoftware, ejecutivo);
+        lennySoftware.aceptarEmpleado(lenny, ejecutivo);
+
+        tito.solicitarAlta(lennySoftware, coaching);
+        lennySoftware.aceptarEmpleado(tito, coaching);
+
+        tito.solicitarAlta(lennySoftware, ejecutivo);
+        lennySoftware.aceptarEmpleado(tito, ejecutivo);
+
+        Assertions.assertEquals(2, lennySoftware.getMiembros().size() );
+    }
 }
 

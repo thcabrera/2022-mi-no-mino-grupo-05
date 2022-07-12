@@ -1,11 +1,10 @@
 package domain;
 
-import domain.services.envioCorreo.ConfiguracionServidorCorreo;
-import org.junit.Before;
+
+import domain.entidades.contacto.Mensaje;
+import domain.services.envioCorreo.ServicioCorreo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static domain.services.envioCorreo.ConfiguracionServidorCorreo.enviarCorreo;
 
 public class EnviarCorreoTest {
 
@@ -15,16 +14,25 @@ public class EnviarCorreoTest {
 
     @BeforeEach
     public void init(){
-        destinatario =  "tcabreralavezzi@frba.utn.edu.ar"; //A quien le quieres escribir.
+        destinatario =  "ezequielmalfonso@gmail.com"; //A quien le quieres escribir.
         asunto = "Correo de prueba enviado desde Java";
         cuerpo = "A continuación se deja link de acceso a recomendaciones: \n" +
-                "https://www.huellaCarbono.org.ar/recomendaciones.html";
+                " https://www.huellaCarbono.org.ar/recomendaciones.html";
     }
 
     @Test
     public void envioDeCorreoTest(){
+        ServicioCorreo envio = new ServicioCorreo();
+        Mensaje mensaje = new Mensaje();
 
-        enviarCorreo(destinatario, asunto, cuerpo);
+        mensaje.setAsunto(asunto);
+        mensaje.setCuerpo(cuerpo);
+
+        System.out.println(mensaje.getCuerpo());
+        System.out.println(mensaje.getAsunto());
+
+        envio.enviarCorreo( this.destinatario, this.asunto, this.cuerpo);
+
 
     }
 

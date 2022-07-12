@@ -18,6 +18,7 @@ public class Consumo {
         if(coincidePeriodoImputacion(periodo)){
 
         }
+        return 0.0;
     }
 
     public Boolean coincidePeriodoImputacion(Periodicidad periodoImputacion){

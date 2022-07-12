@@ -3,11 +3,8 @@ package tareasProgramadas;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.quartz.JobKey;
 
 import java.util.Date;
-
-import static domain.services.envioCorreo.ConfiguracionServidorCorreo.enviarCorreo;
 
 public class QuartzJob implements Job {
     // En este no entendi mucho la explicacion estaba en un ingles muy de mierda

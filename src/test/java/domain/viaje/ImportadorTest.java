@@ -15,9 +15,9 @@ public class ImportadorTest {
 
     private ArrayList<Actividad> actividades;
     private Actividad actividadFalsa;
-
+/*
     @BeforeEach
- /*   void setupThis()  {
+    void setupThis()  {
         ImportarExcel importador = new ImportarExcel(EXCEL_PATH);
         this.actividades = importador.importar();
 
@@ -39,7 +39,7 @@ public class ImportadorTest {
         Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getUnidad(),
                 this.actividadFalsa.getConsumo().getTipoConsumo().getUnidad());
     }
-*/
+
     @Test
     public void mappeaBienValor(){
         Actividad actividad = actividades.get(0);
@@ -61,6 +61,6 @@ public class ImportadorTest {
         for(Actividad actividad: this.actividades)
             System.out.println(actividad+"\n-------------\n");
     }
-
+*/
 
 }

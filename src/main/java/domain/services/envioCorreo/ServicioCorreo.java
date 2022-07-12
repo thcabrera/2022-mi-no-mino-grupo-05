@@ -8,11 +8,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class ConfiguracionServidorCorreo {
+public class ServicioCorreo {
     public static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
-        String remitente = "dreamteam.dds.hc@gmail.com";  //Para la dirección nomcuenta@gmail.com
-        String clave = "dreamteam123"; // poner cuenta que se pueda
+        String remitente = "ealfonso@frba.utn.edu.ar";  //Para la dirección nomcuenta@gmail.com
+        String clave = "ezequiel1981"; // poner cuenta que se pueda
         Properties props = System.getProperties();
 
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");  //El servidor SMTP de Google

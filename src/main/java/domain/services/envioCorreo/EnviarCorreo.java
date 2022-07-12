@@ -1,6 +1,6 @@
 package domain.services.envioCorreo;
 
-import static domain.services.envioCorreo.ConfiguracionServidorCorreo.enviarCorreo;
+import static domain.services.envioCorreo.ServicioCorreo.enviarCorreo;
 
 
 public class EnviarCorreo {

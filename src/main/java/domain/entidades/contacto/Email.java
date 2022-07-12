@@ -1,20 +1,20 @@
 package domain.entidades.contacto;
 
-import domain.entidades.Organizacion;
+import domain.services.envioCorreo.ServicioCorreo;
 
 import java.util.List;
 
 public class Email implements Contacto{
 
-    private List<Organizacion> organizaciones;
+    private String correo;
 
     public void notificar() {
         //todo
-        //this.organizaciones.forEach(o -> enviar(o.getContactos()));
+        ServicioCorreo correo = new ServicioCorreo();
+        Mensaje mensaje = new Mensaje();
+
+        correo.enviarCorreo(this.correo, mensaje.getAsunto(), mensaje.getCuerpo());
 
     }
 
-    public void enviar(Organizacion organizacion){
-        // TODO
-    }
 }

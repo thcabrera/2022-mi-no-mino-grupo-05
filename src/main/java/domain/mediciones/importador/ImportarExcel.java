@@ -30,20 +30,15 @@ public class ImportarExcel implements Importador{
     private ImportarPeriodicidad importarPeriodicidad;
     private Iterator<Row> rowIterator;
 
-    public ImportarExcel(ImportarActividadConsumo importarActividadConsumo,
-                         ImportarLogistica importarLogistica,
-                         ImportarConsumo importarConsumo,
-                         ImportarTipoConsumoFijo importarTipoConsumoFijo,
-                         ImportarTipoConsumoMovil importarTipoConsumoMovil,
-                         ImportarTipoConsumoElectricidad importarTipoConsumoElectricidad,
-                         ImportarPeriodicidad importarPeriodicidad){
-        setImportarActividadConsumo(importarActividadConsumo);
-        setImportarLogistica(importarLogistica);
-        setImportarConsumo(importarConsumo);
-        setImportarTipoConsumoFijo(importarTipoConsumoFijo);
-        setImportarTipoConsumoMovil(importarTipoConsumoMovil);
-        setImportarTipoConsumoElectricidad(importarTipoConsumoElectricidad);
-        setImportarPeriodicidad(importarPeriodicidad);
+    public ImportarExcel(){
+        importarPeriodicidad = new ImportarPeriodicidad();
+        importarTipoConsumoFijo = new ImportarTipoConsumoFijo();
+        importarTipoConsumoMovil = new ImportarTipoConsumoMovil();
+        importarTipoConsumoElectricidad = new ImportarTipoConsumoElectricidad();
+        importarConsumo = new ImportarConsumo();
+        importarActividadConsumo = new ImportarActividadConsumo(importarPeriodicidad,
+                importarConsumo, importarTipoConsumoFijo, importarTipoConsumoMovil, importarTipoConsumoElectricidad);
+        importarLogistica = new ImportarLogistica(importarPeriodicidad);
     }
 
     public ArrayList<Actividad> importar(String path){

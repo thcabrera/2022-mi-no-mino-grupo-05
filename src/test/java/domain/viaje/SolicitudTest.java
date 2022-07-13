@@ -28,7 +28,7 @@ public class SolicitudTest {
 
         dirLennySW = new Direccion("mozart", 1999, "CIUDAD DE BUENOS AIRES", "VILLA SOLDATI", 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
-        empresaDelSectorSecundario = new Clasificacion("EmpresaDelSectorSecundario");
+        empresaDelSectorSecundario = new Clasificacion();
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
 
         sistemas = new Area("Sistemas", lennySoftware);

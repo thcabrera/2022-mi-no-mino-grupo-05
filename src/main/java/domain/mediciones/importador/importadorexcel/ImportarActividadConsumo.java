@@ -17,8 +17,16 @@ public class ImportarActividadConsumo {
     private ImportarTipoConsumoMovil importarTipoConsumoMovil;
     private ImportarTipoConsumoElectricidad importarTipoConsumoElectricidad;
     private ImportarPeriodicidad importarPeriodicidad;
-    public ImportarActividadConsumo(ImportarConsumo importarConsumo){
+    public ImportarActividadConsumo(ImportarPeriodicidad importarPeriodicidad,
+                                    ImportarConsumo importarConsumo,
+                                    ImportarTipoConsumoFijo importarTipoConsumoFijo,
+                                    ImportarTipoConsumoMovil importarTipoConsumoMovil,
+                                    ImportarTipoConsumoElectricidad importarTipoConsumoElectricidad){
         setImportarConsumo(importarConsumo);
+        setImportarPeriodicidad(importarPeriodicidad);
+        setImportarTipoConsumoFijo(importarTipoConsumoFijo);
+        setImportarTipoConsumoMovil(importarTipoConsumoMovil);
+        setImportarTipoConsumoElectricidad(importarTipoConsumoElectricidad);
     }
     public ActividadConsumo importar(Row fila){
         Iterator<Cell> cellIterator = fila.cellIterator();

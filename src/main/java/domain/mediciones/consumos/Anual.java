@@ -11,6 +11,8 @@ public class Anual implements Periodicidad{
     }
 
     public Double obtenerPorcentaje(Periodicidad periodicidad){
+        if (!coincide(periodicidad))
+            return 0.0;
         return 1.0;
     }
 

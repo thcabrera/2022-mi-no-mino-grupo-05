@@ -13,10 +13,14 @@ public class Mensual implements Periodicidad{
     }
 
     public Double obtenerPorcentaje(Anual anual){
+        if (!coincide(anual))
+            return 0.0;
         return 1.0/12.0;
     }
 
     public Double obtenerPorcentaje(Mensual mensual){
+        if (!coincide(mensual))
+            return 0.0;
         return 1.0;
     }
 

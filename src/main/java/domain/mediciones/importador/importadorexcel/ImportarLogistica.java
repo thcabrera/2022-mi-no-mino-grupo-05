@@ -34,10 +34,10 @@ public class ImportarLogistica {
     }
 
     private MedioTransporte importarMedioTransporte(Cell celda){
-        switch(celda.getStringCellValue()){
+        switch (celda.getStringCellValue()){
             case "Camión de carga":
                 return new MedioTransporte(8.0);
-            case "Utilitario Liviano":
+            case "Utilitario liviano":
                 return new MedioTransporte(5.0);
             default:
                 return null;
@@ -55,9 +55,11 @@ public class ImportarLogistica {
         iterador.next(); // salteamos la celda de tipo de actividad
         iterador.next(); // salteamos la celda de nombre
         MedioTransporte medio = importarMedioTransporte(iterador.next());
+        iterador = rowIterator.next().cellIterator();
         iterador.next(); // salteamos la celda de tipo de actividad
         iterador.next(); // salteamos la celda de nombre
         Cell distancia = iterador.next();
+        iterador = rowIterator.next().cellIterator();
         iterador.next(); // salteamos la celda de tipo de actividad
         iterador.next(); // salteamos la celda de nombre
         Cell peso = iterador.next();

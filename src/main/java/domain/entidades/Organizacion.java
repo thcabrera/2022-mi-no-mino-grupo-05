@@ -5,11 +5,8 @@ import domain.entidades.contacto.Contacto;
 import domain.mediciones.consumos.Periodicidad;
 import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
-import domain.viaje.Trayecto;
 import lombok.Getter;
 import lombok.Setter;
-
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,10 +28,17 @@ public class Organizacion {
         this.razonSocial = razonSocial;
         this.tipo = tipo;
         this.ubicacion = ubicacion;
-        this.areas  = new ArrayList<Area>();
+        this.areas  = new ArrayList<>();
         this.clasificacion = clasificacion;
-        this.mediciones  = new ArrayList<Actividad>();
-        this.solicitudes  = new ArrayList<Solicitud>();
+        this.mediciones  = new ArrayList<>();
+        this.solicitudes  = new ArrayList<>();
+        this.contactos = new ArrayList<>();
+    }
+
+    // ----------- ACTIVIDADES ---------
+
+    public void agregarActividad(Actividad actividad){
+        mediciones.add(actividad);
     }
 
     //  ----------  SOLICITUD  ----------
@@ -61,12 +65,11 @@ public class Organizacion {
     }
 
     public Solicitud getSolicitudDe(Persona persona, Area area){
-        Solicitud solicitud = this.solicitudes.stream()
+
+        return this.solicitudes.stream()
                 .filter(s -> s.getSolicitante() == persona)
                 .findAny()
                 .orElse(null);
-
-        return solicitud;
     }
     //  ----------  DAR DE ALTA AREAS  ----------
     public void agregarArea(Area nuevaArea){

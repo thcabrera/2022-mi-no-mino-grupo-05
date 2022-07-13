@@ -1,29 +1,55 @@
 package domain.mediciones.importador;
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import domain.mediciones.consumos.*;
+
+import java.beans.MethodDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
-import domain.mediciones.consumos.actividades.Actividad;
+
+import domain.mediciones.consumos.actividades.*;
 import domain.mediciones.consumos.tipoConsumo.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import sun.rmi.runtime.Log;
-
-import java.util.function.Predicate;
 
 public class ImportarExcel implements AdapterImportadorExcel{
     private Iterator<Row> rowIterator;
+    private Carbon carbon;
+    private CarbonLeña carbonLeña;
+    private Electricidad electricidad;
+    private FuelOil fuelOil;
+    private GasNatural gasNatural;
+    private Gasoil gasoil;
+    private GNC gnc;
+    private Kerosene kerosene;
+    private Leña leña;
+    private Nafta nafta;
+    private MedioTransporte camionDeCarga;
+    private MedioTransporte camionLivianoUtilitario;
+
+    private void crearInstancias(){
+        carbon = new Carbon();
+        carbonLeña = new CarbonLeña();
+        electricidad = new Electricidad();
+        fuelOil = new FuelOil();
+        gasNatural = new GasNatural();
+        gasoil = new Gasoil();
+        gnc = new GNC();
+        kerosene  = new Kerosene();
+        leña = new Leña();
+        nafta = new Nafta();
+        camionDeCarga = new MedioTransporte(2.0);
+        camionLivianoUtilitario = new MedioTransporte(1.2);
+    }
 
     public ImportarExcel(String path){
+        crearInstancias(); // creamos todas las instancias que van a ser unicas
         //agregar archivo al HSSFWorkbook()
         try{
             FileInputStream file = new FileInputStream(path);
@@ -44,7 +70,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
     public ArrayList<Actividad> importar(){
         ArrayList<Actividad> listadoActividades = new ArrayList<>();
         try {
-            advanceIteratorTo(2);
+            advanceIteratorTo(2); // salteamos el encabezado
             while (rowIterator.hasNext()) {
                 Actividad actividad = this.siguiente();
                 if (actividad == null)
@@ -56,7 +82,7 @@ public class ImportarExcel implements AdapterImportadorExcel{
             e.printStackTrace();
         }
 
-        return this.simplificarLogistica(listadoActividades);
+        return listadoActividades;
     }
 
     private Consumo procesarConsumo(Iterator<Cell> cellIterator){
@@ -95,8 +121,8 @@ public class ImportarExcel implements AdapterImportadorExcel{
                 break;
             case "LOGISTICA DE PRODUCTOS Y RESIDUOS":
                 actividad = new Logistica();
-                //actividad = this.procesarLogistica(actividad, cellIterator);
-                //return actividad;
+//                actividad = this.procesarLogistica(actividad, cellIterator);
+//                return actividad;
             default: //si no es ninguno de los otros casos, retornar null
                 return null;
         }
@@ -107,28 +133,28 @@ public class ImportarExcel implements AdapterImportadorExcel{
     private TipoConsumo obtenerTipoConsumo(String tipo){
         switch(tipo) {
             case ("Gas Natural"):
-                return new GasNatural();
+                return gasNatural;
             case ("Diesel"):
             case ("Gasoil"):
-                return new Gasoil();
+                return gasoil;
             case ("Kerosene"):
-                return new Kerosene();
+                return kerosene;
             case ("Fuel Oil"):
-                return new FuelOil();
+                return fuelOil;
             case ("Nafta"):
-                return new Nafta();
+                return nafta;
             case ("Carbon"):
-                return new Carbon();
+                return carbon;
             case ("Carbon de leña"):
-                return new CarbonLeña(); //Cambiar a CarbonLenia
+                return carbonLeña; //Cambiar a CarbonLenia
             case ("Leña"):
-                return new Leña(); //Cambiar a Lenia
+                return leña; //Cambiar a Lenia
             case ("GNC"):
-                return new GNC();
+                return gnc;
             case ("Electricidad"):
-                return new Electricidad();
+                return electricidad;
             case ("Peso total transportados"):
-                return new PesoTotal();
+                return new PesoTotal(); //TODO
         }
     return null;
     }

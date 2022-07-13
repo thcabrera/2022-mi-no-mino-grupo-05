@@ -1,4 +1,4 @@
-package domain.mediciones.consumos;
+package domain.mediciones.consumos.tipoConsumo;
 
 public enum ProductoTransportado {
     MATERIA_PRIMA,

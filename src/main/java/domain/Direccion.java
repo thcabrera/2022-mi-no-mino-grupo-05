@@ -1,22 +1,28 @@
 package domain;
 
-import java.net.CookieHandler;
+import domain.entidades.Municipio;
+import domain.entidades.Provincia;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Direccion {
-    public String calle;
-    public Integer altura;
-    private String provincia;
-    private String municipio;
-    public Integer localidad;
+
+    private String calle;
+    private Integer altura;
+    private Provincia provincia;
+    private Municipio municipio;
+    private Integer localidad;
 
     //  ----------  GETTERS & SETTERS  ----------
 
 
-    public Direccion(String calle, Integer altura, String provincia, String municipio, Integer localidad) {
-        this.calle = calle;
-        this.altura = altura;
-        this.provincia = provincia;
-        this.municipio = municipio;
-        this.localidad = localidad;
+    public Direccion(String calle, Integer altura, Provincia provincia, Municipio municipio, Integer localidad) {
+        setCalle(calle);
+        setAltura(altura);
+        setProvincia(provincia);
+        setMunicipio(municipio);
+        setLocalidad(localidad);
     }
 }

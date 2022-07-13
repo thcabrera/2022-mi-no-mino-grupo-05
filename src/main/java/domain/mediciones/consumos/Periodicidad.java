@@ -1,20 +1,13 @@
 package domain.mediciones.consumos;
 
-public abstract class Periodicidad { // Seria interfaz :D
+public interface Periodicidad {
 
-    public boolean coincide(Periodicidad periodicidad){
-        return true;
-    }
+    boolean coincide(Periodicidad periodicidad);
 
-    public Integer getAnio(){
-        return null;
-    }
+    int getAnio();
 
-//    @Override
-//    public String toString() {
-//        return String.format("%s %s",
-//                this.getClass().getSimpleName());
-//    }
+    Double obtenerPorcentaje(Periodicidad periodicidad);
+
 }
    /*
 

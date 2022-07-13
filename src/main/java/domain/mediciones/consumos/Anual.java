@@ -1,23 +1,23 @@
 package domain.mediciones.consumos;
 
-public class Anual extends Periodicidad{
-    private Integer anio;
+import lombok.Getter;
+
+@Getter
+public class Anual implements Periodicidad{
+    private final int anio;
 
     public Anual(Integer anio) {
         this.anio = anio;
     }
 
-    public void comportamiento(){
-        //todo
+    public Double obtenerPorcentaje(Periodicidad periodicidad){
+        return 1.0;
     }
 
     public boolean coincide(Periodicidad periodo){
         return this.anio == periodo.getAnio();
     }
 
-    public Integer getAnio(){
-        return this.anio;
-    }
 /*
     Me pasan un Periodo anual
     Si la actividad es anual y coincide el año; la sumo

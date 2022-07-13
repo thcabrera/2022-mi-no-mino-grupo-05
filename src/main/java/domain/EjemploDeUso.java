@@ -3,7 +3,6 @@ package domain;
 import domain.services.calculoDistancia.ServicioDistancia;
 import domain.services.calculoDistancia.adapters.ServicioDistanciaRetrofitAdapter;
 import domain.services.calculoDistancia.entities.Distancia;
-
 import java.io.IOException;
 
 public class EjemploDeUso {
@@ -12,8 +11,8 @@ public class EjemploDeUso {
         servicioDistancia.setAdapter(new ServicioDistanciaRetrofitAdapter());
 
         // Datos de prueba
-        Direccion origen = new Direccion("maipu", 100,"", "",   1 );
-        Direccion destino = new Direccion("O'Higgins", 200,"", "", 457);
+        Direccion origen = new Direccion("maipu", 100,null, null,   1 );
+        Direccion destino = new Direccion("O'Higgins", 200,null, null, 457);
 
         Distancia distancia = servicioDistancia.calcularDistanciaTramo(origen, destino);
         //System.out.println(distancia);

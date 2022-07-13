@@ -1,6 +1,5 @@
 package domain.mediciones.consumos.tipoConsumo;
 
-import domain.mediciones.consumos.FactorEmision;
 import lombok.Getter;
 import lombok.Setter;
 

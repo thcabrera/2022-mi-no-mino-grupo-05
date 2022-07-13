@@ -3,7 +3,7 @@ package domain.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sArea {
+public class Area {
     private Organizacion organizacion;
     private List<Persona> miembros;
     private String nombre;

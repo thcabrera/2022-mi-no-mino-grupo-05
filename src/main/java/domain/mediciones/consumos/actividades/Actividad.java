@@ -10,9 +10,8 @@ public abstract class Actividad {
 
     private Periodicidad periodicidad;
 
-    public Actividad(){
+    public Actividad(){}
 
-    }
     public Actividad(Periodicidad periodicidad){
         this.periodicidad = periodicidad;
     }

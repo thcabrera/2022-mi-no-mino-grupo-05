@@ -5,30 +5,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class TipoConsumo {
+public class TipoConsumo {
 
     private Unidad unidad;
+    private Double factorEmision;
 
-    private Double factorEmision; //ex FactorEmision (no le vimos mucho)
-
-    public TipoConsumo(Unidad unidad){
+    public TipoConsumo(Unidad unidad, Double factorEmision){
         this.setUnidad(unidad);
+        this.factorEmision = factorEmision;
     }
 
-    public Unidad getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(Unidad unidad) {
-        this.unidad = unidad;
-    }
-
-    @Override
-    public String toString() {
-        return String.format(this.getClass().getSimpleName());
-    }
-
-    public Double valorFactorEmision() {
-        return this.factorEmision;
-    }
 }

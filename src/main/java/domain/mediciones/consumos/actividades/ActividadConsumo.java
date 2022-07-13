@@ -12,9 +12,7 @@ public class ActividadConsumo extends Actividad{
 
     private Consumo consumo;
 
-    public ActividadConsumo(){
-
-    }
+    public ActividadConsumo(){}
 
     public ActividadConsumo(Periodicidad periodicidad, Consumo consumo) {
         super(periodicidad);

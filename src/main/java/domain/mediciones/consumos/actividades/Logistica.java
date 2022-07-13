@@ -15,8 +15,6 @@ public class Logistica extends Actividad {
     private Double distanciaMedia;
     private Double peso;                      //PESO	800	MENSUAL	jun-22
 
-    public Logistica() {}
-
     public Logistica(Periodicidad periodicidad, ProductoTransportado categoria,
                      MedioTransporte medioTransporte, Double distanciaMedia, Double peso) {
         super(periodicidad);

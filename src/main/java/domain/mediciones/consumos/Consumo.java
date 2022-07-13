@@ -8,7 +8,6 @@ import lombok.Setter;
 public class Consumo {
 
     private final Double valor;
-
     private final TipoConsumo tipoConsumo;
 
     public Consumo(TipoConsumo tipo, Double valor) {
@@ -17,6 +16,6 @@ public class Consumo {
     }
 
     public Double valorFactorEmision() {
-        return this.tipoConsumo.valorFactorEmision();
+        return this.tipoConsumo.getFactorEmision();
     }
 }

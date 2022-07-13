@@ -1,4 +1,9 @@
 package domain.mediciones.importador.importadorexcel;
 
-public class ImportarTipoConsumo {
+import domain.mediciones.consumos.tipoConsumo.*;
+
+public interface ImportarTipoConsumo {
+
+    TipoConsumo importar(String tipo);
+
 }

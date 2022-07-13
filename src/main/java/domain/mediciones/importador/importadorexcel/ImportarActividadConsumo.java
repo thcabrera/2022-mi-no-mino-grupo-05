@@ -1,9 +1,12 @@
 package domain.mediciones.importador.importadorexcel;
 
 import domain.mediciones.consumos.Consumo;
+import domain.mediciones.consumos.Periodicidad;
 import domain.mediciones.consumos.actividades.*;
 import lombok.Setter;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
 import java.util.Iterator;
 
 @Setter
@@ -17,28 +20,29 @@ public class ImportarActividadConsumo {
     public ImportarActividadConsumo(ImportarConsumo importarConsumo){
         setImportarConsumo(importarConsumo);
     }
-    public ActividadConsumo importar(Iterator<Cell> cellIterator){
-        ActividadConsumo actividad;
+    public ActividadConsumo importar(Row fila){
+        Iterator<Cell> cellIterator = fila.cellIterator();
         Cell tipoActividad = cellIterator.next();
-        switch(tipoActividad.getStringCellValue()){
+        TipoActividadConsumo tipo;
+        switch(tipoActividad.getStringCellValue()) {
             case "COMBUSTIÓN FIJA":
-                actividad = new CombustionFija();
                 importarConsumo.setImportarTipo(importarTipoConsumoFijo);
+                tipo = TipoActividadConsumo.COMBUSTION_FIJA;
                 break;
             case "COMBUSTIÓN MÓVIL":
-                actividad = new CombustionMovil();
                 importarConsumo.setImportarTipo(importarTipoConsumoMovil);
+                tipo = TipoActividadConsumo.COMBUSTION_MOVIL;
                 break;
             case "ELECTRICIDAD":
-                actividad = new ElectricidadAdqYCons();
                 importarConsumo.setImportarTipo(importarTipoConsumoElectricidad);
+                tipo = TipoActividadConsumo.ELECTRICIDAD;
                 break;
             default:
                 return null;
         }
-        actividad.setConsumo(importarConsumo.importar(cellIterator));
-        actividad.setPeriodicidad(importarPeriodicidad.importar(cellIterator.next()));
-        return actividad;
+        Consumo consumo = importarConsumo.importar(cellIterator);
+        Periodicidad periodicidad = importarPeriodicidad.importar(cellIterator);
+        return new ActividadConsumo(periodicidad, consumo, tipo);
     }
 
 }

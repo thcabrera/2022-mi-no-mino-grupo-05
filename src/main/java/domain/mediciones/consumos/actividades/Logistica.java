@@ -26,12 +26,7 @@ public class Logistica extends Actividad {
 
     @Override
     public Double calculoHC(Periodicidad periodicidad) {
-        return distanciaMedia * peso * factorEmision() * this.getPeriodicidad().obtenerPorcentaje(periodicidad); //TODO
-    }
-
-    @Override
-    public Double factorEmision() {
-        return medioTransporte.getFactorEmision();
+        return distanciaMedia * peso * medioTransporte.getFactorEmision() * this.getPeriodicidad().obtenerPorcentaje(periodicidad);
     }
 
     /*

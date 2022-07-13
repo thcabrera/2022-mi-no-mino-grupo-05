@@ -11,21 +11,17 @@ import lombok.Setter;
 public class ActividadConsumo extends Actividad{
 
     private Consumo consumo;
+    private TipoActividadConsumo tipo;
 
-    public ActividadConsumo(){}
-
-    public ActividadConsumo(Periodicidad periodicidad, Consumo consumo) {
+    public ActividadConsumo(Periodicidad periodicidad, Consumo consumo, TipoActividadConsumo tipo) {
         super(periodicidad);
+        this.tipo = tipo;
         this.consumo = consumo;
     }
 
     @Override
     public Double calculoHC(Periodicidad periodicidad) {
-        return consumo.getValor() * factorEmision() * this.getPeriodicidad().obtenerPorcentaje(periodicidad);
+        return consumo.getValor() * consumo.valorFactorEmision() * this.getPeriodicidad().obtenerPorcentaje(periodicidad);
     }
 
-    @Override
-    public Double factorEmision() {
-        return consumo.valorFactorEmision();
-    }
 }

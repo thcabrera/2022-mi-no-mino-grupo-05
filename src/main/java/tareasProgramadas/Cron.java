@@ -6,6 +6,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 public class Cron {
+    //public static void main(String[] args) throws SchedulerException, InterruptedException {
     public static void main(String[] args) throws SchedulerException, InterruptedException {
         // start the Scheduler
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();

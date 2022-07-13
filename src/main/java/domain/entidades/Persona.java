@@ -101,7 +101,7 @@ public class Persona {
     }
 
     public Double impactoEnOrganizacion(Organizacion organizacion){
-        return 100 * this.calcularHC(organizacion) / organizacion.calculoHC(); // Porcentaje de impacto en organizacion
+        return 0.0; //100 * this.calcularHC(organizacion) / organizacion.calculoHC(); // Porcentaje de impacto en organizacion
     }
 
 }

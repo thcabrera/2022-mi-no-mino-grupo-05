@@ -85,6 +85,10 @@ public class ImportarExcel implements AdapterImportadorExcel{
         return listadoActividades;
     }
 
+    private ArrayList<Actividad> simplificarLogistica(ArrayList<Actividad> listadoActividades) {
+        return listadoActividades;
+    }
+
     private Consumo procesarConsumo(Iterator<Cell> cellIterator){
         Cell cell = cellIterator.next(); // Tipo de Consumo
         Consumo consumo = new Consumo();

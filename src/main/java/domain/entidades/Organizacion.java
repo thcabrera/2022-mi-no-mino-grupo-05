@@ -122,7 +122,9 @@ public class Organizacion {
     }
 
     //----------- Notificaciones --------------
-
+    public List<Contacto> getContacto() {
+        return contactos;
+    }
     public void agregarContactos(Contacto ... contactos){
         Collections.addAll(this.contactos, contactos);
     }

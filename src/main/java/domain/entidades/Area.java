@@ -32,4 +32,6 @@ public class Area {
     public Double indicadorHCporMiembro(){
         return this.calculoHC() / this.getMiembros().size();
     }
+
+
 }

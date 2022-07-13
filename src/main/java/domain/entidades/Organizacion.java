@@ -2,6 +2,7 @@ package domain.entidades;
 
 import domain.Direccion;
 import domain.entidades.contacto.Contacto;
+import domain.entidades.contacto.Mensaje;
 import domain.mediciones.consumos.Periodicidad;
 import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
@@ -131,7 +132,7 @@ public class Organizacion {
     public void agregarContactos(Contacto ... contactos){
         Collections.addAll(this.contactos, contactos);
     }
-    public void notificar(){
-        this.contactos.forEach(c -> c.notificar());
+    public void notificar(Mensaje mensaje){
+        this.contactos.forEach(c -> c.notificar(mensaje));
     }
 }

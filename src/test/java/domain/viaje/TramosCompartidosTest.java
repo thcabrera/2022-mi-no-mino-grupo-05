@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 public class TramosCompartidosTest {
     private Persona tito, lenny;
     private Organizacion lennySoftware;
@@ -20,6 +22,8 @@ public class TramosCompartidosTest {
     private Direccion dirMarmoSW = null;
     private TipoOrg empresa = null ;
     private Clasificacion empresaDelSectorSecundario = null;
+    private Provincia bsas;
+    private Municipio villaSoldati;
     // Tramos
     private TPublico casa_a_terminal;
     private TContratado terminal_a_org1;
@@ -34,15 +38,18 @@ public class TramosCompartidosTest {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
-        dirLennySW = new Direccion("MOZART", 1999, "CIUDAD DE BUENOS AIRES", "VILLA SOLDATI", 241); // soladati.id = 5379
+        bsas = new Provincia(new ArrayList<>());
+        villaSoldati = new Municipio(new ArrayList<>());
+
+        dirLennySW = new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
-        empresaDelSectorSecundario = new Clasificacion("EmpresaDelSectorSecundario");
+        empresaDelSectorSecundario = new Clasificacion();
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
         sistemas = new Area("Sistemas", lennySoftware);
         ejecutivo = new Area("Ejecutivo", lennySoftware);
         coaching = new Area("Coaching", lennySoftware);
 
-        dirMarmoSW = new Direccion("AVENIDA LACARRA", 1500, "CIUDAD DE BUENOS AIRES", "VILLA SOLDATI", 241);
+        dirMarmoSW = new Direccion("AVENIDA LACARRA", 1500, bsas, villaSoldati, 241);
 
         lenny.solicitarAlta(lennySoftware, ejecutivo);
         lennySoftware.aceptarEmpleado(lenny, ejecutivo);

@@ -1,5 +1,6 @@
 package tareasProgramadas;
 
+import domain.entidades.Organizacion;
 import domain.entidades.contacto.Email;
 import domain.entidades.contacto.Mensaje;
 import domain.services.envioCorreo.ServicioCorreo;
@@ -7,6 +8,7 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class QuartzJob implements Job {
@@ -24,13 +26,13 @@ public class QuartzJob implements Job {
         String asunto = "Correo de prueba enviado desde Java";
         String cuerpo = "Esta es una prueba de correo...";
 
-        // ==> Acá va la clase q tenemos que instanciar para que comience el envio de correo y ws
-        //enviarCorreo(destinatario, asunto, cuerpo);
+        Mensaje mensaje = new Mensaje();
+        mensaje.setAsunto(asunto);
+        mensaje.setCuerpo(cuerpo);
 
-        //System.out.println("TAREA 1: " + new Date());
-        Email correo = new Email();
-        correo.notificar();
-
+        ArrayList<Organizacion> organizaciones = new ArrayList<>();
+        //Bajar las organizaciones de la DB
+        organizaciones.forEach(org -> org.notificar(mensaje));
 
     }
 }

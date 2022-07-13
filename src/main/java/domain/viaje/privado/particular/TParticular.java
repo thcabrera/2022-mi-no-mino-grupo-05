@@ -44,6 +44,10 @@ public class TParticular extends TPrivado {
         return esCompartido;
     }
 
+    public void setPropietario(Persona propietario) {
+        this.propietario = propietario;
+    }
+
     //  ----------  CONSUMO  ----------
     public Double consumoPorKM(){
         return tipoParticular.getConsumoPorKM() * this.calcularDistanciaTramo();

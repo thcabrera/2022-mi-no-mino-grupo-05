@@ -1,63 +1,90 @@
 package domain.viaje;
 import domain.mediciones.consumos.*;
+import domain.mediciones.consumos.actividades.Actividad;
+import domain.mediciones.consumos.actividades.ActividadConsumo;
+import domain.mediciones.consumos.actividades.Logistica;
+import domain.mediciones.consumos.actividades.TipoActividadConsumo;
+import domain.mediciones.consumos.tipoConsumo.ProductoTransportado;
+import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
+import domain.mediciones.consumos.tipoConsumo.Unidad;
 import domain.mediciones.importador.ImportarExcel;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
+
 import java.util.ArrayList;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ImportadorTest {
 
     String EXCEL_PATH = "src/test/java/resources/Excel para modulo importador.xlsx";
 
-    private ArrayList<Actividad> actividades;
-    private Actividad actividadFalsa;
+    private ActividadConsumo actividadConsumoFalsa;
+    private ActividadConsumo actividadConsumo;
 
-    @BeforeEach
-    void setupThis()  {
-        ImportarExcel importador = new ImportarExcel(EXCEL_PATH);
-        this.actividades = importador.importar();
+    private Logistica actividadLogisticaFalsa;
+    private Logistica actividadLogistica;
 
-        this.actividadFalsa = new CombustionFija();
-        Consumo c = new Consumo();
-        c.setTipoConsumo(new TipoConsumo("GAS NATURAL", Unidad.M3));
-        c.setPeriodicidad(new Anual("2002"));
-        c.setValor(1000);
-        this.actividadFalsa.setConsumo(c);
+    @BeforeAll
+    void setup(){
+        ImportarExcel importador = new ImportarExcel();
+        ArrayList<Actividad> actividades = importador.importar(EXCEL_PATH);
+        this.actividadConsumoFalsa = new ActividadConsumo(new Anual(2002),
+                new Consumo(new TipoConsumo(Unidad.M3, 2.0), 1000.0),
+                TipoActividadConsumo.COMBUSTION_FIJA);
+        this.actividadLogisticaFalsa = new Logistica(new Anual(1977),
+                ProductoTransportado.MATERIA_PRIMA, new MedioTransporte(8.0), 100.0, 4500.0);
+        this.actividadConsumo = (ActividadConsumo) actividades.get(0);
+        this.actividadLogistica = (Logistica) actividades.get(10);
     }
 
     @Test
     public void mappeaBienTipoConsumo() {
-        Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getClass(),
-                this.actividadFalsa.getConsumo().getTipoConsumo().getClass());
-        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getNombre(),
-                this.actividadFalsa.getConsumo().getTipoConsumo().getNombre());
-        Assertions.assertEquals(actividad.getConsumo().getTipoConsumo().getUnidad(),
-                this.actividadFalsa.getConsumo().getTipoConsumo().getUnidad());
+        Assertions.assertEquals(this.actividadConsumoFalsa.getConsumo().getTipoConsumo(),
+                this.actividadConsumo.getConsumo().getTipoConsumo());
     }
 
     @Test
     public void mappeaBienValor(){
-        Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(actividad.getConsumo().getValor(),
-                this.actividadFalsa.getConsumo().getValor());
+        Assertions.assertEquals(this.actividadConsumoFalsa.getConsumo().getValor(),
+                this.actividadConsumo.getConsumo().getValor());
     }
 
     @Test
-    public void mappeaBienPeriodicidad(){
-        Actividad actividad = actividades.get(0);
-        Assertions.assertEquals(this.actividadFalsa.getConsumo().getPeriodicidad().getClass(),
-                actividad.getConsumo().getPeriodicidad().getClass());
-        Assertions.assertEquals(this.actividadFalsa.getConsumo().getPeriodicidad().getPeriodo(),
-                actividad.getConsumo().getPeriodicidad().getPeriodo());
+    public void mappeaBienPeriodicidadParaConsumo(){
+        Assertions.assertEquals(this.actividadConsumoFalsa.getPeriodicidad(),
+                this.actividadConsumo.getPeriodicidad());
     }
 
     @Test
-    public void mostrarActividadesLeidas(){
-        for(Actividad actividad: this.actividades)
-            System.out.println(actividad+"\n-------------\n");
+    public void mappeaBienPeriodicidadParaLogistica(){
+        Assertions.assertEquals(this.actividadLogisticaFalsa.getPeriodicidad(),
+                this.actividadLogistica.getPeriodicidad());
     }
 
+    @Test
+    public void mappeaBienMedioDeTransporte(){
+        Assertions.assertEquals(this.actividadLogisticaFalsa.getMedioTransporte(),
+                this.actividadLogistica.getMedioTransporte());
+    }
+
+    @Test
+    public void mappeaBienCategoria(){
+        Assertions.assertEquals(this.actividadLogisticaFalsa.getCategoria(),
+                this.actividadLogistica.getCategoria());
+    }
+
+    @Test
+    public void mappeaBienDistanciaMedia(){
+        Assertions.assertEquals(this.actividadLogisticaFalsa.getDistanciaMedia(),
+                this.actividadLogistica.getDistanciaMedia());
+    }
+
+    @Test
+    public void mappeaBienPesoTotal(){
+        Assertions.assertEquals(this.actividadLogisticaFalsa.getPeso(),
+                this.actividadLogistica.getPeso());
+    }
 
 }

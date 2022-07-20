@@ -4,9 +4,7 @@ import domain.entidades.Persona;
 import domain.viaje.Trameable;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TPublico implements Trameable {
     private Parada paradaInicio;
@@ -22,9 +20,8 @@ public class TPublico implements Trameable {
     }
 
     //  ----------  CONSUMO  ----------
-    public Integer consumo(){
-        //TODO
-        return 0;
+    public Double consumoPorKM(){
+        return this.linea.getConsumo();
     }
 
     public boolean getEsCompartido(){
@@ -38,7 +35,7 @@ public class TPublico implements Trameable {
 
     //  ----------  CALCULO DISTANCIA  ----------
 
-    public Integer calcularDistanciaTramo(){
+    public Double calcularDistanciaTramo(){
         List<Parada> paradasIntermedias;
         paradasIntermedias = this.solicitarParadasIntermedias();
         return calcularDistancia(paradasIntermedias);
@@ -49,14 +46,20 @@ public class TPublico implements Trameable {
         return linea.getParadasIntermedias(paradaInicio, paradaFin, sentido);
     }
 
-    private Integer calcularDistancia(List<Parada> paradasIntermedias) {
+    private Double calcularDistancia(List<Parada> paradasIntermedias) {
         return paradasIntermedias.stream()
-                .mapToInt(parada -> sentido.getDistanciaProxParada(parada))
+                .mapToDouble(parada -> sentido.getDistanciaProxParada(parada))
                 .sum();
     }
 
     private SentidoRecorrido obtenerSentido(){
         return linea.getSentidoRecorrido(paradaInicio,paradaFin);
+    }
+
+    //  ----------  CALCULO HC  ----------
+
+    public Double calculoHC(Persona persona){ // todo falta la suma de cuanto anduvo
+        return this.consumoPorKM() * this.calcularDistanciaTramo();
     }
 }
 

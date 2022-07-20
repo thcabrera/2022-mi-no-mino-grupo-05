@@ -26,12 +26,12 @@ public class ServicioDistanciaRetrofitAdapter implements DistanciaServiceAdapter
 
     public Distancia calculoDistancia(Direccion inicio, Direccion fin) throws IOException {
         DistanciaService distanciaService = this.retrofit.create(DistanciaService.class);
-        Call<Distancia> requestDistancia = distanciaService.calculoDistancia(token, apiVersion, inicio.localidad,
-                inicio.calle,
-                inicio.altura,
-                fin.localidad,
-                fin.calle,
-                fin.altura);
+        Call<Distancia> requestDistancia = distanciaService.calculoDistancia(token, apiVersion, inicio.getLocalidad(),
+                inicio.getCalle(),
+                inicio.getAltura(),
+                fin.getLocalidad(),
+                fin.getCalle(),
+                fin.getAltura());
         Response<Distancia> responseDistancia = requestDistancia.execute();
         return responseDistancia.body();
     }

@@ -23,7 +23,7 @@ public class PublicoTest {
 
     @BeforeEach
     void setupThis()  {
-        tresSiete = new LColectivo("37");
+        tresSiete = new LColectivo("37", 10.0); // creo q no sirve para nada el consumoPorKM
         unaParada = new Parada("UnaParada");
         otraParada = new Parada("OtraParada");
         cortina = new Parada("Cortina");

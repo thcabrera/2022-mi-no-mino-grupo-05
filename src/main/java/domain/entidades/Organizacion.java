@@ -1,13 +1,18 @@
 package domain.entidades;
 
 import domain.Direccion;
-import domain.mediciones.consumos.Actividad;
+import domain.entidades.contacto.Contacto;
+import domain.entidades.contacto.Mensaje;
+import domain.mediciones.consumos.Periodicidad;
+import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
-
-import javax.swing.plaf.PanelUI;
+import lombok.Getter;
+import lombok.Setter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
 public class Organizacion {
     private String razonSocial;
     private TipoOrg tipo;
@@ -16,6 +21,7 @@ public class Organizacion {
     private Clasificacion clasificacion;
     private List<Actividad> mediciones;
     private List<Solicitud> solicitudes;
+    private List<Contacto> contactos;
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -23,14 +29,17 @@ public class Organizacion {
         this.razonSocial = razonSocial;
         this.tipo = tipo;
         this.ubicacion = ubicacion;
-        this.areas  = new ArrayList<Area>();
+        this.areas  = new ArrayList<>();
         this.clasificacion = clasificacion;
-        this.mediciones  = new ArrayList<Actividad>();
-        this.solicitudes  = new ArrayList<Solicitud>();
+        this.mediciones  = new ArrayList<>();
+        this.solicitudes  = new ArrayList<>();
+        this.contactos = new ArrayList<>();
     }
 
-    public List<Solicitud>  getSolicitudes(){
-        return this.solicitudes;
+    // ----------- ACTIVIDADES ---------
+
+    public void agregarActividad(Actividad actividad){
+        mediciones.add(actividad);
     }
 
     //  ----------  SOLICITUD  ----------
@@ -57,12 +66,11 @@ public class Organizacion {
     }
 
     public Solicitud getSolicitudDe(Persona persona, Area area){
-        Solicitud solicitud = this.solicitudes.stream()
+
+        return this.solicitudes.stream()
                 .filter(s -> s.getSolicitante() == persona)
                 .findAny()
                 .orElse(null);
-
-        return solicitud;
     }
     //  ----------  DAR DE ALTA AREAS  ----------
     public void agregarArea(Area nuevaArea){
@@ -75,16 +83,18 @@ public class Organizacion {
 
     public List<Persona> getMiembros(){ // TODO: hacer q no tenga contenga repetidos, o q los elimine al final
         List<Persona> miembrosTotales = new ArrayList<Persona>();
-        areas.stream().forEach(area-> miembrosTotales.addAll(area.getMiembros()));
+        areas.forEach(area-> miembrosTotales.addAll(area.getMiembros()));
 
-        return miembrosTotales;
+        return miembrosTotales
+                .stream().distinct()
+                .collect(Collectors.toList()); //distinct elimina repetidos
     }
 
     //  ----------  TRAMOS COMPARTIDOS  ----------
-
+    // No me parece que sirva de nada esta funcion
     public List<Trameable> getTramosCompartidos() {
         List<Trameable> tramosCompartidos = new ArrayList<Trameable>();
-        this.getMiembros().stream().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
+        this.getMiembros().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
 
         return tramosCompartidos
                 .stream()
@@ -95,6 +105,34 @@ public class Organizacion {
         //return (List<Trameable>) tramos.stream().filter(t -> t.getEsCompartido());
     }
 
+    //  ----------  CALCULO HC  ----------
 
+    public Double calculoHC(Periodicidad periodo){
+        return this.calculoHCActividades(periodo) + this.calculoHCTrayectos();
+    }
 
+    // no le pedimos el calculo directamente a las areas porque puede ser que una persona
+    // este en multiples áreas
+    private Double calculoHCTrayectos() {
+        return this.getMiembros().stream()
+                    .mapToDouble(miembro -> miembro.calcularHC(this))
+                    .sum();
+    }
+
+    private Double calculoHCActividades(Periodicidad periodo) {
+        return this.mediciones.stream()
+                .mapToDouble(a -> a.calculoHC(periodo))
+                .sum();
+    }
+
+    //----------- Notificaciones --------------
+    public List<Contacto> getContacto() {
+        return contactos;
+    }
+    public void agregarContactos(Contacto ... contactos){
+        Collections.addAll(this.contactos, contactos);
+    }
+    public void notificar(Mensaje mensaje){
+        this.contactos.forEach(c -> c.notificar(mensaje));
+    }
 }

@@ -2,16 +2,17 @@ package domain.viaje;
 
 import domain.Direccion;
 import domain.entidades.*;
-import domain.viaje.contratado.Servicio;
-import domain.viaje.contratado.TContratado;
-import domain.viaje.limpio.TLimpio;
+import domain.viaje.privado.contratado.Servicio;
+import domain.viaje.privado.contratado.TContratado;
+import domain.viaje.privado.contratado.limpio.TLimpio;
 import domain.viaje.publico.LColectivo;
-import domain.viaje.publico.LSubte;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 public class TramosCompartidosTest {
     private Persona tito, lenny;
@@ -21,6 +22,8 @@ public class TramosCompartidosTest {
     private Direccion dirMarmoSW = null;
     private TipoOrg empresa = null ;
     private Clasificacion empresaDelSectorSecundario = null;
+    private Provincia bsas;
+    private Municipio villaSoldati;
     // Tramos
     private TPublico casa_a_terminal;
     private TContratado terminal_a_org1;
@@ -35,21 +38,27 @@ public class TramosCompartidosTest {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
-        dirLennySW = new Direccion("MOZART", 1999, "CIUDAD DE BUENOS AIRES", "VILLA SOLDATI", 241); // soladati.id = 5379
+        bsas = new Provincia(new ArrayList<>());
+        villaSoldati = new Municipio(new ArrayList<>());
+
+        dirLennySW = new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
-        empresaDelSectorSecundario = new Clasificacion("EmpresaDelSectorSecundario");
+        empresaDelSectorSecundario = new Clasificacion();
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
         sistemas = new Area("Sistemas", lennySoftware);
         ejecutivo = new Area("Ejecutivo", lennySoftware);
         coaching = new Area("Coaching", lennySoftware);
 
-        dirMarmoSW = new Direccion("AVENIDA LACARRA", 1500, "CIUDAD DE BUENOS AIRES", "VILLA SOLDATI", 241);
+        dirMarmoSW = new Direccion("AVENIDA LACARRA", 1500, bsas, villaSoldati, 241);
 
         lenny.solicitarAlta(lennySoftware, ejecutivo);
         lennySoftware.aceptarEmpleado(lenny, ejecutivo);
 
         tito.solicitarAlta(lennySoftware, coaching);
         lennySoftware.aceptarEmpleado(tito, coaching);
+
+        tito.solicitarAlta(lennySoftware, ejecutivo);
+        lennySoftware.aceptarEmpleado(tito, ejecutivo);
 
         // carga de trayectos
         casa_a_terminal = new TPublico(cortina, retiro, linea34);
@@ -73,14 +82,20 @@ public class TramosCompartidosTest {
         //Assertions.assertEquals(1, ejecutivo.getMiembros().size() );
         Assertions.assertEquals(1, lennySoftware.getTramosCompartidos().size());
     }
-    /*
+    @Test
+    public void titoYLennySeCuentanUnaSolaVez() {
+        lenny.darDeAltaTrayecto(casa_a_terminal, terminal_a_org1, org1_a_org2);//Tpublico-TContratado-TLimpio
+
+        Assertions.assertEquals(2, lennySoftware.getMiembros().size() );
+    }
+/*
     @Test
     public void titoYLennyCompartenTramo() {
         lenny.darDeAltaTrayecto(casa_a_terminal, terminal_a_org1, org1_a_org2);//Tpublico-TContratado-TLimpio
         tito.darDeAltaTrayecto(terminal_a_org1);
 
-        Assertions.assertEquals(1, lennySoftware.getTramosCompartidos().size() );
+        Assertions.assertEquals(2, lennySoftware.getTramosCompartidos().size() );
 
     }
-    */
+*/
 }

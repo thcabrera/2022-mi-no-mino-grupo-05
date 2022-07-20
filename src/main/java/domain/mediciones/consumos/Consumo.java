@@ -1,31 +1,21 @@
 package domain.mediciones.consumos;
 
+import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
 public class Consumo {
-    private Integer valor;
-    private Periodicidad periodicidad;
-    private TipoConsumo tipoConsumo;
 
-    public Integer getValor() {
-        return valor;
-    }
+    private final Double valor;
+    private final TipoConsumo tipoConsumo;
 
-    public void setValor(Integer valor) {
+    public Consumo(TipoConsumo tipo, Double valor) {
+        this.tipoConsumo = tipo;
         this.valor = valor;
     }
 
-    public Periodicidad getPeriodicidad() {
-        return periodicidad;
-    }
-
-    public void setPeriodicidad(Periodicidad periodicidad) {
-        this.periodicidad = periodicidad;
-    }
-
-    public TipoConsumo getTipoConsumo() {
-        return tipoConsumo;
-    }
-
-    public void setTipoConsumo(TipoConsumo tipoConsumo) {
-        this.tipoConsumo = tipoConsumo;
+    public Double valorFactorEmision() {
+        return this.tipoConsumo.getFactorEmision();
     }
 }

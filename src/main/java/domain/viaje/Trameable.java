@@ -4,10 +4,12 @@ import domain.Direccion;
 import domain.entidades.Persona;
 
 public interface Trameable {
-    public Integer consumo();
-    public Integer calcularDistanciaTramo();
+    public Double consumoPorKM();
+    public Double calcularDistanciaTramo();
 
     public boolean getEsCompartido();
 
     public Persona getPropietario();
+
+    public Double calculoHC(Persona persona);
 }

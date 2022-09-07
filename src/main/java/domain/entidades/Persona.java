@@ -1,6 +1,5 @@
 package domain.entidades;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import domain.viaje.Trameable;
 import domain.viaje.Trayecto;
 import lombok.Getter;

@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import static org.mockito.Mockito.mock;
 
 public class SolicitudTest {
     private Persona tito, lenny;
     private Organizacion lennySoftware;
     private Area sistemas, ejecutivo, coaching;
     private Direccion dirLennySW = null;
-    private  TipoOrg empresa = null ;
+    private TipoOrg empresa = null ;
     private Clasificacion empresaDelSectorSecundario = null;
 
     @BeforeEach
@@ -21,7 +22,7 @@ public class SolicitudTest {
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
         Provincia bsas = new Provincia(new ArrayList<>());
         Municipio villaSoldati = new Municipio(new ArrayList<>());
-        dirLennySW = new Direccion("mozart", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
+        dirLennySW = mock(Direccion.class); //new Direccion("mozart", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
         empresaDelSectorSecundario = new Clasificacion();
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);

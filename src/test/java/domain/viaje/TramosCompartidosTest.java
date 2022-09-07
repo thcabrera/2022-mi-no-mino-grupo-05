@@ -11,6 +11,7 @@ import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class TramosCompartidosTest {
         bsas = new Provincia(new ArrayList<>());
         villaSoldati = new Municipio(new ArrayList<>());
 
-        dirLennySW = new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
+        dirLennySW = mock(Direccion.class); //new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
         empresaDelSectorSecundario = new Clasificacion();
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
@@ -49,7 +50,7 @@ public class TramosCompartidosTest {
         ejecutivo = new Area("Ejecutivo", lennySoftware);
         coaching = new Area("Coaching", lennySoftware);
 
-        dirMarmoSW = new Direccion("AVENIDA LACARRA", 1500, bsas, villaSoldati, 241);
+        dirMarmoSW = mock(Direccion.class); //new Direccion("AVENIDA LACARRA", 1500, bsas, villaSoldati, 241);
 
         lenny.solicitarAlta(lennySoftware, ejecutivo);
         lennySoftware.aceptarEmpleado(lenny, ejecutivo);

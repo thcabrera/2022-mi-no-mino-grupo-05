@@ -14,7 +14,7 @@
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/huella_de_carbon" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/huella_de_carbono" />
             <property name="hibernate.connection.username" value="root" />
             <property name="hibernate.connection.password" value="123456" />
                         
@@ -27,7 +27,7 @@
             <property name="use_sql_comments" value="true" />
             <!-- Hibernate will put comments inside all generated SQL statements to hint what’s the generated SQL trying to do -->
 
-            <property name="hibernate.hbm2ddl.auto" value="validate" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <!--
                 - validate: validate the schema, makes no changes to the database.
                 - update: update the schema.

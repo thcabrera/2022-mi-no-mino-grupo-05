@@ -1,6 +1,5 @@
 package domain.viaje;
 
-import domain.Direccion;
 import domain.entidades.Organizacion;
 import domain.entidades.Persona;
 import lombok.Getter;

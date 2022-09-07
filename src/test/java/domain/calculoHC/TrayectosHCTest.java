@@ -1,10 +1,7 @@
 package domain.calculoHC;
 
 import domain.Direccion;
-import domain.entidades.Documentacion;
-import domain.entidades.Municipio;
-import domain.entidades.Persona;
-import domain.entidades.Provincia;
+import domain.entidades.*;
 import domain.viaje.Trayecto;
 import domain.viaje.privado.particular.Combustible;
 import domain.viaje.privado.particular.TParticular;
@@ -14,6 +11,7 @@ import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.cglib.core.Local;
 
 import java.util.ArrayList;
 
@@ -33,6 +31,7 @@ public class TrayectosHCTest {
     Direccion direccion2;
     Provincia bsas;
     Municipio villaSoldati;
+    Localidad mataderos;
 
     @BeforeEach
     public void setupThis(){
@@ -50,8 +49,10 @@ public class TrayectosHCTest {
         bsas = new Provincia(new ArrayList<>());
         villaSoldati = new Municipio(new ArrayList<>());
 
-        direccion1 = new Direccion("calle1", 1999, bsas, villaSoldati, 241);
-        direccion2 = new Direccion("calle2", 2354, bsas, villaSoldati, 241);
+        mataderos = new Localidad(villaSoldati);
+
+        direccion1 = new Direccion("calle1", 1999, mataderos); // hay que cambiarlo,
+        direccion2 = new Direccion("calle2", 2354, mataderos);
 
         treintaYCuatro = new LColectivo("34", 100.0);
         treintaYCuatro.agregarParadas(parada1, parada2, parada3);

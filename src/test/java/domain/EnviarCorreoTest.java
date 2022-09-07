@@ -2,17 +2,12 @@ package domain;
 
 
 import domain.entidades.*;
-import domain.entidades.contacto.Contacto;
 import domain.entidades.contacto.Email;
 import domain.entidades.contacto.Mensaje;
 import domain.services.envioCorreo.ServicioCorreo;
-import domain.viaje.privado.contratado.TContratado;
-import domain.viaje.privado.contratado.limpio.TLimpio;
-import domain.viaje.publico.LColectivo;
-import domain.viaje.publico.Parada;
-import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 
@@ -31,7 +26,7 @@ public class EnviarCorreoTest {
     AgenteSectorial agenteMunicipal, agenteSectorial;
     Provincia provinciaBuenosAires;
     Provincia bsas = new Provincia(new ArrayList<>());
-    Direccion dirTitoSW = new Direccion("mozart", 1999, bsas, municipioLaMatanza, 241); // soladati.id = 5379
+    Direccion dirTitoSW = mock(Direccion.class); //new Direccion("mozart", 1999, bsas, municipioLaMatanza, 241); // soladati.id = 5379
     TipoOrg empresa = new TipoOrg("Empresa");
     Clasificacion empresaDelSectorSecundario = new Clasificacion();
     Organizacion titoSW = new Organizacion("SA", empresa, dirTitoSW, empresaDelSectorSecundario);

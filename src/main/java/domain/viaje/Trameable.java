@@ -1,6 +1,5 @@
 package domain.viaje;
 
-import domain.Direccion;
 import domain.entidades.Persona;
 
 public interface Trameable {

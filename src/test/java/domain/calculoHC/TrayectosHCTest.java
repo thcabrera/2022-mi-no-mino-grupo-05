@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.cglib.core.Local;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TrayectosHCTest {
     Parada parada1;
@@ -46,7 +48,8 @@ public class TrayectosHCTest {
         propietario = new Persona("Lucas", "Panfleto", 132123123, Documentacion.DNI);
         noPropietario = new Persona("Leandro", "Marmovich", 254658, Documentacion.DNI);
 
-        bsas = new Provincia(new ArrayList<>());
+        bsas = new Provincia(new HashSet<Municipio>() {
+        });
         villaSoldati = new Municipio(new ArrayList<>());
 
         mataderos = new Localidad(villaSoldati);

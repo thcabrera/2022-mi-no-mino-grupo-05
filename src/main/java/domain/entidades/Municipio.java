@@ -12,9 +12,6 @@ import java.util.ArrayList;
 @Entity
 @Table(name = "municipio")
 public class Municipio extends Sector{
-    @Id
-    @GeneratedValue
-    private Integer id;
 
     @Setter
     @Transient

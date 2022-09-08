@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class EnviarCorreoTest {
 
@@ -25,7 +26,7 @@ public class EnviarCorreoTest {
     Municipio municipioLaMatanza, municipioMoron;
     AgenteSectorial agenteMunicipal, agenteSectorial;
     Provincia provinciaBuenosAires;
-    Provincia bsas = new Provincia(new ArrayList<>());
+    Provincia bsas = new Provincia(new HashSet<>());
     Direccion dirTitoSW = mock(Direccion.class); //new Direccion("mozart", 1999, bsas, municipioLaMatanza, 241); // soladati.id = 5379
     TipoOrg empresa = new TipoOrg("Empresa");
     Clasificacion empresaDelSectorSecundario = new Clasificacion();

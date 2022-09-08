@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class TramosCompartidosTest {
     private Persona tito, lenny;
@@ -39,7 +40,7 @@ public class TramosCompartidosTest {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
-        bsas = new Provincia(new ArrayList<>());
+        bsas = new Provincia(new HashSet<>());
         villaSoldati = new Municipio(new ArrayList<>());
 
         dirLennySW = mock(Direccion.class); //new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379

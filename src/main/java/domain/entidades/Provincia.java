@@ -3,9 +3,8 @@ package domain.entidades;
 import domain.mediciones.consumos.Periodicidad;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,14 +13,10 @@ import java.util.ArrayList;
 // una provincia tiene varios municipios
 public class Provincia extends Sector{
 
-    @Id
-    @GeneratedValue
-    private Integer id;
-
     @OneToMany(mappedBy = "provincia", fetch = FetchType.LAZY)
-    private ArrayList<Municipio> municipios;
+    private Set<Municipio> municipios;
 
-    public Provincia(ArrayList<Municipio> municipios){
+    public Provincia(Set<Municipio> municipios){
         setMunicipios(municipios);
     }
 

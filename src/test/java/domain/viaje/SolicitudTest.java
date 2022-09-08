@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import java.util.HashSet;
+
 import static org.mockito.Mockito.mock;
 
 public class SolicitudTest {
@@ -20,7 +22,7 @@ public class SolicitudTest {
     void setupThis() {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
-        Provincia bsas = new Provincia(new ArrayList<>());
+        Provincia bsas = new Provincia(new HashSet<>());
         Municipio villaSoldati = new Municipio(new ArrayList<>());
         dirLennySW = mock(Direccion.class); //new Direccion("mozart", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");

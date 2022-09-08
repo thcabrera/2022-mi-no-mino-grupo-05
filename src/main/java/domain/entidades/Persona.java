@@ -5,6 +5,7 @@ import domain.viaje.Trayecto;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,12 +13,34 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 
+@Entity
+@Table(name="persona")
 public class Persona {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name="nombre")
     private String nombre;
+
+    @Column(name="apellido")
     private String apellido;
+
+    @Column(name="documento")
     private Integer nroDocumento;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="tipo_doc")
     private Documentacion tipoDoc;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="area_persona",
+            joinColumns = @JoinColumn(name = "persona_id")
+    )
     private List<Area> listaAreas;
+
+    @OneToMany(mappedBy = "persona")
     private List<Trayecto> trayectos;
 
     public Persona(String nombre, String apellido, Integer nroDocumento, Documentacion tipoDoc) {

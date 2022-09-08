@@ -1,11 +1,27 @@
 package domain.entidades;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="area")
 public class Area {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "org_id", referencedColumnName = "id")
     private Organizacion organizacion;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="area_persona",
+            joinColumns = @JoinColumn(name = "area_id")
+    )
     private List<Persona> miembros;
+
+    @Column(name="descripcion")
     private String nombre;
 
     //  ----------  GETTERS & SETTERS  ----------

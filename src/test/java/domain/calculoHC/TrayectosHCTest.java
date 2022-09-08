@@ -5,17 +5,14 @@ import domain.entidades.*;
 import domain.viaje.Trayecto;
 import domain.viaje.privado.particular.Combustible;
 import domain.viaje.privado.particular.TParticular;
-import domain.viaje.publico.LColectivo;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.cglib.core.Local;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class TrayectosHCTest {
     Parada parada1;

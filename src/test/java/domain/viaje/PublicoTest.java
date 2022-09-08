@@ -1,6 +1,5 @@
 package domain.viaje;
 
-import domain.viaje.publico.LColectivo;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import domain.viaje.publico.sentido.SentidoRecorrido;

@@ -6,24 +6,32 @@ import domain.viaje.publico.sentido.Vuelta;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
-public abstract class Linea {
-    protected List<Parada> paradas;
-    protected String nombreLinea;
 
-    protected Double consumo;
+@Entity
+@Table(name="linea")
+public class Linea {
+    private List<Parada> paradas;
+
+    @Column(name="descripcion")
+    private String nombreLinea;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_linea_id", referencedColumnName = "id")
+    private TipoLinea tipoLinea;
 
     public Double getConsumo() {
-        return consumo;
+        return this.tipoLinea.getConsumo();
     }
 
     public void setConsumo(Double nuevoConsumo) {
-        this.consumo = nuevoConsumo;
+        this.tipoLinea.setConsumo(nuevoConsumo);
     }
 
     public String getNombreLinea() {

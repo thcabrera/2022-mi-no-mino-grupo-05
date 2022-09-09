@@ -5,6 +5,7 @@ import domain.entidades.*;
 import domain.viaje.Trayecto;
 import domain.viaje.privado.particular.Combustible;
 import domain.viaje.privado.particular.TParticular;
+import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +20,7 @@ public class TrayectosHCTest {
     Parada parada2;
     Parada parada3;
     TPublico tramoPublico;
-    LColectivo treintaYCuatro;
+    Linea treintaYCuatro;
     TParticular tramoCompartido;
     Persona normal;
     Persona propietario;
@@ -54,7 +55,7 @@ public class TrayectosHCTest {
         direccion1 = new Direccion("calle1", 1999, mataderos); // hay que cambiarlo,
         direccion2 = new Direccion("calle2", 2354, mataderos);
 
-        treintaYCuatro = new LColectivo("34", 100.0);
+       // treintaYCuatro = new LColectivo("34", 100.0);
         treintaYCuatro.agregarParadas(parada1, parada2, parada3);
         tramoPublico = new TPublico(parada1, parada2, treintaYCuatro);
 

@@ -5,6 +5,7 @@ import domain.entidades.*;
 import domain.viaje.privado.contratado.Servicio;
 import domain.viaje.privado.contratado.TContratado;
 import domain.viaje.privado.limpio.TLimpio;
+import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
@@ -29,7 +30,7 @@ public class TramosCompartidosTest {
     private TPublico casa_a_terminal;
     private TContratado terminal_a_org1;
     private TLimpio org1_a_org2;
-    private LColectivo linea34;
+    private Linea linea34;
     private Parada cortina;
     private Parada retiro;
 

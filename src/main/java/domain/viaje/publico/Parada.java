@@ -4,9 +4,7 @@ package domain.viaje.publico;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Getter
@@ -15,6 +13,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="parada")
 public class Parada {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private String nombre;
 
     @Column(name = "distancia_sig_parada")

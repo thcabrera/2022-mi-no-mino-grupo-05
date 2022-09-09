@@ -17,6 +17,10 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name="linea")
 public class Linea {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private List<Parada> paradas;
 
     @Column(name="descripcion")

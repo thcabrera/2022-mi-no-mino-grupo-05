@@ -1,5 +1,6 @@
 package domain.viaje;
 
+import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import domain.viaje.publico.sentido.SentidoRecorrido;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class PublicoTest {
     private Parada cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi;
-    private LColectivo tresSiete;
+    private Linea tresSiete;
     private List<Parada> paradasIntermedias;
     private Parada unaParada;
     private Parada otraParada;
@@ -22,7 +23,7 @@ public class PublicoTest {
 
     @BeforeEach
     void setupThis()  {
-        tresSiete = new LColectivo("37", 10.0); // creo q no sirve para nada el consumoPorKM
+       // tresSiete = new Linea(""); // creo q no sirve para nada el consumoPorKM
         unaParada = new Parada("UnaParada");
         otraParada = new Parada("OtraParada");
         cortina = new Parada("Cortina");

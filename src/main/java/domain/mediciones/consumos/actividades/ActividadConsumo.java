@@ -5,12 +5,22 @@ import domain.mediciones.consumos.Periodicidad;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 // Esta clase Combustion es para las actividades que tienen consumos con tipo variable
 @Getter
 @Setter
+
+@Entity
+@DiscriminatorValue(value="actividad_consumo")
 public class ActividadConsumo extends Actividad{
 
+    @OneToOne
+    @JoinColumn(name = "consumo_id", referencedColumnName = "id")
     private Consumo consumo;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="tipo_actividad")
     private TipoActividadConsumo tipo;
 
     public ActividadConsumo(Periodicidad periodicidad, Consumo consumo, TipoActividadConsumo tipo) {

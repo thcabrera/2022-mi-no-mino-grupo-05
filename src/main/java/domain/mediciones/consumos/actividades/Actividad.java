@@ -18,8 +18,11 @@ public abstract class Actividad {
     @GeneratedValue
     private Integer id;
 
-    @OneToOne
+ /*  @OneToOne
     @JoinColumn(name = "periodicidad_id", referencedColumnName = "id")
+
+  */
+    @Transient
     private Periodicidad periodicidad;
 
     public Actividad(Periodicidad periodicidad){

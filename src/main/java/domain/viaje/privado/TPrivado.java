@@ -13,12 +13,12 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class TPrivado extends Trameable {
 
-    @ManyToOne
-    @JoinColumn(name = "direccion_inicio_id", referencedColumnName = "id")
+   // @ManyToOne
+   // @JoinColumn(name = "direccion_inicio_id", referencedColumnName = "id")
     protected Direccion direccionInicio;
 
-    @ManyToOne
-    @JoinColumn(name = "direccion_fin_id", referencedColumnName = "id")
+   // @ManyToOne
+   // @JoinColumn(name = "direccion_fin_id", referencedColumnName = "id")
     protected Direccion direccionFin;
 
     @Override

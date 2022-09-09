@@ -21,7 +21,11 @@ public class Linea {
     @GeneratedValue
     private Integer id;
 
+    // ES ASI???
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parada_id", referencedColumnName = "id")//FK DE LA TABLA Parada HACIA LA TABLA Linea
     private List<Parada> paradas;
+
 
     @Column(name="descripcion")
     private String nombreLinea;

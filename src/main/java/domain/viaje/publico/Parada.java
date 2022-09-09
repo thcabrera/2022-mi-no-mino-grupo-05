@@ -17,6 +17,7 @@ public class Parada {
     @GeneratedValue
     private Integer id;
 
+    @Column(name="nombre_parada")
     private String nombre;
 
     @Column(name = "distancia_sig_parada")

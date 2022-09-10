@@ -80,14 +80,14 @@ public class PublicoTest {
     public void recorridoPublicoDeIdaTieneUnaDistancia(){
         tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
 
-        Assertions.assertEquals(400, tramoPublicoDeIda.calcularDistanciaTramo());
+        Assertions.assertEquals(400.0, tramoPublicoDeIda.calcularDistanciaTramo());
     }
 
     @Test
     public void recorridoPublicoDeVueltaTieneUnaDistancia(){
         tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
 
-        Assertions.assertEquals(300, tramoPublicoDeVuelta.calcularDistanciaTramo());
+        Assertions.assertEquals(300.0, tramoPublicoDeVuelta.calcularDistanciaTramo());
     }
 
 }

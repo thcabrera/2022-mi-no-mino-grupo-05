@@ -12,7 +12,6 @@ public class WhatsApp extends Contacto {
         this.contacto = contacto;
     }
 
-
     public void notificar(Mensaje mensaje){
         new WhatsappConcreteAdapter().enviarMensaje(this.contacto, mensaje);
     }

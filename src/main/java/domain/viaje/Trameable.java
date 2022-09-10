@@ -22,23 +22,13 @@ public abstract class Trameable {
 
     // Returns genericos para poder hacer el override (Previamente era una interfaz).
 
-    public Double consumoPorKM(){
-        return 0.0;
-    }
+    public abstract Double consumoPorKM();
 
-    public Double calcularDistanciaTramo(){
-        return 0.0;
-    }
+    public abstract Double calcularDistanciaTramo();
 
-    public boolean getEsCompartido(){
-        return false;
-    }
+    public abstract boolean getEsCompartido();
 
-    public Persona getPropietario(){
-        return null;
-    }
+    public abstract Persona getPropietario();
 
-    public Double calculoHC(Persona persona){
-        return 0.0;
-    }
+    public abstract Double calculoHC(Persona persona);
 }

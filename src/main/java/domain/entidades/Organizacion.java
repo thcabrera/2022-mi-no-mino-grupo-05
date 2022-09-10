@@ -34,7 +34,7 @@ public class Organizacion {
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     private Direccion ubicacion;
 
-    @Transient
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Area> areas;
 
     @ManyToOne

@@ -3,7 +3,7 @@ package domain.viaje.publico.sentido;
 import domain.viaje.publico.Parada;
 
 public class Vuelta implements SentidoRecorrido{
-    public Integer getDistanciaProxParada(Parada parada){
+    public Double getDistanciaProxParada(Parada parada){
         return parada.getDistanciaAntParada();
     }
 

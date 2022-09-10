@@ -56,6 +56,7 @@ public class TParticular extends TPrivado {
         return propietario;
     }
 
+    @Override
     public boolean getEsCompartido(){
         return esCompartido;
     }
@@ -65,6 +66,7 @@ public class TParticular extends TPrivado {
     }
 
     //  ----------  CONSUMO  ----------
+    @Override
     public Double consumoPorKM(){
         return this.tipoCombustible.getConsumo() * this.calcularDistanciaTramo();
     }

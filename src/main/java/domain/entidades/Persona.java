@@ -112,7 +112,7 @@ public class Persona {
 
     //  ----------  CALCULO HC  ----------
 
-    public Double calcularHC(Organizacion organizacion){ // Cálculo de HC de un miembro de una organización
+    public Double calculoHC(Organizacion organizacion){ // Cálculo de HC de un miembro de una organización
         return this.trayectos
                 .stream().filter(t -> t.getOrganizacion().equals(organizacion))
                 .mapToDouble(t -> t.calculoHC(this))

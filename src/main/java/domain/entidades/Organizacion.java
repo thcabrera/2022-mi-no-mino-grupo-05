@@ -142,7 +142,7 @@ public class Organizacion {
     // este en multiples áreas
     private Double calculoHCTrayectos() {
         return this.getMiembros().stream()
-                    .mapToDouble(miembro -> miembro.calcularHC(this))
+                    .mapToDouble(miembro -> miembro.calculoHC(this))
                     .sum();
     }
 

@@ -44,7 +44,7 @@ public class Area {
 
     //  ----------  CALCULO HC  ----------
     public Double calculoHC(){
-        return this.miembros.stream().mapToDouble(p -> p.calcularHC(this.organizacion)).sum();
+        return this.miembros.stream().mapToDouble(p -> p.calculoHC(this.organizacion)).sum();
     }
 
     public Double indicadorHCporMiembro(){

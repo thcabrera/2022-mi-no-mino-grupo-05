@@ -26,14 +26,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.2</version>
+            <version>5.9.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -45,13 +40,6 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -93,7 +81,7 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.2</version>
         </dependency>
         <!-- Para ORM -->
         <dependency>

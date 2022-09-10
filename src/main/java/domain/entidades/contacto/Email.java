@@ -4,6 +4,7 @@ import domain.services.envioCorreo.ServicioCorreo;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -13,19 +14,12 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "Email")
 public class Email extends Contacto{
 
-    private String correo;
-
     public Email(String correo){
-        this.correo = correo;
+        this.contacto = correo;
     }
 
     public void notificar(Mensaje mensaje) {
-        //todo
-        ServicioCorreo correo = new ServicioCorreo();
-        //Mensaje mensaje = new Mensaje();
-
-        correo.enviarCorreo(this.correo, mensaje.getAsunto(), mensaje.getCuerpo());
-
+        ServicioCorreo.enviarCorreo(this.contacto, mensaje.getAsunto(), mensaje.getCuerpo());
     }
 
 }

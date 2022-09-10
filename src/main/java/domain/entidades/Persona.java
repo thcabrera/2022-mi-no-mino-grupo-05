@@ -35,9 +35,6 @@ public class Persona {
     private Documentacion tipoDoc;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="area_persona",
-            joinColumns = @JoinColumn(name = "persona_id")
-    )
     private List<Area> listaAreas;
 
     @OneToMany(mappedBy = "persona")

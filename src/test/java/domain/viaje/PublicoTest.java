@@ -32,13 +32,13 @@ public class PublicoTest {
         mozart = new Parada("Mozart");
         xokas = new Parada("Xokas");
         lenny_y_Alberdi = new Parada("Lenny");
-        cortina.setDistanciaSigParada(100);
-        marmokix.setDistanciaSigParada(100);
-        corrientes.setDistanciaSigParada(100);
-        mozart.setDistanciaSigParada(100);
-        marmokix.setDistanciaAntParada(100);
-        corrientes.setDistanciaAntParada(100);
-        mozart.setDistanciaAntParada(100);
+        cortina.setDistanciaSigParada(100.0);
+        marmokix.setDistanciaSigParada(100.0);
+        corrientes.setDistanciaSigParada(100.0);
+        mozart.setDistanciaSigParada(100.0);
+        marmokix.setDistanciaAntParada(100.0);
+        corrientes.setDistanciaAntParada(100.0);
+        mozart.setDistanciaAntParada(100.0);
         tramoPublicoDeIda = new TPublico(cortina, xokas, tresSiete);
         tramoPublicoDeVuelta = new TPublico(mozart, cortina, tresSiete);
 

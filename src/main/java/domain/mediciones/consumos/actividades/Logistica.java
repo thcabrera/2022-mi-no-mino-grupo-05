@@ -19,7 +19,7 @@ public class Logistica extends Actividad {
     private ProductoTransportado categoria; //MATERIA_PRIMA
 
     @OneToOne
-    @JoinColumn(name = "medioTransporte_id", referencedColumnName = "id")
+    @JoinColumn(name = "medio_transporte_id", referencedColumnName = "id")
     private MedioTransporte medioTransporte; //MEDIO_TRANSPORTE	CAMION	MENSUAL	jun-22
 
     @Column(name = "distancia_media")

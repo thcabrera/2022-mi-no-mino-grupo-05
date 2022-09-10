@@ -15,12 +15,14 @@ public class Area {
     @JoinColumn(name = "org_id", referencedColumnName = "id")
     private Organizacion organizacion;
 
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="area_persona",
-            joinColumns = @JoinColumn(name = "area_id")
+            joinColumns = @JoinColumn(name = "area_id"),
+            inverseJoinColumns = @JoinColumn(name = "persona_id")
     )
     private List<Persona> miembros;
-
+        
     @Column(name="descripcion")
     private String nombre;
 

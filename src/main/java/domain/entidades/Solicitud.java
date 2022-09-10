@@ -16,6 +16,10 @@ public class Solicitud {
     @JoinColumn(name="area_id", referencedColumnName = "id")
     private Area areaSolicitada;
 
+    @ManyToOne
+    @JoinColumn(name="org_id", referencedColumnName = "id")
+    private Organizacion organizacion;
+
     @Enumerated(EnumType.STRING)
     @Column(name="estado")
     private EstadoSolicitud estado;

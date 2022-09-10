@@ -41,13 +41,13 @@ public class Organizacion {
     @JoinColumn(name="clasificacion_id", referencedColumnName = "id")
     private Clasificacion clasificacion;
 
-    @Transient
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Actividad> mediciones;
 
-    @Transient
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Solicitud> solicitudes;
 
-    @Transient
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Contacto> contactos;
 
     //  ----------  GETTERS & SETTERS  ----------

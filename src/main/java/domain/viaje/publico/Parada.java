@@ -21,10 +21,13 @@ public class Parada {
     private String nombre;
 
     @Column(name = "distancia_sig_parada")
-    private Integer distanciaSigParada;
+    private Double distanciaSigParada;
 
     @Column(name = "distancia_ant_parada")
-    private Integer distanciaAntParada;
+    private Double distanciaAntParada;
+
+    @Column(name = "indice")
+    private Integer indice;
 
 
     public Parada(String nombreParada) {

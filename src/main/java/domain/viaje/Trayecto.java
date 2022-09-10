@@ -41,10 +41,6 @@ public class Trayecto {
         this.tramos = tramos;
     }
 
-    //  ----------  PUNTOS DE INICIO/FIN  ----------
-
-    // todo, surgen problemas con que los puntos de inicio/fin pueden ser tanto direcciones como paradas
-
     //  ----------  AGREGAR TRAMOS  ----------
 
     public void agregarTramos(Trameable ... tramos){

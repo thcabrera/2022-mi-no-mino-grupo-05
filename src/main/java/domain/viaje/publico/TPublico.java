@@ -23,6 +23,9 @@ public class TPublico extends Trameable {
     @JoinColumn(name = "linea_id", referencedColumnName = "id")
     private Linea linea;
 
+    // TODO sacar y calcular con el indice de las paradas:
+    // TODO indice parada inicio > indice parada fin --> vuelta
+    // TODO sino --> ida
     @Transient
     private SentidoRecorrido sentido;
 
@@ -72,7 +75,7 @@ public class TPublico extends Trameable {
 
     //  ----------  CALCULO HC  ----------
     @Override
-    public Double calculoHC(Persona persona){ // todo falta la suma de cuanto anduvo
+    public Double calculoHC(Persona persona){
         return this.consumoPorKM() * this.calcularDistanciaTramo();
     }
 }

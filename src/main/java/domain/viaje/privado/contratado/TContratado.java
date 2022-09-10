@@ -3,7 +3,6 @@ package domain.viaje.privado.contratado;
 import domain.Direccion;
 import domain.entidades.Persona;
 import domain.viaje.privado.TPrivado;
-
 import javax.persistence.*;
 
 @Entity

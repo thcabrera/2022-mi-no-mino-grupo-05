@@ -39,8 +39,8 @@ public class TrayectosHCTest {
         parada2 = new Parada("paradaDos");
         parada3 = new Parada("paradaTres");
 
-        parada1.setDistanciaSigParada(10);
-        parada2.setDistanciaSigParada(20);
+        parada1.setDistanciaSigParada(10.0);
+        parada2.setDistanciaSigParada(20.0);
 
         normal = new Persona("Jorge","Lienard",12312323, Documentacion.DNI);
         propietario = new Persona("Lucas", "Panfleto", 132123123, Documentacion.DNI);

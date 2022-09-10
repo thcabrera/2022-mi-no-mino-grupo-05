@@ -2,10 +2,20 @@ package domain.mediciones.consumos;
 
 import lombok.Getter;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 @Getter
-public class Mensual implements Periodicidad{
-    private final int mes;
-    private final int anio;
+@Entity
+@DiscriminatorValue(value = "mensual")
+public class Mensual extends Periodicidad {
+
+    @Column(name = "mes")
+    private final Integer mes;
+
+    @Column(name = "anio")
+    private final Integer anio;
 
     public Mensual(int mes, int anio) {
         this.mes = mes;

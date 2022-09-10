@@ -1,5 +1,6 @@
 package domain.entidades.contacto;
 
+import domain.services.whatsApp.WhatsappConcreteAdapter;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -7,16 +8,12 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "WhatsApp")
 public class WhatsApp extends Contacto {
 
-    private String numero;
-
-
-
-    public WhatsApp(String numero){
-        this.numero = numero;
+    public WhatsApp(String contacto){
+        this.contacto = contacto;
     }
 
 
     public void notificar(Mensaje mensaje){
-        //todo
+        new WhatsappConcreteAdapter().enviarMensaje(this.contacto, mensaje);
     }
 }

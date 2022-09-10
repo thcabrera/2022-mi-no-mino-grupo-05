@@ -13,6 +13,7 @@ public class Consumo {
 
     @Id
     @GeneratedValue
+    private Integer id;
 
     @Column(name = "valor")
     private final Double valor;

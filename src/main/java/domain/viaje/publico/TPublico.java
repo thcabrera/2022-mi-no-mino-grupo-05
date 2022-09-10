@@ -11,10 +11,6 @@ import java.util.List;
 @Table(name="tramo_publico")
 public class TPublico extends Trameable {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
-
     @ManyToOne
     @JoinColumn(name = "parada_inicio_id", referencedColumnName = "id")
     private Parada paradaInicio;
@@ -26,6 +22,8 @@ public class TPublico extends Trameable {
     @ManyToOne
     @JoinColumn(name = "linea_id", referencedColumnName = "id")
     private Linea linea;
+
+    @Transient
     private SentidoRecorrido sentido;
 
     //  ----------  GETTERS & SETTERS  ----------

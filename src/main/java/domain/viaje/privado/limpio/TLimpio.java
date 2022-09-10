@@ -10,10 +10,6 @@ import javax.persistence.*;
 @Table(name="tramo_limpio")
 public class TLimpio extends TPrivado {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
-
     @Column(name="tipo")
     public String tipo;
 

@@ -14,6 +14,7 @@ public class TipoConsumo {
 
     @Id
     @GeneratedValue
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     @Column(name="unidad")

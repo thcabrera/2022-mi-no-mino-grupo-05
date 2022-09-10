@@ -47,7 +47,7 @@ public class Organizacion {
     @Transient
     private List<Solicitud> solicitudes;
 
-
+    @Transient
     private List<Contacto> contactos;
 
     //  ----------  GETTERS & SETTERS  ----------

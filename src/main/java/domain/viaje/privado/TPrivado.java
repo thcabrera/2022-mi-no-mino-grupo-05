@@ -15,10 +15,12 @@ public abstract class TPrivado extends Trameable {
 
    // @ManyToOne
    // @JoinColumn(name = "direccion_inicio_id", referencedColumnName = "id")
+    @Transient
     protected Direccion direccionInicio;
 
    // @ManyToOne
    // @JoinColumn(name = "direccion_fin_id", referencedColumnName = "id")
+    @Transient
     protected Direccion direccionFin;
 
     @Override

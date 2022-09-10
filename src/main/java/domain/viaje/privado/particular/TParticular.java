@@ -9,10 +9,6 @@ import javax.persistence.*;
 @Table(name="tramo_particular")
 public class TParticular extends TPrivado {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
-
     @ManyToOne
     @JoinColumn(name = "tipo_combustible_id", referencedColumnName = "id")
     private Combustible tipoCombustible;

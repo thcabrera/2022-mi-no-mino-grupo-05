@@ -10,10 +10,6 @@ import javax.persistence.*;
 @Table(name="tramo_contratado")
 public class TContratado extends TPrivado {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
-
     @ManyToOne
     @JoinColumn(name = "tipo_servicio_id", referencedColumnName = "id")
     private Servicio tipoTransporte;

@@ -1,24 +1,27 @@
 package domain.viaje.privado.particular;
 
-public abstract class TipoParticular {
-    protected Double consumoPorKM;
+import javax.persistence.*;
 
-    protected Combustible tipoCombustible;
+@Entity
+@Table(name = "tipo_particular")
+public class TipoParticular {
 
-    public TipoParticular(Double consumoPorKM, Combustible tipoCombustible) {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name = "consumo")
+    private Double consumoPorKM;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
+    public TipoParticular(Double consumoPorKM) {
         this.consumoPorKM = consumoPorKM;
-        this.tipoCombustible = tipoCombustible;
-    }
-
-    public Double getConsumoPorKM(){
-        return consumoPorKM * this.consumoCombustible();
     }
 
     public void setConsumoPorKM(Double nuevoConsumo){
         this.consumoPorKM = nuevoConsumo;
     }
 
-    protected Double consumoCombustible(){
-        return this.tipoCombustible.getConsumo();
-    }
 }

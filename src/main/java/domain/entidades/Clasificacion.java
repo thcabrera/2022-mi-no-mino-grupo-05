@@ -1,5 +1,14 @@
 package domain.entidades;
 
-public class Clasificacion {
+import javax.persistence.*;
 
+@Entity
+@Table(name="clasificacion")
+public class Clasificacion {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name="descripcion")
+    private String nombre;
 }

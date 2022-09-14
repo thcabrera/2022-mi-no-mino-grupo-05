@@ -2,12 +2,24 @@ package domain.mediciones.consumos;
 
 import lombok.Getter;
 
-@Getter
-public class Anual implements Periodicidad{
-    private final int anio;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value = "anual")
+public class Anual extends Periodicidad{
+
+    @Column(name = "anio")
+    private final Integer anio;
 
     public Anual(Integer anio) {
         this.anio = anio;
+    }
+
+
+    public Integer getAnio(){
+        return this.anio;
     }
 
     public Double obtenerPorcentaje(Periodicidad periodicidad){

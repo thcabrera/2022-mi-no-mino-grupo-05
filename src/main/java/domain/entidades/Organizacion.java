@@ -8,19 +8,46 @@ import domain.mediciones.consumos.actividades.Actividad;
 import domain.viaje.Trameable;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
+
+@Entity
+@Table(name="organizacion")
 public class Organizacion {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name="razon_social")
     private String razonSocial;
+
+    @ManyToOne
+    @JoinColumn(name="tipo_org_id", referencedColumnName = "id")
     private TipoOrg tipo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     private Direccion ubicacion;
+
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Area> areas;
+
+    @ManyToOne
+    @JoinColumn(name="clasificacion_id", referencedColumnName = "id")
     private Clasificacion clasificacion;
+
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Actividad> mediciones;
+
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Solicitud> solicitudes;
+
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Contacto> contactos;
 
     //  ----------  GETTERS & SETTERS  ----------
@@ -115,7 +142,7 @@ public class Organizacion {
     // este en multiples áreas
     private Double calculoHCTrayectos() {
         return this.getMiembros().stream()
-                    .mapToDouble(miembro -> miembro.calcularHC(this))
+                    .mapToDouble(miembro -> miembro.calculoHC(this))
                     .sum();
     }
 

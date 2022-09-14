@@ -4,12 +4,29 @@ import domain.entidades.Persona;
 import domain.viaje.Trameable;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 
+import javax.persistence.*;
 import java.util.List;
 
-public class TPublico implements Trameable {
+@Entity
+@Table(name="tramo_publico")
+public class TPublico extends Trameable {
+
+    @ManyToOne
+    @JoinColumn(name = "parada_inicio_id", referencedColumnName = "id")
     private Parada paradaInicio;
+
+    @ManyToOne
+    @JoinColumn(name = "parada_fin_id", referencedColumnName = "id")
     private Parada paradaFin;
+
+    @ManyToOne
+    @JoinColumn(name = "linea_id", referencedColumnName = "id")
     private Linea linea;
+
+    // TODO sacar y calcular con el indice de las paradas:
+    // TODO indice parada inicio > indice parada fin --> vuelta
+    // TODO sino --> ida
+    @Transient
     private SentidoRecorrido sentido;
 
     //  ----------  GETTERS & SETTERS  ----------
@@ -57,8 +74,8 @@ public class TPublico implements Trameable {
     }
 
     //  ----------  CALCULO HC  ----------
-
-    public Double calculoHC(Persona persona){ // todo falta la suma de cuanto anduvo
+    @Override
+    public Double calculoHC(Persona persona){
         return this.consumoPorKM() * this.calcularDistanciaTramo();
     }
 }

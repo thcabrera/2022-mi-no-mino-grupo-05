@@ -1,15 +1,12 @@
 package tareasProgramadas;
 
 import domain.entidades.Organizacion;
-import domain.entidades.contacto.Email;
 import domain.entidades.contacto.Mensaje;
-import domain.services.envioCorreo.ServicioCorreo;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class QuartzJob implements Job {
     // En este no entendi mucho la explicacion estaba en un ingles muy de mierda

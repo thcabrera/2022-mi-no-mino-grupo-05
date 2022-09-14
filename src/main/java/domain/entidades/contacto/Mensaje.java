@@ -5,10 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-
 public class Mensaje {
     private String cuerpo;
     private String asunto;
-
-
 }

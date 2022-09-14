@@ -1,33 +1,36 @@
 package domain.viaje.publico;
 
-public class Parada {
-    private String nombre;
-    private Integer distanciaSigParada;
-    private Integer distanciaAntParada;
 
-    //  ----------  GETTERS & SETTERS  ----------
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+
+@Getter
+@Setter
+
+@Entity
+@Table(name="parada")
+public class Parada {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column(name="nombre_parada")
+    private String nombre;
+
+    @Column(name = "distancia_sig_parada")
+    private Double distanciaSigParada;
+
+    @Column(name = "distancia_ant_parada")
+    private Double distanciaAntParada;
+
+    @Column(name = "indice")
+    private Integer indice;
+
 
     public Parada(String nombreParada) {
         this.nombre = nombreParada;
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getDistanciaSigParada() {
-        return this.distanciaSigParada;
-    }
-
-    public void setDistanciaSigParada(int distanciaSigParada) {
-        this.distanciaSigParada = distanciaSigParada;
-    }
-
-    public Integer getDistanciaAntParada() { return this.distanciaAntParada; }
-
-    public void setDistanciaAntParada(Integer distanciaAntParada) { this.distanciaAntParada = distanciaAntParada; }
 }

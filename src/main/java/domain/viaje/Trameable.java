@@ -1,15 +1,34 @@
 package domain.viaje;
 
-import domain.Direccion;
 import domain.entidades.Persona;
+import lombok.Getter;
+import lombok.Setter;
 
-public interface Trameable {
-    public Double consumoPorKM();
-    public Double calcularDistanciaTramo();
+import javax.persistence.*;
 
-    public boolean getEsCompartido();
+@Getter
+@Setter
 
-    public Persona getPropietario();
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name="tramo")
+public abstract class Trameable {
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-    public Double calculoHC(Persona persona);
+    @Column (name = "tipo_tramo")
+    private String tipoTramo;
+
+    // Returns genericos para poder hacer el override (Previamente era una interfaz).
+
+    public abstract Double consumoPorKM();
+
+    public abstract Double calcularDistanciaTramo();
+
+    public abstract boolean getEsCompartido();
+
+    public abstract Persona getPropietario();
+
+    public abstract Double calculoHC(Persona persona);
 }

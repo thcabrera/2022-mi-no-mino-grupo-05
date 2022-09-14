@@ -1,6 +1,6 @@
 package domain.viaje;
 
-import domain.viaje.publico.LColectivo;
+import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import domain.viaje.publico.sentido.SentidoRecorrido;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PublicoTest {
     private Parada cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi;
-    private LColectivo tresSiete;
+    private Linea tresSiete;
     private List<Parada> paradasIntermedias;
     private Parada unaParada;
     private Parada otraParada;
@@ -23,7 +23,7 @@ public class PublicoTest {
 
     @BeforeEach
     void setupThis()  {
-        tresSiete = new LColectivo("37", 10.0); // creo q no sirve para nada el consumoPorKM
+       // tresSiete = new Linea(""); // creo q no sirve para nada el consumoPorKM
         unaParada = new Parada("UnaParada");
         otraParada = new Parada("OtraParada");
         cortina = new Parada("Cortina");
@@ -32,13 +32,13 @@ public class PublicoTest {
         mozart = new Parada("Mozart");
         xokas = new Parada("Xokas");
         lenny_y_Alberdi = new Parada("Lenny");
-        cortina.setDistanciaSigParada(100);
-        marmokix.setDistanciaSigParada(100);
-        corrientes.setDistanciaSigParada(100);
-        mozart.setDistanciaSigParada(100);
-        marmokix.setDistanciaAntParada(100);
-        corrientes.setDistanciaAntParada(100);
-        mozart.setDistanciaAntParada(100);
+        cortina.setDistanciaSigParada(100.0);
+        marmokix.setDistanciaSigParada(100.0);
+        corrientes.setDistanciaSigParada(100.0);
+        mozart.setDistanciaSigParada(100.0);
+        marmokix.setDistanciaAntParada(100.0);
+        corrientes.setDistanciaAntParada(100.0);
+        mozart.setDistanciaAntParada(100.0);
         tramoPublicoDeIda = new TPublico(cortina, xokas, tresSiete);
         tramoPublicoDeVuelta = new TPublico(mozart, cortina, tresSiete);
 
@@ -80,14 +80,14 @@ public class PublicoTest {
     public void recorridoPublicoDeIdaTieneUnaDistancia(){
         tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
 
-        Assertions.assertEquals(400, tramoPublicoDeIda.calcularDistanciaTramo());
+        Assertions.assertEquals(400.0, tramoPublicoDeIda.calcularDistanciaTramo());
     }
 
     @Test
     public void recorridoPublicoDeVueltaTieneUnaDistancia(){
         tresSiete.agregarParadas(cortina, marmokix, corrientes, mozart, xokas, lenny_y_Alberdi);
 
-        Assertions.assertEquals(300, tramoPublicoDeVuelta.calcularDistanciaTramo());
+        Assertions.assertEquals(300.0, tramoPublicoDeVuelta.calcularDistanciaTramo());
     }
 
 }

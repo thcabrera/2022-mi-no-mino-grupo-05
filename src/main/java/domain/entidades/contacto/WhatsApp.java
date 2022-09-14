@@ -1,15 +1,18 @@
 package domain.entidades.contacto;
 
-public class WhatsApp implements Contacto {
+import domain.services.whatsApp.WhatsappConcreteAdapter;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
-    private String numero;
+@Entity
+@DiscriminatorValue(value = "WhatsApp")
+public class WhatsApp extends Contacto {
 
-    public WhatsApp(String numero){
-        this.numero = numero;
+    public WhatsApp(String contacto){
+        this.contacto = contacto;
     }
 
-
     public void notificar(Mensaje mensaje){
-        //todo
+        new WhatsappConcreteAdapter().enviarMensaje(this.contacto, mensaje);
     }
 }

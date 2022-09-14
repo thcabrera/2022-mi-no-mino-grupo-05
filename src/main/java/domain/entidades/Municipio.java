@@ -3,19 +3,40 @@ package domain.entidades;
 import domain.mediciones.consumos.Periodicidad;
 import lombok.Getter;
 import lombok.Setter;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 
 // un municipio tiene varias organizaciones
 // no le interesa al municipio saber de que Provincia es
+@Getter
+@Entity
+@Table(name = "municipio")
 public class Municipio extends Sector{
 
-    @Getter
     @Setter
+    @Transient
     private ArrayList<Organizacion> organizaciones;
 
+    @ManyToOne
+    @JoinColumn(name="provincia", referencedColumnName = "id")
+    private Provincia provincia;
+
+    // ----------------------- CONSTRUCTORES PARA LOS TESTS -------------------------- //
+
+    public Municipio(){
+
+    }
+
     public Municipio(ArrayList<Organizacion> organizaciones){
-        setOrganizaciones(organizaciones);
+        this.organizaciones = organizaciones;
+    }
+
+    // --------------------------------------------------------------------------
+
+    public ArrayList<Organizacion> obtenerOrganizaciones(){
+        // TODO
+        // this.organizaciones = hacer query :)
+        return null;
     }
 
     @Override

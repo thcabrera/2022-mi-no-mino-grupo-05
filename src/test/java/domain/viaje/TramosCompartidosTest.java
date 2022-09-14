@@ -4,15 +4,17 @@ import domain.Direccion;
 import domain.entidades.*;
 import domain.viaje.privado.contratado.Servicio;
 import domain.viaje.privado.contratado.TContratado;
-import domain.viaje.privado.contratado.limpio.TLimpio;
-import domain.viaje.publico.LColectivo;
+import domain.viaje.privado.limpio.TLimpio;
+import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import domain.viaje.publico.TPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class TramosCompartidosTest {
     private Persona tito, lenny;
@@ -28,7 +30,7 @@ public class TramosCompartidosTest {
     private TPublico casa_a_terminal;
     private TContratado terminal_a_org1;
     private TLimpio org1_a_org2;
-    private LColectivo linea34;
+    private Linea linea34;
     private Parada cortina;
     private Parada retiro;
 
@@ -38,10 +40,10 @@ public class TramosCompartidosTest {
         tito = new Persona("Augusto", "Lienard", 43815396, Documentacion.DNI);
         lenny = new Persona("Lenny", "Lecaldare", 43123123, Documentacion.DNI);
 
-        bsas = new Provincia(new ArrayList<>());
+        bsas = new Provincia(new HashSet<>());
         villaSoldati = new Municipio(new ArrayList<>());
 
-        dirLennySW = new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
+        dirLennySW = mock(Direccion.class); //new Direccion("MOZART", 1999, bsas, villaSoldati, 241); // soladati.id = 5379
         empresa = new TipoOrg("Empresa");
         empresaDelSectorSecundario = new Clasificacion();
         lennySoftware = new Organizacion("SA", empresa, dirLennySW, empresaDelSectorSecundario);
@@ -49,7 +51,7 @@ public class TramosCompartidosTest {
         ejecutivo = new Area("Ejecutivo", lennySoftware);
         coaching = new Area("Coaching", lennySoftware);
 
-        dirMarmoSW = new Direccion("AVENIDA LACARRA", 1500, bsas, villaSoldati, 241);
+        dirMarmoSW = mock(Direccion.class); //new Direccion("AVENIDA LACARRA", 1500, bsas, villaSoldati, 241);
 
         lenny.solicitarAlta(lennySoftware, ejecutivo);
         lennySoftware.aceptarEmpleado(lenny, ejecutivo);

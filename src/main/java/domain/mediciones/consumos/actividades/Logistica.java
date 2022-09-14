@@ -6,13 +6,26 @@ import domain.mediciones.consumos.tipoConsumo.ProductoTransportado;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
+
+@Entity
+@DiscriminatorValue(value="logistica")
 public class Logistica extends Actividad {
 
+    @Enumerated(EnumType.STRING)  //DUDA DE SI ESTA BIEN !!!
     private ProductoTransportado categoria; //MATERIA_PRIMA
+
+    @OneToOne
+    @JoinColumn(name = "medio_transporte_id", referencedColumnName = "id")
     private MedioTransporte medioTransporte; //MEDIO_TRANSPORTE	CAMION	MENSUAL	jun-22
+
+    @Column(name = "distancia_media")
     private Double distanciaMedia;
+
+    @Column(name = "peso")
     private Double peso;                      //PESO	800	MENSUAL	jun-22
 
     public Logistica(Periodicidad periodicidad, ProductoTransportado categoria,

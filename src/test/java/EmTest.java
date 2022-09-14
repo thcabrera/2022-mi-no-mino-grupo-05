@@ -1,45 +1,36 @@
-package test;
-
-import db.EntityManagerHelper;
-import entities.Usuario;
+import domain.db.EntityManagerHelper;
+import domain.entidades.TipoOrg;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class EmTest {
     @Test
-    public  void persistirUsuario(){
-        Usuario usuario = new Usuario();
-
-        usuario.setNombre("Eze");
-        usuario.setApellido("Alfonso");
-        usuario.setLegajo(1111111);
+    public  void persistirTipoOrg(){
+        TipoOrg tipo = new TipoOrg("criminal");
 
         EntityManagerHelper.beginTransaction();
-        EntityManagerHelper.getEntityManager().persist(usuario); // Se prepara el INSERT
+        EntityManagerHelper.getEntityManager().persist(tipo); // Se prepara el INSERT
         EntityManagerHelper.commit(); // Se ejecutan todas las lineas
 
     }
 
     @Test
-    public void actualizarUsuario(){
+    public void actualizarTipoOrg(){
 
         EntityManagerHelper.beginTransaction();
 
         // Como recuperaaria el id para realizar el update
-        Usuario usuario = EntityManagerHelper.entityManager().find(Usuario.class, 1);
+        TipoOrg tipo = EntityManagerHelper.entityManager().find(TipoOrg.class, 1);
 
-        usuario.setNombre("Ezequiel");
-        EntityManagerHelper.getEntityManager().merge(usuario);
+        EntityManagerHelper.getEntityManager().merge(tipo);
 
         EntityManagerHelper.commit();
 
     }
     @Test
-    public  void recuperarUsuario(){
-        Usuario eze = (Usuario) EntityManagerHelper.createQuery("from Usuario where nombre='Eze'").getSingleResult();
-        Assert.assertEquals("Eze", eze.getNombre());
-
-        System.out.println("Nombre: " + eze.getNombre() + "Apellido: " + eze.getApellido());
-        System.out.println("Nombre: " + eze.getNombre() + "Apellido: " + eze.getLegajo());
+    public  void recuperarTipoOrg(){
+        TipoOrg tipo = (TipoOrg) EntityManagerHelper.createQuery("from TipoOrg where tipoOrg='criminal'").getSingleResult();
+        Assert.assertEquals("criminal", tipo.getTipoOrg());
+        System.out.println("Descripcion: " + tipo.getTipoOrg());
     }
 }

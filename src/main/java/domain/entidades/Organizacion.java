@@ -50,6 +50,9 @@ public class Organizacion {
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Contacto> contactos;
 
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
+    private List<HuellaDeCarbono> huellasDeCarbono;
+
     //  ----------  GETTERS & SETTERS  ----------
 
     public Organizacion(String razonSocial, TipoOrg tipo, Direccion ubicacion, Clasificacion clasificacion) {

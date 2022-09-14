@@ -12,7 +12,7 @@ public abstract class Sector {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    protected Integer id;
 
     public abstract Double calculoHC(Periodicidad periodo);
 

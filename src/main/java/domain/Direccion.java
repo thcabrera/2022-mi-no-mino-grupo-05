@@ -28,20 +28,20 @@ public class Direccion {
     @JoinColumn(name = "localidad_id", referencedColumnName = "id")
     private Localidad localidad;
 
+    @ManyToOne
+    @JoinColumn(name = "municipio_id", referencedColumnName = "id")
+    private Municipio municipio;
+
+    @ManyToOne
+    @JoinColumn(name = "provincia_id", referencedColumnName = "id")
+    private Provincia provincia;
+
     //  ----------  GETTERS & SETTERS  ----------
 
     public Direccion(String calle, Integer altura, Localidad localidad) {
         setCalle(calle);
         setAltura(altura);
         setLocalidad(localidad);
-    }
-
-    public Municipio getMunicipio(){
-        return this.localidad.getMunicipio();
-    }
-
-    public Provincia getProvincia(){
-        return this.localidad.getMunicipio().getProvincia();
     }
 
 }

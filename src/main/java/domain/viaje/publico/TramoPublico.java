@@ -1,7 +1,7 @@
 package domain.viaje.publico;
 
 import domain.entidades.Persona;
-import domain.viaje.Trameable;
+import domain.viaje.Tramo;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name="tramo_publico")
-public class TPublico extends Trameable {
+public class TramoPublico extends Tramo {
 
     @ManyToOne
     @JoinColumn(name = "parada_inicio_id", referencedColumnName = "id")
@@ -30,7 +30,7 @@ public class TPublico extends Trameable {
     private SentidoRecorrido sentido;
 
     //  ----------  GETTERS & SETTERS  ----------
-    public TPublico(Parada paradaInicio, Parada paradaFin, Linea linea) {
+    public TramoPublico(Parada paradaInicio, Parada paradaFin, Linea linea) {
         this.paradaInicio = paradaInicio;
         this.paradaFin = paradaFin;
         this.linea = linea;

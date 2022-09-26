@@ -2,12 +2,16 @@ package domain.viaje.privado.contratado;
 
 import domain.Direccion;
 import domain.entidades.Persona;
-import domain.viaje.privado.TPrivado;
+import domain.services.calculoDistancia.ServicioDistancia;
+import domain.services.calculoDistancia.entities.Distancia;
+import domain.viaje.Tramo;
+import lombok.SneakyThrows;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="tramo_contratado")
-public class TContratado extends TPrivado {
+public class TramoContratado extends Tramo {
 
     @ManyToOne
     @JoinColumn(name = "tipo_servicio_id", referencedColumnName = "id")
@@ -32,7 +36,7 @@ public class TContratado extends TPrivado {
     private Double consumoPorKM;
 
     //  ----------  GETTERS & SETTERS  ----------
-    public TContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin, boolean esCompartido) {
+    public TramoContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin, boolean esCompartido) {
         this.tipoTransporte = tipoTransporte;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
@@ -69,4 +73,15 @@ public class TContratado extends TPrivado {
     public boolean getEsCompartido(){
         return esCompartido;
     }
+
+    @Override
+    public Double calcularDistanciaTramo() {
+        return this.distanciaTramo(new ServicioDistancia()).valor;
+    }
+
+    @SneakyThrows
+    public Distancia distanciaTramo(ServicioDistancia servicio){
+        return servicio.calcularDistanciaTramo(this.direccionInicio, this.direccionFin);
+    }
+
 }

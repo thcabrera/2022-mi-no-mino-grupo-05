@@ -1,6 +1,6 @@
 package domain.entidades;
 
-import domain.viaje.Trameable;
+import domain.viaje.Tramo;
 import domain.viaje.Trayecto;
 import lombok.Getter;
 import lombok.Setter;
@@ -62,26 +62,26 @@ public class Persona {
 
     //  ----------  TRAYECTOS  ----------
 
-    public void darDeAltaTrayecto(Trameable ... tramos){
+    public void darDeAltaTrayecto(Tramo... tramos){
         Trayecto trayecto = crearTrayectoVacio();
         trayecto.agregarTramos(tramos);
         trayectos.add(trayecto);
     }
 
     public Trayecto crearTrayectoVacio(){
-        List<Trameable> tramos = new ArrayList<Trameable>();
+        List<Tramo> tramos = new ArrayList<Tramo>();
         return new Trayecto(tramos);
     }
 
-    public List<Trameable> getTramos(){
-        List<Trameable> tramos = new ArrayList<Trameable>();
+    public List<Tramo> getTramos(){
+        List<Tramo> tramos = new ArrayList<Tramo>();
         this.trayectos.forEach(trayecto -> tramos.addAll(trayecto.getTramos()));
 
         return tramos;
     }
 
-    public List<Trameable> getTramosCompartidosPropios(){
-        List<Trameable> tramos = new ArrayList<Trameable>();
+    public List<Tramo> getTramosCompartidosPropios(){
+        List<Tramo> tramos = new ArrayList<Tramo>();
         this.trayectos.forEach(trayecto -> tramos.addAll(trayecto.getTramos()));
 
         return tramos.stream()
@@ -105,8 +105,8 @@ public class Persona {
     //      2- tramoSeleccionado = seleccionarTramo(tramo);
     //      3- marmoTrayecto.add(tramoSeleccionado);
 
-    public List<Trameable> getTramosCompartidos(Organizacion organizacion){
-        List<Trameable> tramosCompartidos = organizacion.getTramosCompartidos();
+    public List<Tramo> getTramosCompartidos(Organizacion organizacion){
+        List<Tramo> tramosCompartidos = organizacion.getTramosCompartidos();
         return tramosCompartidos;
     }
 

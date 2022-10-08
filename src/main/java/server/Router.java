@@ -8,6 +8,8 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
 import spark.utils.HandlebarsTemplateEngineBuilder;
 
+import static spark.Spark.staticFiles;
+
 public class Router {
     private static HandlebarsTemplateEngine engine;
 

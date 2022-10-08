@@ -19,7 +19,7 @@ public class OrganizacionesController {
         return new ModelAndView(new HashMap<String, Object>() {{
             put("servicio", idBuscado);
 
-        }}, "organizaciones/organziacion.hbs");
+        }}, "organizaciones/organizacion.hbs");
 
     }
 

@@ -1,0 +1,56 @@
+:root {
+    --middle-blue-green: #98dbd0ff;
+    --keppel: #13c5adff;
+    --space-cadet: #2c3c5cff;
+    --cultured: #f3f3f3ff;
+    --roman-silver: #7c8595ff;
+}
+
+html {
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth; /* transicion  entre hipervinculos*/
+}
+
+.link-circle {
+    color: rgb(13, 66, 172);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-circle:hover {
+    cursor: pointer;
+    color: var(--keppel);
+}
+
+/* esto le da magia al t limpio */
+.form-section{
+    min-height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section-picture {
+    max-width: 70%;  /* tocar aca para cambiarle el tam a la imagen */
+}
+
+.form-section-img {
+    text-align: center;
+}
+
+.form-group, .form-check{
+    /* gap: 10px; */
+
+    padding-block: 2%;
+}
+
+.solicitud{
+    min-height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 80px;
+    justify-content: center;
+    align-items: center;
+} 

@@ -2,6 +2,7 @@ package server;
 
 import controllers.ControllerDefault;
 import controllers.OrganizacionesController;
+import controllers.UserController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
@@ -27,10 +28,12 @@ public class Router {
     private static void configure(){
         ControllerDefault controllerDefault= new ControllerDefault();
         OrganizacionesController organizacionesController = new OrganizacionesController();
+        UserController userController = new UserController();
 
 
-
-
+        Spark.path("/us_principal", () -> {
+            Spark.get("", userController::pantallaPrincipal, engine);
+        });
 
         Spark.get("/hola", controllerDefault::saludoController);
         Spark.get("/saluda", (request, response) -> "hola" + request.queryParams("nombre"));

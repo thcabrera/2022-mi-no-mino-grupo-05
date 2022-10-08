@@ -43,5 +43,8 @@ public class Router {
         Spark.path("/organizaciones", ()-> {
             Spark.get("/:id", organizacionesController::mostrar, engine);
         });
+
+        // configure image paths
+        Spark.get("/hola", controllerDefault::saludoController);
     }
 }

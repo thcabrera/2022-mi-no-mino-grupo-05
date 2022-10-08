@@ -1,5 +1,5 @@
 package test;
-
+/*
 import db.EntityManagerHelper;
 import entities.Usuario;
 import org.junit.Assert;
@@ -43,3 +43,4 @@ public class EmTest {
         System.out.println("Nombre: " + eze.getNombre() + "Apellido: " + eze.getLegajo());
     }
 }
+*/

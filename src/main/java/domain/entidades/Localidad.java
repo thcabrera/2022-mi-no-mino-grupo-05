@@ -25,5 +25,9 @@ public class Localidad {
     public Localidad(Municipio municipio){
         this.municipio = municipio;
     }
+    public Localidad(Municipio municipio, String descripcion){
+        this.municipio = municipio;
+        this.descripcion = descripcion;
+    }
 
 }

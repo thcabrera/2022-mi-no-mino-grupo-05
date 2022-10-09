@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HC - DREAM TEAM 😎</title>
+    <link rel="icon" type="image/png" href="../../../../../../maquetado_web_dds/resources/hc.png"/>
+    <link rel="stylesheet" href="../../../../../../maquetado_web_dds/styles/navbar-base.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous">
+    </script>
+    <script> 
+    $(function(){
+      $("#header").load("../shared/us-header.html");
+      $("#footer").load("../shared/footer.html");
+      $("#partida").load("../shared/direccion_partida.html");
+      $("#destino").load("../shared/direccion_destino.html");
+    });
+    </script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- User Navbar -->
+    <div id="header"></div>
+
+    <section class="form-section container">
+      <form action="tramo-particular.html" method="POST">
+      <div class="form d-flex flex-column">
+        <h1 style="margin-top: 20px">Registro Tramo Contratado</h1>
+        <!-- <h3>Registro Tramo Limpio</h3> -->
+        
+        <div id="partida"></div>
+
+        <div id="destino"></div>
+        
+      </div>
+
+          <!-- <label for="exampleInputEmail1">Partida</label>
+          <input type="text" class="form-control" name="partida"  placeholder="Direccion de partida...">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Llegada</label>
+          <input type="text" class="form-control" name="llegada"  placeholder="Direccion de llegada...">
+        </div> -->
+        <div class="form-group mt-2">
+          <label for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Tipo de Servicio</label>
+          <br>
+          <select class="custom-select" name="tipoServicio" required>
+            <option value="">Seleccione tipo de servicio...</option>
+            <option value="1">Moto</option>
+            <option value="2">Auto</option>
+            <option value="3">Camioneta</option>
+          </select>
+          <div class="invalid-feedback">Example invalid custom select feedback</div>
+
+        </div>
+
+        <div class="form-group mt-2">
+          <label class = "font-weight-bold pt-2" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Organización a la que se dirige o de la que regresa</label>
+          <br>
+          <select class="custom-select" name="organización"   required>
+            
+            <!-- todo: hacer un get de mis organizaciones xd y desplegarlas -->
+            <option value="">Seleccione Organización...</option>
+          </select>
+          <br><small id="org-help" class="form-text text-muted">Si va de una a otra, seleccionar la de destino</small>
+
+        </div>
+          <!-- <div class="invalid-feedback">Example invalid custom select feedback</div> -->
+
+        <div class="form-check">
+          <label class="form-check-label" for="exampleCheck1">¿Es Compartido?</label>
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        </div>
+        <button type="submit" class="btn btn-dark"  style="margin-bottom: 2%;" name="esCompartido">Guardar tramo</button>
+      </form> 
+
+      </div>
+      <figure class="form-section-img">
+        <img src="images/undraw_car_in_route.svg" class="form-section-picture" alt="girl_ride_bike">
+      </figure>
+
+    </section>
+    <!-- Footer -->
+    <div id="footer" class="mt-auto"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>

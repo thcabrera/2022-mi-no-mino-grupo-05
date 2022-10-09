@@ -26,6 +26,9 @@ public class Municipio extends Sector{
     public Municipio(){
 
     }
+    public Municipio(Provincia provincia){
+        this.provincia = provincia;
+    }
 
     public Municipio(ArrayList<Organizacion> organizaciones){
         this.organizaciones = organizaciones;

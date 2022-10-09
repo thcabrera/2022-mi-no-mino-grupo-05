@@ -2,6 +2,7 @@ package server;
 
 import controllers.ControllerDefault;
 import controllers.OrganizacionesController;
+import controllers.TrayectosController;
 import controllers.UserController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -31,12 +32,28 @@ public class Router {
         ControllerDefault controllerDefault= new ControllerDefault();
         OrganizacionesController organizacionesController = new OrganizacionesController();
         UserController userController = new UserController();
+        TrayectosController trayectosController = new TrayectosController();
 
-
+        /*----------- user ---------- */
         Spark.path("/us_principal", () -> {
             Spark.get("", userController::pantallaPrincipal, engine);
         });
 
+        /*----------- Trayecto y tramos ---------- */
+        Spark.path("/us_registrar_trayecto", () -> {
+            Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);
+        });
+
+        Spark.path("/us_t_limpio", () -> {
+            Spark.get("", trayectosController::pantallaRegistrarTramoLimpio, engine);
+            Spark.post("", trayectosController::guardarTramoLimpio);
+        });
+
+
+
+
+
+        /*----------- Ejemplos ---------- */
         Spark.get("/hola", controllerDefault::saludoController);
         Spark.get("/saluda", (request, response) -> "hola" + request.queryParams("nombre"));
 

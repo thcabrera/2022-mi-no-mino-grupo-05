@@ -2,12 +2,16 @@ package domain.viaje.privado.particular;
 
 import domain.Direccion;
 import domain.entidades.Persona;
-import domain.viaje.privado.TPrivado;
+import domain.services.calculoDistancia.ServicioDistancia;
+import domain.services.calculoDistancia.entities.Distancia;
+import domain.viaje.Tramo;
+import lombok.SneakyThrows;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="tramo_particular")
-public class TParticular extends TPrivado {
+public class TramoParticular extends Tramo {
 
     @ManyToOne
     @JoinColumn(name = "tipo_combustible_id", referencedColumnName = "id")
@@ -34,9 +38,17 @@ public class TParticular extends TPrivado {
 
     //  ----------  GETTERS & SETTERS  ----------
 
-    public TParticular(Combustible tipoCombustible, /*TipoParticular tipoParticular,*/Direccion direccionInicio, Direccion direccionFin, Boolean esCompartido) {
+    public TramoParticular(Combustible tipoCombustible, TipoParticular tipoParticular, Direccion direccionInicio, Direccion direccionFin, Boolean esCompartido) {
         this.tipoCombustible = tipoCombustible;
-//        this.tipoParticular = tipoParticular;
+        this.tipoParticular = tipoParticular;
+        this.direccionInicio = direccionInicio;
+        this.direccionFin = direccionFin;
+        this.esCompartido = esCompartido;
+        this.propietario = null;
+    }
+
+    public TramoParticular(Combustible tipoCombustible, Direccion direccionInicio, Direccion direccionFin, Boolean esCompartido) {
+        this.tipoCombustible = tipoCombustible;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
         this.esCompartido = esCompartido;
@@ -44,8 +56,8 @@ public class TParticular extends TPrivado {
     }
 
     @Override
-    public Double calculoHC(Persona persona){
-        if(this.propietario == persona){
+    public Double calculoHC(Persona persona) {
+        if (this.propietario == persona) {
             return this.consumoPorKM() * this.calcularDistanciaTramo();
         }
         return 0.0;
@@ -57,7 +69,7 @@ public class TParticular extends TPrivado {
     }
 
     @Override
-    public boolean getEsCompartido(){
+    public boolean getEsCompartido() {
         return esCompartido;
     }
 
@@ -67,18 +79,17 @@ public class TParticular extends TPrivado {
 
     //  ----------  CONSUMO  ----------
     @Override
-    public Double consumoPorKM(){
+    public Double consumoPorKM() {
         return this.tipoCombustible.getConsumo() * this.calcularDistanciaTramo();
     }
 
-    //  ----------  CALCULO DE DISTANCIA  ----------
-//    @Override
-//    public Double calcularDistanciaTramo() {
-//        return this.distanciaTramo(new ServicioDistancia()).valor;
-//    }
-//
-//    @SneakyThrows //????????????????
-//    public Distancia distanciaTramo(ServicioDistancia servicio){
-//        return servicio.calcularDistanciaTramo(this.direccionInicio, this.direccionFin);
-//    }
+    @Override
+    public Double calcularDistanciaTramo() {
+        return this.distanciaTramo(new ServicioDistancia()).valor;
+    }
+
+    @SneakyThrows
+    public Distancia distanciaTramo(ServicioDistancia servicio) {
+        return servicio.calcularDistanciaTramo(this.direccionInicio, this.direccionFin);
+    }
 }

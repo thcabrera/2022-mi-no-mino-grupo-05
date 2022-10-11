@@ -4,10 +4,10 @@ import domain.Direccion;
 import domain.entidades.*;
 import domain.viaje.Trayecto;
 import domain.viaje.privado.particular.Combustible;
-import domain.viaje.privado.particular.TParticular;
+import domain.viaje.privado.particular.TramoParticular;
 import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
-import domain.viaje.publico.TPublico;
+import domain.viaje.publico.TramoPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,9 +19,9 @@ public class TrayectosHCTest {
     Parada parada1;
     Parada parada2;
     Parada parada3;
-    TPublico tramoPublico;
+    TramoPublico tramoPublico;
     Linea treintaYCuatro;
-    TParticular tramoCompartido;
+    TramoParticular tramoCompartido;
     Persona normal;
     Persona propietario;
     Persona noPropietario;
@@ -57,11 +57,11 @@ public class TrayectosHCTest {
 
        // treintaYCuatro = new LColectivo("34", 100.0);
         treintaYCuatro.agregarParadas(parada1, parada2, parada3);
-        tramoPublico = new TPublico(parada1, parada2, treintaYCuatro);
+        tramoPublico = new TramoPublico(parada1, parada2, treintaYCuatro);
 
         allinol = new Combustible();
         
-        tramoCompartido = new TParticular(allinol, direccion1, direccion2, true);
+        tramoCompartido = new TramoParticular(allinol, direccion1, direccion2, true);
         tramoCompartido.setPropietario(propietario);
     }
 

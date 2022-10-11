@@ -3,11 +3,11 @@ package domain.viaje;
 import domain.Direccion;
 import domain.entidades.*;
 import domain.viaje.privado.contratado.Servicio;
-import domain.viaje.privado.contratado.TContratado;
-import domain.viaje.privado.limpio.TLimpio;
+import domain.viaje.privado.contratado.TramoContratado;
+import domain.viaje.privado.limpio.TramoLimpio;
 import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
-import domain.viaje.publico.TPublico;
+import domain.viaje.publico.TramoPublico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,9 +27,9 @@ public class TramosCompartidosTest {
     private Provincia bsas;
     private Municipio villaSoldati;
     // Tramos
-    private TPublico casa_a_terminal;
-    private TContratado terminal_a_org1;
-    private TLimpio org1_a_org2;
+    private TramoPublico casa_a_terminal;
+    private TramoContratado terminal_a_org1;
+    private TramoLimpio org1_a_org2;
     private Linea linea34;
     private Parada cortina;
     private Parada retiro;
@@ -63,10 +63,10 @@ public class TramosCompartidosTest {
         lennySoftware.aceptarEmpleado(tito, ejecutivo);
 
         // carga de trayectos
-        casa_a_terminal = new TPublico(cortina, retiro, linea34);
-        terminal_a_org1 = new TContratado(new Servicio("Remis"), dirMarmoSW, dirLennySW, true);
+        casa_a_terminal = new TramoPublico(cortina, retiro, linea34);
+        terminal_a_org1 = new TramoContratado(new Servicio("Remis"), dirMarmoSW, dirLennySW, true);
         terminal_a_org1.setPropietario(lenny);
-        org1_a_org2 = new TLimpio("Monopatin", dirLennySW, dirMarmoSW);
+        org1_a_org2 = new TramoLimpio("Monopatin", dirLennySW, dirMarmoSW);
     }
 
     @Test

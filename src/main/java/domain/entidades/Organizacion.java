@@ -5,7 +5,7 @@ import domain.entidades.contacto.Contacto;
 import domain.entidades.contacto.Mensaje;
 import domain.mediciones.consumos.Periodicidad;
 import domain.mediciones.consumos.actividades.Actividad;
-import domain.viaje.Trameable;
+import domain.viaje.Tramo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,6 +49,9 @@ public class Organizacion {
 
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Contacto> contactos;
+
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
+    private List<HuellaDeCarbono> huellasDeCarbono;
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -119,8 +122,8 @@ public class Organizacion {
 
     //  ----------  TRAMOS COMPARTIDOS  ----------
     // No me parece que sirva de nada esta funcion
-    public List<Trameable> getTramosCompartidos() {
-        List<Trameable> tramosCompartidos = new ArrayList<Trameable>();
+    public List<Tramo> getTramosCompartidos() {
+        List<Tramo> tramosCompartidos = new ArrayList<Tramo>();
         this.getMiembros().forEach(miembro -> tramosCompartidos.addAll(miembro.getTramos()));
 
         return tramosCompartidos

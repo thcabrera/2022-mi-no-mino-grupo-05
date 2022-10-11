@@ -25,7 +25,7 @@ public class Trayecto {
             joinColumns = @JoinColumn(name = "trayecto_id"),
             inverseJoinColumns = @JoinColumn(name = "tramo_id")
     )
-    private List<Trameable> tramos = new ArrayList<Trameable>();
+    private List<Tramo> tramos = new ArrayList<Tramo>();
 
     @ManyToOne()
     @JoinColumn(name="org_id", referencedColumnName = "id")
@@ -37,17 +37,17 @@ public class Trayecto {
 
     //  ----------  GETTERS & SETTERS  ----------
 
-    public Trayecto(List<Trameable> tramos) {
+    public Trayecto(List<Tramo> tramos) {
         this.tramos = tramos;
     }
 
     //  ----------  AGREGAR TRAMOS  ----------
 
-    public void agregarTramos(Trameable ... tramos){
+    public void agregarTramos(Tramo... tramos){
         Collections.addAll(this.tramos, tramos);
     }
 
-    public List<Trameable> getTramos(){
+    public List<Tramo> getTramos(){
         return tramos;
     }
 

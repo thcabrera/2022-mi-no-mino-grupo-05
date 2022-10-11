@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="tramo")
-public abstract class Trameable {
+public abstract class Tramo {
     @Id
     @GeneratedValue
     private Integer id;

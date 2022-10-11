@@ -1,4 +1,4 @@
-package db;
+package domain.db;
 
 import javax.persistence.*;
 import java.util.function.Supplier;

@@ -9,7 +9,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "provincia")
+@DiscriminatorValue("PROVINCIA")
 // una provincia tiene varios municipios
 public class Provincia extends Sector{
 

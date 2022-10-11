@@ -10,7 +10,7 @@ import java.util.ArrayList;
 // no le interesa al municipio saber de que Provincia es
 @Getter
 @Entity
-@Table(name = "municipio")
+@DiscriminatorValue("MUNICIPIO")
 public class Municipio extends Sector{
 
     @Setter
@@ -18,7 +18,7 @@ public class Municipio extends Sector{
     private ArrayList<Organizacion> organizaciones;
 
     @ManyToOne
-    @JoinColumn(name="provincia", referencedColumnName = "id")
+    @JoinColumn(name="provincia_id", referencedColumnName = "id")
     private Provincia provincia;
 
     // ----------------------- CONSTRUCTORES PARA LOS TESTS -------------------------- //
@@ -32,12 +32,6 @@ public class Municipio extends Sector{
     }
 
     // --------------------------------------------------------------------------
-
-    public ArrayList<Organizacion> obtenerOrganizaciones(){
-        // TODO
-        // this.organizaciones = hacer query :)
-        return null;
-    }
 
     @Override
     public Double calculoHC(Periodicidad periodo) {

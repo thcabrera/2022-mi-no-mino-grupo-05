@@ -2,13 +2,16 @@ package domain.viaje.privado.limpio;
 
 import domain.Direccion;
 import domain.entidades.Persona;
-import domain.viaje.privado.TPrivado;
+import domain.services.calculoDistancia.ServicioDistancia;
+import domain.services.calculoDistancia.entities.Distancia;
+import domain.viaje.Tramo;
+import lombok.SneakyThrows;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="tramo_limpio")
-public class TLimpio extends TPrivado {
+public class TramoLimpio extends Tramo {
 
     @Column(name="tipo")
     public String tipo;
@@ -23,7 +26,7 @@ public class TLimpio extends TPrivado {
 
     //  ----------  GETTERS & SETTERS  ----------
 
-    public TLimpio(String tipo, Direccion direccionInicio, Direccion direccionFin) {
+    public TramoLimpio(String tipo, Direccion direccionInicio, Direccion direccionFin) {
         this.tipo = tipo;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
@@ -45,6 +48,16 @@ public class TLimpio extends TPrivado {
     @Override
     public Double consumoPorKM(){
         return 0.0;
+    }
+
+    @Override
+    public Double calcularDistanciaTramo() {
+        return this.distanciaTramo(new ServicioDistancia()).valor;
+    }
+
+    @SneakyThrows
+    public Distancia distanciaTramo(ServicioDistancia servicio){
+        return servicio.calcularDistanciaTramo(this.direccionInicio, this.direccionFin);
     }
 
 }

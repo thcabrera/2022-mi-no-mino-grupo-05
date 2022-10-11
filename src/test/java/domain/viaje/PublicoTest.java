@@ -2,7 +2,7 @@ package domain.viaje;
 
 import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
-import domain.viaje.publico.TPublico;
+import domain.viaje.publico.TramoPublico;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,8 +18,8 @@ public class PublicoTest {
     private Parada unaParada;
     private Parada otraParada;
 
-    private TPublico tramoPublicoDeIda;
-    private TPublico tramoPublicoDeVuelta;
+    private TramoPublico tramoPublicoDeIda;
+    private TramoPublico tramoPublicoDeVuelta;
 
     @BeforeEach
     void setupThis()  {
@@ -39,8 +39,8 @@ public class PublicoTest {
         marmokix.setDistanciaAntParada(100.0);
         corrientes.setDistanciaAntParada(100.0);
         mozart.setDistanciaAntParada(100.0);
-        tramoPublicoDeIda = new TPublico(cortina, xokas, tresSiete);
-        tramoPublicoDeVuelta = new TPublico(mozart, cortina, tresSiete);
+        tramoPublicoDeIda = new TramoPublico(cortina, xokas, tresSiete);
+        tramoPublicoDeVuelta = new TramoPublico(mozart, cortina, tresSiete);
 
         paradasIntermedias = new ArrayList<>();
     }

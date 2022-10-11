@@ -1,6 +1,9 @@
 package domain.entidades;
 
 import domain.conversores.LocalDateAttributeConverter;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -13,10 +16,14 @@ public class HuellaDeCarbono {
     @GeneratedValue
     private Integer id;
 
+    @Getter
+    @Setter
     @Convert(converter = LocalDateAttributeConverter.class)
     @Column(name = "fecha_medicion")
     private LocalDate fechaMedicion;
 
+    @Getter
+    @Setter
     @Column(name = "valor")
     private Double valor;
 

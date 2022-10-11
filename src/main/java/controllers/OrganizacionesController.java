@@ -4,7 +4,7 @@ import domain.entidades.Organizacion;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-
+import domain.db.EntityManagerHelper;
 import java.util.HashMap;
 
 public class OrganizacionesController {
@@ -13,7 +13,7 @@ public class OrganizacionesController {
     public ModelAndView mostrar(Request request, Response response) {
         String idBuscado = request.params("id");
 
-        Organizacion organizacion = db.EntityManagerHelper
+        Organizacion organizacion = EntityManagerHelper
                 .getEntityManager()
                 .find(Organizacion.class, new Integer(idBuscado));
         return new ModelAndView(new HashMap<String, Object>() {{

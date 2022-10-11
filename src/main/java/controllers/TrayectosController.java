@@ -4,7 +4,7 @@ import domain.Direccion;
 import domain.entidades.Localidad;
 import domain.entidades.Municipio;
 import domain.entidades.Provincia;
-import domain.viaje.privado.limpio.TLimpio;
+import domain.viaje.privado.limpio.TramoLimpio;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -24,7 +24,7 @@ public class TrayectosController {
         Direccion partida = this.cargarDireccion(request, "partida");
 
         Direccion destino = this.cargarDireccion(request, "destino");
-        TLimpio nuevoTLimpio = new TLimpio("tipo?", partida, destino); // todo: que era el tipo?
+        TramoLimpio nuevoTLimpio = new TramoLimpio("tipo?", partida, destino); // todo: que era el tipo?
 
         //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
 

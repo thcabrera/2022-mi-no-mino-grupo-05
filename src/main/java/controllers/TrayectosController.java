@@ -46,4 +46,28 @@ public class TrayectosController {
 
         return new Direccion(calle, altura, localidad);
     }
+
+
+    /*------------ Tramo Limpio ------------ */
+    public ModelAndView pantallaRegistrarTramoPublico(Request request, Response response) {
+        return new ModelAndView(null, "trayectos/us_t_publico.hbs");
+    }
+    public Response guardarTramoPublico(Request request, Response response) {
+        Direccion partida = this.cargarDireccion(request, "partida");
+
+        Direccion destino = this.cargarDireccion(request, "destino");
+        //TramoContratado tramoContratado = new Contratado("tipo?", partida, destino); // todo: que era el tipo?
+
+        //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
+
+        response.redirect("/us_registrar_trayecto");
+        return response;
+    }
+
+    /* ------- Tramo Contratado ----- */
+    public ModelAndView pantallaRegistrarTramoContratado(Request request, Response response) {
+        return new ModelAndView(null, "trayectos/us_t_contratado_crear.hbs");
+    }
+
+
 }

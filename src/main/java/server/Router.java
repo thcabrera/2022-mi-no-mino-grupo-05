@@ -35,20 +35,33 @@ public class Router {
         TrayectosController trayectosController = new TrayectosController();
 
         /*----------- user ---------- */
-        Spark.path("/us_principal", () -> {
-            Spark.get("", userController::pantallaPrincipal, engine);
-        });
+        Spark.path("/user", () -> {
 
-        /*----------- Trayecto y tramos ---------- */
-        Spark.path("/us_registrar_trayecto", () -> {
-            Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);
-        });
+            Spark.path("/principal", () -> {
+                Spark.get("", userController::pantallaPrincipal, engine);
+            });
 
-        Spark.path("/us_t_limpio", () -> {
-            Spark.get("", trayectosController::pantallaRegistrarTramoLimpio, engine);
-            Spark.post("", trayectosController::guardarTramoLimpio);
-        });
+            /*----------- Trayecto y tramos ---------- */
+            Spark.path("/registrar_trayecto", () -> {
+                Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);
+            });
 
+            Spark.path("/t_limpio", () -> {
+                Spark.get("", trayectosController::pantallaRegistrarTramoLimpio, engine);
+                Spark.post("", trayectosController::guardarTramoLimpio);
+            });
+
+            Spark.path("/t_publico", () -> {
+                Spark.get("", trayectosController::pantallaRegistrarTramoPublico, engine);
+                Spark.post("", trayectosController::guardarTramoLimpio);
+            });
+
+            Spark.path("/t_contratado", () -> {
+                Spark.get("", trayectosController::pantallaRegistrarTramoContratado, engine);
+                Spark.post("", trayectosController::guardarTramoLimpio);
+            });
+
+        });
 
 
 

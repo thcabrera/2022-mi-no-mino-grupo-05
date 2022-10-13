@@ -63,6 +63,8 @@ public class Router {
 
         });
 
+        /*----------- Organizaciones ejemplo ---------- */
+        Spark.get("/us_organizaciones", organizacionesController::mostrarTodos, engine);
 
 
 

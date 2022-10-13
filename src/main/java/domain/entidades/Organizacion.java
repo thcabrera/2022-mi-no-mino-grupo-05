@@ -165,4 +165,5 @@ public class Organizacion {
     public void notificar(Mensaje mensaje){
         this.contactos.forEach(c -> c.notificar(mensaje));
     }
+
 }

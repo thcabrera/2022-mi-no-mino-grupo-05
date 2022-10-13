@@ -1,0 +1,51 @@
+{{#partial "contenido"}}
+
+<section class = "container">
+  <div class = "d-flex justify-content-center">
+    <h1 style="margin-top: 20px">Mis organizaciones</h1>
+  </div>
+
+  <br>
+  <div class="row align-items-center border rounded p-2" name="solicitud">
+    <div class="col-auto d-flex justify-content-center"  style="width:33%; font-weight: bold;">
+    Organizacion
+    </div>
+    <div class="col-auto d-flex justify-content-center" style="width:33%; font-weight: bold;">
+    Sector
+    </div>
+  </div>
+{{#each areas}}
+    <div class="row align-items-center border rounded p-2" name="solicitud">
+        <div class="col-auto d-flex justify-content-center"  style="width:33%;">
+            <a value="{{area}}">
+                {{nombre}}
+            </a>
+        </div>
+    <div class="col-auto d-flex justify-content-center" style="width:33%;">
+        <a value="{{area}}">
+            {{organizacion.razonSocial}}
+        </a>
+        <a value="{{area}}">
+            {{this}}
+        </a>
+    </div>
+    <div class="col-auto d-flex justify-content-center" style="width:33%;">
+        <button type="button" class="btn btn-danger">Solicitar baja</button>
+    </div>
+  </div>
+{{/each}}
+  <div class="row align-items-center border rounded p-2" name="solicitud">
+    <div class="col-auto d-flex justify-content-center"  style="width:33%;">
+     Despegar
+    </div>
+    <div class="col-auto d-flex justify-content-center" style="width:33%;">
+     Trainee
+    </div>
+    <div class="col-auto d-flex justify-content-center" style="width:33%;">
+    <button type="button" class="btn btn-danger">Solicitar baja</button>
+    </div>
+  </div>
+
+</section>
+  {{/partial}}
+  {{> ../public/shared/user_base.hbs }}

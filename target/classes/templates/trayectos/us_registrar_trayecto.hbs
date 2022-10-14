@@ -1,98 +1,70 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HC - DREAM TEAM 😎</title>
-    <link rel="icon" type="image/png" href="../../../../../../maquetado_web_dds/resources/hc.png"/>
-    <link rel="stylesheet" href="../../../../../../maquetado_web_dds/styles/navbar-base.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous">
-    </script>
-  <script> 
-  $(function(){
-    $("#header").load("../shared/us-header.html");
-    $("#footer").load("../shared/footer.html");
-  });
-  </script>
-  </head>
-  <body class="d-flex flex-column min-vh-100">    
-    <!-- User Navbar -->
-    <div id="header"></div>
+{{#partial "contenido"}}
 
-    <section class="container">
-      <form action="tramo-particular.html" method="POST">
-        <div class="form d-flex flex-column">
-          <h1 style="margin-top: 20px">Nuevo trayecto</h1>     
-        </div>
-        <div class="form-group">
-          <label class = "font-weight-bold pt-2" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Organización a la que se dirige o de la que regresa</label>
-          <br>
-          <select class="custom-select" name="organización"   required>
-            
-            <!-- todo: hacer un get de mis organizaciones xd y desplegarlas -->
-            <option value="">Seleccione Organización...</option>
-          </select>
-          <br><small id="org-help" class="form-text text-muted">Si va de una a otra, seleccionar la de destino</small>
-        </div>
-        <div class="container">
-          <div class ="row">
-            <div class="col-sm-3">
-              <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-                <div class="card-header">
-                  <h5 class="card-title">Tramo 1</h5>
-                  <hr>
-                </div>
-                <div class="card-body" style="margin-top:-20px">
-                  <p class="card-text" style="font-weight: bold;">Origen:</p>
-                  <p class="card-text">.</p>
-                  <p class="card-text" style="font-weight: bold;">Destino:</p>
-                  <p class="card-text">.</p>
-                  <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-                  <p class="card-text">.</p>
-                </div>
-              </div>
+<section class="container">
+  <form action="tramo-particular.html" method="POST">
+    <div class="form d-flex flex-column">
+      <h1 style="margin-top: 20px">Nuevo trayecto</h1>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold pt-2" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Organización a la que se dirige o de la que regresa</label>
+      <br>
+      <select class="custom-select" name="organización"   required>
+
+        <!-- todo: hacer un get de mis organizaciones xd y desplegarlas -->
+        <option value="">Seleccione Organización...</option>
+      </select>
+      <br><small id="org-help" class="form-text text-muted">Si va de una a otra, seleccionar la de destino</small>
+    </div>
+    <div class="container">
+      <div class ="row">
+        <div class="col-sm-3">
+          <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+            <div class="card-header">
+              <h5 class="card-title">Tramo 1</h5>
+              <hr>
             </div>
-            <div class="col-sm-3">
-              <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-                <div class="card-header">
-                  <h5 class="card-title">Tramo 2</h5>
-                  <hr>
-                </div>
-                <div class="card-body" style="margin-top:-20px">
-                  <p class="card-text" style="font-weight: bold;">Origen:</p>
-                  <p class="card-text">.</p>
-                  <p class="card-text" style="font-weight: bold;">Destino:</p>
-                  <p class="card-text">.</p>
-                  <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-                  <p class="card-text">.</p>
-                </div>
-              </div>
+            <div class="card-body" style="margin-top:-20px">
+              <p class="card-text" style="font-weight: bold;">Origen:</p>
+              <p class="card-text">.</p>
+              <p class="card-text" style="font-weight: bold;">Destino:</p>
+              <p class="card-text">.</p>
+              <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+              <p class="card-text">.</p>
             </div>
           </div>
         </div>
-        <div>
-          <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>
-          <br>
-          <a type="button" href="registrar/publico" class="btn btn-secondary">Tramo público</a>
-          <a type="button" href="registrar/limpio" class="btn btn-secondary">Tramo limpio</a>
-          <a type="button" href="t_particular_unirse.html" class="btn btn-secondary">Tramo particular - Sumarse</a>
-          <a type="button" href="t_particular_crear.html" class="btn btn-secondary">Tramo particular - Crear</a>
-          <a type="button" href="t_contratado_unirse.html" class="btn btn-secondary">Tramo contratado - Sumarse</a>
-          <a type="button" href="contratado" class="btn btn-secondary">Tramo contratado - Crear</a>
+        <div class="col-sm-3">
+          <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+            <div class="card-header">
+              <h5 class="card-title">Tramo 2</h5>
+              <hr>
+            </div>
+            <div class="card-body" style="margin-top:-20px">
+              <p class="card-text" style="font-weight: bold;">Origen:</p>
+              <p class="card-text">.</p>
+              <p class="card-text" style="font-weight: bold;">Destino:</p>
+              <p class="card-text">.</p>
+              <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+              <p class="card-text">.</p>
+            </div>
+          </div>
         </div>
-        <br>
-        <button type="submit" class="btn btn-success" style="margin-bottom:30px">Confirmar trayecto</button>
-      </form> 
+      </div>
+    </div>
+    <div>
+      <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>
+      <br>
+      <a type="button" href="registrar/publico" class="btn btn-secondary">Tramo público</a>
+      <a type="button" href="registrar/limpio" class="btn btn-secondary">Tramo limpio</a>
+      <a type="button" href="t_particular_unirse.html" class="btn btn-secondary">Tramo particular - Sumarse</a>
+      <a type="button" href="t_particular_crear.html" class="btn btn-secondary">Tramo particular - Crear</a>
+      <a type="button" href="t_contratado_unirse.html" class="btn btn-secondary">Tramo contratado - Sumarse</a>
+      <a type="button" href="registrar/contratado" class="btn btn-secondary">Tramo contratado - Crear</a>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success" style="margin-bottom:30px">Confirmar trayecto</button>
+  </form>
 
-    </section>
-    <!-- Footer -->
-    <div id="footer" class="mt-auto"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  </body>
-</html>
-
+</section>
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

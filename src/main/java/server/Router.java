@@ -42,31 +42,42 @@ public class Router {
             });
 
             /*----------- Trayecto y tramos ---------- */
-            Spark.path("/registrar_trayecto", () -> {
-                Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);
+            Spark.path("/trayectos", () -> {
+                Spark.path("/registrar", () -> {
+                    // pantalla principal de registrar
+                    Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);
+                    // limpio
+                    Spark.path("/limpio", () -> {
+                        Spark.get("", trayectosController::pantallaRegistrarTramoLimpio, engine);
+                        Spark.post("", trayectosController::guardarTramoLimpio);
+                    });
+                    // publico
+                    Spark.path("/publico", () -> {
+                        Spark.get("", trayectosController::pantallaRegistrarTramoPublico, engine);
+                        Spark.post("", trayectosController::guardarTramoLimpio);
+                    });
+                    // contratado
+                    Spark.path("/contratado", () -> {
+                        Spark.get("", trayectosController::pantallaRegistrarTramoContratado, engine);
+                        Spark.post("", trayectosController::guardarTramoLimpio);
+                    });
+                });
+                Spark.path("/modificar", () -> {
+                    Spark.get("", (req, resp) -> "Modificar trayectos!");
+                });
             });
 
-            Spark.path("/t_limpio", () -> {
-                Spark.get("", trayectosController::pantallaRegistrarTramoLimpio, engine);
-                Spark.post("", trayectosController::guardarTramoLimpio);
+            /*----------- Organizaciones ejemplo ---------- */
+            Spark.path("/mis_organizaciones", () ->{
+                Spark.get("", organizacionesController::mostrarTodos, engine);
+                Spark.get("/solicitar_alta", (req, response) -> "Solicitando alta!");
             });
 
-            Spark.path("/t_publico", () -> {
-                Spark.get("", trayectosController::pantallaRegistrarTramoPublico, engine);
-                Spark.post("", trayectosController::guardarTramoLimpio);
-            });
+            Spark.get("/reportes", (req, resp) -> "Visualizando reportes! xd");
 
-            Spark.path("/t_contratado", () -> {
-                Spark.get("", trayectosController::pantallaRegistrarTramoContratado, engine);
-                Spark.post("", trayectosController::guardarTramoLimpio);
-            });
+            Spark.get("/ejecutar_calculadora", (req, resp) -> "Ejecutando calculadora!");
 
         });
-
-        /*----------- Organizaciones ejemplo ---------- */
-        Spark.get("/us_organizaciones", organizacionesController::mostrarTodos, engine);
-
-
 
         /*----------- Ejemplos ---------- */
         Spark.get("/hola", controllerDefault::saludoController);

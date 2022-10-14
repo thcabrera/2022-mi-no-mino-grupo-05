@@ -5,10 +5,12 @@ import domain.entidades.Persona;
 import domain.services.calculoDistancia.ServicioDistancia;
 import domain.services.calculoDistancia.entities.Distancia;
 import domain.viaje.Tramo;
+import lombok.Getter;
 import lombok.SneakyThrows;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @Table(name="tramo_limpio")
 public class TramoLimpio extends Tramo {

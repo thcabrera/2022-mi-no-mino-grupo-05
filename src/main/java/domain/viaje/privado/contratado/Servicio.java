@@ -17,4 +17,8 @@ public class Servicio {
         this.nombre = nombre;
     }
 
+    public String toString(){
+        return nombre;
+    }
+
 }

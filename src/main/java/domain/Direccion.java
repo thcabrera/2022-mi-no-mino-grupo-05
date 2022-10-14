@@ -44,4 +44,8 @@ public class Direccion {
         setLocalidad(localidad);
     }
 
+    public String toString(){
+        return String.format("%s %s", this.calle, this.altura);
+    }
+
 }

@@ -3,16 +3,43 @@ package controllers;
 import domain.Direccion;
 import domain.entidades.Localidad;
 import domain.entidades.Municipio;
+import domain.entidades.Persona;
 import domain.entidades.Provincia;
+import domain.viaje.Tramo;
+import domain.viaje.privado.contratado.TramoContratado;
 import domain.viaje.privado.limpio.TramoLimpio;
+import domain.viaje.privado.particular.TipoParticular;
+import domain.viaje.privado.particular.TramoParticular;
+import domain.viaje.publico.TramoPublico;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class TrayectosController {
 
     public ModelAndView pantallaRegistrarTrayecto(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_registrar_trayecto.hbs");
+        List<TramoLimpio> tramosLimpios = new ArrayList<>();
+        Direccion origen = new Direccion("Baigorria",3057, new Localidad(1, null));
+        Direccion destino = new Direccion("Campana",3500, new Localidad(1, null));
+        TramoLimpio tramo = new TramoLimpio("BICI", origen, destino);
+        TramoLimpio tramo2 = new TramoLimpio("A PATA", destino, origen);
+        tramosLimpios.add(tramo);
+        tramosLimpios.add(tramo2);
+        List<TramoParticular> tramosParticulares = new ArrayList<TramoParticular>();
+        TipoParticular autito = new TipoParticular(0.0);
+        autito.setDescripcion("Autito");
+        tramosParticulares.add(new TramoParticular(null, autito, origen,destino, false));
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("tramosLimpios", tramosLimpios);
+        parametros.put("tramosParticulares", tramosParticulares);
+        parametros.put("tramosPublicos", new ArrayList<TramoPublico>());
+        parametros.put("tramosContratados", new ArrayList<TramoContratado>());
+        return new ModelAndView(parametros, "trayectos/us_registrar_trayecto.hbs");
     }
 
     /*------------ Tramo Limpio ------------ */

@@ -16,40 +16,87 @@
       <br><small id="org-help" class="form-text text-muted">Si va de una a otra, seleccionar la de destino</small>
     </div>
     <div class="container">
-      <div class ="row">
-        <div class="col-sm-3">
-          <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-            <div class="card-header">
-              <h5 class="card-title">Tramo 1</h5>
-              <hr>
+            <div class ="row">
+                {{#each tramosLimpios}}
+                    <div class="col-sm-3">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+                        <div class="card-header">
+                            <h5 class="card-title">Tramo {{@index}} (Limpio)</h5>
+                            <hr>
+                        </div>
+                        <div class="card-body" style="margin-top:-20px">
+                            <p class="card-text" style="font-weight: bold;">Origen:</p>
+                            <p class="card-text">{{direccionInicio}}</p>
+                            <p class="card-text" style="font-weight: bold;">Destino:</p>
+                            <p class="card-text">{{direccionFin}}</p>
+                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                            <p class="card-text">{{tipo}}</p>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
-            <div class="card-body" style="margin-top:-20px">
-              <p class="card-text" style="font-weight: bold;">Origen:</p>
-              <p class="card-text">.</p>
-              <p class="card-text" style="font-weight: bold;">Destino:</p>
-              <p class="card-text">.</p>
-              <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-              <p class="card-text">.</p>
+            <div class ="row">
+        {{#each tramosPublicos}}
+                <div class="col-sm-3">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+                        <div class="card-header">
+                            <h5 class="card-title">Tramo {{@index}} (Publico)</h5>
+                            <hr>
+                        </div>
+                        <div class="card-body" style="margin-top:-20px">
+                            <p class="card-text" style="font-weight: bold;">Origen:</p>
+                            <p class="card-text">{{paradaInicio}}</p>
+                            <p class="card-text" style="font-weight: bold;">Destino:</p>
+                            <p class="card-text">{{paradaFin}}</p>
+                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                            <p class="card-text">{{linea}}</p>
+                        </div>
+                    </div>
+                </div>
+        {{/each}}
             </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-            <div class="card-header">
-              <h5 class="card-title">Tramo 2</h5>
-              <hr>
+            <div class ="row">
+        {{#each tramosContratados}}
+                <div class="col-sm-3">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+                        <div class="card-header">
+                            <h5 class="card-title">Tramo {{@index}} (Contratado)</h5>
+                            <hr>
+                        </div>
+                        <div class="card-body" style="margin-top:-20px">
+                            <p class="card-text" style="font-weight: bold;">Origen:</p>
+                            <p class="card-text">{{direccionInicio}}</p>
+                            <p class="card-text" style="font-weight: bold;">Destino:</p>
+                            <p class="card-text">{{direccionFin}}</p>
+                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                            <p class="card-text">{{tipoTransporte}}</p>
+                        </div>
+                    </div>
+                </div>
+        {{/each}}
             </div>
-            <div class="card-body" style="margin-top:-20px">
-              <p class="card-text" style="font-weight: bold;">Origen:</p>
-              <p class="card-text">.</p>
-              <p class="card-text" style="font-weight: bold;">Destino:</p>
-              <p class="card-text">.</p>
-              <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-              <p class="card-text">.</p>
+            <div class ="row">
+        {{#each tramosParticulares}}
+                <div class="col-sm-3">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+                        <div class="card-header">
+                            <h5 class="card-title">Tramo {{@index}} (Contratado) </h5>
+                            <hr>
+                        </div>
+                        <div class="card-body" style="margin-top:-20px">
+                            <p class="card-text" style="font-weight: bold;">Origen:</p>
+                            <p class="card-text">{{direccionInicio}}</p>
+                            <p class="card-text" style="font-weight: bold;">Destino:</p>
+                            <p class="card-text">{{direccionFin}}</p>
+                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                            <p class="card-text">{{tipoParticular.descripcion}}</p>
+                        </div>
+                    </div>
+                </div>
+        {{/each}}
             </div>
-          </div>
-        </div>
-      </div>
+
     </div>
     <div>
       <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>

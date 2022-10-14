@@ -1,7 +1,12 @@
 package domain.viaje.privado.particular;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "tipo_particular")
 public class TipoParticular {

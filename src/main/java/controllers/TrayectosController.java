@@ -3,9 +3,6 @@ package controllers;
 import domain.Direccion;
 import domain.entidades.Localidad;
 import domain.entidades.Municipio;
-import domain.entidades.Persona;
-import domain.entidades.Provincia;
-import domain.viaje.Tramo;
 import domain.viaje.privado.contratado.TramoContratado;
 import domain.viaje.privado.limpio.TramoLimpio;
 import domain.viaje.privado.particular.TipoParticular;
@@ -30,7 +27,7 @@ public class TrayectosController {
         TramoLimpio tramo2 = new TramoLimpio("A PATA", destino, origen);
         tramosLimpios.add(tramo);
         tramosLimpios.add(tramo2);
-        List<TramoParticular> tramosParticulares = new ArrayList<TramoParticular>();
+        List<TramoParticular> tramosParticulares = new ArrayList<>();
         TipoParticular autito = new TipoParticular(0.0);
         autito.setDescripcion("Autito");
         tramosParticulares.add(new TramoParticular(null, autito, origen,destino, false));

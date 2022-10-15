@@ -6,46 +6,29 @@
   </div>
 
   <br>
-  <div class="row align-items-center border rounded p-2" name="solicitud">
+  <div class="row align-items-center border rounded p-2">
     <div class="col-auto d-flex justify-content-center"  style="width:33%; font-weight: bold;">
-    Organizacion
+    Organización
     </div>
     <div class="col-auto d-flex justify-content-center" style="width:33%; font-weight: bold;">
-    Sector
+    Área
     </div>
   </div>
 {{#each areas}}
-    <div class="row align-items-center border rounded p-2" name="solicitud">
+    <div class="row align-items-center border rounded p-2">
         <div class="col-auto d-flex justify-content-center"  style="width:33%;">
-            <a value="{{area}}">
-                {{nombre}}
-            </a>
+            <a>{{organizacion.nombre}}</a>
         </div>
     <div class="col-auto d-flex justify-content-center" style="width:33%;">
-        <a value="{{area}}">
-            {{organizacion.razonSocial}}
-        </a>
-        <a value="{{area}}">
-            {{this}}
-        </a>
+        <a>{{nombre}}</a>
     </div>
     <div class="col-auto d-flex justify-content-center" style="width:33%;">
-        <button type="button" class="btn btn-danger">Solicitar baja</button>
+        <form action="mis_organizaciones/delete/{{id}}" method = "POST">
+            <button type="submit" class="btn btn-danger">Darse de baja</button>
+        </form>
     </div>
   </div>
 {{/each}}
-  <div class="row align-items-center border rounded p-2" name="solicitud">
-    <div class="col-auto d-flex justify-content-center"  style="width:33%;">
-     Despegar
-    </div>
-    <div class="col-auto d-flex justify-content-center" style="width:33%;">
-     Trainee
-    </div>
-    <div class="col-auto d-flex justify-content-center" style="width:33%;">
-    <button type="button" class="btn btn-danger">Solicitar baja</button>
-    </div>
-  </div>
-
 </section>
   {{/partial}}
   {{> ../public/shared/user_base.hbs }}

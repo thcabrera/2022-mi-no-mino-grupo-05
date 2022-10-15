@@ -1,19 +1,21 @@
 package controllers;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import domain.entidades.*;
+import models.RepositorioDeAreasEnMemoria;
+import models.RepositorioDeOrganizacionesEnMemoria;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import domain.db.EntityManagerHelper;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class OrganizacionesController {
     //ABM: A->Alta |B-> Baja |M-> Modificaco  |L->Listado | V->Visualizar
+
+    private RepositorioDeAreasEnMemoria repositorioDeAreas = new RepositorioDeAreasEnMemoria();
+
+    private RepositorioDeOrganizacionesEnMemoria repositorioDeOrganizaciones = new RepositorioDeOrganizacionesEnMemoria();
 
     public ModelAndView mostrar(Request request, Response response) {
         String idBuscado = request.params("id");
@@ -28,49 +30,38 @@ public class OrganizacionesController {
 
     }
 
+    public ModelAndView solicitarAlta(Request request, Response response){
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("organizaciones",repositorioDeOrganizaciones.buscarTodos());
+        parametros.put("areas",repositorioDeAreas.buscarTodos());
+        return new ModelAndView(parametros, "user/us_solicitar_alta.hbs");
+    }
+
+    public Response recibirSolicitudDeAlta(Request request, Response response){
+        int idOrg = Integer.parseInt(request.queryParams("idOrg"));
+        int idArea = Integer.parseInt(request.queryParams("idArea"));
+        Area area = repositorioDeAreas.buscar(idArea);
+        Organizacion organizacion =  repositorioDeOrganizaciones.buscar(idOrg);
+        organizacion.recibirSolicitud(new Solicitud(null, area)); // TODO falta que la persona se envie como solicitante
+        response.redirect("/user/principal");
+        return response;
+    }
+
     public ModelAndView mostrarTodos(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
-        //List<Organizacion> usuarios = this.repo.buscarTodos();
-
-        List<Area> areasEjemplo = this.getListaOrgsEjemplo();
-
-        parametros.put("areas", areasEjemplo);
-        //asignarUsuarioSiEstaLogueado(request, parametros);
+//        List<Organizacion> usuarios = this.repo.buscarTodos();
+        parametros.put("areas", repositorioDeAreas.buscarTodos());
+//        asignarUsuarioSiEstaLogueado(request, parametros);
         return new ModelAndView(parametros, "user/us_organizaciones.hbs");
     }
 
 
-
-    /* hardcodeo para no levantar workbench*/
-    private List<Area> getListaOrgsEjemplo() {
-        List<Organizacion> orgs = new ArrayList<>();
-        Organizacion lennyDespe = new Organizacion("SA", new TipoOrg("empresa") , null, null);
-        Area sistemas = new Area("Sistemas", lennyDespe);
-        Area ejecutivo = new Area("Ejecutivo", lennyDespe);
-
-        Organizacion titoUtn = new Organizacion("UNI", new TipoOrg("educativa"), null, null);
-
-        Area coaching = new Area("Coaching", titoUtn);
-        orgs.add(lennyDespe);
-        orgs.add(titoUtn);
-
-        Persona lenny = new Persona("lean", "lienard",43814111, Documentacion.DNI);
-        Persona tito = new Persona("tito", "lecaldare",43812754, Documentacion.DNI);
-
-
-        lenny.solicitarAlta(lennyDespe, ejecutivo);
-        lennyDespe.aceptarEmpleado(lenny, ejecutivo);
-
-        lenny.solicitarAlta(lennyDespe, sistemas);
-        lennyDespe.aceptarEmpleado(lenny, sistemas);
-
-        tito.solicitarAlta(titoUtn, coaching);
-        titoUtn.aceptarEmpleado(tito, coaching);
-
-        System.out.println("/n areas de lenny "+ lenny.getListaAreas().get(0).getNombre());
-        return lenny.getListaAreas();
+    public Response darDeBaja(Request request, Response response){
+        int areaId = Integer.parseInt(request.params("id"));
+        Area area = repositorioDeAreas.buscar(areaId);
+        repositorioDeAreas.eliminar(area);
+        response.redirect("/user/mis_organizaciones");
+        return response;
     }
-
-
 
 }

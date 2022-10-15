@@ -26,6 +26,9 @@ public class Organizacion {
     @Column(name="razon_social")
     private String razonSocial;
 
+    @Column(name="nombre")
+    private String nombre;
+
     @ManyToOne
     @JoinColumn(name="tipo_org_id", referencedColumnName = "id")
     private TipoOrg tipo;

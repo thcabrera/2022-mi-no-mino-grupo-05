@@ -1,0 +1,27 @@
+{{#partial "contenido"}}
+
+<div>
+    <h1>Solicitar alta en empresa</h1>
+    <form action = "solicitar_alta/enviar" method="POST">
+        <div>
+            <select class="custom-select" name="idOrg" required>
+                <option disabled selected value="">Seleccione organización</option>
+                {{#each organizaciones}}
+                    <option value="{{id}}">{{nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div>
+            <select class="custom-select" name="idArea" required>
+                <option disabled selected value="">Seleccione area</option>
+                {{#each areas}}
+                    <option value="{{id}}">{{nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button type="submit">Enviar solicitud</button>
+    </form>
+</div>
+
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

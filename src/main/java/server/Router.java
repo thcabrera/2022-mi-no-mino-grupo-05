@@ -69,8 +69,10 @@ public class Router {
 
             /*----------- Organizaciones ejemplo ---------- */
             Spark.path("/mis_organizaciones", () ->{
+                Spark.post("/delete/:id", organizacionesController::darDeBaja);
                 Spark.get("", organizacionesController::mostrarTodos, engine);
-                Spark.get("/solicitar_alta", (req, response) -> "Solicitando alta!");
+                Spark.get("/solicitar_alta", organizacionesController::solicitarAlta, engine);
+                Spark.post("/solicitar_alta/enviar", organizacionesController::recibirSolicitudDeAlta);
             });
 
             Spark.get("/reportes", (req, resp) -> "Visualizando reportes! xd");

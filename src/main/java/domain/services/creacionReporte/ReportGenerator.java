@@ -1,10 +1,10 @@
 package domain.services.creacionReporte;
 
-import domain.entidades.HuellaDeCarbono;
-import domain.entidades.Organizacion;
-import domain.entidades.Sector;
+import domain.entidades.*;
 import lombok.SneakyThrows;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 public class ReportGenerator{
 
@@ -16,7 +16,22 @@ public class ReportGenerator{
 
     }
 
-    public void composicionDeHCTotal() {
+    @SneakyThrows
+    public void composicionDeHCTotal(List<Provincia> provincias) throws IOException {
+
+//        StringBuilder exportText = new StringBuilder();
+//        for (Provincia provincia: provincias){
+//            exportText.append("Composicion de ").append(provincia.getDescripcion()).append(":\n");
+//            for (Municipio m: provincia.getMunicipios()){
+//                exportText.append("Composicion de ").append(m.getDescripcion()).append(":\n");
+//            }
+//            String line = "Fecha: " + huella.getFechaMedicion().toString() + "; Valor: " + huella.getValor() + ";";
+//            exportText.append(line).append("\n");
+//
+//        }
+//        FileWriter file = new FileWriter("COMPOSICION_TOTAL_POR_PROVINCIAS.txt");
+//        file.write(exportText.toString());
+//        file.close();
 
     }
 
@@ -44,6 +59,4 @@ public class ReportGenerator{
         file.write(exportText.toString());
         file.close();
     }
-
-
 }

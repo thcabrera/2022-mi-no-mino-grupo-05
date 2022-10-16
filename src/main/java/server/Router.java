@@ -43,6 +43,7 @@ public class Router {
 
             /*----------- Trayecto y tramos ---------- */
             Spark.path("/trayectos", () -> {
+                Spark.post("/delete/:id", trayectosController::eliminarTramo);
                 Spark.path("/registrar", () -> {
                     // pantalla principal de registrar
                     Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);

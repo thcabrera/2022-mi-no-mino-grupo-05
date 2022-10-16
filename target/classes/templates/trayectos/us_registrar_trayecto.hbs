@@ -8,7 +8,7 @@
     <div class="form-group">
       <label class = "font-weight-bold pt-2" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Organización a la que se dirige o de la que regresa</label>
       <br>
-      <select class="custom-select" name="organización"   required>
+      <select class="custom-select" name="organización" >
 
         <!-- todo: hacer un get de mis organizaciones xd y desplegarlas -->
         <option value="">Seleccione Organización...</option>
@@ -17,86 +17,32 @@
     </div>
     <div class="container">
             <div class ="row">
-                {{#each tramosLimpios}}
+                {{#each tramos}}
                     <div class="col-sm-3">
                     <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
                         <div class="card-header">
-                            <h5 class="card-title">Tramo {{@index}} (Limpio)</h5>
+                            <h5 class="card-title">Tramo {{@index}}</h5>
                             <hr>
                         </div>
-                        <div class="card-body" style="margin-top:-20px">
-                            <p class="card-text" style="font-weight: bold;">Origen:</p>
-                            <p class="card-text">{{direccionInicio}}</p>
-                            <p class="card-text" style="font-weight: bold;">Destino:</p>
-                            <p class="card-text">{{direccionFin}}</p>
-                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-                            <p class="card-text">{{tipo}}</p>
+<!--                        <div class="card-body" style="margin-top:-20px">-->
+<!--                            <p class="card-text" style="font-weight: bold;">Origen:</p>-->
+<!--                            <p class="card-text">{{direccionInicio}}</p>-->
+<!--                            <p class="card-text" style="font-weight: bold;">Destino:</p>-->
+<!--                            <p class="card-text">{{direccionFin}}</p>-->
+<!--                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>-->
+<!--                            <p class="card-text">{{tipo}}</p>-->
+<!--                        </div>-->
+                        <div class = "justify-content-end">
+                            <form action="/delete/{{id}}" method = "POST">
+                                <button type="submit" class="rounded-circle">
+                                    <img src="/images/trash-bin.png" width="50" height="50" alt="eliminar tramo {{@index}}"/>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
                 {{/each}}
             </div>
-            <div class ="row">
-        {{#each tramosPublicos}}
-                <div class="col-sm-3">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-                        <div class="card-header">
-                            <h5 class="card-title">Tramo {{@index}} (Publico)</h5>
-                            <hr>
-                        </div>
-                        <div class="card-body" style="margin-top:-20px">
-                            <p class="card-text" style="font-weight: bold;">Origen:</p>
-                            <p class="card-text">{{paradaInicio}}</p>
-                            <p class="card-text" style="font-weight: bold;">Destino:</p>
-                            <p class="card-text">{{paradaFin}}</p>
-                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-                            <p class="card-text">{{linea}}</p>
-                        </div>
-                    </div>
-                </div>
-        {{/each}}
-            </div>
-            <div class ="row">
-        {{#each tramosContratados}}
-                <div class="col-sm-3">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-                        <div class="card-header">
-                            <h5 class="card-title">Tramo {{@index}} (Contratado)</h5>
-                            <hr>
-                        </div>
-                        <div class="card-body" style="margin-top:-20px">
-                            <p class="card-text" style="font-weight: bold;">Origen:</p>
-                            <p class="card-text">{{direccionInicio}}</p>
-                            <p class="card-text" style="font-weight: bold;">Destino:</p>
-                            <p class="card-text">{{direccionFin}}</p>
-                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-                            <p class="card-text">{{tipoTransporte}}</p>
-                        </div>
-                    </div>
-                </div>
-        {{/each}}
-            </div>
-            <div class ="row">
-        {{#each tramosParticulares}}
-                <div class="col-sm-3">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
-                        <div class="card-header">
-                            <h5 class="card-title">Tramo {{@index}} (Contratado) </h5>
-                            <hr>
-                        </div>
-                        <div class="card-body" style="margin-top:-20px">
-                            <p class="card-text" style="font-weight: bold;">Origen:</p>
-                            <p class="card-text">{{direccionInicio}}</p>
-                            <p class="card-text" style="font-weight: bold;">Destino:</p>
-                            <p class="card-text">{{direccionFin}}</p>
-                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
-                            <p class="card-text">{{tipoParticular.descripcion}}</p>
-                        </div>
-                    </div>
-                </div>
-        {{/each}}
-            </div>
-
     </div>
     <div>
       <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>

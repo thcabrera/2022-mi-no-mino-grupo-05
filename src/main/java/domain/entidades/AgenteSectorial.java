@@ -25,6 +25,11 @@ public class AgenteSectorial {
         setSector(sector);
     }
 
+    public AgenteSectorial() {
+
+    }
+
+
     public Double calculoHC(Periodicidad periodo){
         return this.sector.calculoHC(periodo);
     }

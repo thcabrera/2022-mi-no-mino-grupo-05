@@ -49,6 +49,10 @@ public class Persona {
         this.trayectos = new ArrayList<Trayecto>();
     }
 
+    public Persona() {
+
+    }
+
     //  ----------  SOLICITUDES  ----------
     public void solicitarAlta(Organizacion org, Area area) {
         Solicitud solicitud = new Solicitud(this, area);

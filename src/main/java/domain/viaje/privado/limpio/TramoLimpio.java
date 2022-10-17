@@ -47,6 +47,22 @@ public class TramoLimpio extends Tramo {
     public Double calculoHC(Persona persona){
         return 0.0;
     }
+
+    @Override
+    public String obtenerInicio() {
+        return this.direccionInicio.toString();
+    }
+
+    @Override
+    public String obtenerFin() {
+        return this.direccionFin.toString();
+    }
+
+    @Override
+    public String obtenerTipo() {
+        return this.tipo;
+    }
+
     @Override
     public Double consumoPorKM(){
         return 0.0;

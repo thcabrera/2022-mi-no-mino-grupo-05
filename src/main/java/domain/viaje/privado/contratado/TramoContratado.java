@@ -58,6 +58,21 @@ public class TramoContratado extends Tramo {
             return 0.0;
     }
 
+    @Override
+    public String obtenerInicio() {
+        return this.direccionInicio.toString();
+    }
+
+    @Override
+    public String obtenerFin() {
+        return this.direccionInicio.toString();
+    }
+
+    @Override
+    public String obtenerTipo() {
+        return this.tipoTransporte.getNombre();
+    }
+
     public Boolean esElPropietario(Persona persona){
         return this.propietario == persona;
     }

@@ -39,17 +39,17 @@
                     <div class="col-sm-3">
                     <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
                         <div class="card-header">
-                            <h5 class="card-title">Tramo {{@index}}</h5>
+                            <h5 class="card-title">Tramo {{incrementar @index}}</h5>
                             <hr>
                         </div>
-<!--                        <div class="card-body" style="margin-top:-20px">-->
-<!--                            <p class="card-text" style="font-weight: bold;">Origen:</p>-->
-<!--                            <p class="card-text">{{direccionInicio}}</p>-->
-<!--                            <p class="card-text" style="font-weight: bold;">Destino:</p>-->
-<!--                            <p class="card-text">{{direccionFin}}</p>-->
-<!--                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>-->
-<!--                            <p class="card-text">{{tipo}}</p>-->
-<!--                        </div>-->
+                        <div class="card-body" style="margin-top:-20px">
+                            <p class="card-text" style="font-weight: bold;">Origen:</p>
+                            <p class="card-text">{{obtenerInicio this}}</p>
+                            <p class="card-text" style="font-weight: bold;">Destino:</p>
+                            <p class="card-text">{{obtenerFin this}}</p>
+                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                            <p class="card-text">{{obtenerTipo this}}</p>
+                        </div>
                         <div class = "row">
                             <div class="col-sm-3">
                                 <form action="/user/trayectos/tramo/eliminar/{{../idTrayecto}}/{{id}}" method = "POST">

@@ -31,4 +31,11 @@ public abstract class Tramo {
     public abstract Persona getPropietario();
 
     public abstract Double calculoHC(Persona persona);
+
+    public abstract String obtenerInicio();
+
+    public abstract String obtenerFin();
+
+    public abstract String obtenerTipo();
+
 }

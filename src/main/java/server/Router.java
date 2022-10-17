@@ -6,6 +6,8 @@ import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
 import spark.utils.HandlebarsTemplateEngineBuilder;
+import spark.utils.NumberHelper;
+import spark.utils.TramoHelper;
 
 public class Router {
     private static HandlebarsTemplateEngine engine;
@@ -15,6 +17,10 @@ public class Router {
                 .create()
                 .withDefaultHelpers()
                 .withHelper("isTrue", BooleanHelper.isTrue)
+                .withHelper("obtenerInicio", TramoHelper.obtenerInicio)
+                .withHelper("obtenerFin", TramoHelper.obtenerFin)
+                .withHelper("obtenerTipo", TramoHelper.obtenerTipo)
+                .withHelper("incrementar", NumberHelper.incrementar)
                 .build();
     }
 

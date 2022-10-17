@@ -78,6 +78,21 @@ public class TramoPublico extends Tramo {
     public Double calculoHC(Persona persona){
         return this.consumoPorKM() * this.calcularDistanciaTramo();
     }
+
+    @Override
+    public String obtenerInicio() {
+        return this.paradaInicio.getNombre();
+    }
+
+    @Override
+    public String obtenerFin() {
+        return this.paradaFin.getNombre();
+    }
+
+    @Override
+    public String obtenerTipo() {
+        return this.linea.getNombreLinea();
+    }
 }
 
 

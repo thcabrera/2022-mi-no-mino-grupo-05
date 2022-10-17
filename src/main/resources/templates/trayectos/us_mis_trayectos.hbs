@@ -16,7 +16,7 @@
             <div class="col-auto d-flex justify-content-end" style="width:50%;">
                 <form action="/user/trayectos/agregar" method = "POST">
                     <button type="submit" class = "btn btn-light btn-rounded">
-                        <img src="/images/plus.png" width="30" height="30" alt="agregar trayecto {{@index}}"/>
+                        <img src="/images/plus.png" width="30" height="30" alt="agregar trayecto"/>
                     </button>
                 </form>
             </div>
@@ -24,7 +24,7 @@
         {{#each trayectos}}
             <div class="row align-items-center border rounded p-2">
                 <div class="col-auto d-flex justify-content-center"  style="width:25%;">
-                    <a>{{@index}}</a>
+                    <a>{{incrementar @index}}</a>
                 </div>
                 <div class="col-auto d-flex justify-content-center" style="width:25%;">
                     <a>{{organizacion.nombre}}</a>
@@ -32,14 +32,14 @@
                 <div class="col-auto d-flex justify-content-center" style="width:25%;">
                     <form action="/user/trayectos/eliminar/{{id}}" method = "POST">
                         <button type="submit" class = "btn btn-outline-danger btn-rounded">
-                            <img src="/images/bin.png" width="30" height="30" alt="eliminar trayecto {{@index}}"/>
+                            <img src="/images/bin.png" width="30" height="30" alt="eliminar trayecto {{incrementar @index}}"/>
                         </button>
                     </form>
                 </div>
                 <div class="col-auto d-flex justify-content-center" style="width:25%;">
                     <form action="/user/trayectos/editar/{{id}}" method = "GET">
                         <button type="submit" class = "btn btn-outline-primary btn-rounded">
-                            <img src="/images/pencil.png" width="30" height="30" alt="editar trayecto {{@index}}"/>
+                            <img src="/images/pencil.png" width="30" height="30" alt="editar trayecto {{incrementar @index}}"/>
                         </button>
                     </form>
                 </div>

@@ -66,6 +66,21 @@ public class TramoParticular extends Tramo {
     }
 
     @Override
+    public String obtenerInicio() {
+        return this.direccionInicio.toString();
+    }
+
+    @Override
+    public String obtenerFin() {
+        return this.direccionFin.toString();
+    }
+
+    @Override
+    public String obtenerTipo() {
+        return this.tipoParticular.getDescripcion();
+    }
+
+    @Override
     public Persona getPropietario() {
         return propietario;
     }

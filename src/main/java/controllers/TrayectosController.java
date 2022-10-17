@@ -3,49 +3,67 @@ package controllers;
 import domain.Direccion;
 import domain.entidades.Localidad;
 import domain.entidades.Municipio;
-import domain.viaje.privado.limpio.TramoLimpio;
+import domain.viaje.Trayecto;
+import lombok.Setter;
+import models.RepositorioDeOrganizacionesEnMemoria;
 import models.RepositorioDeTramosEnMemoria;
+import models.RepositorioDeTrayectosEnMemoria;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@Setter
 public class TrayectosController {
 
     private RepositorioDeTramosEnMemoria repositorioDeTramos = new RepositorioDeTramosEnMemoria();
+    private RepositorioDeTrayectosEnMemoria repositorioDeTrayectos = new RepositorioDeTrayectosEnMemoria();
 
-    public ModelAndView pantallaRegistrarTrayecto(Request request, Response response) {
+    private RepositorioDeOrganizacionesEnMemoria repositorioDeOrganizaciones = new RepositorioDeOrganizacionesEnMemoria();
+
+    public ModelAndView pantallaEditarTrayecto(Request request, Response response) {
+        int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("tramos", this.repositorioDeTramos.buscarTodos());
-        return new ModelAndView(parametros, "trayectos/us_registrar_trayecto.hbs");
+        parametros.put("idTrayecto", idTrayecto);
+        parametros.put("organizaciones", this.repositorioDeOrganizaciones.buscarTodos());
+        return new ModelAndView(parametros, "trayectos/us_editar_trayecto.hbs");
     }
 
-    /*------------ Tramo Limpio ------------ */
-    public ModelAndView pantallaRegistrarTramoLimpio(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_t_limpio.hbs");
-    }
-
-    public Response guardarTramoLimpio(Request request, Response response) {
-        Direccion partida = this.cargarDireccion(request, "partida");
-
-        Direccion destino = this.cargarDireccion(request, "destino");
-        TramoLimpio nuevoTLimpio = new TramoLimpio("BICI", partida, destino); // todo: que era el tipo?
-        this.repositorioDeTramos.guardar(nuevoTLimpio);
-
-        response.redirect("/trayecto/registrar");
+    public Response editarTrayecto(Request request, Response response){
+        int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
+        int idOrg = Integer.parseInt(request.queryParams("idOrg"));
+        Trayecto trayecto = this.repositorioDeTrayectos.buscar(idTrayecto);
+        trayecto.setOrganizacion(this.repositorioDeOrganizaciones.buscar(idOrg));
+        System.out.println("EDITANDO TRAYECTO " + Integer.toString(idTrayecto));
+        response.redirect("/user/trayectos");
         return response;
     }
 
-    public Response eliminarTramo(Request request, Response response){
-        int id = Integer.parseInt(request.params("id"));
-        this.repositorioDeTramos.eliminar(this.repositorioDeTramos.buscar(id));
-        response.redirect("trayectos/registrar");
+    public Response agregarTrayecto(Request request, Response response) {
+        Trayecto trayecto = new Trayecto(new ArrayList<>());
+        this.repositorioDeTrayectos.guardar(trayecto);
+        response.redirect("/user/trayectos");
         return response;
     }
 
+    public Response eliminarTrayecto(Request request, Response response){
+        int id = Integer.parseInt(request.params("idTrayecto"));
+        this.repositorioDeTrayectos.eliminar(this.repositorioDeTrayectos.buscar(id));
+        response.redirect("/user/trayectos");
+        return response;
+    }
 
-// todo: review
+    public ModelAndView mostrarTrayectos(Request request, Response response){
+        Map<String, Object> parametros = new HashMap<>();
+        System.out.println();
+        parametros.put("trayectos", this.repositorioDeTrayectos.buscarTodos());
+        return new ModelAndView(parametros, "trayectos/us_mis_trayectos.hbs");
+    }
+
+    // todo: review
     private Direccion cargarDireccion(Request request, String tipoDireccion){ //tipoDireccion = partida || destino
         String calle = request.queryParams(tipoDireccion + "-" + "calle");
         System.out.printf("calle " + calle);
@@ -58,28 +76,5 @@ public class TrayectosController {
 
         return new Direccion(calle, altura, localidad);
     }
-
-
-    /*------------ Tramo Limpio ------------ */
-    public ModelAndView pantallaRegistrarTramoPublico(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_t_publico.html");
-    }
-    public Response guardarTramoPublico(Request request, Response response) {
-        Direccion partida = this.cargarDireccion(request, "partida");
-
-        Direccion destino = this.cargarDireccion(request, "destino");
-        //TramoContratado tramoContratado = new Contratado("tipo?", partida, destino); // todo: que era el tipo?
-
-        //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
-
-        response.redirect("/us_registrar_trayecto");
-        return response;
-    }
-
-    /* ------- Tramo Contratado ----- */
-    public ModelAndView pantallaRegistrarTramoContratado(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_t_contratado_crear.html");
-    }
-
 
 }

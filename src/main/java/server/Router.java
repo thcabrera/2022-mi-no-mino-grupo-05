@@ -1,15 +1,11 @@
 package server;
 
-import controllers.ControllerDefault;
-import controllers.OrganizacionesController;
-import controllers.TrayectosController;
-import controllers.UserController;
+import controllers.*;
+import models.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
 import spark.utils.HandlebarsTemplateEngineBuilder;
-
-import static spark.Spark.staticFiles;
 
 public class Router {
     private static HandlebarsTemplateEngine engine;
@@ -29,10 +25,14 @@ public class Router {
     }
 
     private static void configure(){
+        RepositorioDeTramosEnMemoria rTramos = new RepositorioDeTramosEnMemoria();
         ControllerDefault controllerDefault= new ControllerDefault();
         OrganizacionesController organizacionesController = new OrganizacionesController();
         UserController userController = new UserController();
         TrayectosController trayectosController = new TrayectosController();
+        trayectosController.setRepositorioDeTramos(rTramos);
+        TramosController tramosController = new TramosController();
+        tramosController.setRepositorioDeTramos(rTramos);
 
         /*----------- user ---------- */
         Spark.path("/user", () -> {
@@ -43,28 +43,33 @@ public class Router {
 
             /*----------- Trayecto y tramos ---------- */
             Spark.path("/trayectos", () -> {
-                Spark.post("/delete/:id", trayectosController::eliminarTramo);
-                Spark.path("/registrar", () -> {
-                    // pantalla principal de registrar
-                    Spark.get("", trayectosController::pantallaRegistrarTrayecto, engine);
+                Spark.get("", trayectosController::mostrarTrayectos, engine);
+                Spark.post("/agregar", trayectosController::agregarTrayecto);
+                Spark.get("/editar/:idTrayecto", trayectosController::pantallaEditarTrayecto, engine);
+                Spark.post("/editar/:idTrayecto", trayectosController::editarTrayecto);
+                Spark.post("/eliminar/:idTrayecto", trayectosController::eliminarTrayecto);
+                // las rutas de los tramos necesitan llevar el id del trayecto para poder
+                // redirigir a la pantalla de edicion del trayecto concreto al confirmar la operacion
+                Spark.path("/tramo", () -> {
+                    // el eliminar tramo se puede hacer como un eliminar generico, independiente del tipo
+                    Spark.post("/eliminar/:idTrayecto/:idTramo", tramosController::eliminarTramo);
+                    // el editar generico deberia hacer un if con las subclases y redireccionar a la pantalla especifica
+                    Spark.get("/editar/:idTrayecto/:idTramo", (rq, rs) -> "Editar tramo!");
                     // limpio
                     Spark.path("/limpio", () -> {
-                        Spark.get("", trayectosController::pantallaRegistrarTramoLimpio, engine);
-                        Spark.post("", trayectosController::guardarTramoLimpio);
+                        Spark.get("/agregar/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
+                        Spark.post("/agregar/:idTrayecto", tramosController::guardarTramoLimpio);
                     });
                     // publico
                     Spark.path("/publico", () -> {
-                        Spark.get("", trayectosController::pantallaRegistrarTramoPublico, engine);
-                        Spark.post("", trayectosController::guardarTramoLimpio);
+                        Spark.get("", tramosController::pantallaRegistrarTramoPublico, engine);
+                        Spark.post("", tramosController::guardarTramoLimpio);
                     });
                     // contratado
                     Spark.path("/contratado", () -> {
-                        Spark.get("", trayectosController::pantallaRegistrarTramoContratado, engine);
-                        Spark.post("", trayectosController::guardarTramoLimpio);
+                        Spark.get("", tramosController::pantallaRegistrarTramoContratado, engine);
+                        Spark.post("", tramosController::guardarTramoLimpio);
                     });
-                });
-                Spark.path("/modificar", () -> {
-                    Spark.get("", (req, resp) -> "Modificar trayectos!");
                 });
             });
 

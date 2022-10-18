@@ -1,6 +1,7 @@
 package server;
 
 import controllers.*;
+import middlewares.AuthMiddleware;
 import models.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -39,9 +40,20 @@ public class Router {
         trayectosController.setRepositorioDeTramos(rTramos);
         TramosController tramosController = new TramosController();
         tramosController.setRepositorioDeTramos(rTramos);
+        LoginController loginController = new LoginController();
+
+        /*-------- Manejo del Login -------*/
+        Spark.path("/login", ()->{
+            Spark.get("", loginController::pantallaLogin , engine);
+            Spark.post("", loginController::login);
+            Spark.get("/2", loginController::loginIncorrecto, engine);
+        });
 
         /*----------- user ---------- */
         Spark.path("/user", () -> {
+
+            Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("/*", AuthMiddleware::verificarSesion);
 
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);

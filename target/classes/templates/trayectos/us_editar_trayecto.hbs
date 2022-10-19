@@ -1,0 +1,79 @@
+{{#partial "contenido"}}
+
+<section class="container">
+  <form action="/user/trayectos/editar/{{idTrayecto}}" method="POST">
+    <div class="form d-flex flex-column">
+      <h1 style="margin-top: 20px">Nuevo trayecto</h1>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold pt-2" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Organización a la que se dirige o de la que regresa</label>
+      <br>
+      <select class="custom-select" name="idOrg" required>
+        <option value="" disabled selected>Seleccione Organización...</option>
+          {{#each organizaciones}}
+              <option value="{{id}}">{{nombre}}</option>
+          {{/each}}
+      </select>
+      <br><small id="org-help" class="form-text text-muted">Si va de una a otra, seleccionar la de destino</small>
+    </div>
+      <div>
+          <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>
+          <br>
+          <a type="button" href="/user/trayectos/tramo/publico" class="btn btn-secondary">Tramo público</a>
+          <a type="button" href="/user/trayectos/tramo/limpio/agregar/{{idTrayecto}}" class="btn btn-secondary">Tramo limpio</a>
+          <a type="button" href="t_particular_unirse.html" class="btn btn-secondary">Tramo particular - Sumarse</a>
+          <a type="button" href="t_particular_crear.html" class="btn btn-secondary">Tramo particular - Crear</a>
+          <a type="button" href="t_contratado_unirse.html" class="btn btn-secondary">Tramo contratado - Sumarse</a>
+          <a type="button" href="/user/trayectos/tramo/contratado" class="btn btn-secondary">Tramo contratado - Crear</a>
+      </div>
+      <div class="m-4 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success" style="margin-bottom:30px">Confirmar trayecto</button>
+      </div>
+
+  </form>
+
+      <div class="container mt-4">
+          <h2>Tramos</h2>
+            <div class ="row">
+                {{#each tramos}}
+                    <div class="col-sm-3">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 16rem;">
+                        <div class="card-header">
+                            <h5 class="card-title">Tramo {{incrementar @index}}</h5>
+                            <hr>
+                        </div>
+                        <div class="card-body" style="margin-top:-20px">
+                            <p class="card-text" style="font-weight: bold;">Origen:</p>
+                            <p class="card-text">{{obtenerInicio this}}</p>
+                            <p class="card-text" style="font-weight: bold;">Destino:</p>
+                            <p class="card-text">{{obtenerFin this}}</p>
+                            <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                            <p class="card-text">{{obtenerTipo this}}</p>
+                        </div>
+                        <div class = "row">
+                            <div class="col-sm-3">
+                                <form action="/user/trayectos/tramo/eliminar/{{../idTrayecto}}/{{id}}" method = "POST">
+                                    <button type="submit" class = "btn btn-light btn-rounded">
+                                        <img src="/images/bin.png" width="30" height="30" alt="eliminar tramo {{@index}}"/>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                                <form action="/user/trayectos/tramo/editar/{{../idTrayecto}}/{{id}}" method = "GET">
+                                    <button type="submit" class = "btn btn-light btn-rounded">
+                                        <img src="/images/pencil.png" width="30" height="30" alt="editar tramo {{@index}}"/>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+    </div>
+    <br>
+
+</section>
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

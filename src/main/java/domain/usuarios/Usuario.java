@@ -21,10 +21,10 @@ public class Usuario  {
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona_id;
 
-    @Column
+    @Column(name = "nombre_usuario")
     private String nombreDeUsuario;
 
-    @Column
+    @Column(name= "contrasenia")
     private String contrasenia;
 
     @ManyToOne

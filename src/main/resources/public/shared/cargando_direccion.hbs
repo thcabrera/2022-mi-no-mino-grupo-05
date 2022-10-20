@@ -1,0 +1,76 @@
+
+<div class="mb-3">
+<h5 style="margin-top: 20px">Direccion de Partida</h5>
+<div style="width:66%; display: inline-block;">
+  <a>Calle</a>
+  <input type="text" class="form-control" name="partida-calle" placeholder="" required>
+</div>
+<div style="width:30%; display: inline-block;margin-left:3%;">
+  <a>Altura</a>
+   <input type="number" class="form-control"name="partida-altura" placeholder="" required>
+</div>
+<div>
+  <div style="width:48%; display: inline-block;">
+      <label for="partida-provincia">Selecciona la provincia:</label>
+      <select class="custom-select" name="partida-provincia" id="partida-provincia" required>
+          <option value="" disabled selected>Seleccione una provincia...</option>
+          {{#each provincias}}
+              <option value="{{id}}" >{{descripcion}}</option>
+          {{/each}}
+      </select>
+
+  </div>
+  <div style="width:48%; display: inline-block; margin-left: 3%;">
+      <label for="partida-municipio">Selecciona el municipio:</label>
+      <select class="custom-select" name="partida-municipio" id = "partida-municipio" >
+          <option value="" disabled selected>Seleccione una municipio...</option>
+      </select>
+  </div>
+</div>
+<div style="width:48%; display: inline-block; ">
+    <label for="partida-localidad">Selecciona la localidad:</label>
+    <select class="custom-select" name="partida-localidad" id="partida-localidad">
+        <option value="" disabled selected>Seleccione una localidad...</option>
+    </select>
+</div>
+
+{{#block "cargar_direcciones"}}
+{{/block}}
+
+<div class="mb-3">
+    <h5 style="margin-top: 20px">Direccion de Destino</h5>
+        <div style="width:66%; display: inline-block;">
+            <a>Calle</a>
+            <input type="text" class="form-control" name="destino-calle" placeholder="Ingrese la calle" required>
+        </div>
+        <div style="width:30%; display: inline-block; margin-left:3%;">
+            <a>Altura</a>
+            <input type="number" class="form-control" name="destino-altura" placeholder="Ingrese la altura" required>
+        </div>
+        <div>
+            <div style="width:48%; display: inline-block;">
+                <a>Provincia</a>
+                <label>
+                    <select class="custom-select" name="destino-provincia" required>
+                        <option value="" disabled selected>Seleccione una provincia...</option>
+                        {{#each provincias}}
+                            <option value="{{id}}" >{{descripcion}}</option>
+                        {{/each}}
+                    </select>
+                </label>
+            </div>
+            <div style="width:48%; display: inline-block; margin-left:3%;">
+                <a>Municipio</a>
+                <select class="custom-select" name="destino-municipio">
+                    <option value="" disabled selected>Seleccione un municipio...</option>
+                </select>
+            </div>
+        </div>
+        <div style="width:48%; display: inline-block; ">
+            <a>Localidad</a>
+            <select class="custom-select" name="destino-localidad">
+                <option value="" disabled selected>Seleccione una localidad...</option>
+            </select>
+        </div>
+</div>
+</div>

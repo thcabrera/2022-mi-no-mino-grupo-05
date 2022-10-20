@@ -12,7 +12,7 @@ import java.util.List;
 public class RepositorioDeTramosEnMemoria {
 
     private List<Tramo> tramos;
-
+    private int idMaximo = 1;
     public RepositorioDeTramosEnMemoria(){
         this.tramos = obtenerTramosDeTesteo();
     }
@@ -32,6 +32,7 @@ public class RepositorioDeTramosEnMemoria {
         Tramo tramo3 = new TramoParticular(null, autito, origen,destino, false);
         tramo3.setId(3);
         tramos.add(tramo3);
+        this.idMaximo = 3;
         return tramos;
     }
 
@@ -48,7 +49,24 @@ public class RepositorioDeTramosEnMemoria {
         this.tramos.remove(tramo);
     }
 
+    public void procesarIdMaximo(Tramo tramo){
+        // si no tiene ID, le asignamos uno
+        if (tramo.getId() == null){
+            this.idMaximo++;
+            tramo.setId(this.idMaximo);
+        }
+        // si tiene y no esta tomado, actualizamos el id maximo
+        else if(tramo.getId() > this.idMaximo)
+            this.idMaximo = tramo.getId() + 1;
+        // so tiene y ya esta en uso, lanzamos una excepcion
+        else{
+            throw new IllegalArgumentException("El ID del tramo ya esta en uso!");
+        }
+
+    }
+
     public void guardar(Tramo tramo){
+        this.procesarIdMaximo(tramo);
         this.tramos.add(tramo);
     }
 

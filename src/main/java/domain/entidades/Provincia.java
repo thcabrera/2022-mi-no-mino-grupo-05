@@ -16,6 +16,10 @@ public class Provincia extends Sector{
     @OneToMany(mappedBy = "provincia", fetch = FetchType.LAZY)
     private Set<Municipio> municipios;
 
+    public Provincia(){
+
+    }
+
     public Provincia(Set<Municipio> municipios){
         setMunicipios(municipios);
     }
@@ -24,4 +28,18 @@ public class Provincia extends Sector{
     public Double calculoHC(Periodicidad periodo) {
         return this.getMunicipios().stream().mapToDouble(mun->mun.calculoHC(periodo)).sum();
     }
+
+    public ProvinciaDTO convertirADTO(){
+        return new ProvinciaDTO(this);
+    }
+
+    public class ProvinciaDTO{
+        public int id;
+        public String descripcion;
+        public ProvinciaDTO(Provincia provincia){
+            this.id = provincia.id;
+            this.descripcion = provincia.descripcion;
+        }
+    }
+
 }

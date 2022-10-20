@@ -14,4 +14,16 @@ public class RepositorioGenerico {
                 .getResultList();
     }
 
+    public Object buscar(int id){
+        return null;
+    }
+
+    public void eliminar(Object o){
+
+    }
+
+    public void guardar(Object o){
+
+    }
+
 }

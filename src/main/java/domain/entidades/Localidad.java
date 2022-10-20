@@ -19,6 +19,10 @@ public class Localidad {
     @JoinColumn(name = "municipio_id", referencedColumnName = "id")
     private Municipio municipio;
 
+    public Localidad(){
+
+    }
+
     public Localidad(Integer id, Municipio municipio){
         this.id = id;
         this.municipio = municipio;

@@ -1,5 +1,6 @@
 package domain.usuarios;
 
+import domain.entidades.Organizacion;
 import domain.entidades.Persona;
 import domain.mediciones.consumos.MedioTransporte;
 import lombok.Getter;

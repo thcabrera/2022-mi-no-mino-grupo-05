@@ -52,8 +52,8 @@ public class Router {
         /*----------- user ---------- */
         Spark.path("/user", () -> {
 
-            Spark.before("", AuthMiddleware::verificarSesion);
-            Spark.before("/*", AuthMiddleware::verificarSesion);
+//            Spark.before("", AuthMiddleware::verificarSesion);
+//            Spark.before("/*", AuthMiddleware::verificarSesion);
 
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
@@ -115,5 +115,10 @@ public class Router {
 
         // configure image paths
         Spark.get("/hola", controllerDefault::saludoController);
+
+//        Spark.path("/utilidades", () ->{
+//            Spark.get("/deptos/:idProv", )
+//        });
+
     }
 }

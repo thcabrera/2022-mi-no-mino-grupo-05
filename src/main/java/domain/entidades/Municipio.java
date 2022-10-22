@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 // un municipio tiene varias organizaciones
 // no le interesa al municipio saber de que Provincia es
@@ -20,6 +21,9 @@ public class Municipio extends Sector{
     @ManyToOne
     @JoinColumn(name="provincia_id", referencedColumnName = "id")
     private Provincia provincia;
+
+    @OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY)
+    private Set<Localidad> localidades;
 
     // ----------------------- CONSTRUCTORES PARA LOS TESTS -------------------------- //
 
@@ -40,4 +44,21 @@ public class Municipio extends Sector{
     public Double calculoHC(Periodicidad periodo) {
         return this.getOrganizaciones().stream().mapToDouble(org->org.calculoHC(periodo)).sum();
     }
+
+    public MunicipioDTO convertirADTO(){
+        return new MunicipioDTO(this);
+    }
+
+    public class MunicipioDTO{
+
+        public int id;
+        public String descripcion;
+
+        public MunicipioDTO(Municipio municipio){
+            this.id = municipio.id;
+            this.descripcion = municipio.descripcion;
+        }
+
+    }
+
 }

@@ -1,7 +1,7 @@
-package domain.services.calculoDistancia.adapters;
+package domain.mediciones.services.calculoDistancia.adapters;
 
 import domain.Direccion;
-import domain.services.calculoDistancia.entities.Distancia;
+import domain.mediciones.services.calculoDistancia.entities.Distancia;
 
 import java.io.IOException;
 

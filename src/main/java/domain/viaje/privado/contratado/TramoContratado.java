@@ -2,8 +2,8 @@ package domain.viaje.privado.contratado;
 
 import domain.Direccion;
 import domain.entidades.Persona;
-import domain.services.calculoDistancia.ServicioDistancia;
-import domain.services.calculoDistancia.entities.Distancia;
+import domain.mediciones.services.calculoDistancia.ServicioDistancia;
+import domain.mediciones.services.calculoDistancia.entities.Distancia;
 import domain.viaje.Tramo;
 import lombok.Getter;
 import lombok.SneakyThrows;

@@ -1,6 +1,4 @@
-package domain.services.envioCorreo;
-
-import static domain.services.envioCorreo.ServicioCorreo.enviarCorreo;
+package domain.mediciones.services.envioCorreo;
 
 
 public class EnviarCorreo {
@@ -9,7 +7,7 @@ public class EnviarCorreo {
         String asunto = "Correo de prueba enviado desde Java";
         String cuerpo = "Esta es una prueba de correo...";
 
-        enviarCorreo(destinatario, asunto, cuerpo);
+        ServicioCorreo.enviarCorreo(destinatario, asunto, cuerpo);
 
     }
 

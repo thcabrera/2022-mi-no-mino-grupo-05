@@ -1,4 +1,4 @@
-package domain.services.whatsApp;
+package domain.mediciones.services.whatsApp;
 
 import domain.entidades.contacto.Mensaje;
 

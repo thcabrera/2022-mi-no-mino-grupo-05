@@ -29,6 +29,10 @@ public class Area {
 
     //  ----------  GETTERS & SETTERS  ----------
 
+    public Area(){
+
+    }
+
     public Area(String nombre, Organizacion organizacion) {
         this.organizacion = organizacion;
         this.nombre = nombre;

@@ -1,6 +1,6 @@
 import domain.entidades.HuellaDeCarbono;
 import domain.entidades.Organizacion;
-import domain.services.creacionReporte.ReportGenerator;
+import domain.mediciones.services.creacionReporte.ReportGenerator;
 import org.junit.Test;
 
 import java.time.LocalDate;

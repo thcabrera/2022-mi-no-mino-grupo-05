@@ -1,17 +1,10 @@
 package domain.serviciosExternos;
 
-import domain.Direccion;
-import domain.services.calculoDistancia.ServicioDistancia;
-import domain.services.calculoDistancia.adapters.DistanciaServiceAdapter;
-import domain.services.calculoDistancia.entities.Distancia;
-import org.junit.jupiter.api.Assertions;
+import domain.mediciones.services.calculoDistancia.ServicioDistancia;
+import domain.mediciones.services.calculoDistancia.adapters.DistanciaServiceAdapter;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CalculadorDistanciaServiceTest {
     public class DistanciaServiceTest {

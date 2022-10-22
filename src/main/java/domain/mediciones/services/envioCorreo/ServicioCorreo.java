@@ -1,4 +1,4 @@
-package domain.services.envioCorreo;
+package domain.mediciones.services.envioCorreo;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;

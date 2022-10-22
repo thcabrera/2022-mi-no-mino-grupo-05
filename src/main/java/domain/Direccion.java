@@ -38,13 +38,23 @@ public class Direccion {
 
     //  ----------  GETTERS & SETTERS  ----------
 
+    public Direccion(){
+
+    }
+
+    public Direccion(String calle, Integer altura, Localidad localidad, Municipio municipio, Provincia provincia) {
+        setCalle(calle);
+        setAltura(altura);
+        setLocalidad(localidad);
+        setMunicipio(municipio);
+        setProvincia(provincia);
+    }
+
     public Direccion(String calle, Integer altura, Localidad localidad) {
         setCalle(calle);
         setAltura(altura);
         setLocalidad(localidad);
     }
-
-
 
     public String toString(){
         return String.format("%s %s", this.calle, this.altura);

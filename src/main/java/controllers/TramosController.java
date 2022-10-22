@@ -8,6 +8,7 @@ import domain.viaje.Tramo;
 import domain.viaje.privado.limpio.TramoLimpio;
 import lombok.Setter;
 import models.RepositorioDeLocalidades;
+import models.RepositorioDeMunicipios;
 import models.RepositorioDeProvincias;
 import models.RepositorioDeTramosEnMemoria;
 import spark.ModelAndView;
@@ -16,14 +17,14 @@ import spark.Response;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Setter
 public class TramosController {
 
     private RepositorioDeTramosEnMemoria repositorioDeTramos = new RepositorioDeTramosEnMemoria();
-    private RepositorioDeLocalidades repositorioDeLocalidades = new RepositorioDeLocalidades();
     private RepositorioDeProvincias repositorioDeProvincias = new RepositorioDeProvincias();
+    private RepositorioDeMunicipios repositorioDeMunicipios = new RepositorioDeMunicipios();
+    private RepositorioDeLocalidades repositorioDeLocalidades = new RepositorioDeLocalidades();
 
     /*------------ Tramo Limpio ------------ */
     public ModelAndView pantallaRegistrarTramoLimpio(Request request, Response response) {
@@ -31,7 +32,7 @@ public class TramosController {
         System.out.println(idTrayecto);
         Map<String, Object> parametros = new HashMap<>();
         List<Provincia> provincias = this.repositorioDeProvincias.buscarTodos();
-        List<Provincia.ProvinciaDTO> dtoProvincias = provincias.stream().map(Provincia::convertirADTO).collect(Collectors.toList());
+//        List<Provincia.ProvinciaDTO> dtoProvincias = provincias.stream().map(Provincia::convertirADTO).collect(Collectors.toList());
         parametros.put("provincias", provincias);
         parametros.put("idTrayecto", idTrayecto);
         return new ModelAndView(parametros, "trayectos/us_t_limpio.hbs");
@@ -39,10 +40,11 @@ public class TramosController {
 
     public Response guardarTramoLimpio(Request request, Response response) {
 
+        String tipo = request.queryParams("tipo");
         Direccion partida = this.cargarDireccion(request, "partida");
         Direccion destino = this.cargarDireccion(request, "destino");
 
-        TramoLimpio nuevoTLimpio = new TramoLimpio("BICI", new Direccion("a",12,null), destino); // todo: que era el tipo?
+        TramoLimpio nuevoTLimpio = new TramoLimpio(tipo, new Direccion("a",12,null), destino); // todo: que era el tipo?
 
         this.repositorioDeTramos.guardar(nuevoTLimpio);
 
@@ -75,22 +77,16 @@ public class TramosController {
     }
 
 
-    // todo: review
     private Direccion cargarDireccion(Request request, String tipoDireccion){ //tipoDireccion = partida || destino
         String calle = request.queryParams(tipoDireccion + "-" + "calle");
         int altura = Integer.parseInt(request.queryParams(tipoDireccion + "-" + "altura"));
-        int idProvincia = Integer.parseInt(request.queryParams(tipoDireccion + "-" + "provincia"));
-//        int idMunicipio = Integer.parseInt(request.params(tipoDireccion + "-" + "municipio"));
-//        int idLocalidad = Integer.parseInt(request.queryParams(tipoDireccion + "-" + "localidad"));
-        Provincia provincia = this.repositorioDeProvincias.buscar(idProvincia);
-//        Localidad localidad = this.repositorioDeLocalidades.buscar(idLocalidad);
-        System.out.printf("calle %s\n",calle);
-        System.out.printf("calle %d\n",altura);
-        System.out.printf("provincia: [%d] %s\n", provincia.getId(), provincia.getDescripcion());
-        //        System.out.printf("departamento %s \n",idMunicipio);
-//        System.out.printf("localidad: [%d] %s\n", idLocalidad, localidad.getDescripcion());
-        //Provincia provincia = new Provincia(municipio); request.params(tipoDireccion + "-" + "provincia");
-        return new Direccion(calle, altura, null);
+        int idMunicipio = Integer.parseInt(request.queryParams(tipoDireccion + "-" + "municipio"));
+        Municipio municipio = this.repositorioDeMunicipios.buscar(idMunicipio);
+        Localidad localidad = null;
+        String idLocalidad = request.queryParams(tipoDireccion + "-" + "localidad");
+        if (idLocalidad != null)
+            localidad = this.repositorioDeLocalidades.buscar(Integer.parseInt(idLocalidad));
+        return new Direccion(calle, altura, localidad, municipio, municipio.getProvincia());
     }
 
 

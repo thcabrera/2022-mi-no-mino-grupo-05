@@ -36,4 +36,20 @@ public class Localidad {
         this.descripcion = descripcion;
     }
 
+    public LocalidadDTO convertirADTO(){
+        return new LocalidadDTO(this);
+    }
+
+    public class LocalidadDTO{
+
+        public int id;
+        public String descripcion;
+
+        public LocalidadDTO(Localidad localidad){
+            this.id = localidad.id;
+            this.descripcion = localidad.descripcion;
+        }
+
+    }
+
 }

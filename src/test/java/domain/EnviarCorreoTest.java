@@ -4,12 +4,11 @@ package domain;
 import domain.entidades.*;
 import domain.entidades.contacto.Email;
 import domain.entidades.contacto.Mensaje;
-import domain.services.envioCorreo.ServicioCorreo;
+import domain.mediciones.services.envioCorreo.ServicioCorreo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class EnviarCorreoTest {

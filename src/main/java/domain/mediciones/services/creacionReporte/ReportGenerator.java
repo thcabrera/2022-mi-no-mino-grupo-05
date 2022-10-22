@@ -1,4 +1,4 @@
-package domain.services.creacionReporte;
+package domain.mediciones.services.creacionReporte;
 
 import domain.entidades.*;
 import lombok.SneakyThrows;

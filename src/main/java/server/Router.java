@@ -1,14 +1,10 @@
 package server;
 
 import controllers.*;
-import middlewares.AuthMiddleware;
 import models.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import spark.utils.BooleanHelper;
-import spark.utils.HandlebarsTemplateEngineBuilder;
-import spark.utils.NumberHelper;
-import spark.utils.TramoHelper;
+import spark.utils.*;
 
 public class Router {
     private static HandlebarsTemplateEngine engine;
@@ -41,6 +37,7 @@ public class Router {
         TramosController tramosController = new TramosController();
         tramosController.setRepositorioDeTramos(rTramos);
         LoginController loginController = new LoginController();
+        UtilidadesController utilidadesController = new UtilidadesController();
 
         /*-------- Manejo del Login -------*/
         Spark.path("/login", ()->{
@@ -104,6 +101,13 @@ public class Router {
             Spark.get("/ejecutar_calculadora", (req, resp) -> "Ejecutando calculadora!");
 
         });
+
+        Spark.path("/utilidades", () -> {
+            Spark.get("/municipios/:idProvincia", utilidadesController::obtenerMunicipios, new JsonTransformer());
+            Spark.get("/localidades/:idMunicipio", utilidadesController::obtenerLocalidades, new JsonTransformer());
+            Spark.get("/areas/:idOrganizacion", utilidadesController::obtenerAreas, new JsonTransformer());
+        });
+
 
         /*----------- Ejemplos ---------- */
         Spark.get("/hola", controllerDefault::saludoController);

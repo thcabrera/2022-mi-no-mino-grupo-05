@@ -58,6 +58,10 @@ public class Organizacion {
 
     //  ----------  GETTERS & SETTERS  ----------
 
+    public Organizacion(){
+
+    }
+
     public Organizacion(String razonSocial, TipoOrg tipo, Direccion ubicacion, Clasificacion clasificacion) {
         this.razonSocial = razonSocial;
         this.tipo = tipo;

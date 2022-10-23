@@ -1,6 +1,9 @@
 package controllers;
 
 import domain.db.EntityManagerHelper;
+import domain.entidades.AgenteSectorial;
+import domain.entidades.Organizacion;
+import domain.entidades.Persona;
 import domain.usuarios.Usuario;
 import org.etsi.uri.x01903.v13.ResponderIDType;
 import spark.ModelAndView;
@@ -31,7 +34,13 @@ public class LoginController {
             if(usuario != null) {
                 request.session(true);
                 request.session().attribute("id", usuario.getId());
-                response.redirect("user/principal");
+                if (usuario.getActor() instanceof Persona)
+                    response.redirect("/user/principal");
+                else if (usuario.getActor() instanceof Organizacion)
+                    response.redirect("/organizacion/principal");
+                else if (usuario.getActor() instanceof AgenteSectorial)
+                    response.redirect("/agente_sectorial/principal");
+                else response.redirect("/administrador/principal");
             }
             else {
                 response.redirect("/login/2");

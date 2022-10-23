@@ -9,11 +9,11 @@ import javax.persistence.*;
 // si el agente tiene un municipio, el calculo de HC será la suma del calculo de HC de sus organizaciones
 @Entity
 @Table(name = "agente_sectorial")
-public class AgenteSectorial {
+public class AgenteSectorial extends Actor{
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+//    @Id
+//    @GeneratedValue
+//    private Integer id;
 
     @Getter
     @Setter

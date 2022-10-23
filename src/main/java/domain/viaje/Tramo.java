@@ -38,4 +38,22 @@ public abstract class Tramo {
 
     public abstract String obtenerTipo();
 
+    public TramoDTO convertirADTO(){
+        return new TramoDTO(this);
+    }
+
+    public class TramoDTO{
+
+        public String puntoInicio;
+        public String puntoFin;
+        public String tipo;
+
+        public TramoDTO(Tramo tramo){
+            this.puntoFin = tramo.obtenerFin();
+            this.puntoInicio = tramo.obtenerInicio();
+            this.tipo = tramo.obtenerTipo();
+        }
+
+    }
+
 }

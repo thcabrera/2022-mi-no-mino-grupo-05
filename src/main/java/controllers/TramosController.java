@@ -44,7 +44,7 @@ public class TramosController {
         Direccion partida = this.cargarDireccion(request, "partida");
         Direccion destino = this.cargarDireccion(request, "destino");
 
-        TramoLimpio nuevoTLimpio = new TramoLimpio(tipo, new Direccion("a",12,null), destino); // todo: que era el tipo?
+        TramoLimpio nuevoTLimpio = new TramoLimpio(tipo, partida, destino);
 
         this.repositorioDeTramos.guardar(nuevoTLimpio);
 

@@ -18,10 +18,11 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name="organizacion")
-public class Organizacion {
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Organizacion extends Actor{
+
+//    @Id
+//    @GeneratedValue
+//    private Integer id;
 
     @Column(name="razon_social")
     private String razonSocial;

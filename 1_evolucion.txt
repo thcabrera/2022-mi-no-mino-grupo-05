@@ -1,0 +1,5 @@
+Evolucion de la organizacion 1:
+Fecha: 2019-04-24; Valor: 386.17;
+Fecha: 2020-04-24; Valor: 528.78;
+Fecha: 2021-04-24; Valor: 708.98;
+Fecha: 2022-04-24; Valor: 1052.78;

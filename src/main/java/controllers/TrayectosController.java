@@ -3,6 +3,7 @@ package controllers;
 import domain.Direccion;
 import domain.entidades.Localidad;
 import domain.entidades.Municipio;
+import domain.viaje.Tramo;
 import domain.viaje.Trayecto;
 import lombok.Setter;
 import models.RepositorioDeOrganizacionesEnMemoria;
@@ -14,6 +15,7 @@ import spark.Response;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Setter
 public class TrayectosController {
@@ -26,7 +28,7 @@ public class TrayectosController {
     public ModelAndView pantallaEditarTrayecto(Request request, Response response) {
         int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
         Map<String, Object> parametros = new HashMap<>();
-        parametros.put("tramos", this.repositorioDeTramos.buscarTodos());
+        parametros.put("tramos", this.repositorioDeTramos.buscarTodos().stream().map(Tramo::convertirADTO).collect(Collectors.toList()));
         parametros.put("idTrayecto", idTrayecto);
         parametros.put("organizaciones", this.repositorioDeOrganizaciones.buscarTodos());
         return new ModelAndView(parametros, "trayectos/us_editar_trayecto.hbs");

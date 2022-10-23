@@ -1,8 +1,7 @@
 package domain.usuarios;
 
-import domain.entidades.Organizacion;
+import domain.entidades.Actor;
 import domain.entidades.Persona;
-import domain.mediciones.consumos.MedioTransporte;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,17 +17,13 @@ public class Usuario  {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "persona_id", referencedColumnName = "id")
-    private Persona persona_id;
-
     @Column(name = "nombre_usuario")
     private String nombreDeUsuario;
 
     @Column(name= "contrasenia")
     private String contrasenia;
-
-    @ManyToOne
-    @JoinColumn(name = "rol_id", referencedColumnName = "id")
-    private Rol rol;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "actor_id", referencedColumnName = "id")
+    private Actor actor;
 }

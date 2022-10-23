@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name="persona")
-public class Persona {
+public class Persona extends Actor{
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+//    @Id
+//    @GeneratedValue
+//    private Integer id;
 
     @Column(name="nombre")
     private String nombre;

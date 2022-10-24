@@ -5,6 +5,7 @@ import domain.entidades.AgenteSectorial;
 import domain.entidades.Organizacion;
 import domain.entidades.Persona;
 import domain.usuarios.Usuario;
+import helpers.HashHelper;
 import org.etsi.uri.x01903.v13.ResponderIDType;
 import spark.ModelAndView;
 import spark.Request;
@@ -23,7 +24,7 @@ public class LoginController {
                     +" WHERE nombreDeUsuario='"
                     + request.queryParams("nombre_de_usuario")
                     +"' AND contrasenia='"
-                    + request.queryParams("contrasenia")
+                    + HashHelper.hashear(request.queryParams("contrasenia"))
                     +"'";
 
             Usuario usuario = (Usuario) EntityManagerHelper

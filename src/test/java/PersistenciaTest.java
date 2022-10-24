@@ -114,8 +114,6 @@ public class PersistenciaTest {
     @AfterAll
     static void elminarObjetos(){
 
-        System.out.println("ELIMINANDO A LOS CARGADOS!");
-
         // eliminamos al usuario de la Persona cargada
         Usuario up = (Usuario) EntityManagerHelper.getEntityManager()
                 .createQuery("from " + Usuario.class.getName() + " as u where u.nombreDeUsuario = 'panfleto'")

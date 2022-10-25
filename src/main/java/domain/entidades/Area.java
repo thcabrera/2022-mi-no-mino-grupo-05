@@ -83,4 +83,21 @@ public class Area {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public AreaDTO convertirADTO(){
+        return new AreaDTO(this);
+    }
+
+    public class AreaDTO{
+
+        public String id;
+        public String nombre;
+
+        public AreaDTO(Area area){
+            this.id = String.valueOf(area.getId());
+            this.nombre = area.getNombre();
+        }
+
+    }
+
 }

@@ -1,8 +1,11 @@
 package domain.entidades;
 
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Setter
 @Table(name="solicitud")
 public class Solicitud {
     @Id

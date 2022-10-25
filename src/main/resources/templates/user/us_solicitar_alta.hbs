@@ -4,7 +4,8 @@
     <h1>Solicitar alta en empresa</h1>
     <form action = "solicitar_alta/enviar" method="POST">
         <div>
-            <select class="custom-select" name="idOrg" required>
+            <select class="custom-select" name="id_org" id="org_select"
+                    onchange="getAreasOrg('org_select', 'areas_select')" required>
                 <option disabled selected value="">Seleccione organización</option>
                 {{#each organizaciones}}
                     <option value="{{id}}">{{nombre}}</option>
@@ -12,16 +13,58 @@
             </select>
         </div>
         <div>
-            <select class="custom-select" name="idArea" required>
+            <select class="custom-select" name="id_area" id="areas_select" disabled required>
                 <option disabled selected value="">Seleccione area</option>
-                {{#each areas}}
-                    <option value="{{id}}">{{nombre}}</option>
-                {{/each}}
             </select>
         </div>
         <button type="submit">Enviar solicitud</button>
     </form>
 </div>
+
+<script>
+
+    function resetearOpciones(selectElement, textoPorDefecto){
+        selectElement.innerHTML = "";
+        let opt1 = document.createElement("option");
+        opt1.text = textoPorDefecto;
+        opt1.value = "";
+        opt1.disabled = true;
+        opt1.selected = true;
+        selectElement.appendChild(opt1);
+    }
+
+    function agregarASelect(selectElement, arr){
+        for(let i = 0; i < arr.length; i++)
+        {
+            var opt = document.createElement("option");
+            opt.value = arr[i].id;
+            opt.text = arr[i].nombre;
+            selectElement.appendChild(opt);
+        }
+    }
+
+    async function getAreasOrg(idSelectOrg, idSelectArea){
+        let idOrg = document.getElementById(idSelectOrg).value;
+        let selectArea = document.getElementById(idSelectArea);
+        selectArea.disabled = false;
+
+        let areas = [];
+
+        await fetch('http://localhost:9000/utilidades/areas/' + idOrg, {
+                    method: 'GET'
+                }
+        ).then(response => response.json())
+                .then(json => areas = json);
+
+        // vaciamos el select
+        selectArea.innerHTML = "";
+        // establecemos el predeterminado
+        resetearOpciones(selectArea, "--Seleccione un area--");
+        //Llenar:
+        agregarASelect(selectArea, areas);
+        selectArea.required = areas.length > 0;
+    }
+</script>
 
 {{/partial}}
 {{> ../public/shared/user_base.hbs }}

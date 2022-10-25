@@ -53,6 +53,10 @@ public class Persona extends Actor{
 
     }
 
+    public List<Organizacion> obtenerOrganizaciones(){
+        return new ArrayList<>(this.getListaAreas().stream().map(Area::getOrganizacion).collect(Collectors.toSet()));
+    }
+
     //  ----------  SOLICITUDES  ----------
     public void solicitarAlta(Organizacion org, Area area) {
         Solicitud solicitud = new Solicitud(this, area);

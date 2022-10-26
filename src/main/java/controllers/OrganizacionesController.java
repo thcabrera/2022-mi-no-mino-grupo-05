@@ -19,13 +19,11 @@ public class OrganizacionesController {
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
 
     public ModelAndView mostrar(Request request, Response response) {
-        String idBuscado = request.params("id");
+        int idOrganizacion = Integer.parseInt(request.params("id"));
 
-        Organizacion organizacion = EntityManagerHelper
-                .getEntityManager()
-                .find(Organizacion.class, new Integer(idBuscado));
+        Organizacion organizacion = repositorioDeOrganizaciones.buscar(idOrganizacion);
         return new ModelAndView(new HashMap<String, Object>() {{
-            put("servicio", idBuscado);
+            put("servicio", idOrganizacion);
 
         }}, "organizaciones/organizacion.hbs");
 
@@ -37,7 +35,6 @@ public class OrganizacionesController {
         return new ModelAndView(parametros, "user/us_solicitar_alta.hbs");
     }
 
-    // TODO #1 evaluar si conviene tirar la excepcion o manejarlo de otra forma
     public Response recibirSolicitudDeAlta(Request request, Response response){
         int idOrg = Integer.parseInt(request.queryParams("id_org"));
         int idArea = Integer.parseInt(request.queryParams("id_area"));
@@ -64,6 +61,7 @@ public class OrganizacionesController {
         }
         // obtenemos a la persona del usuario
         Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
+        persona.altaAceptada(area);
         // TODO #2 si la persona ya envió una solicitud para esa area, le informamos?
         if (organizacion.getSolicitudDe(persona, area) != null){
             System.out.println("EL USUARIO YA LE ENVIO UNA SOLICITUD A ESTA ORGANIZACION");
@@ -80,6 +78,9 @@ public class OrganizacionesController {
         EntityManagerHelper.getEntityManager().getTransaction().begin();
         EntityManagerHelper.getEntityManager().persist(solicitud);
         EntityManagerHelper.getEntityManager().getTransaction().commit();
+
+        for(Persona p: area.getMiembros())
+            System.out.println("PERSONAS");
         response.redirect("/user/principal");
         return response;
     }
@@ -94,8 +95,8 @@ public class OrganizacionesController {
 
     public Response darDeBaja(Request request, Response response){
         int areaId = Integer.parseInt(request.params("id"));
-        Area area = repositorioDeAreas.buscar(areaId);
-        repositorioDeAreas.eliminar(area);
+        Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
+        persona.getListaAreas().remove(repositorioDeAreas.buscar(areaId));
         response.redirect("/user/mis_organizaciones");
         return response;
     }

@@ -34,7 +34,7 @@ public class Persona extends Actor{
     @Column(name="tipo_doc")
     private Documentacion tipoDoc;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "miembros", cascade = CascadeType.ALL)
     private List<Area> listaAreas;
 
     @OneToMany(mappedBy = "persona")

@@ -27,6 +27,10 @@ public class Solicitud {
     @Column(name="estado")
     private EstadoSolicitud estado;
 
+    public Solicitud(){
+
+    }
+
     public Solicitud(Persona solicitante, Area areaSolicitada) {
         this.solicitante = solicitante;
         this.areaSolicitada = areaSolicitada;

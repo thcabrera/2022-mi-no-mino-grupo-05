@@ -16,7 +16,6 @@ public class Area {
     @JoinColumn(name = "org_id", referencedColumnName = "id")
     private Organizacion organizacion;
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="area_persona",
             joinColumns = @JoinColumn(name = "area_id"),

@@ -50,7 +50,11 @@ public class Persona extends Actor{
     }
 
     public Persona() {
+        this.setListaAreas(new ArrayList<>());
+    }
 
+    public void agregarArea(Area area){
+        this.listaAreas.add(area);
     }
 
     public List<Organizacion> obtenerOrganizaciones(){

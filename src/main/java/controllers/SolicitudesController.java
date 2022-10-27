@@ -8,6 +8,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,11 +20,13 @@ public class SolicitudesController {
     public ModelAndView mostrarTodasParaOrg(Request request, Response response) {
         int idOrganizacion = Integer.parseInt(request.params("idOrg"));
         Map<String, Object> parametros = new HashMap<>();
+        List<Solicitud> listaSolsVacia = new ArrayList<>();
         System.out.println("el id de la org es:" + idOrganizacion);
         List<Solicitud> solicitudes =  this.repositorioDeSolicitudes.buscarTodosParaOrg(idOrganizacion);
         if(solicitudes == null){
-            System.out.println("solicitudes == null"+ true + "=> sols:" +  solicitudes);
-            return new ModelAndView(null, "org/org_aceptar_miembro.hbs");
+            System.out.println("solicitudes == null"+ true + "=> sols:" +  listaSolsVacia);
+            parametros.put("solicitudes", listaSolsVacia);
+            return new ModelAndView(parametros, "org/org_aceptar_miembro.hbs");
         }else {
             parametros.put("solicitudes",solicitudes);
             return new ModelAndView(parametros, "org/org_aceptar_miembro.hbs");

@@ -16,7 +16,6 @@
         {{#each solicitudes}}
           <div class="row  d-flex justify-content-around border rounded p-2" name="solicitudes">
                   <div class="col-auto d-flex justify-content-center"  style="width:33%;">
-                      {{this}}
                       {{areaSolicitada.organizacion.nombre}}
                   </div>
                   <div class="col-auto d-flex justify-content-center " style="width:33%;">
@@ -31,9 +30,8 @@
                               onclick="eliminarSolicitud({{id}})">Rechazar</button>
                   </div>
           </div>
-        {{else}}
-        <p class="fs-3 fw-light mt-3 mb-3">No hay solicitudes activas</p>
-        <h1>No Results</h1>
+            {{else}}
+                <p class="fs-3 fw-light mt-4 mb-3">No hay solicitudes activas</p>
         {{/each}}
       </section>
 

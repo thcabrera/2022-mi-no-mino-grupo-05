@@ -4,6 +4,7 @@ import domain.entidades.*;
 import models.RepositorioDeMunicipios;
 import models.RepositorioDeOrganizaciones;
 import models.RepositorioDeProvincias;
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import java.util.ArrayList;
@@ -47,4 +48,16 @@ public class UtilidadesController {
         return organizacion.getAreas().stream().map(Area::convertirADTO).collect(Collectors.toList());
     }
 
+/*    public List<Area.AreaDTO> obtenerLineas(Request request, Response response){
+        int idOrganizacion = Integer.parseInt(request.params("idOrganizacion"));
+        Organizacion organizacion = repositorioDeOrganizaciones.buscar(idOrganizacion);
+        if (organizacion == null)
+            return new ArrayList<>();
+        return organizacion.getAreas().stream().map(Area::convertirADTO).collect(Collectors.toList());
+    }*/
+
+
+    public ModelAndView pantallaClientePerdido(Request request, Response response) {
+        return new ModelAndView(null, "/utilidades/perdido.hbs");
+    }
 }

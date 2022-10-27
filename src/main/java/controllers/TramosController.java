@@ -92,7 +92,7 @@ public class TramosController {
 
     /*------------ Tramo Limpio ------------ */
     public ModelAndView pantallaRegistrarTramoPublico(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_t_publico.html");
+        return new ModelAndView(null, "trayectos/us_t_publico.hbs");
     }
     public Response guardarTramoPublico(Request request, Response response) {
         Direccion partida = this.cargarDireccion(request, "partida");

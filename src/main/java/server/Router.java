@@ -40,7 +40,8 @@ public class Router {
         tramosController.setRepositorioDeTramos(rTramos);
         LoginController loginController = new LoginController();
         UtilidadesController utilidadesController = new UtilidadesController();
-
+        ReportesController reportesController = new ReportesController();
+        SolicitudesController solicitudesController = new SolicitudesController();
         /*-------- Manejo del Login -------*/
         Spark.path("/login", ()->{
             Spark.get("", loginController::pantallaLogin , engine);
@@ -50,7 +51,7 @@ public class Router {
 
         /*----------- user ---------- */
         Spark.path("/user", () -> {
-
+/*
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", ((request, response) -> {
@@ -61,6 +62,8 @@ public class Router {
                 else response.redirect("user/principal");
             }));
 
+
+ */
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
             });
@@ -105,10 +108,11 @@ public class Router {
                 Spark.post("/solicitar_alta/enviar", organizacionesController::recibirSolicitudDeAlta);
             });
 
-            Spark.get("/reportes", (req, resp) -> "Visualizando reportes! xd");
+            Spark.get("/reportes", reportesController::mostrarReportes, engine);
 
             Spark.get("/ejecutar_calculadora", (req, resp) -> "Ejecutando calculadora!");
 
+            /*----------- Reportes  ---------- */
         });
 
         Spark.path("/admin", () -> {
@@ -124,6 +128,7 @@ public class Router {
         });
 
         Spark.path("/organizacion", () -> {
+/*
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", ((request, response) -> {
@@ -131,9 +136,17 @@ public class Router {
                     response.redirect("/hola");
                     Spark.halt();
                 }
-            }));
-        });
 
+            }));
+
+ */
+            Spark.path("/solicitudes", () -> {
+                Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
+                Spark.path("/:idOrg", () ->{
+                    Spark.delete("/:idSol", solicitudesController::eliminar );
+                });
+            });
+        });
         Spark.path("/utilidades", () -> {
             Spark.get("/municipios/:idProvincia", utilidadesController::obtenerMunicipios, new JsonTransformer());
             Spark.get("/localidades/:idMunicipio", utilidadesController::obtenerLocalidades, new JsonTransformer());
@@ -154,6 +167,8 @@ public class Router {
 //        Spark.path("/utilidades", () ->{
 //            Spark.get("/deptos/:idProv", )
 //        });
+        Spark.get("", utilidadesController::pantallaClientePerdido, engine);
+        Spark.get("/*", utilidadesController::pantallaClientePerdido, engine);
 
     }
 }

@@ -1,6 +1,7 @@
 package domain.entidades;
 
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 

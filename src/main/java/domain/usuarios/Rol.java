@@ -1,8 +1,9 @@
 package domain.usuarios;
-
 public enum Rol {
+
     ADMINISTRADOR,
-    AGENTE_SECTORIAL,
+    ORGANIZACION,
     PERSONA,
-    ORGANIZACION
+    AGENTE_SECTORIAL
+
 }

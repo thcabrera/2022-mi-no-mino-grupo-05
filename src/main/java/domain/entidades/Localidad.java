@@ -15,6 +15,9 @@ public class Localidad {
     @Column(name="descripcion")
     private String descripcion;
 
+    @Column(name = "codigo_postal")
+    private String codigoPostal;
+
     @ManyToOne
     @JoinColumn(name = "municipio_id", referencedColumnName = "id")
     private Municipio municipio;

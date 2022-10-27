@@ -3,7 +3,9 @@ package server;
 import controllers.*;
 import domain.entidades.Organizacion;
 import domain.entidades.Persona;
+import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
+import helpers.RolHelper;
 import helpers.UsuarioHelper;
 import middlewares.AuthMiddleware;
 import models.RepositorioDeTramosEnMemoria;
@@ -55,12 +57,17 @@ public class Router {
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", ((request, response) -> {
-                if (! (UsuarioHelper.usuarioLogueado(request).getActor() instanceof Persona)){
+                if (!RolHelper.usuarioTieneRol(request, Rol.PERSONA)){
                     response.redirect("/404");
                     Spark.halt();
                 }
-                else response.redirect("user/principal");
             }));
+            Spark.before("/*", ((request, response) -> {
+                if (!RolHelper.usuarioTieneRol(request, Rol.PERSONA)){
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+           }));
 
 
  */
@@ -118,12 +125,18 @@ public class Router {
         Spark.path("/admin", () -> {
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
-//            Spark.before("", ((request, response) -> {
-//                if (! (UsuarioHelper.usuarioLogueado(request).getActor() instanceof)){
-//                    response.redirect("/404");
-//                    Spark.halt();
-//                }
-//            }));
+            Spark.before("", ((request, response) -> {
+                if (! RolHelper.usuarioTieneRol(request, Rol.ADMINISTRADOR)){
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            }));
+            Spark.before("/*", ((request, response) -> {
+                if (! RolHelper.usuarioTieneRol(request, Rol.ADMINISTRADOR)){
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            }));
 
         });
 
@@ -132,12 +145,41 @@ public class Router {
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", ((request, response) -> {
-                if (! (UsuarioHelper.usuarioLogueado(request).getActor() instanceof Organizacion)){
-                    response.redirect("/hola");
+                if (!RolHelper.usuarioTieneRol (request, Rol.ORGANIZACION)){
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            }));
+            Spark.before("/*", ((request, response) -> {
+                if (!RolHelper.usuarioTieneRol (request, Rol.ORGANIZACION)){
+                    response.redirect("/404");
                     Spark.halt();
                 }
 
             }));
+<<<<<<< HEAD
+=======
+
+        });
+
+        Spark.path("/agente_sectorial", () -> {
+            Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("/*", AuthMiddleware::verificarSesion);
+            Spark.before("", (((request, response) -> {
+                if (!RolHelper.usuarioTieneRol(request, Rol.AGENTE_SECTORIAL)){
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            })));
+            Spark.before("/*", (((request, response) -> {
+                if (!RolHelper.usuarioTieneRol(request, Rol.AGENTE_SECTORIAL)){
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            })));
+
+        });
+>>>>>>> d74b622bd8210a71043ae29a3d46467cd2bd9191
 
  */
             Spark.path("/solicitudes", () -> {
@@ -163,6 +205,8 @@ public class Router {
 
         // configure image paths
         Spark.get("/hola", controllerDefault::saludoController);
+
+        Spark.get("/404", ((request, response) -> "ACCESO DENEGADO!"));
 
 //        Spark.path("/utilidades", () ->{
 //            Spark.get("/deptos/:idProv", )

@@ -1,12 +1,9 @@
 package controllers;
 
 import domain.db.EntityManagerHelper;
-import domain.entidades.AgenteSectorial;
-import domain.entidades.Organizacion;
-import domain.entidades.Persona;
+import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
 import helpers.HashHelper;
-import org.etsi.uri.x01903.v13.ResponderIDType;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -35,13 +32,15 @@ public class LoginController {
             if(usuario != null) {
                 request.session(true);
                 request.session().attribute("id", usuario.getId());
-                if (usuario.getActor() instanceof Persona)
+                if (usuario.getRol() == Rol.PERSONA)
                     response.redirect("/user/principal");
-                else if (usuario.getActor() instanceof Organizacion)
+                else if (usuario.getRol() == Rol.ORGANIZACION)
                     response.redirect("/organizacion/principal");
-                else if (usuario.getActor() instanceof AgenteSectorial)
+                else if (usuario.getRol() == Rol.AGENTE_SECTORIAL)
                     response.redirect("/agente_sectorial/principal");
-                else response.redirect("/administrador/principal");
+                else if (usuario.getRol() == Rol.ADMINISTRADOR)
+                    response.redirect("/administrador/principal");
+                else response.redirect("/404");
             }
             else {
                 response.redirect("/login/2");

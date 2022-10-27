@@ -141,6 +141,23 @@ public class Router {
         });
 
         Spark.path("/organizacion", () -> {
+            Spark.path("/principal", () -> {
+                Spark.get("", organizacionesController::pantallaPrincipal, engine);
+            });
+
+            Spark.path("/solicitudes", () -> {
+                Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
+                Spark.path("/:idOrg", () ->{
+                    Spark.delete("/:idSol", solicitudesController::eliminar );
+                });
+            });
+
+            Spark.path("/alta_area", () -> {
+                Spark.get("/:idOrg", organizacionesController::darDeAltaArea, engine);
+            });
+
+
+
 /*
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
@@ -182,12 +199,7 @@ public class Router {
 >>>>>>> d74b622bd8210a71043ae29a3d46467cd2bd9191
 
  */
-            Spark.path("/solicitudes", () -> {
-                Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
-                Spark.path("/:idOrg", () ->{
-                    Spark.delete("/:idSol", solicitudesController::eliminar );
-                });
-            });
+
         });
         Spark.path("/utilidades", () -> {
             Spark.get("/municipios/:idProvincia", utilidadesController::obtenerMunicipios, new JsonTransformer());
@@ -202,6 +214,7 @@ public class Router {
         Spark.path("/organizaciones", ()-> {
             Spark.get("/:id", organizacionesController::mostrar, engine);
         });
+
 
         // configure image paths
         Spark.get("/hola", controllerDefault::saludoController);

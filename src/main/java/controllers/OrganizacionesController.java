@@ -8,8 +8,12 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import domain.db.EntityManagerHelper;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OrganizacionesController {
     //ABM: A->Alta |B-> Baja |M-> Modificaco  |L->Listado | V->Visualizar
@@ -17,6 +21,10 @@ public class OrganizacionesController {
     private RepositorioDeAreas repositorioDeAreas = new RepositorioDeAreas();
 
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
+
+    public ModelAndView pantallaPrincipal(Request request, Response response) {
+        return new ModelAndView(null, "org/org_principal.hbs");
+    }
 
     public ModelAndView mostrar(Request request, Response response) {
         int idOrganizacion = Integer.parseInt(request.params("id"));
@@ -92,7 +100,6 @@ public class OrganizacionesController {
         return new ModelAndView(parametros, "user/us_organizaciones.hbs");
     }
 
-
     public Response darDeBaja(Request request, Response response){
         int areaId = Integer.parseInt(request.params("id"));
         Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
@@ -101,4 +108,26 @@ public class OrganizacionesController {
         return response;
     }
 
+    public ModelAndView darDeAltaArea(Request request, Response response) {
+        UtilidadesController utlidadesController = new UtilidadesController();
+        int idOrganizacion = Integer.parseInt(request.params("idOrg"));
+        Map<String, Object> parametros = new HashMap<>();
+        List<Area.AreaDTO> listaAreasVacia = new ArrayList<>();
+        //List<Area> areas =  this.repositorioDeAreas.buscarTodasLasAreas(idOrganizacion);
+        List<Area.AreaDTO> listaAreas = this.obtenerAreasDTO(idOrganizacion);
+        if(listaAreas == null){
+            parametros.put("areas", listaAreasVacia);
+            return new ModelAndView(parametros, "org/org_alta_area.hbs");
+        }else {
+            parametros.put("areas",listaAreas);
+            return new ModelAndView(parametros, "org/org_alta_area.hbs");
+        }
+    }
+
+    public List<Area.AreaDTO> obtenerAreasDTO(Integer idOrg){
+        Organizacion organizacion = repositorioDeOrganizaciones.buscar(idOrg);
+        if (organizacion == null)
+            return new ArrayList<>();
+        return organizacion.getAreas().stream().map(Area::convertirADTO).collect(Collectors.toList());
+    }
 }

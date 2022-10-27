@@ -12,6 +12,12 @@ public class RepositorioDeAreas {
                 .getResultList();
     }
 
+    public List<Area> buscarTodasLasAreas(int idOrg){
+        return EntityManagerHelper.getEntityManager()
+                .createQuery("from " + Area.class.getName() + " where org_id = " + idOrg)
+                .getResultList();
+    }
+
     public Area buscar(int id) {
         return EntityManagerHelper.getEntityManager().find(Area.class, id);
     }

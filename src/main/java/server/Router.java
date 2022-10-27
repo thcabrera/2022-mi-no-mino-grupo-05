@@ -7,6 +7,7 @@ import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
 import helpers.RolHelper;
 import helpers.UsuarioHelper;
+import middlewares.AutMiddleware;
 import middlewares.AuthMiddleware;
 import models.RepositorioDeTramosEnMemoria;
 import spark.Spark;
@@ -53,24 +54,12 @@ public class Router {
 
         /*----------- user ---------- */
         Spark.path("/user", () -> {
-/*
+
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol(request, Rol.PERSONA)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
-            Spark.before("/*", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol(request, Rol.PERSONA)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-           }));
+            Spark.before("", AutMiddleware::verificarPersona);
+            Spark.before("/*", AutMiddleware::verificarPersona);
 
-
- */
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
             });
@@ -125,63 +114,17 @@ public class Router {
         Spark.path("/admin", () -> {
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", ((request, response) -> {
-                if (! RolHelper.usuarioTieneRol(request, Rol.ADMINISTRADOR)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
-            Spark.before("/*", ((request, response) -> {
-                if (! RolHelper.usuarioTieneRol(request, Rol.ADMINISTRADOR)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
-
+            Spark.before("", AutMiddleware::verificarAdministrador);
+            Spark.before("/*", AutMiddleware::verificarAdministrador);
         });
 
         Spark.path("/organizacion", () -> {
-/*
+
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol (request, Rol.ORGANIZACION)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
-            Spark.before("/*", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol (request, Rol.ORGANIZACION)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
+            Spark.before("", AutMiddleware::verificarOrganizacion);
+            Spark.before("/*", AutMiddleware::verificarOrganizacion);
 
-            }));
-<<<<<<< HEAD
-=======
-
-        });
-
-        Spark.path("/agente_sectorial", () -> {
-            Spark.before("", AuthMiddleware::verificarSesion);
-            Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", (((request, response) -> {
-                if (!RolHelper.usuarioTieneRol(request, Rol.AGENTE_SECTORIAL)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            })));
-            Spark.before("/*", (((request, response) -> {
-                if (!RolHelper.usuarioTieneRol(request, Rol.AGENTE_SECTORIAL)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            })));
-
-        });
->>>>>>> d74b622bd8210a71043ae29a3d46467cd2bd9191
-
- */
             Spark.path("/solicitudes", () -> {
                 Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
                 Spark.path("/:idOrg", () ->{
@@ -190,6 +133,14 @@ public class Router {
 
                 });
             });
+        });
+
+        Spark.path("/agente_sectorial", () -> {
+            Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("/*", AuthMiddleware::verificarSesion);
+            Spark.before("", AutMiddleware::verificarAgenteSectorial);
+            Spark.before("/*", AutMiddleware::verificarAgenteSectorial);
+
         });
         Spark.path("/utilidades", () -> {
             Spark.get("/municipios/:idProvincia", utilidadesController::obtenerMunicipios, new JsonTransformer());
@@ -208,7 +159,8 @@ public class Router {
         // configure image paths
         Spark.get("/hola", controllerDefault::saludoController);
 
-        Spark.get("/404", ((request, response) -> "ACCESO DENEGADO!"));
+        Spark.get("/404", ((request, response) -> "NO EXISTE LA PAG!"));
+        Spark.get("/403", ((request, response) -> "ACCESO DENEGADO!"));
 
 //        Spark.path("/utilidades", () ->{
 //            Spark.get("/deptos/:idProv", )

@@ -200,6 +200,14 @@ public class Router {
 
  */
 
+            Spark.path("/solicitudes", () -> {
+                Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
+                Spark.path("/:idOrg", () ->{
+                    Spark.post("/rechazar/:idSol", solicitudesController::eliminar );
+                    Spark.post("/aceptar/:idSol", solicitudesController::aceptar );
+
+                });
+            });
         });
         Spark.path("/utilidades", () -> {
             Spark.get("/municipios/:idProvincia", utilidadesController::obtenerMunicipios, new JsonTransformer());

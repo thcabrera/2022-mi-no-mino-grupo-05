@@ -1,5 +1,6 @@
 package domain.entidades;
 
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Setter
+@Getter
 @Table(name="solicitud")
 public class Solicitud {
     @Id
@@ -43,5 +45,9 @@ public class Solicitud {
 
     public Area getAreaSolicitada() {
         return areaSolicitada;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

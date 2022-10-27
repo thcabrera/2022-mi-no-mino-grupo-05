@@ -3,16 +3,6 @@
   <div id = "header"></div>
   <section class="container">        
     <h1 style="margin-top: 20px">Solicitudes de posibles miembros</h1>
-    {{!--
-          <div class="row align-items-center border rounded p-2" name="solicitud">
-              <div class="col-auto d-flex justify-content-center"  style="width:33%; font-weight: bold;">
-                  Organizacion
-              </div>
-              <div class="col-auto d-flex justify-content-center" style="width:33%; font-weight: bold;">
-                  Sector
-              </div>
-          </div>
-    --}}
         {{#each solicitudes}}
           <div class="row  d-flex justify-content-around border rounded p-2" name="solicitudes">
                   <div class="col-auto d-flex justify-content-center"  style="width:33%;">
@@ -22,12 +12,17 @@
                       {{areaSolicitada.nombre}}
                   </div>
                   <div class="col-auto d-flex justify-content-center" style="width:18%;">
+                      <form action="organizacion/solicitudes/{{areaSolicitada.organizacion.id}}/aceptar/{{id}}" method = "POST">
                       <button type="button" class="btn btn-success" id="aceptar-button"
-                              onclick="eliminarSolicitud({{id}})">Aceptar</button>
+                              onclick="aceptarSolicitud({{id}}, {{areaSolicitada.organizacion.id}})">Aceptar</button>
+                      </form>
                   </div>
                   <div class="col-auto" style="width:15%;">
+                      <form action="" method = "GET">
                       <button type="button" class="btn btn-danger" id="rechazar-button" name="rechazar-button"
-                              onclick="eliminarSolicitud({{id}})">Rechazar</button>
+                              onclick="eliminarSolicitud({{id}}, {{areaSolicitada.organizacion.id}})" >Rechazar</button>
+                      </form>
+
                   </div>
           </div>
             {{else}}
@@ -36,18 +31,27 @@
       </section>
 
       <script>
-          async function eliminarSolicitud(idSolicitud) {
-              await fetch('http://localhost:9000/organizacion/solicitudes/delete/' + idSolicitud, { // todo: revisar como mabdar algo por body en js
-                          method: 'DELETE'
+
+          async function aceptarSolicitud(idSolicitud, idOrganizacion) {
+              let urlToPost = 'http://localhost:9000/organizacion/solicitudes/' + idOrganizacion + '/aceptar/' + idSolicitud
+              console.log("le pegamos al org aceptar sol");
+              await fetch(urlToPost, {
+                          method: 'POST',
                       }
               ).then(response => response.json())
+                      .then(res => console.log(res))
+                      .finally(() => location.reload())
           }
-
-          async function aceptarSolicitud(idSolicitud) {
-              await fetch('http://localhost:9000/organizacion/solicitudes/aceptar/' + idSolicitud, { // todo: same arriba
+          async function eliminarSolicitud(idSolicitud, idOrganizacion) {
+              let urlToPost = 'http://localhost:9000/organizacion/solicitudes/' + idOrganizacion + '/rechazar/' + idSolicitud
+              console.log("le pegamos al ord rechazar");
+              await fetch(urlToPost, {
                           method: 'POST'
                       }
               ).then(response => response.json())
+                      .then(res => console.log(res))
+                      .finally(() => location.reload())
+
           }
 
       </script>

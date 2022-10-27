@@ -92,7 +92,6 @@ public class OrganizacionesController {
         return new ModelAndView(parametros, "user/us_organizaciones.hbs");
     }
 
-
     public Response darDeBaja(Request request, Response response){
         int areaId = Integer.parseInt(request.params("id"));
         Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();

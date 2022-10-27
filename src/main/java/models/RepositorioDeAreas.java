@@ -27,7 +27,7 @@ public class RepositorioDeAreas {
         EntityManagerHelper.getEntityManager().remove(area);
         EntityManagerHelper.getEntityManager().getTransaction().commit();
     }
+    public void agregarPersona(Persona persona, Area ara){
 
-
-
+    }
 }

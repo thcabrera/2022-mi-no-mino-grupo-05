@@ -185,7 +185,9 @@ public class Router {
             Spark.path("/solicitudes", () -> {
                 Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
                 Spark.path("/:idOrg", () ->{
-                    Spark.delete("/:idSol", solicitudesController::eliminar );
+                    Spark.post("/rechazar/:idSol", solicitudesController::eliminar );
+                    Spark.post("/aceptar/:idSol", solicitudesController::aceptar );
+
                 });
             });
         });

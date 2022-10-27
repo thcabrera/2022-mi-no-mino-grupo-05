@@ -26,4 +26,9 @@ public class Usuario  {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "actor_id", referencedColumnName = "id")
     private Actor actor;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rol")
+    private Rol rol;
+
 }

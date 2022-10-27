@@ -32,53 +32,53 @@
             </form>
         </div>
         <figure class="form-section-img">
-            <img src="/images/undraw_ride_a_bike_girl.svg" class="form-section-picture" alt="girl_ride_bike">
+            <img src="/images/sol_join_organizacion.svg" class="form-section-picture" alt="so">
         </figure>
     </section>
-    <script>
+<script>
 
-        function resetearOpciones(selectElement, textoPorDefecto){
-            selectElement.innerHTML = "";
-            let opt1 = document.createElement("option");
-            opt1.text = textoPorDefecto;
-            opt1.value = "";
-            opt1.disabled = true;
-            opt1.selected = true;
-            selectElement.appendChild(opt1);
+    function resetearOpciones(selectElement, textoPorDefecto){
+        selectElement.innerHTML = "";
+        let opt1 = document.createElement("option");
+        opt1.text = textoPorDefecto;
+        opt1.value = "";
+        opt1.disabled = true;
+        opt1.selected = true;
+        selectElement.appendChild(opt1);
+    }
+
+    function agregarASelect(selectElement, arr){
+        for(let i = 0; i < arr.length; i++)
+        {
+            var opt = document.createElement("option");
+            opt.value = arr[i].id;
+            opt.text = arr[i].nombre;
+            selectElement.appendChild(opt);
         }
+    }
 
-        function agregarASelect(selectElement, arr){
-            for(let i = 0; i < arr.length; i++)
-            {
-                var opt = document.createElement("option");
-                opt.value = arr[i].id;
-                opt.text = arr[i].nombre;
-                selectElement.appendChild(opt);
-            }
-        }
+    async function getAreasOrg(idSelectOrg, idSelectArea){
+        let idOrg = document.getElementById(idSelectOrg).value;
+        let selectArea = document.getElementById(idSelectArea);
+        selectArea.disabled = false;
 
-        async function getAreasOrg(idSelectOrg, idSelectArea){
-            let idOrg = document.getElementById(idSelectOrg).value;
-            let selectArea = document.getElementById(idSelectArea);
-            selectArea.disabled = false;
+        let areas = [];
 
-            let areas = [];
+        await fetch('http://localhost:9000/utilidades/areas/' + idOrg, {
+                    method: 'GET'
+                }
+        ).then(response => response.json())
+                .then(json => areas = json);
 
-            await fetch('http://localhost:9000/utilidades/areas/' + idOrg, {
-                        method: 'GET'
-                    }
-            ).then(response => response.json())
-                    .then(json => areas = json);
-
-            // vaciamos el select
-            selectArea.innerHTML = "";
-            // establecemos el predeterminado
-            resetearOpciones(selectArea, "--Seleccione un area--");
-            //Llenar:
-            agregarASelect(selectArea, areas);
-            selectArea.required = areas.length > 0;
-        }
-    </script>
+        // vaciamos el select
+        selectArea.innerHTML = "";
+        // establecemos el predeterminado
+        resetearOpciones(selectArea, "--Seleccione un area--");
+        //Llenar:
+        agregarASelect(selectArea, areas);
+        selectArea.required = areas.length > 0;
+    }
+</script>
 
 {{/partial}}
 {{> ../public/shared/user_base.hbs }}

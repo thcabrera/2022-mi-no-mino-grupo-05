@@ -8,17 +8,7 @@
     $("#destino").load("../shared/direccion_destino.html");
   });
   </script>
-  <script>
-   async function getLinea(id){
-   alert(id);
-         await fetch('http://localhost:9000/utilidades/lineas/' + id, {
-                            method: 'GET'
-                        }
-                    ).then(response => response.json())
-                     .then(json => lineas = json);
-alert(lineas.id);
-    }
-  </script>
+
  <body class="d-flex flex-column min-vh-100">
   <!-- User Navbar -->
   <div id="header"></div>
@@ -30,7 +20,7 @@ alert(lineas.id);
         <!-- <h3>Registro Tramo Limpio</h3> -->
         <div style="width:60%; display: inline-block; ">
          <label for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Medio de transporte</label>
-          <select  class="form-control" name="tipo_transporte" id ="tipo_transporte" onchange="getLinea(this.value)">
+          <select  class="form-control" name="tipo_transporte" id ="id_tipo_transporte" onchange="getLinea(this.value)">
             <option selected>Seleccione tipo de transporte</option>
             {{#each tipo_transporte}}
             <option value="{{id}}">{{nombre}}</option>
@@ -39,40 +29,25 @@ alert(lineas.id);
         </div>
         <div style="width:60%; display: inline-block;">
             <label for="linea">Seleccione la línea:</label>
-            <select class="form-control" name="linea" id = "linea" style="width:100%;"
-                    onchange="getParadas('linea')" required>
+            <select class="form-control" name="linea" id = "id_linea" style="width:100%;"
+                    onchange="getParadas(this.value)" required>
                 <option value="" disabled selected>--Seleccione una línea--</option>
             </select>
         </div>
       <div class="mb-3">
         <h5 style="margin-top: 20px">Parada de partida</h5>
-        <select class="custom-select" name="linea" id = "linea" style="width:100%;" required disabled>
+        <select class="form-control" name="paradaPartida" id = "id_paradaPartida" style="width:100%;" required disabled>
             <option value="" disabled selected>--Seleccione una parada--</option>
         </select>
 
         <h5 style="margin-top: 20px">Parada de destino</h5>
-            <select class="custom-select" name="linea" id = "linea" style="width:100%;" required disabled>
+            <select class="form-control" name="paradaDestino" id = "id_paradaDestino" style="width:100%;" required disabled>
                 <option value="" disabled selected>--Seleccione una parada--</option>
             </select>
     </div>
-
-        <!-- <label for="exampleInputEmail1">Partida</label>
-        <input type="text" class="form-control" name="partida"  placeholder="Direccion de partida...">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Llegada</label>
-        <input type="text" class="form-control" name="llegada"  placeholder="Direccion de llegada...">
-      </div> -->
-
-
-
-
-
-
-
       <br>
     
-        <!-- <div class="invalid-feedback">Example invalid custom select feedback</div> -->
+
       
     </form> 
 
@@ -93,6 +68,54 @@ alert(lineas.id);
   <div id="footer" class="mt-auto"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
+ <script>
+
+    function resetearOpciones(selectElement, textoPorDefecto){
+         selectElement.innerHTML = "";
+         let opt1 = document.createElement("option");
+         opt1.text = textoPorDefecto;
+         opt1.value = "";
+         opt1.disabled = true;
+         opt1.selected = true;
+         selectElement.appendChild(opt1);
+     }
+      function agregarASelect(selectElement, arr){
+             for(let i = 0; i < arr.length; i++)
+             {
+                 var opt = document.createElement("option");
+                 opt.value = arr[i].id;
+                 opt.text = arr[i].nombreLinea;
+                 selectElement.appendChild(opt);
+             }
+         }
+    async function getLinea(id){
+        let selectLineas = document.getElementById("id_linea");
+        selectLineas.disable =false;
+
+        let lineas = [];
+
+         await fetch('http://localhost:9000/utilidades/lineas/' + id, {
+                            method: 'GET'
+                        }
+                    ).then(response => response.json())
+                     .then(json => lineas = json);
+
+        // vaciamos el select
+        // establecemos el predeterminado
+        resetearOpciones(selectLineas, "--Seleccione una Linea--");
+
+        //Llenar:
+        agregarASelect(selectLineas, lineas);
+    }
+
+    async function getParadas(id_linea){
+        let selectParadaPartida = document.getElementById("id_paradaPartida");
+        alert(id_linea); alert(selectParadaPartida);
+
+        selectParadaPartida.disabled =false;
+    }
+
+  </script>
 {{/partial}}
 {{> ../public/shared/user_base.hbs }}
 

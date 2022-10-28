@@ -82,12 +82,13 @@ public class Linea {
     public class LineaDTO{
 
         public int id;
-        public TipoLinea tipoLinea ;
+        public String nombreLinea;
+
 
 
         public LineaDTO(Linea linea){
             this.id = linea.id;
-            this.tipoLinea = linea.tipoLinea;
+            this.nombreLinea = linea.nombreLinea;
         }
 
     }

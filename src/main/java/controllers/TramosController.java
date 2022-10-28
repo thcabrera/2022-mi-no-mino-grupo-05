@@ -6,14 +6,14 @@ import domain.entidades.Municipio;
 import domain.entidades.Provincia;
 import domain.viaje.Tramo;
 import domain.viaje.privado.limpio.TramoLimpio;
+import domain.viaje.publico.TipoLinea;
 import lombok.Setter;
-import models.RepositorioDeLocalidades;
-import models.RepositorioDeMunicipios;
-import models.RepositorioDeProvincias;
-import models.RepositorioDeTramosEnMemoria;
+import models.*;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import spark.Spark;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,10 +21,11 @@ import java.util.Map;
 @Setter
 public class TramosController {
 
-    private RepositorioDeTramosEnMemoria repositorioDeTramos = new RepositorioDeTramosEnMemoria();
-    private RepositorioDeProvincias repositorioDeProvincias = new RepositorioDeProvincias();
-    private RepositorioDeMunicipios repositorioDeMunicipios = new RepositorioDeMunicipios();
-    private RepositorioDeLocalidades repositorioDeLocalidades = new RepositorioDeLocalidades();
+    private RepositorioDeTramosEnMemoria repositorioDeTramos   = new RepositorioDeTramosEnMemoria();
+    private RepositorioDeProvincias repositorioDeProvincias    = new RepositorioDeProvincias();
+    private RepositorioDeMunicipios repositorioDeMunicipios    = new RepositorioDeMunicipios();
+    private RepositorioDeLocalidades repositorioDeLocalidades  = new RepositorioDeLocalidades();
+    private RepositorioTipoTransporte repositorioTipoTranporte = new RepositorioTipoTransporte();
 
     /*------------ Tramo Limpio ------------ */
     public ModelAndView pantallaRegistrarTramoLimpio(Request request, Response response) {
@@ -92,7 +93,12 @@ public class TramosController {
 
     /*------------ Tramo Limpio ------------ */
     public ModelAndView pantallaRegistrarTramoPublico(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_t_publico.hbs");
+        List<TipoLinea> todos = this.repositorioTipoTranporte.todos();
+        return new ModelAndView(new HashMap<String, Object>(){{
+            put("tipo_transporte", todos);
+        }}, "trayectos/us_t_publico.hbs");
+
+
     }
     public Response guardarTramoPublico(Request request, Response response) {
         Direccion partida = this.cargarDireccion(request, "partida");

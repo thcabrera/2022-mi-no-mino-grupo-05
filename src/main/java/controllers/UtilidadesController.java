@@ -1,9 +1,12 @@
 package controllers;
 
 import domain.entidades.*;
+import domain.viaje.publico.Linea;
+import domain.viaje.publico.TipoLinea;
 import models.RepositorioDeMunicipios;
 import models.RepositorioDeOrganizaciones;
 import models.RepositorioDeProvincias;
+import models.RepositorioTipoTransporte;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -16,6 +19,16 @@ public class UtilidadesController {
     private RepositorioDeMunicipios repositorioDeMunicipios = new RepositorioDeMunicipios();
     private RepositorioDeProvincias repositorioDeProvincias = new RepositorioDeProvincias();
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
+    private RepositorioTipoTransporte repositorioTipoTransporte = new RepositorioTipoTransporte();
+
+    public List<Linea.LineaDTO> obtenerLineas(Request request, Response response){
+        int idTipoTransporte = Integer.parseInt(request.params("idTipoTransporte"));
+        TipoLinea tipoLinea = repositorioTipoTransporte.buscar(idTipoTransporte);
+        if (tipoLinea == null)
+            return new ArrayList<>();
+        List<Linea> lineas = new ArrayList<>(tipoLinea.getId());
+        return lineas.stream().map(Linea::convertirADTO).collect(Collectors.toList());
+    }
 
     public List<Municipio.MunicipioDTO> obtenerMunicipios(Request request, Response response){
         int idProvincia = Integer.parseInt(request.params("idProvincia"));
@@ -55,6 +68,7 @@ public class UtilidadesController {
             return new ArrayList<>();
         return organizacion.getAreas().stream().map(Area::convertirADTO).collect(Collectors.toList());
     }*/
+
 
 
     public ModelAndView pantallaClientePerdido(Request request, Response response) {

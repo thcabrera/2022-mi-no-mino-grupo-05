@@ -1,6 +1,4 @@
 {{#partial "contenido"}}
-<body class = "d-flex flex-column min-vh-100">
-  <div id = "header"></div>
   <section class="form-section container">
     <form action="/login" method="POST">
     <div class="form d-flex flex-column">
@@ -13,9 +11,12 @@
         <div style="width:60%; display: inline-block;">
           <a>Contraseña</a>
            <input type="password" class="form-control"name="contrasenia" maxlength="200" placeholder="" >
+            {{#if contraseñaIncorrecta}}
+                <small class = "text-danger">Usuario y/o contraseña incorrectos</small>
+            {{/if}}
         </div>
       </div>
-      <div style="margin-bottom: 10px; aligne-center; ">
+      <div style="margin-bottom: 10px;">
         <button type="submit" class="btn btn-dark" >Ingresar </button>
       </div>
     </div>
@@ -26,12 +27,5 @@
     </figure>
 
   </section>
-
-
-
-  <!-- Footer -->
-  <div class="mt-auto" id="footer"></div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
 {{/partial}}
 {{> ../public/shared/user_base.hbs }}

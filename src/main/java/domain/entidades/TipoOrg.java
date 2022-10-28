@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@Getter
 @NoArgsConstructor
 @Table(name="tipo_org")
 public class TipoOrg {
@@ -16,12 +17,6 @@ public class TipoOrg {
 
     @Column(name="descripcion")
     private String tipoOrg;
-
-    //  ----------  GETTERS & SETTERS  ----------
-
-    public String getTipoOrg() {
-        return tipoOrg;
-    }
 
     public TipoOrg(String tipoOrg) {
         this.tipoOrg = tipoOrg;

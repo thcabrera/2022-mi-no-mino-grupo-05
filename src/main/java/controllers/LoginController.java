@@ -8,10 +8,17 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginController {
 
     public ModelAndView pantallaLogin(Request request, Response response){
-        return new ModelAndView(null, "/login/login.hbs");
+        String estado = request.queryParams("estado");
+        Map<String, Object> parametros = new HashMap<>();
+        if (estado != null)
+            parametros.put("contraseñaIncorrecta", true);
+        return new ModelAndView(parametros, "/login/login.hbs");
     }
 
     public Response login(Request request, Response response){
@@ -43,17 +50,19 @@ public class LoginController {
                 else response.redirect("/404");
             }
             else {
-                response.redirect("/login/2");
+                response.redirect("/login?estado=incorrecto");
             }
         }
         catch (Exception exception) {
-            response.redirect("/login/2");
+            response.redirect("/login?estado=incorrecto");
         }
         return response;
     }
 
-    public ModelAndView loginIncorrecto(Request request, Response response){
-        return new ModelAndView(null, "/login/login_incorrecto.hbs");
+    public Response logout(Request request, Response response){
+        request.session().invalidate();
+        response.redirect("/login");
+        return response;
     }
 
 }

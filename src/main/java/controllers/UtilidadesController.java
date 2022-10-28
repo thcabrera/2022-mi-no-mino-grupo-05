@@ -58,6 +58,7 @@ public class UtilidadesController {
 
 
     public ModelAndView pantallaClientePerdido(Request request, Response response) {
+        response.status(404);
         return new ModelAndView(null, "/utilidades/perdido.hbs");
     }
 }

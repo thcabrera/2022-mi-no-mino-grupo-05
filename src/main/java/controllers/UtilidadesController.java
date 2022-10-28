@@ -75,4 +75,9 @@ public class UtilidadesController {
         response.status(404);
         return new ModelAndView(null, "/utilidades/perdido.hbs");
     }
+
+    public ModelAndView pantallaAccesoDenegado(Request request, Response response) {
+        response.status(403);
+        return new ModelAndView(null, "/utilidades/acceso_denegado.hbs");
+    }
 }

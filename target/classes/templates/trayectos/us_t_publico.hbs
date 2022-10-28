@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HC - DREAM TEAM 😎</title>
-    <link rel="icon" type="image/png" href="../../../../../../maquetado_web_dds/resources/hc.png"/>
-    <link rel="stylesheet" href="../../../../../../maquetado_web_dds/styles/navbar-base.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous">
-  </script>
-  <script> 
+{{#partial "contenido"}}
+
+  <script>
   $(function(){
     $("#header").load("../shared/us-header.html");
     $("#footer").load("../shared/footer.html");
@@ -21,26 +8,39 @@
     $("#destino").load("../shared/direccion_destino.html");
   });
   </script>
-  </head>
-<body class="d-flex flex-column min-vh-100">
+  <script>
+   async function getLinea(id){
+   alert(id);
+         await fetch('http://localhost:9000/utilidades/lineas/' + id, {
+                            method: 'GET'
+                        }
+                    ).then(response => response.json())
+                     .then(json => lineas = json);
+alert(lineas.id);
+    }
+  </script>
+ <body class="d-flex flex-column min-vh-100">
   <!-- User Navbar -->
   <div id="header"></div>
 
   <section class="form-section container">
     <form action="tramo-particular.html" method="POST">
     <div class="form d-flex flex-column">
-      <h1 style="margin-top: 20px">Registro Tramo Publico</h1>
-      <!-- <h3>Registro Tramo Limpio</h3> -->
-      <select class="custom-select">
-        <option selected>Seleccione tipo de transporte</option>
-        <option value="1">Tren</option>
-        <option value="2">Subte</option>
-        <option value="3">Colectivo</option>
-      </select>
-        <div style="width:48%; display: inline-block; margin-left: 3%;">
+        <h1 style="margin-top: 20px">Registro Tramo Publico</h1>
+        <!-- <h3>Registro Tramo Limpio</h3> -->
+        <div style="width:60%; display: inline-block; ">
+         <label for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Medio de transporte</label>
+          <select  class="form-control" name="tipo_transporte" id ="tipo_transporte" onchange="getLinea(this.value)">
+            <option selected>Seleccione tipo de transporte</option>
+            {{#each tipo_transporte}}
+            <option value="{{id}}">{{nombre}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div style="width:60%; display: inline-block;">
             <label for="linea">Seleccione la línea:</label>
-            <select class="custom-select" name="linea" id = "linea" style="width:100%;"
-                    onchange="getParadas('linea')" required disabled>
+            <select class="form-control" name="linea" id = "linea" style="width:100%;"
+                    onchange="getParadas('linea')" required>
                 <option value="" disabled selected>--Seleccione una línea--</option>
             </select>
         </div>
@@ -63,33 +63,12 @@
         <label for="exampleInputEmail1">Llegada</label>
         <input type="text" class="form-control" name="llegada"  placeholder="Direccion de llegada...">
       </div> -->
-      <div class="form-group mt-2">
-        <label for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Medio de transporte</label>
-        <br>
-        <select class="custom-select" name="tipoServicio" required>
-          <option value="">Seleccione medio de transporte...</option>
-          <option value="1">Colectivo</option>
-          <option value="2">Tren</option>
-          <option value="3">Subte</option>
-        </select>
-        <div class="invalid-feedback">Example invalid custom select feedback</div>
-
-      </div>
-
-      <div class="form-group mt-2">
-        <label for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Linea</label>
-        <br>
-        <select class="custom-select" name="tipoServicio" required>
-          <option value="">Seleccione linea...</option>
-          <option value="1">34</option>
-          <option value="2">166</option>
-          <option value="3">47</option>
-        </select>
 
 
-        <div class="invalid-feedback">Example invalid custom select feedback</div>
 
-      </div>
+
+
+
 
       <br>
     
@@ -114,4 +93,7 @@
   <div id="footer" class="mt-auto"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
-</html>
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}
+
+

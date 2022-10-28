@@ -57,10 +57,10 @@ public class Router {
         /*----------- user ---------- */
         Spark.path("/user", () -> {
 
-            Spark.before("", AuthMiddleware::verificarSesion);
+           /* Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", AutMiddleware::verificarPersona);
-            Spark.before("/*", AutMiddleware::verificarPersona);
+            Spark.before("/*", AutMiddleware::verificarPersona);*/
 
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
@@ -201,16 +201,18 @@ public class Router {
         });
 
         Spark.path("/agente_sectorial", () -> {
-            Spark.before("", AuthMiddleware::verificarSesion);
-            Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", AutMiddleware::verificarAgenteSectorial);
-            Spark.before("/*", AutMiddleware::verificarAgenteSectorial);
+           Spark.before("", AuthMiddleware::verificarSesion);
+           Spark.before("/*", AuthMiddleware::verificarSesion);
+           Spark.before("", AutMiddleware::verificarAgenteSectorial);
+           Spark.before("/*", AutMiddleware::verificarAgenteSectorial);
 
         });
         Spark.path("/utilidades", () -> {
             Spark.get("/municipios/:idProvincia", utilidadesController::obtenerMunicipios, new JsonTransformer());
             Spark.get("/localidades/:idMunicipio", utilidadesController::obtenerLocalidades, new JsonTransformer());
             Spark.get("/areas/:idOrganizacion", utilidadesController::obtenerAreas, new JsonTransformer());
+            Spark.get("/lineas/:idTipoTransporte", utilidadesController::obtenerLineas, new JsonTransformer());
+
         });
 
         /*----------- Ejemplos ---------- */
@@ -233,8 +235,8 @@ public class Router {
 //        Spark.path("/utilidades", () ->{
 //            Spark.get("/deptos/:idProv", )
 //        });
-        Spark.get("", utilidadesController::pantallaClientePerdido, engine);
-        Spark.get("/*", utilidadesController::pantallaClientePerdido, engine);
+        //Spark.get("", utilidadesController::pantallaClientePerdido, engine);
+        //Spark.get("/*", utilidadesController::pantallaClientePerdido, engine);
 
     }
 }

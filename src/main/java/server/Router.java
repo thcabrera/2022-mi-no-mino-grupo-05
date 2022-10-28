@@ -149,7 +149,8 @@ public class Router {
             });
 
             Spark.path("/alta_area", () -> {
-                Spark.get("/:idOrg", organizacionesController::darDeAltaArea, engine);
+                Spark.get("", organizacionesController::darDeAltaArea, engine);
+                Spark.post("", organizacionesController::agregarArea);
             });
 
 

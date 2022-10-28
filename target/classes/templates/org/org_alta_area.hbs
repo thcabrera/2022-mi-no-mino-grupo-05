@@ -1,0 +1,32 @@
+{{#partial "contenido"}}
+    <section class = "container">
+        <div class = "d-flex justify-content-center">
+            <h1 style="margin-top: 20px">Dar de alta area</h1>
+        </div>
+        <br>
+        <div style="width:48%; display: inline-block;">
+            <label>Areas existentes</label>
+            <select class="custom-select" style="width:100%;">
+                <option value="">Areas existentes...</option>
+                {{#each areas}}
+                    <option value="{{id}}" >{{nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="container">
+            <form action="" method="POST">
+                <section class="form-section container">
+                    <div class="form">
+                        <label>Area a dar de alta</label>
+                        <input type="text" id="area" name="nombre" placeholder="Introduzca el nombre..." required>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <figure class="form-section-img">
+                        <img src="/images/undraw_setup_re_y9w8.svg" class="form-section-picture" alt="girl_ride_bike">
+                    </figure>
+                </section>
+            </form>
+        </div>
+    </section>
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

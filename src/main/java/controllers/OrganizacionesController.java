@@ -9,10 +9,7 @@ import spark.Request;
 import spark.Response;
 import domain.db.EntityManagerHelper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class OrganizacionesController {
@@ -110,7 +107,9 @@ public class OrganizacionesController {
 
     public ModelAndView darDeAltaArea(Request request, Response response) {
         UtilidadesController utlidadesController = new UtilidadesController();
-        int idOrganizacion = Integer.parseInt(request.params("idOrg"));
+        Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
+        int idOrganizacion = organizacion.getId();
+        //int idOrganizacion = Integer.parseInt(request.params("idOrg"));
         Map<String, Object> parametros = new HashMap<>();
         List<Area.AreaDTO> listaAreasVacia = new ArrayList<>();
         //List<Area> areas =  this.repositorioDeAreas.buscarTodasLasAreas(idOrganizacion);
@@ -129,5 +128,23 @@ public class OrganizacionesController {
         if (organizacion == null)
             return new ArrayList<>();
         return organizacion.getAreas().stream().map(Area::convertirADTO).collect(Collectors.toList());
+    }
+
+    public Response agregarArea(Request request, Response response){
+        try{
+            String nombre = request.queryParams("nombre");
+            String nombreALLCAPS = nombre.toUpperCase();
+            Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
+            Area area = new Area(
+                    nombreALLCAPS,
+                    organizacion //nose como ponerla (ya aprendimos)
+            );
+            repositorioDeAreas.guardar(area);
+            response.redirect("/organizacion/alta_area");
+            return response;
+        } catch(NumberFormatException e){
+            response.redirect("/404");
+        }
+        return response;
     }
 }

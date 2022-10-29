@@ -1,17 +1,22 @@
-<div class="mb-3">
-
-    <div style="width:66%; display: inline-block;">
-        <a>Calle</a>
-        <input type="text" class="form-control" name="calle" placeholder="" required>
+<div class="form-section container p-0">
+    {{#block "titulo"}}
+    {{/block}}
+    <div class = "form-section my-2 row">
+        <div class = "form-group col-sm-8">
+            <label for = "calle">Calle</label>
+            <input id = "calle" type="text" class="form-control" name="calle"
+                   placeholder="" required>
+        </div>
+        <div class = "form-group col-sm-4">
+            <label for = "altura">Altura</label>
+            <input id = "altura" type="number" class="form-control" name="altura"
+                   placeholder="" required min="1">
+        </div>
     </div>
-    <div style="width:30%; display: inline-block;margin-left:3%;">
-        <a>Altura</a>
-        <input type="number" class="form-control"name="altura" placeholder="" required>
-    </div>
-    <div>
-        <div style="width:48%; display: inline-block;">
-            <label for="provincia">Selecciona la provincia:</label>
-            <select class="custom-select" name="provincia" id="provincia" style="width:100%;"
+    <div class = "form-section my-2 row">
+        <div class = "form-group my-2 col-sm-4">
+            <label for="provincia">Provincia</label>
+            <select class="form-control" name="provincia" id="provincia"
                     onchange="getMunicipiosProvincia('provincia', 'municipio', 'localidad')"
                     required>
                 <option value="" disabled selected>--Seleccione una provincia--</option>
@@ -19,23 +24,21 @@
                     <option value="{{id}}" >{{descripcion}}</option>
                 {{/each}}
             </select>
-
         </div>
-        <div style="width:48%; display: inline-block; margin-left: 3%;">
-            <label for="municipio">Selecciona el municipio:</label>
-            <select class="custom-select" name="municipio" id = "municipio" style="width:100%;"
+        <div class = "form-group my-2 col-sm-4">
+            <label for="municipio">Municipio</label>
+            <select class="form-control" name="municipio" id = "municipio"
                     onchange="getLocalidadesMunicipio('municipio','localidad')" required disabled>
                 <option value="" disabled selected>--Seleccione un municipio--</option>
             </select>
         </div>
+        <div class = "form-group my-2 col-sm-4">
+            <label for="localidad">Localidad</label>
+            <select class="form-control" name="localidad" id="localidad" required disabled>
+                <option value="" disabled selected>--Seleccione una localidad--</option>
+            </select>
+        </div>
     </div>
-    <div style="width:48%; display: inline-block; ">
-        <label for="localidad">Selecciona la localidad:</label>
-        <select class="custom-select" name="localidad" id="localidad" style="width:100%;" required disabled>
-            <option value="" disabled selected>--Seleccione una localidad--</option>
-        </select>
-    </div>
-
 
 </div>
 
@@ -106,4 +109,5 @@
         agregarASelect(selectLocalidad, localidades);
         selectLocalidad.required = localidades.length > 0;
     }
+
 </script>

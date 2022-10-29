@@ -33,6 +33,7 @@ public class Provincia extends Sector{
         return new ProvinciaDTO(this);
     }
 
+    @Getter
     public class ProvinciaDTO{
         public int id;
         public String descripcion;

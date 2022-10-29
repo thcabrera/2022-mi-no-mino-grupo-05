@@ -1,60 +1,22 @@
-
-<div class="mb-3">
-<h5 style="margin-top: 20px">Direccion de Partida</h5>
-<div style="width:66%; display: inline-block;">
-  <a>Calle</a>
-  <input type="text" class="form-control" name="partida-calle" placeholder="" required>
-</div>
-<div style="width:30%; display: inline-block;margin-left:3%;">
-     <a>Altura</a>
-    <input type="number" class="form-control"name="partida-altura" placeholder="" required>
-</div>
-<div>
-  <div style="width:48%; display: inline-block;">
-      <label for="partida-provincia">Selecciona la provincia:</label>
-      <select class="custom-select" name="partida-provincia" id="partida-provincia" style="width:100%;"
-              onchange="getMunicipiosProvincia('partida-provincia', 'partida-municipio', 'partida-localidad')"
-              required>
-          <option value="" disabled selected>--Seleccione una provincia--</option>
-          {{#each provincias}}
-              <option value="{{id}}" >{{descripcion}}</option>
-          {{/each}}
-      </select>
-
-  </div>
-  <div style="width:48%; display: inline-block; margin-left: 3%;">
-      <label for="partida-municipio">Selecciona el municipio:</label>
-      <select class="custom-select" name="partida-municipio" id = "partida-municipio" style="width:100%;"
-              onchange="getLocalidadesMunicipio('partida-municipio','partida-localidad')" required disabled>
-          <option value="" disabled selected>--Seleccione una municipio--</option>
-      </select>
-  </div>
-</div>
-<div style="width:48%; display: inline-block; ">
-    <label for="partida-localidad">Selecciona la localidad:</label>
-    <select class="custom-select" name="partida-localidad" id="partida-localidad" style="width:100%;" required disabled>
-        <option value="" disabled selected>--Seleccione una localidad--</option>
-    </select>
-</div>
-
-{{#block "cargar_direcciones"}}
-{{/block}}
-
-<div class="mb-3">
-    <h5 style="margin-top: 20px">Direccion de Destino</h5>
-    <div style="width:66%; display: inline-block;">
-        <a>Calle</a>
-        <input type="text" class="form-control" name="destino-calle" placeholder="Ingrese la calle" required>
+<div class="form-section container p-0">
+    <strong>Dirección de partida:</strong>
+    <div class = "form-section my-2 row">
+        <div class = "form-group col-sm-8">
+            <label for = "calle-partida">Calle</label>
+            <input id = "calle-partida" type="text" class="form-control" name="calle-partida"
+                   placeholder="" required>
+        </div>
+        <div class = "form-group col-sm-4">
+            <label for = "altura-partida">Altura</label>
+            <input id = "altura-partida" type="number" class="form-control" name="altura-partida"
+                   placeholder="" required min="1">
+        </div>
     </div>
-    <div style="width:30%; display: inline-block; margin-left:3%;">
-        <a>Altura</a>
-        <input type="number" class="form-control" name="destino-altura" placeholder="Ingrese la altura" required>
-    </div>
-    <div>
-        <div style="width:48%; display: inline-block;">
-            <label for="partida-provincia">Selecciona la provincia:</label>
-            <select class="custom-select" name="destino-provincia" id="destino-provincia" style="width:100%;"
-                    onchange="getMunicipiosProvincia('destino-provincia', 'destino-municipio', 'destino-localidad')"
+    <div class = "form-section my-2 row">
+        <div class = "form-group my-2 col-sm-4">
+            <label for="provincia-partida">Provincia</label>
+            <select class="form-control" name="provincia-partida" id="provincia-partida"
+                    onchange="getMunicipiosProvincia('provincia-partida', 'municipio-partida', 'localidad-partida')"
                     required>
                 <option value="" disabled selected>--Seleccione una provincia--</option>
                 {{#each provincias}}
@@ -62,21 +24,65 @@
                 {{/each}}
             </select>
         </div>
-        <div style="width:48%; display: inline-block; margin-left:3%;">
-            <label for="partida-municipio">Selecciona el municipio:</label>
-            <select class="custom-select" name="destino-municipio" id="destino-municipio" style="width:100%;"
-                    onchange="getLocalidadesMunicipio('destino-municipio','destino-localidad')" required disabled>
+        <div class = "form-group my-2 col-sm-4">
+            <label for="municipio-partida">Municipio</label>
+            <select class="form-control" name="municipio-partida" id = "municipio-partida"
+                    onchange="getLocalidadesMunicipio('municipio-partida','localidad-partida')" required disabled>
                 <option value="" disabled selected>--Seleccione un municipio--</option>
             </select>
         </div>
+        <div class = "form-group my-2 col-sm-4">
+            <label for="localidad-partida">Localidad</label>
+            <select class="form-control" name="localidad-partida" id="localidad-partida" required disabled>
+                <option value="" disabled selected>--Seleccione una localidad--</option>
+            </select>
+        </div>
     </div>
-    <div style="width:48%; display: inline-block; ">
-        <label for="partida-localidad">Selecciona la localidad:</label>
-        <select class="custom-select" name="destino-localidad" id="destino-localidad" required disabled>
-            <option value="" disabled selected>--Seleccione una localidad--</option>
-        </select>
-    </div>
+
 </div>
+<div class="form-section container p-0">
+    <strong>Dirección de destino:</strong>
+    <div class = "form-section my-2 row">
+        <div class = "form-group col-sm-8">
+            <label for = "calle-destino">Calle</label>
+            <input id = "calle-destino" type="text" class="form-control" name="calle-destino"
+                   placeholder="" required>
+        </div>
+        <div class = "form-group col-sm-4">
+            <label for = "altura-destino">Altura</label>
+            <input id = "altura-destino" type="number" class="form-control" name="altura-destino"
+                   placeholder="" required min="1">
+        </div>
+    </div>
+    {{#block "textoEnElMedio"}}
+    {{/block}}
+    <div class = "form-section my-2 row">
+        <div class = "form-group my-2 col-sm-4">
+            <label for="provincia-destino">Provincia</label>
+            <select class="form-control" name="provincia-destino" id="provincia-destino"
+                    onchange="getMunicipiosProvincia('provincia-destino', 'municipio-destino', 'localidad-destino')"
+                    required>
+                <option value="" disabled selected>--Seleccione una provincia--</option>
+                {{#each provincias}}
+                    <option value="{{id}}" >{{descripcion}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class = "form-group my-2 col-sm-4">
+            <label for="municipio-destino">Municipio</label>
+            <select class="form-control" name="municipio-destino" id = "municipio-destino"
+                    onchange="getLocalidadesMunicipio('municipio-destino','localidad-destino')" required disabled>
+                <option value="" disabled selected>--Seleccione un municipio--</option>
+            </select>
+        </div>
+        <div class = "form-group my-2 col-sm-4">
+            <label for="localidad-destino">Localidad</label>
+            <select class="form-control" name="localidad-destino" id="localidad-destino" required disabled>
+                <option value="" disabled selected>--Seleccione una localidad--</option>
+            </select>
+        </div>
+    </div>
+
 </div>
 
 <script>

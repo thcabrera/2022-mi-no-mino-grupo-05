@@ -7,6 +7,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,8 +31,11 @@ public class UtilidadesController {
         Provincia provincia = repositorioDeProvincias.buscar(idProvincia);
         if (provincia == null)
             return new ArrayList<>();
-        List<Municipio> municipios = new ArrayList<>(provincia.getMunicipios());
-        return municipios.stream().map(Municipio::convertirADTO).collect(Collectors.toList());
+        return provincia.getMunicipios()
+                .stream().sorted(Comparator.comparing(Municipio::getDescripcion))
+                .collect(Collectors.toList())
+                .stream().map(Municipio::convertirADTO)
+                .collect(Collectors.toList());
     }
 
     public List<Localidad.LocalidadDTO> obtenerLocalidades(Request request, Response response){
@@ -39,8 +43,11 @@ public class UtilidadesController {
         Municipio municipio = repositorioDeMunicipios.buscar(idMunicipio);
         if (municipio == null)
             return new ArrayList<>();
-        List<Localidad> localidades = new ArrayList<>(municipio.getLocalidades());
-        return localidades.stream().map(Localidad::convertirADTO).collect(Collectors.toList());
+        return municipio.getLocalidades()
+                .stream().sorted(Comparator.comparing(Localidad::getDescripcion))
+                .collect(Collectors.toList())
+                .stream().map(Localidad::convertirADTO)
+                .collect(Collectors.toList());
     }
 
     // IMPORTANTE: es necesario pasar el DTO del Area, ya que si pasamos el area así de una

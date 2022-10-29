@@ -5,6 +5,9 @@ values(3, 'Cabrera', 'Thiago', 43988887, 'DNI');
 INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
 	values('ddsdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'PERSONA');
 
+INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
+values('lennySW', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'ORGANIZACION');
+
 INSERT INTO clasificacion (descripcion) values ("Ministerio");
 INSERT INTO clasificacion (descripcion) values ("Universidad");
 INSERT INTO clasificacion (descripcion) values ("Escuela");

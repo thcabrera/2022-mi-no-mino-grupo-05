@@ -1,22 +1,24 @@
 package domain.mediciones.consumos;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
+@NoArgsConstructor
+@Getter
 @Entity
 @DiscriminatorValue(value = "anual")
 public class Anual extends Periodicidad{
 
     @Column(name = "anio")
-    private final Integer anio;
+    private  Integer anio;
 
     public Anual(Integer anio) {
         this.anio = anio;
     }
-
 
     public Integer getAnio(){
         return this.anio;

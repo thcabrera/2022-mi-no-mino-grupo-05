@@ -50,7 +50,9 @@ public class Area {
     public Double calculoHC(){
         return this.miembros.stream().mapToDouble(p -> p.calculoHC(this.organizacion)).sum();
     }
-
+    public Double impactoHCEnSuOrg(){
+        return this.calculoHC() / this.organizacion.calculoHCTrayectos() * 100;
+    }
     public Double indicadorHCporMiembro(){
         return this.calculoHC() / this.getMiembros().size();
     }

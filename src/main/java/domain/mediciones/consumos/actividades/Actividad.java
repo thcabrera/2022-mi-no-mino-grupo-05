@@ -2,14 +2,17 @@ package domain.mediciones.consumos.actividades;
 
 import domain.entidades.Organizacion;
 import domain.mediciones.consumos.Periodicidad;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "actividad")

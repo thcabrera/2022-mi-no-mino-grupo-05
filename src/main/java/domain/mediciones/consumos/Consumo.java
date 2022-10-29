@@ -1,11 +1,15 @@
 package domain.mediciones.consumos;
 
 import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Entity
 @Table
@@ -16,11 +20,11 @@ public class Consumo {
     private Integer id;
 
     @Column(name = "valor")
-    private final Double valor;
+    private  Double valor;
 
     @ManyToOne
     @JoinColumn(name="tipo_consumo_id", referencedColumnName = "id")
-    private final TipoConsumo tipoConsumo;
+    private  TipoConsumo tipoConsumo;
 
     public Consumo(TipoConsumo tipo, Double valor) {
         this.tipoConsumo = tipo;

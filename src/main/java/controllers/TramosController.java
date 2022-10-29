@@ -10,7 +10,7 @@ import lombok.Setter;
 import models.RepositorioDeLocalidades;
 import models.RepositorioDeMunicipios;
 import models.RepositorioDeProvincias;
-import models.RepositorioDeTramosEnMemoria;
+import models.enMemoria.RepositorioDeTramosEnMemoria;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

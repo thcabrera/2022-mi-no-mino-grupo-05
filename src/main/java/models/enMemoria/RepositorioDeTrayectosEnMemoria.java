@@ -1,4 +1,4 @@
-package models;
+package models.enMemoria;
 
 import domain.entidades.Organizacion;
 import domain.viaje.Trayecto;

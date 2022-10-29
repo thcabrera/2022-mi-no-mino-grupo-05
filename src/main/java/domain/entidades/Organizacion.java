@@ -39,23 +39,23 @@ public class Organizacion extends Actor{
     private Direccion ubicacion;
 
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
-    private List<Area> areas;
+    private List<Area> areas =  new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name="clasificacion_id", referencedColumnName = "id")
     private Clasificacion clasificacion;
 
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
-    private List<Actividad> mediciones;
+    private List<Actividad> mediciones = new ArrayList<>();
 
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
-    private List<Solicitud> solicitudes;
+    private List<Solicitud> solicitudes = new ArrayList<>();
 
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Contacto> contactos;
 
     @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
-    private List<HuellaDeCarbono> huellasDeCarbono;
+    private List<HuellaDeCarbono> huellasDeCarbono = new ArrayList<>();
 
     //  ----------  GETTERS & SETTERS  ----------
 
@@ -151,16 +151,18 @@ public class Organizacion extends Actor{
 
     // no le pedimos el calculo directamente a las areas porque puede ser que una persona
     // este en multiples áreas
-    private Double calculoHCTrayectos() {
-        return this.getMiembros().stream()
+    public Double calculoHCTrayectos() {
+        Double result =  this.getMiembros().stream()
                     .mapToDouble(miembro -> miembro.calculoHC(this))
                     .sum();
+        return result == null? 0.0 :result ;
     }
 
-    private Double calculoHCActividades(Periodicidad periodo) {
-        return this.mediciones.stream()
+    public Double calculoHCActividades(Periodicidad periodo) {
+        Double result =  this.mediciones.stream()
                 .mapToDouble(a -> a.calculoHC(periodo))
                 .sum();
+        return result == null? 0.0 :result ;
     }
 
     //----------- Notificaciones --------------

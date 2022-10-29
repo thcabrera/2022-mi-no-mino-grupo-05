@@ -3,6 +3,7 @@ package domain.entidades;
 import domain.mediciones.consumos.Periodicidad;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Set;
@@ -42,7 +43,8 @@ public class Municipio extends Sector{
 
     @Override
     public Double calculoHC(Periodicidad periodo) {
-        return this.getOrganizaciones().stream().mapToDouble(org->org.calculoHC(periodo)).sum();
+        return
+                this.getOrganizaciones().stream().mapToDouble(org->org.calculoHC(periodo)).sum();
     }
 
     public MunicipioDTO convertirADTO(){

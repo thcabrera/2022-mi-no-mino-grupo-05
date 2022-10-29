@@ -1,23 +1,23 @@
-package models;
+package models.enMemoria;
 
-import domain.db.EntityManagerHelper;
 import domain.entidades.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositorioDeAreasEnMemoria {
+public class RepositorioDeOrganizacionesEnMemoria {
 
-    private List<Area> areas;
+    private List<Organizacion> organizaciones;
 
-    public RepositorioDeAreasEnMemoria(){
-        areas = getListaOrgsEjemplo();
+    public RepositorioDeOrganizacionesEnMemoria(){
+        organizaciones = getListaOrgsEjemplo();
     }
 
     /* hardcodeo para no levantar workbench*/
-    private List<Area> getListaOrgsEjemplo() {
+    private List<Organizacion> getListaOrgsEjemplo() {
         List<Organizacion> orgs = new ArrayList<>();
         Organizacion lennyDespe = new Organizacion("SA", new TipoOrg("empresa") , null, null);
+        lennyDespe.setId(2);
         lennyDespe.setNombre("Despegando con Lenny SA");
         Area contable = new Area("Contable", lennyDespe);
         contable.setId(1);
@@ -25,40 +25,39 @@ public class RepositorioDeAreasEnMemoria {
         limpieza.setId(2);
 
         Organizacion aterriTito = new Organizacion("UNI", new TipoOrg("educativa"), null, null);
+        aterriTito.setId(1);
         aterriTito.setNombre("Aterrizando con Tito SRL");
         Area coaching = new Area("Coaching", aterriTito);
         coaching.setId(3);
         orgs.add(lennyDespe);
         orgs.add(aterriTito);
 
-        Persona lenny = new Persona("lean", "lienard",43814111, Documentacion.DNI);
-        Persona tito = new Persona("tito", "lecaldare",43812754, Documentacion.DNI);
+//        Persona lenny = new Persona("lean", "lienard",43814111, Documentacion.DNI);
+//        Persona tito = new Persona("tito", "lecaldare",43812754, Documentacion.DNI);
 
-        List<Area> areasA = new ArrayList<>(aterriTito.getAreas());
-        areasA.addAll(lennyDespe.getAreas());
-        return areasA;
+        return orgs;
     }
 
-    public List<Area> buscarTodos(){
-        return areas;
+    public List<Organizacion> buscarTodos(){
+        return organizaciones;
     }
 
     // el objeto si lo encuentra, null si no lo encuentra
-    public Area buscar(int id) {
-        for (Area a: areas){
-            if (a.getId() == id){
-                return a;
+    public Organizacion buscar(int id) {
+        for (Organizacion o: organizaciones){
+            if (o.getId() == id){
+                return o;
             }
         }
         return null;
     }
 
-    public void guardar(Area area) {
-        areas.add(area);
+    public void guardar(Organizacion organizacion) {
+        organizaciones.add(organizacion);
     }
 
-    public void eliminar(Area area) {
-        areas.remove(area);
+    public void eliminar(Organizacion organizacion) {
+        organizaciones.remove(organizacion);
     }
 
 

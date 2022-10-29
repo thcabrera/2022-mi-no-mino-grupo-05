@@ -1,15 +1,11 @@
 package server;
 
 import controllers.*;
-import domain.entidades.Organizacion;
-import domain.entidades.Persona;
 import domain.usuarios.Rol;
-import domain.usuarios.Usuario;
 import helpers.RolHelper;
-import helpers.UsuarioHelper;
 import middlewares.AutMiddleware;
 import middlewares.AuthMiddleware;
-import models.RepositorioDeTramosEnMemoria;
+import models.enMemoria.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.*;
@@ -104,7 +100,7 @@ public class Router {
                 Spark.post("/solicitar_alta/enviar", organizacionesController::recibirSolicitudDeAlta);
             });
 
-            Spark.get("/reportes", reportesController::mostrarReportes, engine);
+            Spark.get("/reportes", reportesController::mostrarReportesUsuario, engine);
 
             Spark.get("/ejecutar_calculadora", (req, resp) -> "Ejecutando calculadora!");
 
@@ -119,6 +115,20 @@ public class Router {
         });
 
         Spark.path("/organizacion", () -> {
+            Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("/*", AuthMiddleware::verificarSesion);
+            Spark.before("", ((request, response) -> {
+                if (!RolHelper.usuarioTieneRol(request, Rol.ORGANIZACION)) {
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            }));
+            Spark.before("/*", ((request, response) -> {
+                if (!RolHelper.usuarioTieneRol(request, Rol.ORGANIZACION)) {
+                    response.redirect("/404");
+                    Spark.halt();
+                }
+            }));
             Spark.path("/principal", () -> {
                 Spark.get("", organizacionesController::pantallaPrincipal, engine);
             });
@@ -127,17 +137,21 @@ public class Router {
                 Spark.get("/:idOrg", organizacionesController::darDeAltaArea, engine);
             });
 
+            Spark.path("/reportes", () -> {
+                Spark.get("", reportesController::mostrarReportesOrganizacion, engine);
+                Spark.get("/:idPeriodicidad", reportesController::mostrarReportesOrganizacionConPeriodicidad, engine);
+            });
 
             Spark.path("/solicitudes", () -> {
                 Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
-                Spark.path("/:idOrg", () ->{
-                    Spark.post("/rechazar/:idSol", solicitudesController::eliminar );
-                    Spark.post("/aceptar/:idSol", solicitudesController::aceptar );
+                Spark.path("/:idOrg", () -> {
+                    Spark.post("/rechazar/:idSol", solicitudesController::eliminar);
+                    Spark.post("/aceptar/:idSol", solicitudesController::aceptar);
 
                 });
             });
 
-
+        });
 
 
 /*
@@ -173,7 +187,6 @@ public class Router {
 >>>>>>> d74b622bd8210a71043ae29a3d46467cd2bd9191
 
  */
-        });
 
         Spark.path("/agente_sectorial", () -> {
             Spark.before("", AuthMiddleware::verificarSesion);

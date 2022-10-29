@@ -1,4 +1,4 @@
-package models;
+package models.enMemoria;
 
 import domain.Direccion;
 import domain.entidades.Localidad;

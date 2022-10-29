@@ -1,21 +1,23 @@
 package domain.mediciones.consumos;
 
+import domain.entidades.Municipio;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
+@NoArgsConstructor
 @Getter
 @Entity
 @DiscriminatorValue(value = "mensual")
 public class Mensual extends Periodicidad {
 
     @Column(name = "mes")
-    private final Integer mes;
+    private  Integer mes;
 
     @Column(name = "anio")
-    private final Integer anio;
+    private  Integer anio;
 
     public Mensual(int mes, int anio) {
         this.mes = mes;
@@ -52,6 +54,22 @@ public class Mensual extends Periodicidad {
         System.out.println("Entró a la clase mala :( f");
         return false;
     }
+/*
+    public class MensualDTO{
+
+        public int id;
+        public  Integer mes;
+        public  Integer anio;
+
+
+        public MensualDTO(Mensual mensual){
+            this.id = mensual.getId();
+            this.mes = mensual.mes;
+            this.anio = mensual.anio;
+        }
+      }
+
+        */
 
 /*    Me pasan un Periodo mensual
     Si la actividad es mensual y coincide con el mes y año; se suma

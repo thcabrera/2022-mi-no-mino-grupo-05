@@ -1,5 +1,6 @@
 package models;
 
+import domain.db.EntityManagerHelper;
 import domain.entidades.HuellaDeCarbono;
 import domain.entidades.Organizacion;
 import domain.mediciones.services.creacionReporte.ReportGenerator;
@@ -11,6 +12,27 @@ import java.util.List;
 
 public class RepositorioDeReportes {
     private List<HuellaDeCarbono> huellasDeCarbono = new ArrayList<>();
+
+    public List<HuellaDeCarbono> buscarTodasLasHuellas(){
+        return EntityManagerHelper
+                .getEntityManager()
+                .createQuery("from " + HuellaDeCarbono.class.getName())
+                .getResultList();
+    }
+
+
+
+    public Object buscar(int id){
+        return null;
+    }
+
+    public void eliminar(Object o){
+
+    }
+
+    public void guardar(Object o){
+
+    }
     public RepositorioDeReportes(){
 
         HuellaDeCarbono h1 = new HuellaDeCarbono();
@@ -37,8 +59,11 @@ public class RepositorioDeReportes {
 
 
 
-    public List<HuellaDeCarbono> buscarTodos(){
+    public List<HuellaDeCarbono> buscarTodosEjemplo(){
 
         return this.huellasDeCarbono;
     }
+
+
 }
+

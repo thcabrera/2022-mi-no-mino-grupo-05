@@ -1,7 +1,9 @@
 package domain.mediciones.consumos;
 
-import javax.persistence.*;
+import lombok.Getter;
 
+import javax.persistence.*;
+@Getter
 @Entity
 @Table(name = "periodicidad")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -18,4 +20,7 @@ public abstract class Periodicidad {
 
     public abstract Double obtenerPorcentaje(Periodicidad periodicidad);
 
+    public boolean esMensual(){ // to REVIEW
+        return this.getClass() == Mensual.class;
+    }
 }

@@ -5,7 +5,7 @@ import domain.usuarios.Rol;
 import helpers.RolHelper;
 import middlewares.AutMiddleware;
 import middlewares.AuthMiddleware;
-import models.enMemoria.RepositorioDeTramosEnMemoria;
+import repositorios.enMemoria.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.*;
@@ -169,7 +169,7 @@ public class Router {
             });
 
             Spark.path("/solicitudes", () -> {
-                Spark.get("/:idOrg", solicitudesController::mostrarTodasParaOrg, engine);
+                Spark.get("", solicitudesController::mostrarTodasParaOrg, engine);
                 Spark.path("/:idOrg", () -> {
                     Spark.post("/rechazar/:idSol", solicitudesController::eliminar);
                     Spark.post("/aceptar/:idSol", solicitudesController::aceptar);

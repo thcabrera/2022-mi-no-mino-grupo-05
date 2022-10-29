@@ -1,4 +1,4 @@
-package models;
+package repositorios;
 
 import domain.db.EntityManagerHelper;
 import domain.viaje.publico.Linea;

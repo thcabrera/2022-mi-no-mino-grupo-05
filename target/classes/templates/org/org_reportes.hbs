@@ -23,7 +23,7 @@
         </select>
         <!-- aca va  el total de la org-->
     <div class ="row">
-        {{#each area}}
+        {{#each areas}}
             <div class="col-sm-4">
                 <div class="card  bg-secondary  text-white mb-3 mt-4" style="max-width:400px;max-height:360px;">
                     <div class="card-header pl-4">
@@ -63,26 +63,26 @@
                 <div class="d-flex flex-column">
                 <div class="">
                     <span class="card-text" style="font-weight: bold;">Organizaciones</span>
-                    <p class="card-text">{{this}}</p>
+                    <p class="card-text">{{organizacion.nombre}}</p>
                 </div>
-            {{/if}}
+                {{/if}}
             {{#if hcTotal}}
                 <div class="mt-2">
                     <span class="card-text" style="font-weight: bold;">Huella de Carbono Por trayectos</span>
-                    <p class="card-text">64 l/m^3</p>
+                    <p class="card-text">64 l/m^3 ||| {{hcTotal}}</p>
                 </div>
             {{/if}}
             {{#if hcActividades}}
 
                 <div class="mt-2">
                     <span class="card-text" style="font-weight: bold;">Huella de Carbono Por Mediciones</span>
-                    <p class="card-text">0.1%</p>
+                    <p class="card-text">0.1% || {{hcActividades}}</p>
                 </div>
             {{/if}}
             {{#if hcTrayectos}}
                 <div class="mt-2">
                     <span class="card-text" style="font-weight: bold;">Huella de Carbono Total</span>
-                    <p class="card-text">0.1%</p>
+                    <p class="card-text">0.1% || {{hcTrayectos}}</p>
                 </div>
             </div>
             {{/if}}

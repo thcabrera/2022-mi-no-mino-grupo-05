@@ -2,11 +2,13 @@ package controllers;
 
 import domain.db.EntityManagerHelper;
 import domain.entidades.Area;
-import domain.entidades.Municipio;
+import domain.entidades.Organizacion;
 import domain.entidades.Persona;
 import domain.entidades.Solicitud;
-import models.RepositorioDeAreas;
-import models.RepositorioDeSolicitudes;
+import helpers.OrganizacionHelper;
+import helpers.UsuarioHelper;
+import repositorios.RepositorioDeAreas;
+import repositorios.RepositorioDeSolicitudes;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -22,10 +24,11 @@ public class SolicitudesController {
     private RepositorioDeAreas respositorioDeAreas = new RepositorioDeAreas();
 
     public ModelAndView mostrarTodasParaOrg(Request request, Response response) {
-        int idOrganizacion = Integer.parseInt(request.params("idOrg"));
+        Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
+
         Map<String, Object> parametros = new HashMap<>();
         //System.out.println("el id de la org es:" + idOrganizacion);
-        List<Solicitud> solicitudes =  this.repositorioDeSolicitudes.buscarTodosParaOrg(idOrganizacion);
+        List<Solicitud> solicitudes = organizacion.getSolicitudes();// this.repositorioDeSolicitudes.buscarTodosParaOrg(idOrganizacion);
         if(solicitudes == null){
             parametros.put("solicitudes", new ArrayList<Solicitud>());
             return new ModelAndView(parametros, "org/org_aceptar_miembro.hbs");

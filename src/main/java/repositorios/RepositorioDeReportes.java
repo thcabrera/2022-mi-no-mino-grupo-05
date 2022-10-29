@@ -1,10 +1,8 @@
-package models;
+package repositorios;
 
 import domain.db.EntityManagerHelper;
 import domain.entidades.HuellaDeCarbono;
 import domain.entidades.Organizacion;
-import domain.mediciones.services.creacionReporte.ReportGenerator;
-import domain.viaje.Trayecto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

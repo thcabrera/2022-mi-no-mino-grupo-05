@@ -3,7 +3,7 @@ package controllers;
 import domain.Direccion;
 import domain.db.EntityManagerHelper;
 import domain.entidades.*;
-import models.RepositorioDeOrganizaciones;
+import repositorios.RepositorioDeOrganizaciones;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

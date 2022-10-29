@@ -2,8 +2,8 @@ package controllers;
 
 import domain.entidades.*;
 import helpers.UsuarioHelper;
-import models.RepositorioDeAreas;
-import models.RepositorioDeOrganizaciones;
+import repositorios.RepositorioDeAreas;
+import repositorios.RepositorioDeOrganizaciones;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

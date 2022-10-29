@@ -1,4 +1,4 @@
-package models.enMemoria;
+package repositorios.enMemoria;
 
 import domain.entidades.*;
 

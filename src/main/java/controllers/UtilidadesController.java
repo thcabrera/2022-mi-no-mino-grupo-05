@@ -2,8 +2,7 @@ package controllers;
 
 import domain.entidades.*;
 import domain.viaje.publico.Linea;
-import domain.viaje.publico.TipoLinea;
-import models.*;
+import repositorios.*;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

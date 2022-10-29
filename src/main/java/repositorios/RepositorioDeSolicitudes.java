@@ -1,7 +1,6 @@
-package models;
+package repositorios;
 
 import domain.db.EntityManagerHelper;
-import domain.entidades.Area;
 import domain.entidades.Solicitud;
 
 import java.util.ArrayList;

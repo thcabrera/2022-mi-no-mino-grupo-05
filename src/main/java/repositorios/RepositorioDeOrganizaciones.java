@@ -1,8 +1,7 @@
-package models;
+package repositorios;
 
 import domain.db.EntityManagerHelper;
 import domain.entidades.Organizacion;
-import domain.entidades.Persona;
 
 import java.util.List;
 

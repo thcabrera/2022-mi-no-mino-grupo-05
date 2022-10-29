@@ -8,10 +8,8 @@ import domain.mediciones.consumos.Mensual;
 import domain.mediciones.consumos.Periodicidad;
 import helpers.OrganizacionHelper;
 import helpers.UsuarioHelper;
-import models.RepositorioDeAreas;
-import models.RepositorioDePeriodicidad;
-import models.RepositorioDeReportes;
-import models.RepositorioDeSolicitudes;
+import repositorios.RepositorioDePeriodicidad;
+import repositorios.RepositorioDeReportes;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -36,7 +34,7 @@ public class ReportesController {
 
     /* ----------- ORganizacion ----------------*/
     public ModelAndView mostrarReportesOrganizacion(Request request, Response response) {
-        Organizacion organizacion = (Organizacion) OrganizacionHelper.organizacionLogueada(request);
+        Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
 
         //Periodicidad periodo =
         Map<String, Object> parametros = new HashMap<>();
@@ -58,7 +56,7 @@ public class ReportesController {
     }
 
     public ModelAndView mostrarReportesOrganizacionConPeriodicidad(Request request, Response response) {
-        Organizacion organizacion = (Organizacion) OrganizacionHelper.organizacionLogueada(request);
+        Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
         int idPeriodicidad = Integer.parseInt(request.params("idPeriodicidad"));
 
 
@@ -70,9 +68,8 @@ public class ReportesController {
         parametros.put("hcActividades", organizacion.calculoHCActividades(periodicidad));
         parametros.put("hcTrayectos", organizacion.calculoHCTrayectos());
         parametros.put("hcTotal", organizacion.calculoHC(periodicidad));
-
-        List<Area> areas = organizacion.getAreas();
         parametros.put("areas", organizacion.getAreas());
+        
         return new ModelAndView(parametros, "org/org_reportes.hbs");
     }
 

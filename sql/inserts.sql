@@ -3,7 +3,9 @@ values(3, 'Cabrera', 'Thiago', 43988887, 'DNI');
 
 -- la contraseña deshasheada es "dds2022"
 INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
-	values('ddsdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'PERSONA');
+	values ('ddsdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'PERSONA'),
+			('admindreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', NULL, 'ADMINISTRADOR'),
+            ('orgdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 1, 'ORGANIZACION');
 
 INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
 values('lennySW', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'ORGANIZACION');
@@ -24,8 +26,8 @@ INSERT INTO direccion (id, calle, altura, localidad_id, municipio_id, provincia_
     (8, 'MAGALLANES', 4038, 1, 77, 1);
 
 INSERT INTO organizacion (id, nombre, razon_social, clasificacion_id, tipo_org_id, direccion_id)
-	values(1, 'Mercadopago', '3527-3859', 3, 3, 7),
-    (2, 'UTN', '3527-4029', 3, 3, 8);
+	values(1, 'Mercadopago', '3527-3859', 3, 3, NULL),
+    (2, 'UTN', '3527-4029', 3, 3, NULL);
 
 INSERT INTO area (id, descripcion, org_id)
 	values(1, 'VENTAS', 1),

@@ -1,0 +1,46 @@
+{{#partial "contenido"}}
+
+<section class = "container">
+    <div class = "d-flex justify-content-center">
+        <h1 style="margin-top: 20px">Creando organización</h1>
+    </div>
+
+    <br>
+    <form action = "agregar" method = "POST">
+        <div class="row align-items-center border rounded p-2">
+            <div class="col-auto d-flex justify-content-center"  style="font-weight: bold;">
+                <label for = "nombre">Nombre:</label>
+                <input id = "nombre" name = "nombre" placeholder="Ingrese el nombre:" required>
+                <label for = "razon_social">Razón social:</label>
+                <input id = "razon_social" name = "razon_social" placeholder="Ingrese la Razón Social:" required>
+                <label for = "clasificacion">Clasificación</label>
+                <select id="clasificacion" name = "clasificacion" required>
+                    <option value = "1" selected disabled>Seleccione una opción...</option>
+                    {{#each clasificaciones}}
+                        <option value = "{{id}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+                <label for = "tipo">Tipo de Organización</label>
+                <select id="tipo" name = "tipo" required>
+                    <option value = "1" selected disabled>Seleccione una opción...</option>
+                    {{#each tipos}}
+                        <option value = "{{id}}">{{tipoOrg}}</option>
+                    {{/each}}
+                </select>
+
+            </div>
+            <div class="col-auto d-flex justify-content-center" style="font-weight: bold;">
+                Direccion de la Organización:
+                <div>
+                    {{> ../public/shared/direccion.hbs}}
+                </div>
+            </div>
+            <div>
+                <button type = submit>Crear</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+{{/partial}}
+{{> ../public/shared/admin_base.hbs }}

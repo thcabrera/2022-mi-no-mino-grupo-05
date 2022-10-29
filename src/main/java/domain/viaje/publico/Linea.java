@@ -1,5 +1,6 @@
 package domain.viaje.publico;
 
+import domain.entidades.Municipio;
 import domain.viaje.publico.sentido.Ida;
 import domain.viaje.publico.sentido.SentidoRecorrido;
 import domain.viaje.publico.sentido.Vuelta;
@@ -71,6 +72,25 @@ public class Linea {
 
     public List<Parada> getParadas(){
         return paradas;
+    }
+
+
+    public Linea.LineaDTO convertirADTO(){
+        return new Linea.LineaDTO(this);
+    }
+
+    public class LineaDTO{
+
+        public int id;
+        public String nombreLinea;
+
+
+
+        public LineaDTO(Linea linea){
+            this.id = linea.id;
+            this.nombreLinea = linea.nombreLinea;
+        }
+
     }
 
 }

@@ -1,10 +1,14 @@
 package domain.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name="area")
 public class Area {
@@ -89,6 +93,8 @@ public class Area {
         return new AreaDTO(this);
     }
 
+    @Getter
+    @Setter
     public class AreaDTO{
 
         public String id;
@@ -98,6 +104,9 @@ public class Area {
             this.id = String.valueOf(area.getId());
             this.nombre = area.getNombre();
         }
+
+
+
 
     }
 

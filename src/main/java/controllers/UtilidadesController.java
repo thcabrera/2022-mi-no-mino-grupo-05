@@ -1,9 +1,9 @@
 package controllers;
 
 import domain.entidades.*;
-import models.RepositorioDeMunicipios;
-import models.RepositorioDeOrganizaciones;
-import models.RepositorioDeProvincias;
+import domain.viaje.publico.Linea;
+import domain.viaje.publico.TipoLinea;
+import models.*;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -16,6 +16,15 @@ public class UtilidadesController {
     private RepositorioDeMunicipios repositorioDeMunicipios = new RepositorioDeMunicipios();
     private RepositorioDeProvincias repositorioDeProvincias = new RepositorioDeProvincias();
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
+    private RepositorioLineas repositorioLineas = new RepositorioLineas();
+
+    public List<Linea.LineaDTO> obtenerLineas(Request request, Response response){
+        int idTipoLinea = Integer.parseInt(request.params("idTipoTransporte"));
+        List<Linea> lineas = this.repositorioLineas.lineasPorTipo(idTipoLinea);
+        if (lineas == null)
+            return new ArrayList<>();
+       return lineas.stream().map(Linea::convertirADTO).collect(Collectors.toList());
+    }
 
     public List<Municipio.MunicipioDTO> obtenerMunicipios(Request request, Response response){
         int idProvincia = Integer.parseInt(request.params("idProvincia"));
@@ -57,7 +66,14 @@ public class UtilidadesController {
     }*/
 
 
+
     public ModelAndView pantallaClientePerdido(Request request, Response response) {
+        response.status(404);
         return new ModelAndView(null, "/utilidades/perdido.hbs");
+    }
+
+    public ModelAndView pantallaAccesoDenegado(Request request, Response response) {
+        response.status(403);
+        return new ModelAndView(null, "/utilidades/acceso_denegado.hbs");
     }
 }

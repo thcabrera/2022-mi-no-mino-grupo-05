@@ -29,4 +29,12 @@ public class RepositorioDeOrganizaciones {
         EntityManagerHelper.commit();
     }
 
+    public void eliminar(Organizacion organizacion){
+        EntityManagerHelper.beginTransaction();
+        EntityManagerHelper
+                .getEntityManager()
+                .remove(organizacion);
+        EntityManagerHelper.commit();
+    }
+
 }

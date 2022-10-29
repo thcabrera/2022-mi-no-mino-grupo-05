@@ -74,6 +74,20 @@ public class Organizacion extends Actor{
         this.contactos = new ArrayList<>();
     }
 
+    public Organizacion(String nombre, String razonSocial, TipoOrg tipo, Direccion ubicacion, Clasificacion clasificacion) {
+        this.nombre = nombre;
+        this.razonSocial = razonSocial;
+        this.tipo = tipo;
+        this.ubicacion = ubicacion;
+        this.areas  = new ArrayList<>();
+        this.clasificacion = clasificacion;
+        this.mediciones  = new ArrayList<>();
+        this.solicitudes  = new ArrayList<>();
+        this.contactos = new ArrayList<>();
+    }
+
+
+
     // ----------- ACTIVIDADES ---------
 
     public void agregarActividad(Actividad actividad){

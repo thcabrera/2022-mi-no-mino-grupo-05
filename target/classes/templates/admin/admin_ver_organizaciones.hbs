@@ -71,14 +71,20 @@
     </script>
 
     {{#if organizacionCreada}}
-        <script>
-            alert("Organizacion creada correctamente!")
-        </script>
+
+        {{#partial "mensaje"}}
+            ¡Organizacion creada!
+        {{/partial}}
+        {{> ../public/shared/mensaje_alerta.hbs }}
+
     {{/if}}
     {{#if organizacionEliminada}}
-        <script>
-            alert("Organizacion eliminada correctamente!")
-        </script>
+
+        {{#partial "mensaje"}}
+            ¡Organizacion eliminada!
+        {{/partial}}
+        {{> ../public/shared/mensaje_alerta.hbs }}
+
     {{/if}}
 
 {{/partial}}

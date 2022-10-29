@@ -149,7 +149,8 @@ public class Router {
             });
 
             Spark.path("/alta_area", () -> {
-                Spark.get("/:idOrg", organizacionesController::darDeAltaArea, engine);
+                Spark.get("", organizacionesController::darDeAltaArea, engine);
+                Spark.post("", organizacionesController::agregarArea);
             });
 
 
@@ -227,6 +228,8 @@ public class Router {
 
         Spark.get("/404", utilidadesController::pantallaClientePerdido, engine);
         Spark.get("/403", ((request, response) -> "ACCESO DENEGADO!"));
+        //Spark.get("/403", utilidadesController::pantallaAccesoDenegado, engine);
+
         Spark.get("/400", ((request, response) -> {
             response.status(400);
             return "ERROR!";

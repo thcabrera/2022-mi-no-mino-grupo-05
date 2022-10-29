@@ -53,10 +53,10 @@ public class Router {
         /*----------- user ---------- */
         Spark.path("/user", () -> {
 
-           /* Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", AutMiddleware::verificarPersona);
-            Spark.before("/*", AutMiddleware::verificarPersona);*/
+            Spark.before("/*", AutMiddleware::verificarPersona);
 
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
@@ -84,7 +84,7 @@ public class Router {
                     // publico
                     Spark.path("/publico", () -> {
                         Spark.get("", tramosController::pantallaRegistrarTramoPublico, engine);
-                        Spark.post("", tramosController::guardarTramoLimpio);
+                        Spark.post("", tramosController::guardarTramoPublico);
                     });
                     // contratado
                     Spark.path("/contratado", () -> {
@@ -226,6 +226,9 @@ public class Router {
             Spark.get("/localidades/:idMunicipio", utilidadesController::obtenerLocalidades, new JsonTransformer());
             Spark.get("/areas/:idOrganizacion", utilidadesController::obtenerAreas, new JsonTransformer());
             Spark.get("/lineas/:idTipoTransporte", utilidadesController::obtenerLineas, new JsonTransformer());
+            Spark.get("/paradas/:id_linea", utilidadesController::obtenerParadas, new JsonTransformer());
+            Spark.get("/paradasDestino/:id_linea/:id_paradaPartida", utilidadesController::obtenerParadasDestino, new JsonTransformer());
+
 
         });
 

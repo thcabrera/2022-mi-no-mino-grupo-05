@@ -97,18 +97,17 @@ public class TramosController {
         return new ModelAndView(new HashMap<String, Object>(){{
             put("tipo_transporte", todos);
         }}, "trayectos/us_t_publico.hbs");
-
-
     }
-    public Response guardarTramoPublico(Request request, Response response) {
-        Direccion partida = this.cargarDireccion(request, "partida");
 
-        Direccion destino = this.cargarDireccion(request, "destino");
+    public Response guardarTramoPublico(Request request, Response response) {
+       // Direccion partida = this.cargarDireccion(request, "partida");
+
+      //  Direccion destino = this.cargarDireccion(request, "destino");
         //TramoContratado tramoContratado = new Contratado("tipo?", partida, destino);
 
         //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
 
-        response.redirect("/us_registrar_trayecto");
+        response.redirect("/user/trayectos");
         return response;
     }
 

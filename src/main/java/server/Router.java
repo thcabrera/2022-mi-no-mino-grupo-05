@@ -83,8 +83,9 @@ public class Router {
                     });
                     // publico
                     Spark.path("/publico", () -> {
-                        Spark.get("/agregar/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
-                        Spark.post("/agregar/:idTrayecto", tramosController::guardarTramoLimpio);                    });
+                        Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoPublico, engine);
+                        Spark.post("", tramosController::guardarTramoPublico);
+                    });
                     // contratado
                     Spark.path("/contratado", () -> {
                         Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoContratado, engine);

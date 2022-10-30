@@ -116,7 +116,9 @@ public class TramosController {
 
         //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
 
-        response.redirect("/user/trayectos");
+        //response.redirect("/user/trayectos");
+        response.redirect("user/trayectos/editar");
+
         return response;
     }
 

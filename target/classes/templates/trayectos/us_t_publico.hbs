@@ -100,17 +100,12 @@
                     ).then(response => response.json())
                      .then(json => lineas = json);
 
-        // vaciamos el select
-        // establecemos el predeterminado
         resetearOpciones(selectLineas, "--Seleccione una Linea--");
-
-        //Llenar:
         agregarASelect(selectLineas, lineas);
     }
 
     async function getParadas(id_linea){
         let selectParadaPartida = document.getElementById("id_paradaPartida");
-        selectParadaPartida.disabled =false;
 
          await fetch('http://localhost:9000/utilidades/paradas/' + id_linea, {
                             method: 'GET'
@@ -118,14 +113,20 @@
                     ).then(response => response.json())
                      .then(json => paradas = json);
 
-         resetearOpciones(selectParadaPartida, "--Seleccione una Linea--");
-        agregarASelect(selectParadaPartida, paradas);
+        if(paradas.length == 0){
+            selectParadaPartida.disabled =true;
+            alert("No hay paradas asociadas a la linea seleccionada");
+        }else {
+            selectParadaPartida.disabled =false;
+            resetearOpciones(selectParadaPartida, "--Seleccione una Linea--");
+            agregarASelect(selectParadaPartida, paradas);
+        }
     }
 
     async function getParadasDestino(id_paradaPartida){
         let selectParadaDestino = document.getElementById("id_paradaDestino");
         let id_linea = document.getElementById("id_linea").value;
-        selectParadaDestino.disabled =false;
+
 
         await fetch('http://localhost:9000/utilidades/paradasDestino/' + id_linea+'/'+ id_paradaPartida, {
                     method: 'GET'
@@ -133,8 +134,11 @@
         ).then(response => response.json())
                 .then(json => paradas = json);
 
+        selectParadaDestino.disabled =false;
         resetearOpciones(selectParadaDestino, "--Seleccione una Linea--");
         agregarASelect(selectParadaDestino, paradas);
+
+
     }
 
   </script>

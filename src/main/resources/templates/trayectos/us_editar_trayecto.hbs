@@ -8,7 +8,7 @@
     <div class="form-group">
       <label class = "font-weight-bold pt-2" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Organización a la que se dirige o de la que regresa</label>
       <br>
-      <select class="custom-select" name="idOrg" required>
+      <select class="custom-select" name="idOrg" id="id_organicacion" required>
         <option value="" disabled selected>Seleccione Organización...</option>
           {{#each organizaciones}}
               <option value="{{id}}">{{nombre}}</option>
@@ -19,7 +19,7 @@
       <div>
           <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>
           <br>
-          <a type="button" href="/user/trayectos/tramo/publico" class="btn btn-secondary">Tramo público</a>
+          <a type="button" href="/user/trayectos/tramo/publico/crear/{{idTrayecto}}" class="btn btn-secondary">Tramo público</a>
           <a type="button" href="/user/trayectos/tramo/limpio/agregar/{{idTrayecto}}" class="btn btn-secondary">Tramo limpio</a>
           <a type="button" href="/user/trayectos/tramo/particular/unirse/{{idTrayecto}}" class="btn btn-secondary">Tramo particular - Sumarse</a>
           <a type="button" href="/user/trayectos/tramo/particular/crear/{{idTrayecto}}" class="btn btn-secondary">Tramo particular - Crear</a>

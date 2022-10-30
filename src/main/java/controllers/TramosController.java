@@ -133,6 +133,7 @@ public class TramosController {
         return new ModelAndView(new HashMap<String, Object>(){{
             put("tiposServicio", servicios);
             put("provincias", provincias);
+            put("idTrayecto", request.params("idTrayecto"));
         }}, "trayectos/us_tramo_contratado_crear.hbs");
     }
 
@@ -177,6 +178,7 @@ public class TramosController {
             put("tiposCombustible", combustibles);
             put("tiposVehiculo", vehiculos);
             put("provincias", provincias);
+            put("idTrayecto", request.params("idTrayecto"));
         }}, "trayectos/us_tramo_particular_crear.hbs");
     }
 

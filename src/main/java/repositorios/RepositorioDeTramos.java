@@ -1,45 +1,43 @@
 package repositorios;
 
 import domain.db.EntityManagerHelper;
-import domain.entidades.Organizacion;
-import domain.viaje.Trayecto;
-
+import domain.viaje.Tramo;
 import java.util.List;
 
-public class RepositorioDeTrayectos {
+public class RepositorioDeTramos {
 
-    public List<Trayecto> buscarTodos(){
+    public List<Tramo> buscarTodos(){
         return EntityManagerHelper
                 .getEntityManager()
-                .createQuery("from " + Trayecto.class.getName())
+                .createQuery("from " + Tramo.class.getName())
                 .getResultList();
     }
 
-    public Trayecto buscar(Integer id) {
+    public Tramo buscar(Integer id) {
         return EntityManagerHelper
                 .getEntityManager()
-                .find(Trayecto.class, id);
+                .find(Tramo.class, id);
     }
 
-    public void guardar(Trayecto trayecto) {
+    public void guardar(Tramo tramo) {
         EntityManagerHelper.beginTransaction();
         EntityManagerHelper
                 .getEntityManager()
-                .persist(trayecto);
+                .persist(tramo);
         EntityManagerHelper.commit();
     }
 
-    public void eliminar(Trayecto trayecto){
+    public void eliminar(Tramo tramo){
         EntityManagerHelper.beginTransaction();
         EntityManagerHelper
                 .getEntityManager()
-                .remove(trayecto);
+                .remove(tramo);
         EntityManagerHelper.commit();
     }
 
-    public void modificar(Trayecto trayecto){
+    public void modificar(Tramo tramo){
         EntityManagerHelper.getEntityManager().getTransaction().begin();
-        EntityManagerHelper.getEntityManager().merge(trayecto);
+        EntityManagerHelper.getEntityManager().merge(tramo);
         EntityManagerHelper.getEntityManager().getTransaction().commit();
     }
 

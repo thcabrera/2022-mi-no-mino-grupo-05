@@ -22,7 +22,7 @@ public class Linea {
 
     // ES ASI???
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parada_id", referencedColumnName = "id")//FK DE LA TABLA Parada HACIA LA TABLA Linea
+    @JoinColumn(name = "linea_id", referencedColumnName = "id")//FK DE LA TABLA Parada HACIA LA TABLA Linea
     private List<Parada> paradas;
 
 
@@ -78,17 +78,13 @@ public class Linea {
     }
 
     public class LineaDTO{
-
         public int id;
-        public String nombreLinea;
-
-
+        public String nombre;
 
         public LineaDTO(Linea linea){
             this.id = linea.id;
-            this.nombreLinea = linea.nombreLinea;
+            this.nombre = linea.nombreLinea;
         }
-
     }
 
 }

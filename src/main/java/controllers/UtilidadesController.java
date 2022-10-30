@@ -2,6 +2,7 @@ package controllers;
 
 import domain.entidades.*;
 import domain.viaje.publico.Linea;
+import domain.viaje.publico.Parada;
 import repositorios.*;
 import spark.ModelAndView;
 import spark.Request;
@@ -17,6 +18,28 @@ public class UtilidadesController {
     private RepositorioDeProvincias repositorioDeProvincias = new RepositorioDeProvincias();
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
     private RepositorioLineas repositorioLineas = new RepositorioLineas();
+    private RepositorioParadas reposotirioParadas = new RepositorioParadas();
+
+    public List<Parada.ParadaDTO> obtenerParadasDestino(Request request, Response response){
+    //System.out.println(request.params("id_linea"));
+        int idLinea = Integer.parseInt(request.params("id_linea"));
+        int id_paradaPartida = Integer.parseInt(request.params("id_paradaPartida"));
+        List<Parada> paradas = this.reposotirioParadas.paradasPorLineaParada(idLinea, id_paradaPartida);
+        if (paradas == null)
+            return new ArrayList<>();
+        return paradas.stream().map(Parada::convertirADTO).collect(Collectors.toList());
+
+
+    }
+
+    public List<Parada.ParadaDTO> obtenerParadas(Request request, Response response){
+        int idLinea = Integer.parseInt(request.params("id_linea"));
+        List<Parada> paradas = this.reposotirioParadas.paradasPorLinea(idLinea);
+        if (paradas == null)
+            return new ArrayList<>();
+        return paradas.stream().map(Parada::convertirADTO).collect(Collectors.toList());
+
+    }
 
     public List<Linea.LineaDTO> obtenerLineas(Request request, Response response){
         int idTipoLinea = Integer.parseInt(request.params("idTipoTransporte"));
@@ -82,4 +105,6 @@ public class UtilidadesController {
         response.status(403);
         return new ModelAndView(null, "/utilidades/acceso_denegado.hbs");
     }
+
+
 }

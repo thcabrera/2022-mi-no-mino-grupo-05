@@ -109,14 +109,14 @@ public class TramosController {
     }
 
     public Response guardarTramoPublico(Request request, Response response) {
-        Direccion partida = this.cargarDireccion(request, "partida");
+       // Direccion partida = this.cargarDireccion(request, "partida");
 
-        Direccion destino = this.cargarDireccion(request, "destino");
+      //  Direccion destino = this.cargarDireccion(request, "destino");
         //TramoContratado tramoContratado = new Contratado("tipo?", partida, destino);
 
         //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
 
-        response.redirect("/us_registrar_trayecto");
+        response.redirect("/user/trayectos");
         return response;
     }
 

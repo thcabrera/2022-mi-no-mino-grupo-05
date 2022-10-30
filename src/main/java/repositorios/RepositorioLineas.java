@@ -16,7 +16,6 @@ public class RepositorioLineas {
                        + " where tipoLinea="
                        + idTipo)
                .getResultList();
-
     }
 
 }

@@ -33,4 +33,23 @@ public class Parada {
     public Parada(String nombreParada) {
         this.nombre = nombreParada;
     }
+
+    public Parada() {
+
+    }
+
+    public Parada.ParadaDTO convertirADTO(){
+        return new Parada.ParadaDTO(this);
+    }
+
+    public class ParadaDTO{
+        public int id;
+        public String nombre;
+
+        public ParadaDTO(Parada parada){
+            this.id = parada.id;
+            this.nombre = parada.nombre;
+        }
+    }
+
 }

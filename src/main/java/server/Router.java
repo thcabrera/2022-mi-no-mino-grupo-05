@@ -42,6 +42,7 @@ public class Router {
         ReportesController reportesController = new ReportesController();
         SolicitudesController solicitudesController = new SolicitudesController();
         AdministradorController administradorController = new AdministradorController();
+        MedicionesController medicionesController = new MedicionesController();
         /*-------- Manejo del Login -------*/
         Spark.path("/login", ()->{
             Spark.get("", loginController::pantallaLogin , engine);
@@ -175,6 +176,11 @@ public class Router {
                     Spark.post("/aceptar/:idSol", solicitudesController::aceptar);
 
                 });
+            });
+            Spark.path("/cargar_mediciones", () -> {
+                Spark.get("", medicionesController::mostrarCargarMediciones, engine);
+                Spark.post("", medicionesController::cargarMediciones);
+
             });
 
         });

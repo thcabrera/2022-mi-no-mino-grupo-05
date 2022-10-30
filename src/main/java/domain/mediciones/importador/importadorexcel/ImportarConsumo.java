@@ -4,6 +4,8 @@ import domain.mediciones.consumos.Consumo;
 import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
 import lombok.Setter;
 import org.apache.poi.ss.usermodel.Cell;
+
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class ImportarConsumo {

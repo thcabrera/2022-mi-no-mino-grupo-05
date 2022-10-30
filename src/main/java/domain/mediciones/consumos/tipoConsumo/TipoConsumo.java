@@ -1,13 +1,14 @@
 package domain.mediciones.consumos.tipoConsumo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
-
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tipo_consumo")
 public class TipoConsumo {

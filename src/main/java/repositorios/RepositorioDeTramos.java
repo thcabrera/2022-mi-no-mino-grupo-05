@@ -2,6 +2,8 @@ package repositorios;
 
 import domain.db.EntityManagerHelper;
 import domain.viaje.Tramo;
+import domain.viaje.privado.contratado.TramoContratado;
+
 import java.util.List;
 
 public class RepositorioDeTramos {
@@ -18,7 +20,6 @@ public class RepositorioDeTramos {
                 .getEntityManager()
                 .find(Tramo.class, id);
     }
-
     public void guardar(Tramo tramo) {
         EntityManagerHelper.beginTransaction();
         EntityManagerHelper

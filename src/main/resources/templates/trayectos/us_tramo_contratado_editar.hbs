@@ -7,17 +7,9 @@
         </a>
     </div>
 
-    <form
-        {{#if tramo}} action = "/user/trayectos/tramo/contratado/modificar/{{idTrayecto}}/{{tramo.id}}"
-        {{else}} action = "/user/trayectos/tramo/contratado/crear/{{idTrayecto}}"
-        {{/if}}
-            method="POST" class = "row">
+    <form action="" method="POST" class = "row">
         <div class = "d-flex justify-content-center">
-            {{#if tramo}}
-                <h2 >Edición de Tramo Contratado</h2>
-            {{else}}
-                <h2 >Creación de Tramo Contratado</h2>
-            {{/if}}
+            <h2>Edición de Tramo Contratado</h2>
         </div>
         <div class = "col-sm-8">
             <div class = "form-section my-2">
@@ -50,23 +42,10 @@
             </figure>
         </div>
         <div class = "d-flex justify-content-center mt-4">
-            <button type="submit" class="btn btn-primary">
-                {{#if tramo}}Editar{{else}}Crear{{/if}}
-            </button>
+            <button type="submit" class="btn btn-primary">Crear</button>
 
         </div>
     </form>
-
-    {{#if tramo}}
-        <script>
-
-            // si le pasamos el tramo, llenamos los input y seleccionamos los select
-            document.getElementById("servicio").value = {{tramo.tipoTransporte.id}};
-            document.getElementById("esCompartido").checked = {{tramo.esCompartido}};
-            cargarDirecciones();
-
-        </script>
-    {{/if}}
 
 </section>
   {{/partial}}

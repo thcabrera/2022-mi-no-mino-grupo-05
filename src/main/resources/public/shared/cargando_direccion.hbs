@@ -115,7 +115,6 @@
         selectMunicipio.disabled = false;
 
         let municipios = [];
-
         await fetch('http://localhost:9000/utilidades/municipios/' + idProvincia, {
                     method: 'GET'
                 }
@@ -129,6 +128,8 @@
         selectLocalidad.disabled = true;
         //Llenar:
         agregarASelect(selectMunicipio, municipios);
+        console.log("HACIENDO EL GET DE MUNICIPIOS")
+
     }
 
     async function getLocalidadesMunicipio(idSelectMunicipio, idSelectLocalidad){
@@ -137,7 +138,6 @@
         selectLocalidad.disabled = false;
 
         let localidades = [];
-
         await fetch('http://localhost:9000/utilidades/localidades/' + idMunicipio, {
                     method: 'GET'
                 }
@@ -151,5 +151,29 @@
         //Llenar:
         agregarASelect(selectLocalidad, localidades);
         selectLocalidad.required = localidades.length > 0;
+        console.log("HACIENDO EL GET DE LOCALIDADES")
+
     }
+    {{#if tramo}}
+    async function cargarDirecciones() {
+        // cargamos los valores de la direccion de partida
+        document.getElementById("calle-partida").value = "{{tramo.direccionInicio.calle}}";
+        document.getElementById("altura-partida").value = {{tramo.direccionInicio.altura}};
+        document.getElementById("provincia-partida").value = {{tramo.direccionInicio.provincia.id}};
+        await getMunicipiosProvincia("provincia-partida","municipio-partida","localidad-partida");
+        document.getElementById("municipio-partida").value = {{tramo.direccionInicio.municipio.id}};
+        await getLocalidadesMunicipio("municipio-partida", "localidad-partida");
+        document.getElementById("localidad-partida").value = {{tramo.direccionInicio.localidad.id}};
+
+        // cargamos los valores de la direccion de destino
+        document.getElementById("calle-destino").value = "{{tramo.direccionFin.calle}}";
+        document.getElementById("altura-destino").value = {{tramo.direccionFin.altura}};
+        document.getElementById("provincia-destino").value = {{tramo.direccionFin.provincia.id}};
+        await getMunicipiosProvincia("provincia-destino","municipio-destino","localidad-destino");
+        document.getElementById("municipio-destino").value = {{tramo.direccionFin.municipio.id}};
+        await getLocalidadesMunicipio("municipio-destino", "localidad-destino");
+        document.getElementById("localidad-destino").value = {{tramo.direccionFin.localidad.id}};
+    }
+    {{/if}}
+
 </script>

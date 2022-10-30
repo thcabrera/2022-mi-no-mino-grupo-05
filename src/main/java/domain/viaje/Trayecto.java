@@ -35,7 +35,10 @@ public class Trayecto {
     @JoinColumn(name="persona_id", referencedColumnName = "id")
     private Persona persona;
 
-    //  ----------  GETTERS & SETTERS  ----------
+
+    public Trayecto(){
+
+    }
 
     public Trayecto(List<Tramo> tramos) {
         this.tramos = tramos;

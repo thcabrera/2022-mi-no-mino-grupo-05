@@ -2,23 +2,21 @@ package domain.mediciones.consumos.actividades;
 
 import domain.mediciones.consumos.Consumo;
 import domain.mediciones.consumos.Periodicidad;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 // Esta clase Combustion es para las actividades que tienen consumos con tipo variable
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @DiscriminatorValue(value="actividad_consumo")
 public class ActividadConsumo extends Actividad{
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "consumo_id", referencedColumnName = "id")
     private Consumo consumo;
 

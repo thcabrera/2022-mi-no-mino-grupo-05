@@ -38,7 +38,7 @@ public class Organizacion extends Actor{
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     private Direccion ubicacion;
 
-    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
     private List<Area> areas =  new ArrayList<>();
 
     @ManyToOne

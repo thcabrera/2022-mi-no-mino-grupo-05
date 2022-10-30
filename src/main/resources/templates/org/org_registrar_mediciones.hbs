@@ -1,0 +1,30 @@
+{{#partial "contenido"}}
+
+    <section class = "container">
+        <div class = "d-flex justify-content-center">
+            <h1 style="margin-top: 20px">Registrar mediciones</h1>
+        </div>
+        <div class="container">
+            <form action="" method="POST">
+                <section class="form-section container">
+                    <form action="tramo-particular.html" method="POST">
+                        <div class="form">
+                            <label>Cargar arhcivo Excel con Mediciones</label>
+                            <div style="width:99%; display: inline-block;">
+
+                                <input class="mt-4 p-2" type="file" id="archivo_mediciones" name="archivo_mediciones" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </div>
+                    </form>
+                    <figure class="form-section-img">
+                        <img src="/images/undraw_setup_re_y9w8.svg" class="form-section-picture" alt="girl_ride_bike">
+                    </figure>
+                </section>
+            </form>
+        </div>
+
+    </section>
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

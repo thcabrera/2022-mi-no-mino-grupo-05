@@ -2,10 +2,7 @@ package domain.mediciones.consumos.actividades;
 
 import domain.entidades.Organizacion;
 import domain.mediciones.consumos.Periodicidad;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "actividad")
@@ -22,7 +20,7 @@ public abstract class Actividad {
     @GeneratedValue
     private Integer id;
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "periodicidad_id", referencedColumnName = "id")
     private Periodicidad periodicidad;
 

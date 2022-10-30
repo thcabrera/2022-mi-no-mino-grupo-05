@@ -17,9 +17,6 @@ public abstract class Tramo {
     @GeneratedValue
     private Integer id;
 
-    @Column (name = "tipo_tramo")
-    private String tipoTramo;
-
     // Returns genericos para poder hacer el override (Previamente era una interfaz).
 
     public abstract Double consumoPorKM();
@@ -42,13 +39,16 @@ public abstract class Tramo {
         return new TramoDTO(this);
     }
 
+    @Getter
     public class TramoDTO{
 
+        public String id;
         public String puntoInicio;
         public String puntoFin;
         public String tipo;
 
         public TramoDTO(Tramo tramo){
+            this.id = Integer.toString(tramo.id);
             this.puntoFin = tramo.obtenerFin();
             this.puntoInicio = tramo.obtenerInicio();
             this.tipo = tramo.obtenerTipo();

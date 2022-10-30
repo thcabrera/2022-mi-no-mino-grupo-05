@@ -38,6 +38,9 @@ public class TramoContratado extends Tramo {
     private Double consumoPorKM;
 
     //  ----------  GETTERS & SETTERS  ----------
+    public TramoContratado() {
+    }
+
     public TramoContratado(Servicio tipoTransporte, Direccion direccionInicio, Direccion direccionFin, boolean esCompartido) {
         this.tipoTransporte = tipoTransporte;
         this.direccionInicio = direccionInicio;
@@ -65,7 +68,7 @@ public class TramoContratado extends Tramo {
 
     @Override
     public String obtenerFin() {
-        return this.direccionInicio.toString();
+        return this.direccionFin.toString();
     }
 
     @Override

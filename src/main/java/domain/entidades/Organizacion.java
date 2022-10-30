@@ -45,16 +45,16 @@ public class Organizacion extends Actor{
     @JoinColumn(name="clasificacion_id", referencedColumnName = "id")
     private Clasificacion clasificacion;
 
-    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY, cascade=CascadeType.ALL )
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Actividad> mediciones = new ArrayList<>();
 
-    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Solicitud> solicitudes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Contacto> contactos;
 
-    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "organizacion", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<HuellaDeCarbono> huellasDeCarbono = new ArrayList<>();
 
     //  ----------  GETTERS & SETTERS  ----------

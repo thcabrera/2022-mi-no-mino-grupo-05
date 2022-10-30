@@ -21,6 +21,10 @@ public class TipoParticular {
     @Column(name = "descripcion")
     private String descripcion;
 
+    public TipoParticular(){
+
+    }
+
     public TipoParticular(Double consumoPorKM) {
         this.consumoPorKM = consumoPorKM;
     }

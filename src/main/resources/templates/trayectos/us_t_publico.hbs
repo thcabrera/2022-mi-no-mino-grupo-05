@@ -14,11 +14,11 @@
   <div id="header"></div>
 
   <section class="form-section container">
-    <form action="tramo-particular.html" method="POST">
+    <form action="/user/trayectos/tramo/publico" method="POST">
     <div class="form d-flex flex-column">
         <h1 style="margin-top: 20px">Registro Tramo Publico</h1>
         <!-- <h3>Registro Tramo Limpio</h3> -->
-        <div style="width:60%; display: inline-block; ">
+        <div style="width:80%; display: inline-block; ">
          <label for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Medio de transporte</label>
           <select  class="form-control" name="tipo_transporte" id ="id_tipo_transporte" onchange="getLinea(this.value)">
             <option selected>Seleccione tipo de transporte</option>
@@ -27,7 +27,7 @@
             {{/each}}
           </select>
         </div>
-        <div style="width:60%; display: inline-block;">
+        <div style="width:80%; display: inline-block;">
             <label for="linea">Seleccione la línea:</label>
             <select class="form-control" name="linea" id = "id_linea" style="width:100%;"
                     onchange="getParadas(this.value)" required>
@@ -36,32 +36,33 @@
         </div>
       <div class="mb-3">
         <h5 style="margin-top: 20px">Parada de partida</h5>
-        <select class="form-control" name="paradaPartida" id = "id_paradaPartida" style="width:100%;" required disabled>
+        <select class="form-control" name="paradaPartida" id = "id_paradaPartida" style="width:80%;"
+                onchange="getParadasDestino(this.value)" required disabled>
             <option value="" disabled selected>--Seleccione una parada--</option>
         </select>
 
         <h5 style="margin-top: 20px">Parada de destino</h5>
-            <select class="form-control" name="paradaDestino" id = "id_paradaDestino" style="width:100%;" required disabled>
+            <select class="form-control" name="paradaDestino" id = "id_paradaDestino" style="width:80%;" required disabled>
                 <option value="" disabled selected>--Seleccione una parada--</option>
             </select>
+        </div>
+        <br>
     </div>
-      <br>
-    
-
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-dark" style="margin-bottom: 2%;" name="esCompartido">Guardar tramo</button>
+        </div>
       
     </form> 
 
     </div>
     <figure class="form-section-img">
-      <img src="../../../../../../maquetado_web_dds/resources/undraw_subway_-7-vh7.svg" class="form-section-picture" alt="girl_ride_bike">
+      <img src="/images/undraw_subway_-7-vh7.svg" class="form-section-picture" alt="girl_ride_bike">
     </figure>
 
 
   </section>
 
-  <div class="d-flex justify-content-center"> 
-    <button type="submit" class="btn btn-dark" style="margin-bottom: 2%;" name="esCompartido">Guardar tramo</button>
-  </div>
+
 
 
   <!-- Footer -->
@@ -84,7 +85,7 @@
              {
                  var opt = document.createElement("option");
                  opt.value = arr[i].id;
-                 opt.text = arr[i].nombreLinea;
+                 opt.text = arr[i].nombre;
                  selectElement.appendChild(opt);
              }
          }
@@ -93,24 +94,50 @@
         selectLineas.disable =false;
 
         let lineas = [];
-
          await fetch('http://localhost:9000/utilidades/lineas/' + id, {
                             method: 'GET'
                         }
                     ).then(response => response.json())
                      .then(json => lineas = json);
 
-        // vaciamos el select
-        // establecemos el predeterminado
         resetearOpciones(selectLineas, "--Seleccione una Linea--");
-
-        //Llenar:
         agregarASelect(selectLineas, lineas);
     }
 
     async function getParadas(id_linea){
         let selectParadaPartida = document.getElementById("id_paradaPartida");
-        selectParadaPartida.disabled =false;
+
+         await fetch('http://localhost:9000/utilidades/paradas/' + id_linea, {
+                            method: 'GET'
+                        }
+                    ).then(response => response.json())
+                     .then(json => paradas = json);
+
+        if(paradas.length == 0){
+            selectParadaPartida.disabled =true;
+            alert("No hay paradas asociadas a la linea seleccionada");
+        }else {
+            selectParadaPartida.disabled =false;
+            resetearOpciones(selectParadaPartida, "--Seleccione una Linea--");
+            agregarASelect(selectParadaPartida, paradas);
+        }
+    }
+
+    async function getParadasDestino(id_paradaPartida){
+        let selectParadaDestino = document.getElementById("id_paradaDestino");
+        let id_linea = document.getElementById("id_linea").value;
+
+
+        await fetch('http://localhost:9000/utilidades/paradasDestino/' + id_linea+'/'+ id_paradaPartida, {
+                    method: 'GET'
+                }
+        ).then(response => response.json())
+                .then(json => paradas = json);
+
+        selectParadaDestino.disabled =false;
+        resetearOpciones(selectParadaDestino, "--Seleccione una Linea--");
+        agregarASelect(selectParadaDestino, paradas);
+
 
     }
 

@@ -29,14 +29,11 @@ public class Router {
     }
 
     private static void configure(){
-        RepositorioDeTramosEnMemoria rTramos = new RepositorioDeTramosEnMemoria();
         ControllerDefault controllerDefault= new ControllerDefault();
         OrganizacionesController organizacionesController = new OrganizacionesController();
         UserController userController = new UserController();
         TrayectosController trayectosController = new TrayectosController();
-        trayectosController.setRepositorioDeTramos(rTramos);
         TramosController tramosController = new TramosController();
-        tramosController.setRepositorioDeTramos(rTramos);
         LoginController loginController = new LoginController();
         UtilidadesController utilidadesController = new UtilidadesController();
         ReportesController reportesController = new ReportesController();
@@ -54,10 +51,10 @@ public class Router {
         /*----------- user ---------- */
         Spark.path("/user", () -> {
 
-           /* Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
             Spark.before("", AutMiddleware::verificarPersona);
-            Spark.before("/*", AutMiddleware::verificarPersona);*/
+            Spark.before("/*", AutMiddleware::verificarPersona);
 
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
@@ -66,6 +63,7 @@ public class Router {
             /*----------- Trayecto y tramos ---------- */
             Spark.path("/trayectos", () -> {
                 Spark.get("", trayectosController::mostrarTrayectos, engine);
+                Spark.get("/agregar", trayectosController::pantallaAgregarTrayecto, engine);
                 Spark.post("/agregar", trayectosController::agregarTrayecto);
                 Spark.get("/editar/:idTrayecto", trayectosController::pantallaEditarTrayecto, engine);
                 Spark.post("/editar/:idTrayecto", trayectosController::editarTrayecto);
@@ -76,7 +74,7 @@ public class Router {
                     // el eliminar tramo se puede hacer como un eliminar generico, independiente del tipo
                     Spark.post("/eliminar/:idTrayecto/:idTramo", tramosController::eliminarTramo);
                     // el editar generico deberia hacer un if con las subclases y redireccionar a la pantalla especifica
-                    Spark.get("/editar/:idTrayecto/:idTramo", (rq, rs) -> "Editar tramo!");
+                    Spark.get("/editar/:idTrayecto/:idTramo", tramosController::editarTramo);
                     // limpio
                     Spark.path("/limpio", () -> {
                         Spark.get("/agregar/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
@@ -84,13 +82,20 @@ public class Router {
                     });
                     // publico
                     Spark.path("/publico", () -> {
-                        Spark.get("", tramosController::pantallaRegistrarTramoPublico, engine);
-                        Spark.post("", tramosController::guardarTramoLimpio);
+                        Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoPublico, engine);
+                        Spark.post("", tramosController::guardarTramoPublico);
                     });
                     // contratado
                     Spark.path("/contratado", () -> {
-                        Spark.get("", tramosController::pantallaRegistrarTramoContratado, engine);
-                        Spark.post("", tramosController::guardarTramoLimpio);
+                        Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoContratado, engine);
+                        Spark.post("/crear/:idTrayecto", tramosController::guardarTramoContratado);
+                        Spark.get("/editar/:idTrayecto/:idTramo", tramosController::editarTramoContratado, engine);
+                        Spark.post("/modificar/:idTrayecto/:idTramo", tramosController::modificarTramoContratado);
+                    });
+                    // particular
+                    Spark.path("/particular", () -> {
+                        Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoParticular, engine);
+//                        Spark.post("/crear/:idTrayecto", tramosController::guardarTramoParticular);
                     });
                 });
             });
@@ -111,10 +116,10 @@ public class Router {
         });
 
         Spark.path("/administrador", () -> {
-//            Spark.before("", AuthMiddleware::verificarSesion);
-//            Spark.before("/*", AuthMiddleware::verificarSesion);
-//            Spark.before("", AutMiddleware::verificarAdministrador);
-//            Spark.before("/*", AutMiddleware::verificarAdministrador);
+            Spark.before("", AuthMiddleware::verificarSesion);
+            Spark.before("/*", AuthMiddleware::verificarSesion);
+            Spark.before("", AutMiddleware::verificarAdministrador);
+            Spark.before("/*", AutMiddleware::verificarAdministrador);
             Spark.path("/principal", () -> {
                 Spark.get("", administradorController::pantallaPrincipal, engine);
             });
@@ -143,18 +148,8 @@ public class Router {
         Spark.path("/organizacion", () -> {
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol(request, Rol.ORGANIZACION)) {
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
-            Spark.before("/*", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol(request, Rol.ORGANIZACION)) {
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
+            Spark.before("", AutMiddleware::verificarOrganizacion);
+            Spark.before("/*", AutMiddleware::verificarOrganizacion);
             Spark.path("/principal", () -> {
                 Spark.get("", organizacionesController::pantallaPrincipal, engine);
             });
@@ -185,41 +180,6 @@ public class Router {
 
         });
 
-
-/*
-            Spark.before("", AuthMiddleware::verificarSesion);
-            Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol (request, Rol.ORGANIZACION)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-            }));
-            Spark.before("/*", ((request, response) -> {
-                if (!RolHelper.usuarioTieneRol (request, Rol.ORGANIZACION)){
-                    response.redirect("/404");
-                    Spark.halt();
-                }
-
-            }));
-<<<<<<< HEAD
-=======
-
-        });
-=======
->>>>>>> 9a0b21097ee1aa9402f8d39f36e75e7c45164253
-
-            Spark.before("", AuthMiddleware::verificarSesion);
-            Spark.before("/*", AuthMiddleware::verificarSesion);
-            Spark.before("", AutMiddleware::verificarOrganizacion);
-            Spark.before("/*", AutMiddleware::verificarOrganizacion);
-
-<<<<<<< HEAD
-        });
->>>>>>> d74b622bd8210a71043ae29a3d46467cd2bd9191
-
- */
-
         Spark.path("/agente_sectorial", () -> {
            Spark.before("", AuthMiddleware::verificarSesion);
            Spark.before("/*", AuthMiddleware::verificarSesion);
@@ -232,6 +192,9 @@ public class Router {
             Spark.get("/localidades/:idMunicipio", utilidadesController::obtenerLocalidades, new JsonTransformer());
             Spark.get("/areas/:idOrganizacion", utilidadesController::obtenerAreas, new JsonTransformer());
             Spark.get("/lineas/:idTipoTransporte", utilidadesController::obtenerLineas, new JsonTransformer());
+            Spark.get("/paradas/:id_linea", utilidadesController::obtenerParadas, new JsonTransformer());
+            Spark.get("/paradasDestino/:id_linea/:id_paradaPartida", utilidadesController::obtenerParadasDestino, new JsonTransformer());
+
 
         });
 
@@ -246,8 +209,7 @@ public class Router {
         Spark.get("/hola", controllerDefault::saludoController);
 
         Spark.get("/404", utilidadesController::pantallaClientePerdido, engine);
-        Spark.get("/403", ((request, response) -> "ACCESO DENEGADO!"));
-        //Spark.get("/403", utilidadesController::pantallaAccesoDenegado, engine);
+        Spark.get("/403", utilidadesController::pantallaAccesoDenegado, engine);
 
         Spark.get("/400", ((request, response) -> {
             response.status(400);
@@ -257,8 +219,8 @@ public class Router {
 //        Spark.path("/utilidades", () ->{
 //            Spark.get("/deptos/:idProv", )
 //        });
-        //Spark.get("", utilidadesController::pantallaClientePerdido, engine);
-        //Spark.get("/*", utilidadesController::pantallaClientePerdido, engine);
+        Spark.get("", utilidadesController::pantallaClientePerdido, engine);
+        Spark.get("/*", utilidadesController::pantallaClientePerdido, engine);
 
     }
 }

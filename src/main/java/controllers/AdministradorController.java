@@ -115,9 +115,6 @@ public class AdministradorController {
             repositorioDeOrganizaciones.eliminar(repositorioDeOrganizaciones.buscar(idOrg));
             EntityManagerHelper.closeEntityManager();
             response.redirect("/administrador/organizaciones?msg=deleted");
-        } catch(NumberFormatException e){
-            // si el params que nos pasaron no es un número
-            response.redirect("/404");
         } catch(IllegalArgumentException e){
             // si el params que nos pasaron no corresponde a un id de una org
             response.redirect("/404");

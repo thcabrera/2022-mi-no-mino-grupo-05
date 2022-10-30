@@ -16,6 +16,10 @@ public class Servicio {
     @Column(name="descripcion")
     private String nombre;
 
+    public Servicio(){
+
+    }
+
     public Servicio(String nombre){
         this.nombre = nombre;
     }

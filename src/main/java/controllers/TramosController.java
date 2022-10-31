@@ -11,6 +11,8 @@ import domain.viaje.privado.limpio.TramoLimpio;
 import domain.viaje.privado.particular.Combustible;
 import domain.viaje.privado.particular.TipoParticular;
 import domain.viaje.privado.particular.TramoParticular;
+import domain.viaje.publico.Linea;
+import domain.viaje.publico.Parada;
 import domain.viaje.publico.TipoLinea;
 import domain.viaje.publico.TramoPublico;
 import helpers.UsuarioHelper;
@@ -44,44 +46,99 @@ public class TramosController {
 //        List<Provincia.ProvinciaDTO> dtoProvincias = provincias.stream().map(Provincia::convertirADTO).collect(Collectors.toList());
         parametros.put("provincias", provincias);
         parametros.put("idTrayecto", idTrayecto);
-        return new ModelAndView(parametros, "trayectos/us_t_limpio.hbs");
+        return new ModelAndView(parametros, "trayectos/us_tramo_limpio.hbs");
     }
 
     public Response guardarTramoLimpio(Request request, Response response) {
+        try{
+            int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
+            Trayecto trayecto = this.repositorioDeTrayectos.buscar(idTrayecto);
+            String tipo = request.queryParams("tipo");
+            Direccion partida = this.cargarDireccion(request, "partida");
+            Direccion destino = this.cargarDireccion(request, "destino");
 
-        String tipo = request.queryParams("tipo");
-        Direccion partida = this.cargarDireccion(request, "partida");
-        Direccion destino = this.cargarDireccion(request, "destino");
+            TramoLimpio nuevoTLimpio = new TramoLimpio(tipo, partida, destino);
+            trayecto.agregarTramos(nuevoTLimpio);
+            this.repositorioDeTrayectos.modificar(trayecto);
+            this.repositorioDeTramos.guardar(nuevoTLimpio);
 
-        TramoLimpio nuevoTLimpio = new TramoLimpio(tipo, partida, destino);
-
-        this.repositorioDeTramos.guardar(nuevoTLimpio);
-
-        response.redirect("/user/trayectos/editar/" + request.params("idTrayecto"));
+            response.redirect("/user/trayectos/editar/" + request.params("idTrayecto"));
+        } catch(IllegalArgumentException e){
+            response.redirect("/404");
+        }
         return response;
     }
 
     public Response eliminarTramo(Request request, Response response){
-        int id = Integer.parseInt(request.params("idTramo"));
-        this.repositorioDeTramos.eliminar(this.repositorioDeTramos.buscar(id));
-        System.out.printf("Borrando id %d!\n",id);
-        response.redirect("/user/trayectos/editar/" + request.params("idTrayecto"));
+        try{
+            Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
+            int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
+            Trayecto trayecto = this.repositorioDeTrayectos.buscar(idTrayecto);
+            // si la persona no es la dueña del trayecto, 403
+            if (! persona.equals(trayecto.getPersona())){
+                response.redirect("/403");
+                return response;
+            }
+            int idTramo = Integer.parseInt(request.params("idTramo"));
+            Tramo tramo = this.repositorioDeTramos.buscar(idTramo);
+            if (tramo instanceof TramoContratado){
+                TramoContratado tramoContratado = (TramoContratado) tramo;
+                if (tramoContratado.esElPropietario(persona)){
+                    System.out.println("NO ES EL PROPIETARIO DEL TRAMO, DEBERIA BORRAR EL TRAMO DEL TRAYECTO NADA MAS");
+                }
+                else{
+                    System.out.println("ES EL PROPIETARIO, DEBERÍA BORRAR EL TRAMO DE TODOS LOS TRAYECTOS Y LUEGO BORRARLO");
+                }
+            }
+            if (tramo instanceof TramoParticular){
+                TramoParticular tramoParticular = (TramoParticular) tramo;
+                if (tramoParticular.getPropietario().equals(persona)){
+                    System.out.println("NO ES EL PROPIETARIO DEL TRAMO, DEBERIA BORRAR EL TRAMO DEL TRAYECTO NADA MAS");
+                }
+                else{
+                    System.out.println("ES EL PROPIETARIO, DEBERÍA BORRAR EL TRAMO DE TODOS LOS TRAYECTOS Y LUEGO BORRARLO");
+                }
+            }
+            trayecto.getTramos().remove(tramo);
+            this.repositorioDeTrayectos.modificar(trayecto);
+            this.repositorioDeTramos.eliminar(tramo);
+            response.redirect("/user/trayectos/editar/" + request.params("idTrayecto"));
+
+        } catch(IllegalArgumentException e){
+            response.redirect("/404");
+        }
         return response;
     }
 
-    public ModelAndView pantallaEditarTramoLimpio(Request request, Response response){
-        int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
-        int idTramo = Integer.parseInt(request.params("idTramo"));
-        Map<String, Object> parametros = new HashMap<>();
-        parametros.put("idTrayecto",idTrayecto);
-        return new ModelAndView(parametros, "trayectos/us_t_limpio.hbs");
+    public ModelAndView editarTramoLimpio(Request request, Response response){
+        try{
+            int idTrayecto = Integer.parseInt(request.params("idTrayecto"));
+            int idTramo = Integer.parseInt(request.params("idTramo"));
+            TramoLimpio tramoLimpio = (TramoLimpio) this.repositorioDeTramos.buscar(idTramo);
+            Trayecto trayecto = this.repositorioDeTrayectos.buscar(idTrayecto);
+            List<Provincia> provincias = this.repositorioDeProvincias.buscarTodos()
+                    .stream().sorted(Comparator.comparing(Provincia::getDescripcion))
+                    .collect(Collectors.toList());
+            if (! trayecto.getPersona().equals(UsuarioHelper.usuarioLogueado(request).getActor())){
+                response.redirect("/403");
+                return null;
+            }
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("idTrayecto",idTrayecto);
+            parametros.put("tramo", tramoLimpio);
+            parametros.put("provincias", provincias);
+            return new ModelAndView(parametros, "trayectos/us_tramo_limpio.hbs");
+        } catch(IllegalArgumentException e){
+            response.redirect("/404");
+            return null;
+        }
     }
 
-    public Response editarTramoLimpio(Request request, Response response){
+    public Response modificarTramoLimpio(Request request, Response response){
         int idTramo = Integer.parseInt(request.params("idTramo"));
         Tramo tramo = this.repositorioDeTramos.buscar(idTramo);
         System.out.println("Editando tramo limpio!");
-        response.redirect("/user/trayectos" + request.params("idTrayecto"));
+        response.redirect("/user/trayectos/" + request.params("idTrayecto"));
         return response;
     }
 
@@ -106,19 +163,19 @@ public class TramosController {
                 .getResultList();
         return new ModelAndView(new HashMap<String, Object>(){{
             put("tipo_transporte", todos);
+            put("idTrayecto", request.params("idTrayecto"));
         }}, "trayectos/us_t_publico.hbs");
     }
 
     public Response guardarTramoPublico(Request request, Response response) {
-       // Direccion partida = this.cargarDireccion(request, "partida");
-
-      //  Direccion destino = this.cargarDireccion(request, "destino");
-        //TramoContratado tramoContratado = new Contratado("tipo?", partida, destino);
-
-        //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
-
-        //response.redirect("/user/trayectos");
-        response.redirect("user/trayectos/editar");
+//System.out.println("ID DEL TRAYECTO:   " + request.queryParams("idTrayecto"));
+        Parada paradaPartida = new Parada(request.params("paradaPartida"));
+        Parada paradaDestino = new Parada(request.params("paradaDestinos"));
+        Linea linea = new Linea();
+        linea.setNombreLinea(request.params("linea"));
+        TramoPublico tramoPublico = new TramoPublico(paradaPartida, paradaDestino, linea );
+        this.repositorioDeTramos.guardar(tramoPublico);
+        response.redirect("/user/trayectos/editar/" + request.queryParams("idTrayecto"));
 
         return response;
     }
@@ -137,7 +194,7 @@ public class TramosController {
             put("tiposServicio", servicios);
             put("provincias", provincias);
             put("idTrayecto", request.params("idTrayecto"));
-        }}, "trayectos/us_tramo_contratado_crear.hbs");
+        }}, "trayectos/us_tramo_contratado.hbs");
     }
 
     public ModelAndView editarTramoContratado(Request request, Response response){
@@ -156,7 +213,7 @@ public class TramosController {
                 put("provincias", provincias);
                 put("idTrayecto", request.params("idTrayecto"));
                 put("tramo", tramo);
-            }}, "trayectos/us_tramo_contratado_crear.hbs");
+            }}, "trayectos/us_tramo_contratado.hbs");
         } catch(IllegalArgumentException e){
             response.redirect("/404");
         }
@@ -165,10 +222,11 @@ public class TramosController {
 
     public Response guardarTramoContratado(Request request, Response response){
         try{
+            Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
             String idTrayecto = request.params("idTrayecto");
             Trayecto trayecto = this.repositorioDeTrayectos.buscar(Integer.parseInt(idTrayecto));
             // SI LA PERSONA QUE HIZO LA REQUEST NO ES LA DUEÑA DEL TRAYECTO
-            if (! UsuarioHelper.usuarioLogueado(request).getActor().equals(trayecto.getPersona())){
+            if (! persona.equals(trayecto.getPersona())){
                 response.redirect("/403");
                 return response;
             }
@@ -177,7 +235,8 @@ public class TramosController {
             Direccion direccionInicio = cargarDireccion(request, "partida");
             Direccion direccionFin = cargarDireccion(request, "destino");
             boolean esCompartido = "true".equals(request.queryParams("es_compartido"));
-            Tramo tramo = new TramoContratado(servicio, direccionInicio, direccionFin, esCompartido);
+            TramoContratado tramo = new TramoContratado(servicio, direccionInicio, direccionFin, esCompartido);
+            tramo.setPropietario(persona);
             trayecto.agregarTramos(tramo);
             repositorioDeTrayectos.modificar(trayecto);
             response.redirect("/user/trayectos/editar/" + idTrayecto);
@@ -219,7 +278,7 @@ public class TramosController {
             put("tiposVehiculo", vehiculos);
             put("provincias", provincias);
             put("idTrayecto", request.params("idTrayecto"));
-        }}, "trayectos/us_tramo_particular_crear.hbs");
+        }}, "trayectos/us_tramo_particular.hbs");
     }
 
     public Response editarTramo(Request request, Response response){

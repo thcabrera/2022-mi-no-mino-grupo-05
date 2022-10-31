@@ -11,15 +11,15 @@ import java.util.List;
 @Table(name="tramo_publico")
 public class TramoPublico extends Tramo {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "parada_inicio_id", referencedColumnName = "id")
     private Parada paradaInicio;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "parada_fin_id", referencedColumnName = "id")
     private Parada paradaFin;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "linea_id", referencedColumnName = "id")
     private Linea linea;
 
@@ -34,6 +34,10 @@ public class TramoPublico extends Tramo {
         this.paradaInicio = paradaInicio;
         this.paradaFin = paradaFin;
         this.linea = linea;
+    }
+
+    public TramoPublico() {
+
     }
 
     //  ----------  CONSUMO  ----------

@@ -33,8 +33,9 @@ INSERT INTO combustible (consumo, descripcion) VALUES
 
 -- tablas dependientes
 
-INSERT INTO persona (id, apellido, nombre, documento, tipo_doc)
-values(3, 'Cabrera', 'Thiago', 43988887, 'DNI');
+INSERT INTO persona (id, apellido, nombre, documento, tipo_doc) values
+(3, 'Cabrera', 'Thiago', 43988887, 'DNI'),
+(98, 'Broker - Campi', 'Lucas', 25636368, 'DNI');
 
 INSERT INTO direccion (id, calle, altura, localidad_id, municipio_id, provincia_id)
 	VALUES(7, 'LAVALLE', 4039, 1, 77, 1),
@@ -59,7 +60,8 @@ INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
 	values ('ddsdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'PERSONA'),
 			('admindreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', NULL, 'ADMINISTRADOR'),
             ('orgdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 1, 'ORGANIZACION'),
-			('lennySW', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'ORGANIZACION');
+			('lennySW', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'ORGANIZACION'),
+            ('lucascampi', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 98, 'PERSONA');
 
 INSERT INTO huella_de_carbono.linea 
 		(id, descripcion, tipo_linea_id)
@@ -73,4 +75,5 @@ values  (1 , 400                  ,  300               ,  0    , "Av. La Plata",
 		(2 , 500                  ,  200               ,  0    , "Acoyte"      ,  1), -- 132
         (3 , 300                  ,  400               ,  0    , "Varela"      ,  1), -- 132
         (4 , 400                  ,  300               ,  0    , "Av. La Plata",  8), -- E
-        (5 , 700                  ,  500               ,  0    , "San Pedrito",  8); -- E    
+        (5 , 700                  ,  500               ,  0    , "San Pedrito",  8); -- E   
+select * from tramo_limpio

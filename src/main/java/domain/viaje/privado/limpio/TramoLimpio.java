@@ -34,6 +34,10 @@ public class TramoLimpio extends Tramo {
         this.direccionFin = direccionFin;
     }
 
+    public TramoLimpio() {
+
+    }
+
     public boolean getEsCompartido(){
         return false;
     }

@@ -5,6 +5,7 @@ import domain.usuarios.Rol;
 import helpers.RolHelper;
 import middlewares.AutMiddleware;
 import middlewares.AuthMiddleware;
+import org.checkerframework.checker.units.qual.C;
 import repositorios.enMemoria.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -40,6 +41,7 @@ public class Router {
         SolicitudesController solicitudesController = new SolicitudesController();
         AdministradorController administradorController = new AdministradorController();
         MedicionesController medicionesController = new MedicionesController();
+        CalculadoraHCController calculadoraHCController = new CalculadoraHCController();
         /*-------- Manejo del Login -------*/
         Spark.path("/login", ()->{
             Spark.get("", loginController::pantallaLogin , engine);
@@ -59,7 +61,7 @@ public class Router {
             Spark.path("/principal", () -> {
                 Spark.get("", userController::pantallaPrincipal, engine);
             });
-
+            Spark.get("/calculadora_hc", calculadoraHCController::pantallaCalculadoraHC, engine);
             /*----------- Trayecto y tramos ---------- */
             Spark.path("/trayectos", () -> {
                 Spark.get("", trayectosController::mostrarTrayectos, engine);
@@ -77,8 +79,10 @@ public class Router {
                     Spark.get("/editar/:idTrayecto/:idTramo", tramosController::editarTramo);
                     // limpio
                     Spark.path("/limpio", () -> {
-                        Spark.get("/agregar/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
-                        Spark.post("/agregar/:idTrayecto", tramosController::guardarTramoLimpio);
+                        Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
+                        Spark.post("/crear/:idTrayecto", tramosController::guardarTramoLimpio);
+                        Spark.get("/editar/:idTrayecto/:idTramo", tramosController::editarTramoLimpio, engine);
+                        Spark.post("/modificar/:idTrayecto/:idTramo", tramosController::modificarTramoLimpio);
                     });
                     // publico
                     Spark.path("/publico", () -> {
@@ -109,8 +113,6 @@ public class Router {
             });
 
             Spark.get("/reportes", reportesController::mostrarReportesUsuario, engine);
-
-            Spark.get("/ejecutar_calculadora", (req, resp) -> "Ejecutando calculadora!");
 
             /*----------- Reportes  ---------- */
         });
@@ -205,8 +207,6 @@ public class Router {
         Spark.path("/organizaciones", ()-> {
             Spark.get("/:id", organizacionesController::mostrar, engine);
         });
-
-        Spark.get("/hola", controllerDefault::saludoController);
 
         Spark.get("/404", utilidadesController::pantallaClientePerdido, engine);
         Spark.get("/403", utilidadesController::pantallaAccesoDenegado, engine);

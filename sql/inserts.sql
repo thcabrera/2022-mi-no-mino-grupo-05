@@ -32,7 +32,6 @@ INSERT INTO combustible (consumo, descripcion) VALUES
     (1.2, 'GASOIL');
 
 -- tablas dependientes
-
 INSERT INTO persona (id, apellido, nombre, documento, tipo_doc) values
 (3, 'Cabrera', 'Thiago', 43988887, 'DNI'),
 (98, 'Broker - Campi', 'Lucas', 25636368, 'DNI');
@@ -70,10 +69,9 @@ VALUES  (1, "132", 1 ), (2, "26" , 1 ), (3, "36" , 1 ),
         (10, "Mitre" , 2 ),(11, "Sarmiento" , 2 ),(12, "San Martin" , 2 );
 
 INSERT huella_de_carbono.parada 
-		(id, distancia_ant_parada, distancia_sig_parada, indice, nombre_parada , parada_id)
+		(id, distancia_ant_parada, distancia_sig_parada, indice, nombre_parada , linea_id)
 values  (1 , 400                  ,  300               ,  0    , "Av. La Plata",  1), -- 132
 		(2 , 500                  ,  200               ,  0    , "Acoyte"      ,  1), -- 132
         (3 , 300                  ,  400               ,  0    , "Varela"      ,  1), -- 132
         (4 , 400                  ,  300               ,  0    , "Av. La Plata",  8), -- E
         (5 , 700                  ,  500               ,  0    , "San Pedrito",  8); -- E   
-select * from tramo_limpio

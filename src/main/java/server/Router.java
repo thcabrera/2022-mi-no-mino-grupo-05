@@ -99,7 +99,12 @@ public class Router {
                     // particular
                     Spark.path("/particular", () -> {
                         Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoParticular, engine);
-//                        Spark.post("/crear/:idTrayecto", tramosController::guardarTramoParticular);
+                        Spark.post("/crear/:idTrayecto", tramosController::guardarTramoParticular);
+                    });
+                    // unirse a compartido
+                    Spark.path("/compartido", () -> {
+                        Spark.get("/unirse/:idTrayecto", tramosController::pantallaRegistrarTramoCompartido, engine);
+                        //Spark.post("/unirse/:idTrayecto", tramosController::guardarTramoCompartido);
                     });
                 });
             });

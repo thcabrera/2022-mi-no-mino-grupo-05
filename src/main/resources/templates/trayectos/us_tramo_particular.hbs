@@ -18,8 +18,8 @@
                 <div class = "form-section my-2 col-sm-6">
                     <strong>Datos del transporte:</strong>
                     <div class = "form-group my-2">
-                        <label for = "tipoVehiculo">Tipo de vehiculo</label>
-                        <select id = "tipoVehiculo" class="form-control" name="tipo_vehiculo" required>
+                        <label for = "tipo_vehiculo">Tipo de vehiculo</label>
+                        <select id = "tipo_vehiculo" class="form-control" name="tipo_vehiculo" required>
                             <option value="" disabled selected>Seleccione tipo de vehiculo...</option>
                             {{#each tiposVehiculo}}
                                 <option value="{{id}}">{{descripcion}}</option>
@@ -27,8 +27,8 @@
                         </select>
                     </div>
                     <div class = "form-group my-2">
-                        <label for = "tipoCombustible">Tipo de combustible</label>
-                        <select id = "tipoCombustible" class="form-control" name="tipo_combustible" required>
+                        <label for = "tipo_combustible">Tipo de combustible</label>
+                        <select id = "tipo_combustible" class="form-control" name="tipo_combustible" required>
                             <option value="" disabled selected>Seleccione tipo de combustible...</option>
                             {{#each tiposCombustible}}
                                 <option value="{{id}}">{{descripcion}}</option>

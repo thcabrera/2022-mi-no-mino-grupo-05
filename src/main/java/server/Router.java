@@ -73,6 +73,7 @@ public class Router {
                 // las rutas de los tramos necesitan llevar el id del trayecto para poder
                 // redirigir a la pantalla de edicion del trayecto concreto al confirmar la operacion
                 Spark.path("/tramo", () -> {
+
                     // el eliminar tramo se puede hacer como un eliminar generico, independiente del tipo
                     Spark.post("/eliminar/:idTrayecto/:idTramo", tramosController::eliminarTramo);
                     // el editar generico deberia hacer un if con las subclases y redireccionar a la pantalla especifica
@@ -104,7 +105,7 @@ public class Router {
                     // unirse a compartido
                     Spark.path("/compartido", () -> {
                         Spark.get("/unirse/:idTrayecto", tramosController::pantallaRegistrarTramoCompartido, engine);
-                        //Spark.post("/unirse/:idTrayecto", tramosController::guardarTramoCompartido);
+                        Spark.post("/unirse/:idTrayecto", tramosController::unirseTramoCompartido);
                     });
                 });
             });
@@ -201,6 +202,7 @@ public class Router {
             Spark.get("/lineas/:idTipoTransporte", utilidadesController::obtenerLineas, new JsonTransformer());
             Spark.get("/paradas/:id_linea", utilidadesController::obtenerParadas, new JsonTransformer());
             Spark.get("/paradasDestino/:id_linea/:id_paradaPartida", utilidadesController::obtenerParadasDestino, new JsonTransformer());
+            Spark.get("/tramos/:idPropietario/:idOrganizacion", utilidadesController::obtenerTramosCompartidosPersona, new JsonTransformer());
 
 
         });

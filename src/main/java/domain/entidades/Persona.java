@@ -145,6 +145,13 @@ public class Persona extends Actor{
         return new CalculoHCDTO(this, organizacion);
     }
 
+    public boolean esPropietarioDeTramoCompartido(Organizacion organizacion, Persona persona){
+        return this.getTrayectos()
+                .stream()
+                .anyMatch(trayecto ->  trayecto.tieneTramosCompartidosDe(organizacion, persona));
+    }
+
+
     @Getter
     public class CalculoHCDTO{
 
@@ -159,5 +166,6 @@ public class Persona extends Actor{
         }
 
     }
+
 
 }

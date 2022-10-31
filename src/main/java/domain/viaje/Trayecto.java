@@ -60,5 +60,10 @@ public class Trayecto {
     public Double calculoHC(Persona persona) {
         return tramos.stream().mapToDouble(tramo -> tramo.calculoHC(persona)).sum();
     }
+
+    public boolean tieneTramosCompartidosDe(Organizacion organizacion, Persona persona) {
+        return this.getTramos().stream().anyMatch(t -> t.getEsCompartido() && persona.equals(t.getPropietario())) &&
+                this.getOrganizacion().equals( organizacion);
+    }
 }
 

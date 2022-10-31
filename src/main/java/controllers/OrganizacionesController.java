@@ -93,7 +93,7 @@ public class OrganizacionesController {
     public ModelAndView mostrarTodos(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
         Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
-        parametros.put("areas", persona.obtenerOrganizaciones());
+        parametros.put("areas", persona.getListaAreas());
         return new ModelAndView(parametros, "user/us_organizaciones.hbs");
     }
 

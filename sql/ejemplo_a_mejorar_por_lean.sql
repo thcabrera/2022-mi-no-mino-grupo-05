@@ -1,3 +1,4 @@
+
 INSERT INTO direccion (id, calle, altura, localidad_id, municipio_id, provincia_id)
 	VALUES(7, 'LAVALLE', 4039, 1, 77, 1),
     (8, 'MAGALLANES', 4038, 1, 77, 1);
@@ -50,14 +51,35 @@ delete  from tipoconsumo;
 select  * from tipoconsumo
 
 INSERT INTO consumo(id, valor, tipo_consumo_id) values(1, 30 ,1);
-select * from consumo;
+select * from actividad;
 delete  from consumo
 
 select * from usuario;
 select * from organizacion; --  llenySW id = 5
 select * from persona;
-actividadtipo_actividadmedio_transporte_idselect * from tipo_actividad
+select * from tipo_actividad;
 select * from periodicidad
 
-select
+select * from organizacion;
+select * from area;
+select * from area_persona;
+
+INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
+	values ('lean', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'PERSONA');
+update usuario 
+SET actor_id = 5
+where nombre_usuario = 'lean'
+
+UPDATE usuario
+SET actor_id = 5
+WHERE SalesOrderNum = 00061358 and WorkTicketNumber = 000933
+INSERT INTO persona (id, apellido, nombre, documento, tipo_doc)
+values(10, 'Leandro', 'Lienard', 43814124, 'DNI');
+-- metemos a lean en sistemas
+INSERT INTO area_persona(area_id, persona_id) values(6,5);
+delete from persona where id = 5 
+
+select * from area_persona;
+select * from tramo;
+select * from tramo_limpio
 

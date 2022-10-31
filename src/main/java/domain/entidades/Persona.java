@@ -37,7 +37,7 @@ public class Persona extends Actor{
     @ManyToMany(mappedBy = "miembros", cascade = CascadeType.ALL)
     private List<Area> listaAreas;
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "persona", fetch = FetchType.EAGER)
     private List<Trayecto> trayectos;
 
     public Persona(String nombre, String apellido, Integer nroDocumento, Documentacion tipoDoc) {

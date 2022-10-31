@@ -11,6 +11,8 @@ import domain.viaje.privado.limpio.TramoLimpio;
 import domain.viaje.privado.particular.Combustible;
 import domain.viaje.privado.particular.TipoParticular;
 import domain.viaje.privado.particular.TramoParticular;
+import domain.viaje.publico.Linea;
+import domain.viaje.publico.Parada;
 import domain.viaje.publico.TipoLinea;
 import domain.viaje.publico.TramoPublico;
 import helpers.UsuarioHelper;
@@ -106,19 +108,19 @@ public class TramosController {
                 .getResultList();
         return new ModelAndView(new HashMap<String, Object>(){{
             put("tipo_transporte", todos);
+            put("idTrayecto", request.params("idTrayecto"));
         }}, "trayectos/us_t_publico.hbs");
     }
 
     public Response guardarTramoPublico(Request request, Response response) {
-       // Direccion partida = this.cargarDireccion(request, "partida");
-
-      //  Direccion destino = this.cargarDireccion(request, "destino");
-        //TramoContratado tramoContratado = new Contratado("tipo?", partida, destino);
-
-        //this.repositorioTramos.guardar(nuevoTLimpio); // guardarlo en el SQL
-
-        //response.redirect("/user/trayectos");
-        response.redirect("user/trayectos/editar");
+//System.out.println("ID DEL TRAYECTO:   " + request.queryParams("idTrayecto"));
+        Parada paradaPartida = new Parada(request.params("paradaPartida"));
+        Parada paradaDestino = new Parada(request.params("paradaDestinos"));
+        Linea linea = new Linea();
+        linea.setNombreLinea(request.params("linea"));
+        TramoPublico tramoPublico = new TramoPublico(paradaPartida, paradaDestino, linea );
+        this.repositorioDeTramos.guardar(tramoPublico);
+        response.redirect("/user/trayectos/editar/" + request.queryParams("idTrayecto"));
 
         return response;
     }

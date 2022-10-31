@@ -7,16 +7,16 @@
         </a>
     </div>
 
-    <form action = "/user/trayectos/tramo/contratado/modificar/{{idTrayecto}}/{{tramo.id}}" method="POST" class = "row">
-    <div class = "d-flex justify-content-center">
+    <form action = "/user/trayectos/tramo/compartido/unirse/{{idTrayecto}}" method="POST" class = "row">
+    <div class = "d-flex justify-content-center mb-4 mt-3">
         <h2 >Unirse a Tramo compartido</h2>
     </div>
-    <div class = "col-sm-8">
+    <div class = "col-sm-8 my-3">
         <strong>Seleccion del Tramo existente:</strong>
         <div class = "form-group my-2 col-sm-8">
             <label for="propietario">Seleccione propietario del Tramo</label>
             <select class="form-control" name="propietario" id = "propietario"
-                    onchange="getTramosPropietario({{idTrayecto}})" required disabled>
+                    onchange="getTramosPropietario({{organizacion.id}})" required >
                 <option value="" disabled selected>Seleccione un propietario...</option>
                 {{#each propietarios}}
                     <option value="{{id}}" >{{nombre}} {{apellido}}</option>
@@ -25,18 +25,18 @@
         </div>
         <div class = "form-group my-2 col-sm-8">
             <label for="tramo">Seleccione Tramo...</label>
-            <select class="form-control" name="tramo" id = "tramo" required disabled>
-                <option value="" disabled selected>Seleccione un Tramo...</option>
+            <select class="form-control" name="idTramo" id = "tramo" required disabled>
+                <option value="" disabled selected >Seleccione un Tramo...</option>
             </select>
         </div>
     </div>
-    <div class = "col-sm-4 d-flex justify-content-center align-items-center">
+    <div class = "col-sm-4 d-flex justify-content-center align-items-center my-3">
         <figure class="form-section-img">
             <img src="/images/undraw_order_ride_re_372k.svg" class="form-section-picture" alt="car_route"
                  width="100%">
         </figure>
     </div>
-    <div class = "d-flex justify-content-center mt-4">
+    <div class = "d-flex mt-3">
         <button type="submit" class="btn btn-primary">
             Unirse
         </button>
@@ -44,25 +44,20 @@
     </div>
     </form>
     <script>
-        async function getTramosPropietario( idTrayecto ){ // idTrayecto para lo unico q sirve es obtener la org xd
+        async function getTramosPropietario(idOrganizacion){ // idTrayecto para lo unico q sirve es obtener la org xd
             let idPropietario = document.getElementById("propietario").value;
             let selectTramos = document.getElementById("tramo");
             selectTramos.disabled = false;
 
             let tramosPropietario = [];
-            await fetch('http://localhost:9000/utilidades/tramos/' + idPropietario + '/' + idTrayecto, {
+            await fetch('http://localhost:9000/utilidades/tramos/' + idPropietario + '/' + idOrganizacion, {
                         method: 'GET'
                     }
             ).then(response => response.json())
-                    .then(json => municipios = json);
+                    .then(json => tramosPropietario = json);
 
-            // vaciamos el select
-            // establecemos el predeterminado
-            resetearOpciones(selectMunicipio, "--Seleccione un municipio--");
-            resetearOpciones(selectLocalidad, "--Seleccione una localidad--");
-            selectLocalidad.disabled = true;
-            //Llenar:
-            agregarASelect(selectMunicipio, municipios);
+            resetearOpciones(selectTramos, "--Seleccione un tramo--");
+            agregarASelect(selectTramos, tramosPropietario);
 
         }
 
@@ -80,8 +75,10 @@
             for(let i = 0; i < arr.length; i++)
             {
                 var opt = document.createElement("option");
+                opt.text = "Tipo: " + arr[i].tipo;
+                opt.text += " | Inicio: " + arr[i].puntoInicio;
+                opt.text += " | Fin: " + arr[i].puntoFin;
                 opt.value = arr[i].id;
-                opt.text = arr[i].descripcion;
                 selectElement.appendChild(opt);
             }
         }

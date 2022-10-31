@@ -336,8 +336,49 @@ public class TramosController {
         }
         return response;
     }
-
+    // PERSONAS que tengan TRAMOS COMPARTIDOS asociados a esta ORGANIZACION
     public ModelAndView pantallaRegistrarTramoCompartido(Request request, Response response) {
-        return new ModelAndView(null, "trayectos/us_tramo_unirse.hbs");
+        Integer idTrayecto = Integer.parseInt(request.params("idTrayecto"));
+
+        System.out.println("nos llego : id trayecto " + idTrayecto );
+        Trayecto trayecto = this.repositorioDeTrayectos.buscar(idTrayecto);
+        Organizacion organizacion = trayecto.getOrganizacion();
+        // validamos que no se pueda sumar a su porpio tramo compartido
+
+
+        List<Persona> personasDeLaOrg = EntityManagerHelper.getEntityManager()
+                .createQuery("from " + Persona.class.getName())
+                .getResultList();
+
+        List<Persona> propietarios =  personasDeLaOrg.stream()
+                .filter(persona -> {
+                    return !persona.equals(trayecto.getPersona()) &&
+                            persona.esPropietarioDeTramoCompartido( organizacion, persona);
+                })
+                .collect(Collectors.toList());
+
+        return new ModelAndView(new HashMap<String, Object>(){{
+            put("propietarios", propietarios);
+            put("organizacion", organizacion);
+            put("idTrayecto", request.params("idTrayecto"));
+        }}, "trayectos/us_tramo_unirse.hbs");
     }
+
+    public Response unirseTramoCompartido(Request request, Response response) {
+        Integer idTrayecto = Integer.parseInt( request.params("idTrayecto"));
+        Integer idTramo = Integer.parseInt(request.queryParams("idTramo"));
+
+        Trayecto trayecto =  repositorioDeTrayectos.buscar(idTrayecto);
+
+        Tramo tramoCompartidoAUnirse =  repositorioDeTramos.buscar(idTramo);
+
+        trayecto.agregarTramos(tramoCompartidoAUnirse);
+        this.repositorioDeTrayectos.modificar(trayecto);
+
+        response.redirect("/user/trayectos/editar/" + idTrayecto);
+        return response;
+    }
+
+    //Spark.post("/unirse/:idTrayecto", tramosController::guardarTramoCompartido);
+
 }

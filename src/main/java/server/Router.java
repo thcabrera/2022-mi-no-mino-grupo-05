@@ -77,8 +77,10 @@ public class Router {
                     Spark.get("/editar/:idTrayecto/:idTramo", tramosController::editarTramo);
                     // limpio
                     Spark.path("/limpio", () -> {
-                        Spark.get("/agregar/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
-                        Spark.post("/agregar/:idTrayecto", tramosController::guardarTramoLimpio);
+                        Spark.get("/crear/:idTrayecto", tramosController::pantallaRegistrarTramoLimpio, engine);
+                        Spark.post("/crear/:idTrayecto", tramosController::guardarTramoLimpio);
+                        Spark.get("/editar/:idTrayecto/:idTramo", tramosController::editarTramoLimpio, engine);
+                        Spark.post("/modificar/:idTrayecto/:idTramo", tramosController::modificarTramoLimpio);
                     });
                     // publico
                     Spark.path("/publico", () -> {

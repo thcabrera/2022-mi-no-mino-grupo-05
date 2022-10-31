@@ -8,15 +8,15 @@
     </div>
 
     <form
-        {{#if tramo}} action = "/user/trayectos/tramo/contratado/modificar/{{idTrayecto}}/{{tramo.id}}"
-        {{else}} action = "/user/trayectos/tramo/contratado/crear/{{idTrayecto}}"
+        {{#if tramo}} action = "/user/trayectos/tramo/limpio/modificar/{{idTrayecto}}/{{tramo.id}}"
+        {{else}} action = "/user/trayectos/tramo/limpio/crear/{{idTrayecto}}"
         {{/if}}
             method="POST" class = "row">
         <div class = "d-flex justify-content-center">
             {{#if tramo}}
-                <h2 >Edición de Tramo Contratado</h2>
+                <h2 >Edición de Tramo Limpio</h2>
             {{else}}
-                <h2 >Creación de Tramo Contratado</h2>
+                <h2 >Creación de Tramo Limpio</h2>
             {{/if}}
         </div>
         <div class = "col-sm-8">
@@ -26,26 +26,17 @@
             <div class = "form-section my-2 col-sm-6">
                 <strong>Datos del transporte:</strong>
                 <div class = "form-group my-2">
-                    <label for = "servicio">Tipo de servicio</label>
-                    <select id = "servicio" class="form-control" name="tipo_servicio" required>
-                        <option value="" disabled selected>Seleccione tipo de servicio...</option>
-                        {{#each tiposServicio}}
-                            <option value="{{id}}">{{nombre}}</option>
-                        {{/each}}
-                    </select>
+                    <label for = "transporte">Transporte utilizado</label>
+                    <input class = "form-control" id = "transporte" name = "tipo"
+                           placeholder = "Ingrese el transporte utilizado">
+                    <small>Por ejemplo: bicicleta, a pata, skateboard, etc...</small>
                 </div>
-                <div class="form-check my-2">
-                    <label class="form-check-label" for="esCompartido">¿Es Compartido?</label>
-                    <input type="checkbox" class="form-check-input" id="esCompartido"
-                           name="es_compartido" value="true">
-                </div>
-
             </div>
 
         </div>
         <div class = "col-sm-4 d-flex justify-content-center align-items-center">
             <figure class="form-section-img">
-                <img src="/images/undraw_order_ride_re_372k.svg" class="form-section-picture" alt="car_route"
+                <img src="/images/undraw_ride_a_bike_girl.svg" class="form-section-picture" alt="car_route"
                   width="100%">
             </figure>
         </div>
@@ -61,8 +52,7 @@
         <script>
 
             // si le pasamos el tramo, llenamos los input y seleccionamos los select
-            document.getElementById("servicio").value = {{tramo.tipoTransporte.id}};
-            document.getElementById("esCompartido").checked = {{tramo.esCompartido}};
+            document.getElementById("transporte").value = "{{tramo.tipo}}";
             cargarDirecciones();
 
         </script>

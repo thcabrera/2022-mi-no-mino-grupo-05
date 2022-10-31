@@ -1,7 +1,6 @@
 package repositorios;
 
 import domain.db.EntityManagerHelper;
-import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 
 import java.util.List;
@@ -17,6 +16,7 @@ public class RepositorioParadas {
                 .getResultList();
     }
 
+    // TODO ver el tema del sentido
     public List paradasPorLineaParada(int idLinea, int id_paradaPartida) {
         return EntityManagerHelper
                 .getEntityManager()
@@ -24,17 +24,14 @@ public class RepositorioParadas {
                         + Parada.class.getName()
                         + " where linea_id="
                         + idLinea
-                        + " AND id <>"
+                        + " AND id >"
                         + id_paradaPartida)
                 .getResultList();
     }
+
+    public Parada buscar(Integer id) {
+        return EntityManagerHelper
+                .getEntityManager()
+                .find(Parada.class, id);
+    }
 }
-/*
-return EntityManagerHelper
-               .getEntityManager()
-               .createQuery("from "
-                       + Linea.class.getName()
-                       + " where tipoLinea="
-                       + idTipo)
-               .getResultList();
-* */

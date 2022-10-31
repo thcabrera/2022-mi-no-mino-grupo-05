@@ -40,6 +40,7 @@ public class TramoPublico extends Tramo {
 
     }
 
+
     //  ----------  CONSUMO  ----------
     public Double consumoPorKM(){
         return this.linea.getConsumo();

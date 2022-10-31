@@ -36,6 +36,9 @@ public class TramosController {
     private RepositorioDeMunicipios repositorioDeMunicipios    = new RepositorioDeMunicipios();
     private RepositorioDeLocalidades repositorioDeLocalidades  = new RepositorioDeLocalidades();
     private RepositorioDeTrayectos repositorioDeTrayectos = new RepositorioDeTrayectos();
+    private RepositorioParadas repositorioParadas = new RepositorioParadas();
+    private RepositorioLineas repositorioLineas = new RepositorioLineas();
+
 
     /*------------ Tramo Limpio ------------ */
     public ModelAndView pantallaRegistrarTramoLimpio(Request request, Response response) {
@@ -168,13 +171,13 @@ public class TramosController {
     }
 
     public Response guardarTramoPublico(Request request, Response response) {
-//System.out.println("ID DEL TRAYECTO:   " + request.queryParams("idTrayecto"));
-        Parada paradaPartida = new Parada(request.params("paradaPartida"));
-        Parada paradaDestino = new Parada(request.params("paradaDestinos"));
-        Linea linea = new Linea();
-        linea.setNombreLinea(request.params("linea"));
+        Parada paradaPartida = this.repositorioParadas.buscar(Integer.parseInt(request.queryParams("paradaPartida")));
+        Parada paradaDestino = this.repositorioParadas.buscar(Integer.parseInt(request.queryParams("paradaDestino")));
+        Linea linea = this.repositorioLineas.buscar(Integer.parseInt(request.queryParams("linea")));
         TramoPublico tramoPublico = new TramoPublico(paradaPartida, paradaDestino, linea );
         this.repositorioDeTramos.guardar(tramoPublico);
+
+
         response.redirect("/user/trayectos/editar/" + request.queryParams("idTrayecto"));
 
         return response;

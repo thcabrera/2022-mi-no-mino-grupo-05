@@ -45,6 +45,9 @@ public class Linea {
         return nombreLinea;
     }
 
+    public Integer getId(){
+        return id;
+    }
     public List<Parada> getParadasIntermedias(Parada inicio, Parada fin, SentidoRecorrido sentido) {
         int indInicial = this.paradas.indexOf(inicio);
         int indFinal = this.paradas.indexOf(fin);

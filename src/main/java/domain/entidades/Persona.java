@@ -124,6 +124,12 @@ public class Persona extends Actor{
 
     //  ----------  CALCULO HC  ----------
 
+    public Double calculoHCTotal(){
+        return this.obtenerOrganizaciones()
+                .stream().mapToDouble(this::calculoHC)
+                .sum();
+    }
+
     public Double calculoHC(Organizacion organizacion){ // Cálculo de HC de un miembro de una organización
         return this.trayectos
                 .stream().filter(t -> t.getOrganizacion().equals(organizacion))
@@ -133,6 +139,25 @@ public class Persona extends Actor{
 
     public Double impactoEnOrganizacion(Organizacion organizacion){
         return 0.0; //100 * this.calcularHC(organizacion) / organizacion.calculoHC(); // Porcentaje de impacto en organizacion
+    }
+
+    public CalculoHCDTO convertirACalculoHCDTO(Organizacion organizacion){
+        return new CalculoHCDTO(this, organizacion);
+    }
+
+    @Getter
+    public class CalculoHCDTO{
+
+        public String organizacion;
+        public Double valorHC;
+        public Double porcentajeHC;
+
+        public CalculoHCDTO(Persona persona, Organizacion organizacion){
+            this.organizacion = organizacion.getNombre();
+            this.valorHC = persona.calculoHC(organizacion);
+            this.porcentajeHC = persona.impactoEnOrganizacion(organizacion);
+        }
+
     }
 
 }

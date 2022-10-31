@@ -1,0 +1,57 @@
+{{#partial "contenido"}}
+
+    <section class = "container my-4">
+
+        <div class = "mb-2">
+            <a href = "/user/principal">
+                <button class = "btn btn-secondary">Ir para atrás</button>
+            </a>
+        </div>
+
+        <div class = my-2>
+            <h1>Calculadora de HC</h1>
+        </div>
+        <div class = "container border rounded mt-4">
+            <!-- ENCABEZADO DE LA TABLA -->
+            <div class = "row border rounded">
+                <div class = "col-sm-4 d-flex justify-content-center p-2 border">
+                    <strong>Organización</strong>
+                </div>
+                <div class = "col-sm-4 d-flex justify-content-center p-2 border">
+                    <strong>HC</strong>
+                </div>
+                <div class = "col-sm-4 d-flex justify-content-center p-2 border">
+                    <strong>Impacto en Organización</strong>
+                </div>
+            </div>
+            <!-- POR CADA ORG -->
+            {{#each calculos}}
+                <div class = "row border rounded">
+                    <div class = "col-sm-4 d-flex justify-content-center p-2 border">
+                        {{organizacion}}
+                    </div>
+                    <div class = "col-sm-4 d-flex justify-content-center p-2 border">
+                        {{valorHC}}
+                    </div>
+                    <div class = "col-sm-4 d-flex justify-content-center p-2 border">
+                        {{porcentajeHC}}%
+                    </div>
+                </div>
+            {{/each}}
+            {{#unless calculos}}
+                <div class = "row border rounded d-flex justify-content-center align-items-center">
+                    <p class = "text-lg-center">Todavía <strong>no</strong> perteneces a ninguna organización.</p>
+                </div>
+            {{/unless}}
+
+        </div>
+        <div class = "mt-4 row d-flex justify-content-center">
+            <div class = "col-sm-4 form-group d-flex justify-content-center align-items-center">
+                <label for = "total" class = "font-weight-bold text-nowrap">HC Total:</label>
+                <input class = "form-control" id = "total" value = "{{hcTotal}}" disabled>
+            </div>
+        </div>
+    </section>
+
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

@@ -194,7 +194,7 @@ public class TramosController {
             put("tiposServicio", servicios);
             put("provincias", provincias);
             put("idTrayecto", request.params("idTrayecto"));
-        }}, "trayectos/us_tramo_contratado_crear.hbs");
+        }}, "trayectos/us_tramo_contratado.hbs");
     }
 
     public ModelAndView editarTramoContratado(Request request, Response response){
@@ -213,7 +213,7 @@ public class TramosController {
                 put("provincias", provincias);
                 put("idTrayecto", request.params("idTrayecto"));
                 put("tramo", tramo);
-            }}, "trayectos/us_tramo_contratado_crear.hbs");
+            }}, "trayectos/us_tramo_contratado.hbs");
         } catch(IllegalArgumentException e){
             response.redirect("/404");
         }
@@ -278,7 +278,7 @@ public class TramosController {
             put("tiposVehiculo", vehiculos);
             put("provincias", provincias);
             put("idTrayecto", request.params("idTrayecto"));
-        }}, "trayectos/us_tramo_particular_crear.hbs");
+        }}, "trayectos/us_tramo_particular.hbs");
     }
 
     public Response editarTramo(Request request, Response response){

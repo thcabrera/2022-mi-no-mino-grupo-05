@@ -1,13 +1,13 @@
 {{#partial "contenido"}}
-    <section  class = " form-section container">
-
-        <div class = "d-flex">
+    <section  class = " form-section container mt-5">
+    <div class = "row">
+        <div class = "d-flex col-md-6">
             <form action = "solicitar_alta/enviar" method="POST">
                 <div class = "d-flex justify-content-left">
                     <h1 class ="p-3" >Solicitar alta en empresa</h1>
                 </div>
                 <div class=" p-3 justify-content-left">
-                    <select class="custom-select" name="id_org" id="org_select"
+                    <select class="form-control" name="id_org" id="org_select"
                             onchange="getAreasOrg('org_select', 'areas_select')" required>
                         <option disabled selected value="">Seleccione organización</option>
                         {{#each organizaciones}}
@@ -16,7 +16,7 @@
                     </select>
                 </div>
                 <div class="mt-3 p-3 justify-content-left">
-                    <select class="custom-select" name="id_area" id="areas_select" disabled required>
+                    <select class="form-control" name="id_area" id="areas_select" disabled required>
                         <option disabled selected value="">Seleccione area</option>
                     </select>
                 </div>
@@ -31,9 +31,12 @@
 
             </form>
         </div>
-        <figure class="form-section-img pt-3 m-3">
-            <img src="/images/sol_join_organizacion.svg" class="form-section-picture " alt="so">
+      <div class="col-md-6">
+        <figure class="form-section-img d-flex justify-content-center pt-3 m-3">
+            <img src="/images/sol_join_organizacion.svg" width=50% class="form-section-picture " alt="so">
         </figure>
+      </div>
+    </div>
     </section>
 <script>
 

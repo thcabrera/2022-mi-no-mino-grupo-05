@@ -151,6 +151,7 @@ public class Organizacion extends Actor{
         return tramosCompartidos
                 .stream()
                 .filter(t -> t.getEsCompartido())
+                .distinct()
                 .collect(Collectors.toList());
 
         //List<Trameable> tramosCompartidos = organizacion.getTramosCompartidos();

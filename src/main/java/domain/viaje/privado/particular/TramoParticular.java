@@ -39,7 +39,7 @@ public class TramoParticular extends Tramo {
     private Persona propietario;
 
     //  ----------  GETTERS & SETTERS  ----------
-
+    public TramoParticular(){}
     public TramoParticular(Combustible tipoCombustible, TipoParticular tipoParticular, Direccion direccionInicio, Direccion direccionFin, Boolean esCompartido) {
         this.tipoCombustible = tipoCombustible;
         this.tipoParticular = tipoParticular;

@@ -1,0 +1,89 @@
+<!-- Heredamos el contenido de user base -->
+{{#partial "contenido"}}
+<section class="container form my-4">
+    <div>
+        <a href = "/user/trayectos/editar/{{idTrayecto}}">
+            <button class = "btn btn-secondary">Ir para atrás</button>
+        </a>
+    </div>
+
+    <form action = "/user/trayectos/tramo/compartido/unirse/{{idTrayecto}}" method="POST" class = "row">
+    <div class = "d-flex justify-content-center mb-4 mt-3">
+        <h2 >Unirse a Tramo compartido</h2>
+    </div>
+    <div class = "col-sm-8 my-3">
+        <strong>Seleccion del Tramo existente:</strong>
+        <div class = "form-group my-2 col-sm-8">
+            <label for="propietario">Seleccione propietario del Tramo</label>
+            <select class="form-control" name="propietario" id = "propietario"
+                    onchange="getTramosPropietario({{organizacion.id}})" required >
+                <option value="" disabled selected>Seleccione un propietario...</option>
+                {{#each propietarios}}
+                    <option value="{{id}}" >{{nombre}} {{apellido}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class = "form-group my-2 col-sm-8">
+            <label for="tramo">Seleccione Tramo...</label>
+            <select class="form-control" name="idTramo" id = "tramo" required disabled>
+                <option value="" disabled selected >Seleccione un Tramo...</option>
+            </select>
+        </div>
+    </div>
+    <div class = "col-sm-4 d-flex justify-content-center align-items-center my-3">
+        <figure class="form-section-img">
+            <img src="/images/undraw_order_ride_re_372k.svg" class="form-section-picture" alt="car_route"
+                 width="100%">
+        </figure>
+    </div>
+    <div class = "d-flex mt-3">
+        <button type="submit" class="btn btn-primary">
+            Unirse
+        </button>
+
+    </div>
+    </form>
+    <script>
+        async function getTramosPropietario(idOrganizacion){ // idTrayecto para lo unico q sirve es obtener la org xd
+            let idPropietario = document.getElementById("propietario").value;
+            let selectTramos = document.getElementById("tramo");
+            selectTramos.disabled = false;
+
+            let tramosPropietario = [];
+            await fetch('http://localhost:9000/utilidades/tramos/' + idPropietario + '/' + idOrganizacion, {
+                        method: 'GET'
+                    }
+            ).then(response => response.json())
+                    .then(json => tramosPropietario = json);
+
+            resetearOpciones(selectTramos, "--Seleccione un tramo--");
+            agregarASelect(selectTramos, tramosPropietario);
+
+        }
+
+        function resetearOpciones(selectElement, textoPorDefecto){
+            selectElement.innerHTML = "";
+            let opt1 = document.createElement("option");
+            opt1.text = textoPorDefecto;
+            opt1.value = "";
+            opt1.disabled = true;
+            opt1.selected = true;
+            selectElement.appendChild(opt1);
+        }
+
+        function agregarASelect(selectElement, arr){
+            for(let i = 0; i < arr.length; i++)
+            {
+                var opt = document.createElement("option");
+                opt.text = "Tipo: " + arr[i].tipo;
+                opt.text += " | Inicio: " + arr[i].puntoInicio;
+                opt.text += " | Fin: " + arr[i].puntoFin;
+                opt.value = arr[i].id;
+                selectElement.appendChild(opt);
+            }
+        }
+
+    </script>
+</section>
+{{/partial}}
+{{> ../public/shared/user_base.hbs }}

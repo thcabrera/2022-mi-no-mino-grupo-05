@@ -1,12 +1,15 @@
 package controllers;
 
+import domain.db.EntityManagerHelper;
 import domain.entidades.*;
+import domain.viaje.Tramo;
 import domain.viaje.publico.Linea;
 import domain.viaje.publico.Parada;
 import repositorios.*;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -19,6 +22,7 @@ public class UtilidadesController {
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
     private RepositorioLineas repositorioLineas = new RepositorioLineas();
     private RepositorioParadas reposotirioParadas = new RepositorioParadas();
+    private RepositorioDeTramos repositorioDeTramos = new RepositorioDeTramos();
 
     public List<Parada.ParadaDTO> obtenerParadasDestino(Request request, Response response) {
         int idLinea = Integer.parseInt(request.params("id_linea"));
@@ -87,6 +91,21 @@ public class UtilidadesController {
     }*/
 
 
+    public List<Tramo.TramoDTO> obtenerTramosCompartidosPersona(Request request, Response response){
+        int idPropietario = Integer.parseInt(request.params("idPropietario"));
+        int idOrganizacion = Integer.parseInt(request.params("idOrganizacion"));
+        List<Persona> personasDeLaOrg = EntityManagerHelper.getEntityManager()
+                .createQuery("from " + Persona.class.getName())
+                .getResultList();
+
+        Persona propietario = EntityManagerHelper.getEntityManager().find(Persona.class, idPropietario);
+        Organizacion organizacion = this.repositorioDeOrganizaciones.buscar(idOrganizacion);
+
+        return propietario
+                .getTramosCompartidos(organizacion)
+                .stream().map(Tramo::convertirADTO)
+                .collect(Collectors.toList());
+    }
 
     public ModelAndView pantallaClientePerdido(Request request, Response response) {
         response.status(404);
@@ -97,6 +116,5 @@ public class UtilidadesController {
         response.status(403);
         return new ModelAndView(null, "/utilidades/acceso_denegado.hbs");
     }
-
 
 }

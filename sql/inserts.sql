@@ -18,6 +18,10 @@ INSERT INTO tipo_consumo (factor_emision, unidad, descripcion, tipo_actividad) V
 -- ELECTRICIDAD
 (1.5, 'KWH', 'ELECTRICIDAD', 'ELECTRICIDAD');
 
+INSERT INTO medio_transporte(descripcion, factor_emision) values
+	('CAMION DE CARGA', 5.0),
+    ('UTILITARIO LIVIANO', 5.0);
+
 INSERT INTO clasificacion (descripcion) values
 ("Ministerio"),
 ("Universidad"),
@@ -76,7 +80,15 @@ INSERT INTO area (id, descripcion, org_id)
     (5, 'PUERTO', 2);
 
 -- metemos a thiago en el area PUERTO de la UTN
-INSERT INTO area_persona values(5,3);
+INSERT INTO area_persona values
+ 	(5,3),
+    (4,3),
+    (2,3);
+
+INSERT INTO trayecto (org_id, persona_id) values
+	(2,3),
+    (1,3),
+    (1,3);
 
 -- la contraseña deshasheada es "dds2022"
 INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
@@ -100,3 +112,18 @@ values  (1 , 400                  ,  300               ,  0    , "Av. La Plata",
         (3 , 300                  ,  400               ,  0    , "Varela"      ,  1), -- 132
         (4 , 400                  ,  300               ,  0    , "Av. La Plata",  8), -- E
         (5 , 700                  ,  500               ,  0    , "San Pedrito",  8); -- E
+
+/*
+------------------------------SELECTS---------------------------
+select * from tramo;
+select * from trayecto;
+select * from tramo_trayecto;
+select * from tramo_limpio;
+select * from tramo_contratado;
+select * from tramo_particular;
+select * from tramo_publico;
+------------------------------DELETES----------------------------
+delete from tramo_trayecto;
+delete from tramo_limpio;
+delete from tramo;
+*/

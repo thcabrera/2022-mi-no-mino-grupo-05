@@ -1,452 +1,453 @@
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(2, 'MUNICIPIO', 'SIN INFORMAR', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(3, 'MUNICIPIO', 'ADOLFO ALSINA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(4, 'MUNICIPIO', 'ADOLFO GONZALES CHAVES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(5, 'MUNICIPIO', 'ALBERTI', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(6, 'MUNICIPIO', 'ALMIRANTE BROWN', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(7, 'MUNICIPIO', 'ARRECIFES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(8, 'MUNICIPIO', 'AVELLANEDA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(9, 'MUNICIPIO', 'AYACUCHO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(10, 'MUNICIPIO', 'AZUL', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(11, 'MUNICIPIO', 'BAHIA BLANCA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(12, 'MUNICIPIO', 'BALCARCE', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(13, 'MUNICIPIO', 'BARADERO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(14, 'MUNICIPIO', 'BENITO JUAREZ', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(15, 'MUNICIPIO', 'BERAZATEGUI', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(16, 'MUNICIPIO', 'BERISSO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(17, 'MUNICIPIO', 'BOLIVAR', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(18, 'MUNICIPIO', 'BRAGADO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(19, 'MUNICIPIO', 'BRANDSEN', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(20, 'MUNICIPIO', 'CAMPANA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(21, 'MUNICIPIO', 'CAÑUELAS', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(22, 'MUNICIPIO', 'CAPITAN SARMIENTO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(23, 'MUNICIPIO', 'CARLOS CASARES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(24, 'MUNICIPIO', 'CARLOS TEJEDOR', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(25, 'MUNICIPIO', 'CARMEN DE ARECO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(26, 'MUNICIPIO', 'CASTELLI', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(27, 'MUNICIPIO', 'CHACABUCO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(28, 'MUNICIPIO', 'CHASCOMUS', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(29, 'MUNICIPIO', 'CHIVILCOY', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(30, 'MUNICIPIO', 'COLON', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(31, 'MUNICIPIO', 'CORONEL ROSALES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(32, 'MUNICIPIO', 'CORONEL DORREGO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(33, 'MUNICIPIO', 'CORONEL PRINGLES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(34, 'MUNICIPIO', 'CORONEL SUAREZ', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(35, 'MUNICIPIO', 'DAIREAUX', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(36, 'MUNICIPIO', 'DOLORES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(37, 'MUNICIPIO', 'ENSENADA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(38, 'MUNICIPIO', 'ESCOBAR', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(39, 'MUNICIPIO', 'ESTEBAN ECHEVERRIA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(40, 'MUNICIPIO', 'EXALTACION DE LA CRUZ', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(41, 'MUNICIPIO', 'EZEIZA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(42, 'MUNICIPIO', 'FLORENCIO VARELA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(43, 'MUNICIPIO', 'FLORENTINO AMEGHINO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(44, 'MUNICIPIO', 'GENERAL ALVARADO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(45, 'MUNICIPIO', 'GENERAL ALVEAR', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(46, 'MUNICIPIO', 'GENERAL ARENALES', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(47, 'MUNICIPIO', 'GENERAL BELGRANO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(48, 'MUNICIPIO', 'GENERAL GUIDO', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(49, 'MUNICIPIO', 'GENERAL MADARIAGA', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(50, 'MUNICIPIO', 'GENERAL LA MADRID', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(51, 'MUNICIPIO', 'GENERAL LAS HERAS', 1);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(53, 'MUNICIPIO', 'SIN INFORMAR', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(54, 'MUNICIPIO', 'AMBATO', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(55, 'MUNICIPIO', 'ANCASTI', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(56, 'MUNICIPIO', 'ANDALGALA', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(57, 'MUNICIPIO', 'ANTOFAGASTA DE LA SIERRA', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(58, 'MUNICIPIO', 'BELEN ', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(59, 'MUNICIPIO', 'CAPAYAN ', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(60, 'MUNICIPIO', 'SAN FERNANDO DEL VALLE DE CATAMARCA ', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(61, 'MUNICIPIO', 'EL ALTO', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(62, 'MUNICIPIO', 'FRAY MAMERTO ESQUIU', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(63, 'MUNICIPIO', 'LA PAZ', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(64, 'MUNICIPIO', 'PACLIN', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(65, 'MUNICIPIO', 'POMAN', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(66, 'MUNICIPIO', 'SANTA MARIA', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(67, 'MUNICIPIO', 'SANTA ROSA', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(68, 'MUNICIPIO', 'TINOGASTA', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(69, 'MUNICIPIO', 'VALLE VIEJO', 52);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(71, 'MUNICIPIO', 'SIN INFORMAR', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(72, 'MUNICIPIO', 'ALMIRANTE BROWN', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(73, 'MUNICIPIO', 'BERMEJO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(74, 'MUNICIPIO', 'CHACABUCO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(75, 'MUNICIPIO', 'COMANDANTE FERNANDEZ', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(76, 'MUNICIPIO', 'DOCE DE OCTUBRE', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(77, 'MUNICIPIO', 'DOS DE ABRIL', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(78, 'MUNICIPIO', 'FRAY JUSTO SANTA MARIA DE ORO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(79, 'MUNICIPIO', 'GENERAL BELGRANO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(80, 'MUNICIPIO', 'GENERAL DONOVAN', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(81, 'MUNICIPIO', 'GENERAL GüEMES', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(82, 'MUNICIPIO', 'INDEPENDENCIA', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(83, 'MUNICIPIO', 'LIBERTAD', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(84, 'MUNICIPIO', 'LIBERTADOR GENERAL SAN MARTIN', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(85, 'MUNICIPIO', 'MAIPU', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(86, 'MUNICIPIO', 'MAYOR LUIS JORGE FONTANA', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(87, 'MUNICIPIO', 'NUEVE DE JULIO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(88, 'MUNICIPIO', 'OHiggins', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(89, 'MUNICIPIO', 'PRESIDENCIA DE LA PLAZA', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(90, 'MUNICIPIO', 'PRIMERO DE MAYO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(91, 'MUNICIPIO', 'QUITILIPI', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(92, 'MUNICIPIO', 'SAN FERNANDO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(93, 'MUNICIPIO', 'SAN LORENZO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(94, 'MUNICIPIO', 'SARGENTO CABRAL', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(95, 'MUNICIPIO', 'TAPENAGA', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(96, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 70);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(98, 'MUNICIPIO', 'RAWSON ', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(99, 'MUNICIPIO', 'ALTO RIO SENGUER ', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(100, 'MUNICIPIO', 'SARMIENTO ', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(101, 'MUNICIPIO', 'SIN INFORMAR', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(102, 'MUNICIPIO', 'TEHUELCHES', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(103, 'MUNICIPIO', 'TELSEN', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(104, 'MUNICIPIO', 'CUSHAMEN', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(105, 'MUNICIPIO', 'ESCALANTE', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(106, 'MUNICIPIO', 'FLORENTINO AMEGHINO', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(107, 'MUNICIPIO', 'FUTALEUFU', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(108, 'MUNICIPIO', 'GAIMAN ', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(109, 'MUNICIPIO', 'GASTRE', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(110, 'MUNICIPIO', 'LANGUIÑEO', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(111, 'MUNICIPIO', 'MARTIRES', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(112, 'MUNICIPIO', 'PASO DE INDIOS', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(113, 'MUNICIPIO', 'BIEDMA', 97);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(115, 'MUNICIPIO', 'CALAMUCHITA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(116, 'MUNICIPIO', 'CORDOBA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(117, 'MUNICIPIO', 'COLON', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(118, 'MUNICIPIO', 'CRUZ DEL EJE', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(119, 'MUNICIPIO', 'GENERAL ROCA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(120, 'MUNICIPIO', 'GENERAL SAN MARTIN', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(121, 'MUNICIPIO', 'ISCHILIN', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(122, 'MUNICIPIO', 'JUAREZ CELMAN', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(123, 'MUNICIPIO', 'MARCOS JUAREZ', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(124, 'MUNICIPIO', 'MINAS', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(125, 'MUNICIPIO', 'POCHO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(126, 'MUNICIPIO', 'PRESIDENTE ROQUE SAENZ PEÑA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(127, 'MUNICIPIO', 'PUNILLA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(128, 'MUNICIPIO', 'RIO CUARTO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(129, 'MUNICIPIO', 'RIO PRIMERO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(130, 'MUNICIPIO', 'RIO SECO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(131, 'MUNICIPIO', 'RIO SEGUNDO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(132, 'MUNICIPIO', 'SAN ALBERTO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(133, 'MUNICIPIO', 'SAN JAVIER', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(134, 'MUNICIPIO', 'SAN JUSTO', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(135, 'MUNICIPIO', 'SANTA MARIA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(136, 'MUNICIPIO', 'SOBREMONTE', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(137, 'MUNICIPIO', 'TERCERO ARRIBA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(138, 'MUNICIPIO', 'TOTORAL', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(139, 'MUNICIPIO', 'TULUMBA', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(140, 'MUNICIPIO', 'UNION', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(141, 'MUNICIPIO', 'SIN INFORMAR', 114);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(143, 'MUNICIPIO', 'BELLA VISTA', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(144, 'MUNICIPIO', 'BERON DE ASTRADA', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(145, 'MUNICIPIO', 'CORRIENTES CAPITAL', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(146, 'MUNICIPIO', 'CONCEPCION', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(147, 'MUNICIPIO', 'CURUZU CUATIA', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(148, 'MUNICIPIO', 'EMPEDRADO', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(149, 'MUNICIPIO', 'ESQUINA', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(150, 'MUNICIPIO', 'GENERAL ALVEAR', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(151, 'MUNICIPIO', 'GENERAL PAZ', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(152, 'MUNICIPIO', 'GOYA', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(153, 'MUNICIPIO', 'ITATI ', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(154, 'MUNICIPIO', 'ITUZAINGO', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(155, 'MUNICIPIO', 'LAVALLE', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(156, 'MUNICIPIO', 'SIN INFORMAR', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(157, 'MUNICIPIO', 'MBURUCUYA', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(158, 'MUNICIPIO', 'MERCEDES', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(159, 'MUNICIPIO', 'MONTE CASEROS', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(160, 'MUNICIPIO', 'PASO DE LOS LIBRES', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(161, 'MUNICIPIO', 'SALADAS', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(162, 'MUNICIPIO', 'SAN COSME', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(163, 'MUNICIPIO', 'SAN LUIS DEL PALMAR', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(164, 'MUNICIPIO', 'SAN MARTIN', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(165, 'MUNICIPIO', 'SAN MIGUEL ', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(166, 'MUNICIPIO', 'SAN ROQUE', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(167, 'MUNICIPIO', 'SANTO TOME', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(168, 'MUNICIPIO', 'SAUCE', 142);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(170, 'MUNICIPIO', 'CIUDAD DE BUENOS AIRES', 169);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(171, 'MUNICIPIO', 'SIN INFORMAR', 169);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(173, 'MUNICIPIO', 'FEDERACION', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(174, 'MUNICIPIO', 'FEDERAL', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(175, 'MUNICIPIO', 'GUALEGUAY', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(176, 'MUNICIPIO', 'GUALEGUAYCHU', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(177, 'MUNICIPIO', 'ISLAS DEL IBICUY', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(178, 'MUNICIPIO', 'LA PAZ', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(179, 'MUNICIPIO', 'NOGOYA', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(180, 'MUNICIPIO', 'PARANA', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(181, 'MUNICIPIO', 'SAN JOSE DE FELICIANO', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(182, 'MUNICIPIO', 'SAN SALVADOR', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(183, 'MUNICIPIO', 'TALA', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(184, 'MUNICIPIO', 'URUGUAY', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(185, 'MUNICIPIO', 'VICTORIA', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(186, 'MUNICIPIO', 'VILLAGUAY', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(187, 'MUNICIPIO', 'SIN INFORMAR', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(188, 'MUNICIPIO', 'COLON', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(189, 'MUNICIPIO', 'CONCORDIA', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(190, 'MUNICIPIO', 'DIAMANTE', 172);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(192, 'MUNICIPIO', 'BERMEJO', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(193, 'MUNICIPIO', 'FORMOSA', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(194, 'MUNICIPIO', 'LAISHI ', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(195, 'MUNICIPIO', 'MATACOS', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(196, 'MUNICIPIO', 'PATIÑO', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(197, 'MUNICIPIO', 'PILAGAS', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(198, 'MUNICIPIO', 'PILCOMAYO', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(199, 'MUNICIPIO', 'PIRANE', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(200, 'MUNICIPIO', 'SIN INFORMAR', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(201, 'MUNICIPIO', 'RAMON LISTA', 191);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(203, 'MUNICIPIO', 'SIN INFORMAR', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(204, 'MUNICIPIO', 'COCHINOCA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(205, 'MUNICIPIO', 'DR MANUEL BELGRANO', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(206, 'MUNICIPIO', 'EL CARMEN', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(207, 'MUNICIPIO', 'HUMAHUACA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(208, 'MUNICIPIO', 'LEDESMA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(209, 'MUNICIPIO', 'PALPALA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(210, 'MUNICIPIO', 'RINCONADA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(211, 'MUNICIPIO', 'SAN ANTONIO', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(212, 'MUNICIPIO', 'SAN PEDRO', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(213, 'MUNICIPIO', 'SANTA BARBARA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(214, 'MUNICIPIO', 'SANTA CATALINA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(215, 'MUNICIPIO', 'SUSQUES', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(216, 'MUNICIPIO', 'TILCARA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(217, 'MUNICIPIO', 'TUMBAYA', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(218, 'MUNICIPIO', 'VALLE GRANDE', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(219, 'MUNICIPIO', 'YAVI', 202);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(221, 'MUNICIPIO', 'SIN INFORMAR', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(222, 'MUNICIPIO', 'ATREUCO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(223, 'MUNICIPIO', 'CALEU CALEU', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(224, 'MUNICIPIO', 'CAPITAL - SANTA ROSA', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(225, 'MUNICIPIO', 'CATRILO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(226, 'MUNICIPIO', 'CHALILEO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(227, 'MUNICIPIO', 'CHAPALEUFU', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(228, 'MUNICIPIO', 'CHICAL CO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(229, 'MUNICIPIO', 'CONHELO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(230, 'MUNICIPIO', 'CURACO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(231, 'MUNICIPIO', 'GUATRACHE ', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(232, 'MUNICIPIO', 'HUCAL', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(233, 'MUNICIPIO', 'LIHUEL CALEL', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(234, 'MUNICIPIO', 'LIMAY MAHUIDA', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(235, 'MUNICIPIO', 'LOVENTUE', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(236, 'MUNICIPIO', 'MARACO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(237, 'MUNICIPIO', 'PUELEN', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(238, 'MUNICIPIO', 'QUEMU QUEMU', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(239, 'MUNICIPIO', 'RANCUL', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(240, 'MUNICIPIO', 'REALICO', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(241, 'MUNICIPIO', 'TOAY', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(242, 'MUNICIPIO', 'TRENEL', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(243, 'MUNICIPIO', 'UTRACAN', 220);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(245, 'MUNICIPIO', 'SIN INFORMAR', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(246, 'MUNICIPIO', 'ARAUCO', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(247, 'MUNICIPIO', 'LA RIOJA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(248, 'MUNICIPIO', 'CASTRO BARROS', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(249, 'MUNICIPIO', 'CHAMICAL', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(250, 'MUNICIPIO', 'CHILECITO', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(251, 'MUNICIPIO', 'CORONEL FELIPE VARELA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(252, 'MUNICIPIO', 'FAMATINA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(253, 'MUNICIPIO', 'GENERAL ANGEL V. PEÑALOZA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(254, 'MUNICIPIO', 'GENERAL BELGRANO', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(255, 'MUNICIPIO', 'GENERAL JUAN FACUNDO QUIROGA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(256, 'MUNICIPIO', 'GENERAL LAMADRID', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(257, 'MUNICIPIO', 'GENERAL OCAMPO', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(258, 'MUNICIPIO', 'GENERAL SAN MARTIN', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(259, 'MUNICIPIO', 'INDEPENDENCIA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(260, 'MUNICIPIO', 'ROSARIO VERA PEÑALOZA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(261, 'MUNICIPIO', 'SAN BLAS DE LOS SAUCES', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(262, 'MUNICIPIO', 'SANAGASTA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(263, 'MUNICIPIO', 'VINCHINA', 244);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(265, 'MUNICIPIO', 'GENERAL ALVEAR', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(266, 'MUNICIPIO', 'GODOY CRUZ', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(267, 'MUNICIPIO', 'GUAYMALLEN', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(268, 'MUNICIPIO', 'JUNIN', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(269, 'MUNICIPIO', 'LA PAZ', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(270, 'MUNICIPIO', 'LAS HERAS', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(271, 'MUNICIPIO', 'LAVALLE', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(272, 'MUNICIPIO', 'LUJAN DE CUYO', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(273, 'MUNICIPIO', 'MAIPU', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(274, 'MUNICIPIO', 'MALARGüE', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(275, 'MUNICIPIO', 'RIVADAVIA ', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(276, 'MUNICIPIO', 'SAN CARLOS', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(277, 'MUNICIPIO', 'SAN MARTIN', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(278, 'MUNICIPIO', 'SAN RAFAEL ', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(279, 'MUNICIPIO', 'SANTA ROSA', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(280, 'MUNICIPIO', 'TUNUYAN', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(281, 'MUNICIPIO', 'TUPUNGATO', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(282, 'MUNICIPIO', 'MENDOZA CAPITAL', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(283, 'MUNICIPIO', 'SIN INFORMAR', 264);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(285, 'MUNICIPIO', 'MONTECARLO', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(286, 'MUNICIPIO', 'OBERA', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(287, 'MUNICIPIO', 'SAN IGNACIO', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(288, 'MUNICIPIO', 'SAN JAVIER', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(289, 'MUNICIPIO', 'SAN PEDRO', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(290, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(291, 'MUNICIPIO', 'SIN INFORMAR', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(292, 'MUNICIPIO', 'APOSTOLES', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(293, 'MUNICIPIO', 'CAINGUAS', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(294, 'MUNICIPIO', 'CANDELARIA', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(295, 'MUNICIPIO', 'POSADAS', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(296, 'MUNICIPIO', 'CONCEPCION', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(297, 'MUNICIPIO', 'ELDORADO', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(298, 'MUNICIPIO', 'GENERAL MANUEL BELGRANO', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(299, 'MUNICIPIO', 'GUARANI', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(300, 'MUNICIPIO', 'IGUAZU', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(301, 'MUNICIPIO', 'LEANDRO N. ALEM', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(302, 'MUNICIPIO', 'LIBERTADOR GENERAL SAN MARTIN', 284);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(304, 'MUNICIPIO', 'ALUMINE', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(305, 'MUNICIPIO', 'AÑELO', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(306, 'MUNICIPIO', 'CATAN LIL ', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(307, 'MUNICIPIO', 'CHOS MALAL ', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(308, 'MUNICIPIO', 'COLLON CURA', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(309, 'MUNICIPIO', 'CONFLUENCIA', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(310, 'MUNICIPIO', 'HUILICHES', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(311, 'MUNICIPIO', 'LACAR', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(312, 'MUNICIPIO', 'LONCOPUE', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(313, 'MUNICIPIO', 'LOS LAGOS', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(314, 'MUNICIPIO', 'MINAS', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(315, 'MUNICIPIO', 'ÑORQUIN', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(316, 'MUNICIPIO', 'PEHUENCHES', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(317, 'MUNICIPIO', 'PICUN LEUFU', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(318, 'MUNICIPIO', 'PICUNCHES', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(319, 'MUNICIPIO', 'ZAPALA', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(320, 'MUNICIPIO', 'SIN INFORMAR', 303);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(322, 'MUNICIPIO', 'ADOLFO ALSINA', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(323, 'MUNICIPIO', 'AVELLANEDA', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(324, 'MUNICIPIO', 'BARILOCHE', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(325, 'MUNICIPIO', 'CONESA', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(326, 'MUNICIPIO', 'EL CUY', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(327, 'MUNICIPIO', 'GENERAL ROCA', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(328, 'MUNICIPIO', 'NUEVE DE JULIO', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(329, 'MUNICIPIO', 'ÑORQUINCO', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(330, 'MUNICIPIO', 'PICHI MAHUIDA', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(331, 'MUNICIPIO', 'PILCANIYEU', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(332, 'MUNICIPIO', 'SAN ANTONIO', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(333, 'MUNICIPIO', 'VALCHETA', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(334, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(335, 'MUNICIPIO', 'SIN INFORMAR', 321);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(337, 'MUNICIPIO', 'ANTA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(338, 'MUNICIPIO', 'CACHI', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(339, 'MUNICIPIO', 'CAFAYATE', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(340, 'MUNICIPIO', 'SALTA CAPITAL', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(341, 'MUNICIPIO', 'CERRILLOS', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(342, 'MUNICIPIO', 'CHICOANA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(343, 'MUNICIPIO', 'GENERAL GüEMES', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(344, 'MUNICIPIO', 'GENERAL JOSE DE SAN MARTIN', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(345, 'MUNICIPIO', 'GUACHIPAS', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(346, 'MUNICIPIO', 'IRUYA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(347, 'MUNICIPIO', 'LA CALDERA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(348, 'MUNICIPIO', 'LA CANDELARIA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(349, 'MUNICIPIO', 'LA POMA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(350, 'MUNICIPIO', 'LA VIÑA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(351, 'MUNICIPIO', 'LOS ANDES', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(352, 'MUNICIPIO', 'METAN', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(353, 'MUNICIPIO', 'MOLINOS', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(354, 'MUNICIPIO', 'ORAN', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(355, 'MUNICIPIO', 'RIVADAVIA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(356, 'MUNICIPIO', 'ROSARIO DE LA FRONTERA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(357, 'MUNICIPIO', 'ROSARIO DE LERMA ', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(358, 'MUNICIPIO', 'SAN CARLOS', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(359, 'MUNICIPIO', 'SANTA VICTORIA', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(360, 'MUNICIPIO', 'SIN INFORMAR', 336);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(362, 'MUNICIPIO', 'ALBARDON', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(363, 'MUNICIPIO', 'ANGACO', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(364, 'MUNICIPIO', 'CALINGASTA', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(365, 'MUNICIPIO', 'SAN JUAN CAPITAL ', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(366, 'MUNICIPIO', 'CAUCETE', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(367, 'MUNICIPIO', 'CHIMBAS', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(368, 'MUNICIPIO', 'IGLESIA', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(369, 'MUNICIPIO', 'JACHAL', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(370, 'MUNICIPIO', 'NUEVE DE JULIO', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(371, 'MUNICIPIO', 'POCITO', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(372, 'MUNICIPIO', 'RAWSON', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(373, 'MUNICIPIO', 'RIVADAVIA', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(374, 'MUNICIPIO', 'SAN MARTIN', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(375, 'MUNICIPIO', 'SANTA LUCIA', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(376, 'MUNICIPIO', 'SARMIENTO', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(377, 'MUNICIPIO', 'ULLUM', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(378, 'MUNICIPIO', 'VALLE FERTIL', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(379, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(380, 'MUNICIPIO', 'ZONDA', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(381, 'MUNICIPIO', 'SIN INFORMAR', 361);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(383, 'MUNICIPIO', 'AYACUCHO ', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(384, 'MUNICIPIO', 'BELGRANO ', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(385, 'MUNICIPIO', 'CHACABUCO ', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(386, 'MUNICIPIO', 'CORONEL PRINGLES', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(387, 'MUNICIPIO', 'GENERAL PEDERNERA ', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(388, 'MUNICIPIO', 'DUPUY', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(389, 'MUNICIPIO', 'JUNIN ', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(390, 'MUNICIPIO', 'SAN LUIS CAPITAL', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(391, 'MUNICIPIO', 'LIBERTADOR GENERAL SAN MARTIN ', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(392, 'MUNICIPIO', 'SIN INFORMAR', 382);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(394, 'MUNICIPIO', 'CORPEN AIKE', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(395, 'MUNICIPIO', 'DESEADO', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(396, 'MUNICIPIO', 'GüER AIKE', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(397, 'MUNICIPIO', 'LAGO ARGENTINO ', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(398, 'MUNICIPIO', 'LAGO BUENOS AIRES', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(399, 'MUNICIPIO', 'MAGALLANES', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(400, 'MUNICIPIO', 'RIO CHICO', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(401, 'MUNICIPIO', 'SIN INFORMAR', 393);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(403, 'MUNICIPIO', 'BELGRANO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(404, 'MUNICIPIO', 'CASEROS', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(405, 'MUNICIPIO', 'CASTELLANOS', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(406, 'MUNICIPIO', 'CONSTITUCION', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(407, 'MUNICIPIO', 'GARAY', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(408, 'MUNICIPIO', 'GENERAL LOPEZ', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(409, 'MUNICIPIO', 'GENERAL OBLIGADO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(410, 'MUNICIPIO', 'IRIONDO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(411, 'MUNICIPIO', 'LA CAPITAL', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(412, 'MUNICIPIO', 'LAS COLONIAS', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(413, 'MUNICIPIO', 'NUEVE DE JULIO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(414, 'MUNICIPIO', 'ROSARIO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(415, 'MUNICIPIO', 'SAN CRISTOBAL', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(416, 'MUNICIPIO', 'SAN JAVIER', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(417, 'MUNICIPIO', 'SAN JERONIMO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(418, 'MUNICIPIO', 'SAN JUSTO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(419, 'MUNICIPIO', 'SAN LORENZO', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(420, 'MUNICIPIO', 'SAN MARTIN', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(421, 'MUNICIPIO', 'VERA', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(422, 'MUNICIPIO', 'SIN INFORMAR', 402);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(424, 'MUNICIPIO', 'AGUIRRE ', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(425, 'MUNICIPIO', 'ALBERDI ', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(426, 'MUNICIPIO', 'ATAMISQUI', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(427, 'MUNICIPIO', 'AVELLANEDA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(428, 'MUNICIPIO', 'BANDA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(429, 'MUNICIPIO', 'BELGRANO', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(430, 'MUNICIPIO', 'SANTIAGO DEL ESTERO CAPITAL', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(431, 'MUNICIPIO', 'CHOYA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(432, 'MUNICIPIO', 'COPO', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(433, 'MUNICIPIO', 'FIGUEROA ', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(434, 'MUNICIPIO', 'GENERAL TABOADA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(435, 'MUNICIPIO', 'GUASAYAN ', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(436, 'MUNICIPIO', 'JIMENEZ', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(437, 'MUNICIPIO', 'JUAN FELIPE IBARRA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(438, 'MUNICIPIO', 'LORETO ', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(439, 'MUNICIPIO', 'MITRE', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(440, 'MUNICIPIO', 'MORENO', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(441, 'MUNICIPIO', 'OJO DE AGUA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(442, 'MUNICIPIO', 'PELLEGRINI', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(443, 'MUNICIPIO', 'QUEBRACHOS', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(444, 'MUNICIPIO', 'RIO HONDO', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(445, 'MUNICIPIO', 'RIVADAVIA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(446, 'MUNICIPIO', 'ROBLES', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(447, 'MUNICIPIO', 'SALAVINA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(448, 'MUNICIPIO', 'SAN MARTIN', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(449, 'MUNICIPIO', 'SARMIENTO', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(450, 'MUNICIPIO', 'SILIPICA', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(451, 'MUNICIPIO', 'SIN INFORMAR', 423);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(453, 'MUNICIPIO', 'ANTARTIDA ARGENTINA', 452);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(454, 'MUNICIPIO', 'ISLAS DEL ATLANTICO SUR', 452);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(455, 'MUNICIPIO', 'RIO GRANDE', 452);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(456, 'MUNICIPIO', 'USHUAIA', 452);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(457, 'MUNICIPIO', 'SIN INFORMAR', 452);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(459, 'MUNICIPIO', 'BURRUYACU', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(460, 'MUNICIPIO', 'SAN MIGUEL DE TUCUMAN', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(461, 'MUNICIPIO', 'CHICLIGASTA', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(462, 'MUNICIPIO', 'CRUZ ALTA', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(463, 'MUNICIPIO', 'FAMAILLA', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(464, 'MUNICIPIO', 'GRANEROS', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(465, 'MUNICIPIO', 'JUAN BAUTISTA ALBERDI ', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(466, 'MUNICIPIO', 'LA COCHA ', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(467, 'MUNICIPIO', 'LEALES', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(468, 'MUNICIPIO', 'LULES', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(469, 'MUNICIPIO', 'MONTEROS ', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(470, 'MUNICIPIO', 'RIO CHICO ', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(471, 'MUNICIPIO', 'SIMOCA', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(472, 'MUNICIPIO', 'TAFI DEL VALLE', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(473, 'MUNICIPIO', 'TAFI VIEJO ', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(474, 'MUNICIPIO', 'TRANCAS', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(475, 'MUNICIPIO', 'YERBA BUENA', 458);
-INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES(476, 'MUNICIPIO', 'SIN INFORMAR', 458);
+INSERT INTO sector (id, tipo, descripcion, provincia_id) VALUES
+	(2, 'MUNICIPIO', 'SIN INFORMAR', 1),
+	(3, 'MUNICIPIO', 'ADOLFO ALSINA', 1),
+	(4, 'MUNICIPIO', 'ADOLFO GONZALES CHAVES', 1),
+	(5, 'MUNICIPIO', 'ALBERTI', 1),
+	(6, 'MUNICIPIO', 'ALMIRANTE BROWN', 1),
+	(7, 'MUNICIPIO', 'ARRECIFES', 1),
+	(8, 'MUNICIPIO', 'AVELLANEDA', 1),
+	(9, 'MUNICIPIO', 'AYACUCHO', 1),
+	(10, 'MUNICIPIO', 'AZUL', 1),
+	(11, 'MUNICIPIO', 'BAHIA BLANCA', 1),
+	(12, 'MUNICIPIO', 'BALCARCE', 1),
+	(13, 'MUNICIPIO', 'BARADERO', 1),
+	(14, 'MUNICIPIO', 'BENITO JUAREZ', 1),
+	(15, 'MUNICIPIO', 'BERAZATEGUI', 1),
+	(16, 'MUNICIPIO', 'BERISSO', 1),
+	(17, 'MUNICIPIO', 'BOLIVAR', 1),
+	(18, 'MUNICIPIO', 'BRAGADO', 1),
+	(19, 'MUNICIPIO', 'BRANDSEN', 1),
+	(20, 'MUNICIPIO', 'CAMPANA', 1),
+	(21, 'MUNICIPIO', 'CAÑUELAS', 1),
+	(22, 'MUNICIPIO', 'CAPITAN SARMIENTO', 1),
+	(23, 'MUNICIPIO', 'CARLOS CASARES', 1),
+	(24, 'MUNICIPIO', 'CARLOS TEJEDOR', 1),
+	(25, 'MUNICIPIO', 'CARMEN DE ARECO', 1),
+	(26, 'MUNICIPIO', 'CASTELLI', 1),
+	(27, 'MUNICIPIO', 'CHACABUCO', 1),
+	(28, 'MUNICIPIO', 'CHASCOMUS', 1),
+	(29, 'MUNICIPIO', 'CHIVILCOY', 1),
+	(30, 'MUNICIPIO', 'COLON', 1),
+	(31, 'MUNICIPIO', 'CORONEL ROSALES', 1),
+	(32, 'MUNICIPIO', 'CORONEL DORREGO', 1),
+	(33, 'MUNICIPIO', 'CORONEL PRINGLES', 1),
+	(34, 'MUNICIPIO', 'CORONEL SUAREZ', 1),
+	(35, 'MUNICIPIO', 'DAIREAUX', 1),
+	(36, 'MUNICIPIO', 'DOLORES', 1),
+	(37, 'MUNICIPIO', 'ENSENADA', 1),
+	(38, 'MUNICIPIO', 'ESCOBAR', 1),
+	(39, 'MUNICIPIO', 'ESTEBAN ECHEVERRIA', 1),
+	(40, 'MUNICIPIO', 'EXALTACION DE LA CRUZ', 1),
+	(41, 'MUNICIPIO', 'EZEIZA', 1),
+	(42, 'MUNICIPIO', 'FLORENCIO VARELA', 1),
+	(43, 'MUNICIPIO', 'FLORENTINO AMEGHINO', 1),
+	(44, 'MUNICIPIO', 'GENERAL ALVARADO', 1),
+	(45, 'MUNICIPIO', 'GENERAL ALVEAR', 1),
+	(46, 'MUNICIPIO', 'GENERAL ARENALES', 1),
+	(47, 'MUNICIPIO', 'GENERAL BELGRANO', 1),
+	(48, 'MUNICIPIO', 'GENERAL GUIDO', 1),
+	(49, 'MUNICIPIO', 'GENERAL MADARIAGA', 1),
+	(50, 'MUNICIPIO', 'GENERAL LA MADRID', 1),
+	(51, 'MUNICIPIO', 'GENERAL LAS HERAS', 1),
+	(53, 'MUNICIPIO', 'SIN INFORMAR', 52),
+	(54, 'MUNICIPIO', 'AMBATO', 52),
+	(55, 'MUNICIPIO', 'ANCASTI', 52),
+	(56, 'MUNICIPIO', 'ANDALGALA', 52),
+	(57, 'MUNICIPIO', 'ANTOFAGASTA DE LA SIERRA', 52),
+	(58, 'MUNICIPIO', 'BELEN ', 52),
+	(59, 'MUNICIPIO', 'CAPAYAN ', 52),
+	(60, 'MUNICIPIO', 'SAN FERNANDO DEL VALLE DE CATAMARCA ', 52),
+	(61, 'MUNICIPIO', 'EL ALTO', 52),
+	(62, 'MUNICIPIO', 'FRAY MAMERTO ESQUIU', 52),
+	(63, 'MUNICIPIO', 'LA PAZ', 52),
+	(64, 'MUNICIPIO', 'PACLIN', 52),
+	(65, 'MUNICIPIO', 'POMAN', 52),
+	(66, 'MUNICIPIO', 'SANTA MARIA', 52),
+	(67, 'MUNICIPIO', 'SANTA ROSA', 52),
+	(68, 'MUNICIPIO', 'TINOGASTA', 52),
+	(69, 'MUNICIPIO', 'VALLE VIEJO', 52),
+	(71, 'MUNICIPIO', 'SIN INFORMAR', 70),
+	(72, 'MUNICIPIO', 'ALMIRANTE BROWN', 70),
+	(73, 'MUNICIPIO', 'BERMEJO', 70),
+	(74, 'MUNICIPIO', 'CHACABUCO', 70),
+	(75, 'MUNICIPIO', 'COMANDANTE FERNANDEZ', 70),
+	(76, 'MUNICIPIO', 'DOCE DE OCTUBRE', 70),
+	(77, 'MUNICIPIO', 'DOS DE ABRIL', 70),
+	(78, 'MUNICIPIO', 'FRAY JUSTO SANTA MARIA DE ORO', 70),
+	(79, 'MUNICIPIO', 'GENERAL BELGRANO', 70),
+	(80, 'MUNICIPIO', 'GENERAL DONOVAN', 70),
+	(81, 'MUNICIPIO', 'GENERAL GüEMES', 70),
+	(82, 'MUNICIPIO', 'INDEPENDENCIA', 70),
+	(83, 'MUNICIPIO', 'LIBERTAD', 70),
+	(84, 'MUNICIPIO', 'LIBERTADOR GENERAL SAN MARTIN', 70),
+	(85, 'MUNICIPIO', 'MAIPU', 70),
+	(86, 'MUNICIPIO', 'MAYOR LUIS JORGE FONTANA', 70),
+	(87, 'MUNICIPIO', 'NUEVE DE JULIO', 70),
+	(88, 'MUNICIPIO', 'OHiggins', 70),
+	(89, 'MUNICIPIO', 'PRESIDENCIA DE LA PLAZA', 70),
+	(90, 'MUNICIPIO', 'PRIMERO DE MAYO', 70),
+	(91, 'MUNICIPIO', 'QUITILIPI', 70),
+	(92, 'MUNICIPIO', 'SAN FERNANDO', 70),
+	(93, 'MUNICIPIO', 'SAN LORENZO', 70),
+	(94, 'MUNICIPIO', 'SARGENTO CABRAL', 70),
+	(95, 'MUNICIPIO', 'TAPENAGA', 70),
+	(96, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 70),
+	(98, 'MUNICIPIO', 'RAWSON ', 97),
+	(99, 'MUNICIPIO', 'ALTO RIO SENGUER ', 97),
+	(100, 'MUNICIPIO', 'SARMIENTO ', 97),
+	(101, 'MUNICIPIO', 'SIN INFORMAR', 97),
+	(102, 'MUNICIPIO', 'TEHUELCHES', 97),
+	(103, 'MUNICIPIO', 'TELSEN', 97),
+	(104, 'MUNICIPIO', 'CUSHAMEN', 97),
+	(105, 'MUNICIPIO', 'ESCALANTE', 97),
+	(106, 'MUNICIPIO', 'FLORENTINO AMEGHINO', 97),
+	(107, 'MUNICIPIO', 'FUTALEUFU', 97),
+	(108, 'MUNICIPIO', 'GAIMAN ', 97),
+	(109, 'MUNICIPIO', 'GASTRE', 97),
+	(110, 'MUNICIPIO', 'LANGUIÑEO', 97),
+	(111, 'MUNICIPIO', 'MARTIRES', 97),
+	(112, 'MUNICIPIO', 'PASO DE INDIOS', 97),
+	(113, 'MUNICIPIO', 'BIEDMA', 97),
+	(115, 'MUNICIPIO', 'CALAMUCHITA', 114),
+	(116, 'MUNICIPIO', 'CORDOBA', 114),
+	(117, 'MUNICIPIO', 'COLON', 114),
+	(118, 'MUNICIPIO', 'CRUZ DEL EJE', 114),
+	(119, 'MUNICIPIO', 'GENERAL ROCA', 114),
+	(120, 'MUNICIPIO', 'GENERAL SAN MARTIN', 114),
+	(121, 'MUNICIPIO', 'ISCHILIN', 114),
+	(122, 'MUNICIPIO', 'JUAREZ CELMAN', 114),
+	(123, 'MUNICIPIO', 'MARCOS JUAREZ', 114),
+	(124, 'MUNICIPIO', 'MINAS', 114),
+	(125, 'MUNICIPIO', 'POCHO', 114),
+	(126, 'MUNICIPIO', 'PRESIDENTE ROQUE SAENZ PEÑA', 114),
+	(127, 'MUNICIPIO', 'PUNILLA', 114),
+	(128, 'MUNICIPIO', 'RIO CUARTO', 114),
+	(129, 'MUNICIPIO', 'RIO PRIMERO', 114),
+	(130, 'MUNICIPIO', 'RIO SECO', 114),
+	(131, 'MUNICIPIO', 'RIO SEGUNDO', 114),
+	(132, 'MUNICIPIO', 'SAN ALBERTO', 114),
+	(133, 'MUNICIPIO', 'SAN JAVIER', 114),
+	(134, 'MUNICIPIO', 'SAN JUSTO', 114),
+	(135, 'MUNICIPIO', 'SANTA MARIA', 114),
+	(136, 'MUNICIPIO', 'SOBREMONTE', 114),
+	(137, 'MUNICIPIO', 'TERCERO ARRIBA', 114),
+	(138, 'MUNICIPIO', 'TOTORAL', 114),
+	(139, 'MUNICIPIO', 'TULUMBA', 114),
+	(140, 'MUNICIPIO', 'UNION', 114),
+	(141, 'MUNICIPIO', 'SIN INFORMAR', 114),
+	(143, 'MUNICIPIO', 'BELLA VISTA', 142),
+	(144, 'MUNICIPIO', 'BERON DE ASTRADA', 142),
+	(145, 'MUNICIPIO', 'CORRIENTES CAPITAL', 142),
+	(146, 'MUNICIPIO', 'CONCEPCION', 142),
+	(147, 'MUNICIPIO', 'CURUZU CUATIA', 142),
+	(148, 'MUNICIPIO', 'EMPEDRADO', 142),
+	(149, 'MUNICIPIO', 'ESQUINA', 142),
+	(150, 'MUNICIPIO', 'GENERAL ALVEAR', 142),
+	(151, 'MUNICIPIO', 'GENERAL PAZ', 142),
+	(152, 'MUNICIPIO', 'GOYA', 142),
+	(153, 'MUNICIPIO', 'ITATI ', 142),
+	(154, 'MUNICIPIO', 'ITUZAINGO', 142),
+	(155, 'MUNICIPIO', 'LAVALLE', 142),
+	(156, 'MUNICIPIO', 'SIN INFORMAR', 142),
+	(157, 'MUNICIPIO', 'MBURUCUYA', 142),
+	(158, 'MUNICIPIO', 'MERCEDES', 142),
+	(159, 'MUNICIPIO', 'MONTE CASEROS', 142),
+	(160, 'MUNICIPIO', 'PASO DE LOS LIBRES', 142),
+	(161, 'MUNICIPIO', 'SALADAS', 142),
+	(162, 'MUNICIPIO', 'SAN COSME', 142),
+	(163, 'MUNICIPIO', 'SAN LUIS DEL PALMAR', 142),
+	(164, 'MUNICIPIO', 'SAN MARTIN', 142),
+	(165, 'MUNICIPIO', 'SAN MIGUEL ', 142),
+	(166, 'MUNICIPIO', 'SAN ROQUE', 142),
+	(167, 'MUNICIPIO', 'SANTO TOME', 142),
+	(168, 'MUNICIPIO', 'SAUCE', 142),
+	(170, 'MUNICIPIO', 'CIUDAD DE BUENOS AIRES', 169),
+	(171, 'MUNICIPIO', 'SIN INFORMAR', 169),
+	(173, 'MUNICIPIO', 'FEDERACION', 172),
+	(174, 'MUNICIPIO', 'FEDERAL', 172),
+	(175, 'MUNICIPIO', 'GUALEGUAY', 172),
+	(176, 'MUNICIPIO', 'GUALEGUAYCHU', 172),
+	(177, 'MUNICIPIO', 'ISLAS DEL IBICUY', 172),
+	(178, 'MUNICIPIO', 'LA PAZ', 172),
+	(179, 'MUNICIPIO', 'NOGOYA', 172),
+	(180, 'MUNICIPIO', 'PARANA', 172),
+	(181, 'MUNICIPIO', 'SAN JOSE DE FELICIANO', 172),
+	(182, 'MUNICIPIO', 'SAN SALVADOR', 172),
+	(183, 'MUNICIPIO', 'TALA', 172),
+	(184, 'MUNICIPIO', 'URUGUAY', 172),
+	(185, 'MUNICIPIO', 'VICTORIA', 172),
+	(186, 'MUNICIPIO', 'VILLAGUAY', 172),
+	(187, 'MUNICIPIO', 'SIN INFORMAR', 172),
+	(188, 'MUNICIPIO', 'COLON', 172),
+	(189, 'MUNICIPIO', 'CONCORDIA', 172),
+	(190, 'MUNICIPIO', 'DIAMANTE', 172),
+	(192, 'MUNICIPIO', 'BERMEJO', 191),
+	(193, 'MUNICIPIO', 'FORMOSA', 191),
+	(194, 'MUNICIPIO', 'LAISHI ', 191),
+	(195, 'MUNICIPIO', 'MATACOS', 191),
+	(196, 'MUNICIPIO', 'PATIÑO', 191),
+	(197, 'MUNICIPIO', 'PILAGAS', 191),
+	(198, 'MUNICIPIO', 'PILCOMAYO', 191),
+	(199, 'MUNICIPIO', 'PIRANE', 191),
+	(200, 'MUNICIPIO', 'SIN INFORMAR', 191),
+	(201, 'MUNICIPIO', 'RAMON LISTA', 191),
+	(203, 'MUNICIPIO', 'SIN INFORMAR', 202),
+	(204, 'MUNICIPIO', 'COCHINOCA', 202),
+	(205, 'MUNICIPIO', 'DR MANUEL BELGRANO', 202),
+	(206, 'MUNICIPIO', 'EL CARMEN', 202),
+	(207, 'MUNICIPIO', 'HUMAHUACA', 202),
+	(208, 'MUNICIPIO', 'LEDESMA', 202),
+	(209, 'MUNICIPIO', 'PALPALA', 202),
+	(210, 'MUNICIPIO', 'RINCONADA', 202),
+	(211, 'MUNICIPIO', 'SAN ANTONIO', 202),
+	(212, 'MUNICIPIO', 'SAN PEDRO', 202),
+	(213, 'MUNICIPIO', 'SANTA BARBARA', 202),
+	(214, 'MUNICIPIO', 'SANTA CATALINA', 202),
+	(215, 'MUNICIPIO', 'SUSQUES', 202),
+	(216, 'MUNICIPIO', 'TILCARA', 202),
+	(217, 'MUNICIPIO', 'TUMBAYA', 202),
+	(218, 'MUNICIPIO', 'VALLE GRANDE', 202),
+	(219, 'MUNICIPIO', 'YAVI', 202),
+	(221, 'MUNICIPIO', 'SIN INFORMAR', 220),
+	(222, 'MUNICIPIO', 'ATREUCO', 220),
+	(223, 'MUNICIPIO', 'CALEU CALEU', 220),
+	(224, 'MUNICIPIO', 'CAPITAL - SANTA ROSA', 220),
+	(225, 'MUNICIPIO', 'CATRILO', 220),
+	(226, 'MUNICIPIO', 'CHALILEO', 220),
+	(227, 'MUNICIPIO', 'CHAPALEUFU', 220),
+	(228, 'MUNICIPIO', 'CHICAL CO', 220),
+	(229, 'MUNICIPIO', 'CONHELO', 220),
+	(230, 'MUNICIPIO', 'CURACO', 220),
+	(231, 'MUNICIPIO', 'GUATRACHE ', 220),
+	(232, 'MUNICIPIO', 'HUCAL', 220),
+	(233, 'MUNICIPIO', 'LIHUEL CALEL', 220),
+	(234, 'MUNICIPIO', 'LIMAY MAHUIDA', 220),
+	(235, 'MUNICIPIO', 'LOVENTUE', 220),
+	(236, 'MUNICIPIO', 'MARACO', 220),
+	(237, 'MUNICIPIO', 'PUELEN', 220),
+	(238, 'MUNICIPIO', 'QUEMU QUEMU', 220),
+	(239, 'MUNICIPIO', 'RANCUL', 220),
+	(240, 'MUNICIPIO', 'REALICO', 220),
+	(241, 'MUNICIPIO', 'TOAY', 220),
+	(242, 'MUNICIPIO', 'TRENEL', 220),
+	(243, 'MUNICIPIO', 'UTRACAN', 220),
+	(245, 'MUNICIPIO', 'SIN INFORMAR', 244),
+	(246, 'MUNICIPIO', 'ARAUCO', 244),
+	(247, 'MUNICIPIO', 'LA RIOJA', 244),
+	(248, 'MUNICIPIO', 'CASTRO BARROS', 244),
+	(249, 'MUNICIPIO', 'CHAMICAL', 244),
+	(250, 'MUNICIPIO', 'CHILECITO', 244),
+	(251, 'MUNICIPIO', 'CORONEL FELIPE VARELA', 244),
+	(252, 'MUNICIPIO', 'FAMATINA', 244),
+	(253, 'MUNICIPIO', 'GENERAL ANGEL V. PEÑALOZA', 244),
+	(254, 'MUNICIPIO', 'GENERAL BELGRANO', 244),
+	(255, 'MUNICIPIO', 'GENERAL JUAN FACUNDO QUIROGA', 244),
+	(256, 'MUNICIPIO', 'GENERAL LAMADRID', 244),
+	(257, 'MUNICIPIO', 'GENERAL OCAMPO', 244),
+	(258, 'MUNICIPIO', 'GENERAL SAN MARTIN', 244),
+	(259, 'MUNICIPIO', 'INDEPENDENCIA', 244),
+	(260, 'MUNICIPIO', 'ROSARIO VERA PEÑALOZA', 244),
+	(261, 'MUNICIPIO', 'SAN BLAS DE LOS SAUCES', 244),
+	(262, 'MUNICIPIO', 'SANAGASTA', 244),
+	(263, 'MUNICIPIO', 'VINCHINA', 244),
+	(265, 'MUNICIPIO', 'GENERAL ALVEAR', 264),
+	(266, 'MUNICIPIO', 'GODOY CRUZ', 264),
+	(267, 'MUNICIPIO', 'GUAYMALLEN', 264),
+	(268, 'MUNICIPIO', 'JUNIN', 264),
+	(269, 'MUNICIPIO', 'LA PAZ', 264),
+	(270, 'MUNICIPIO', 'LAS HERAS', 264),
+	(271, 'MUNICIPIO', 'LAVALLE', 264),
+	(272, 'MUNICIPIO', 'LUJAN DE CUYO', 264),
+	(273, 'MUNICIPIO', 'MAIPU', 264),
+	(274, 'MUNICIPIO', 'MALARGüE', 264),
+	(275, 'MUNICIPIO', 'RIVADAVIA ', 264),
+	(276, 'MUNICIPIO', 'SAN CARLOS', 264),
+	(277, 'MUNICIPIO', 'SAN MARTIN', 264),
+	(278, 'MUNICIPIO', 'SAN RAFAEL ', 264),
+	(279, 'MUNICIPIO', 'SANTA ROSA', 264),
+	(280, 'MUNICIPIO', 'TUNUYAN', 264),
+	(281, 'MUNICIPIO', 'TUPUNGATO', 264),
+	(282, 'MUNICIPIO', 'MENDOZA CAPITAL', 264),
+	(283, 'MUNICIPIO', 'SIN INFORMAR', 264),
+	(285, 'MUNICIPIO', 'MONTECARLO', 284),
+	(286, 'MUNICIPIO', 'OBERA', 284),
+	(287, 'MUNICIPIO', 'SAN IGNACIO', 284),
+	(288, 'MUNICIPIO', 'SAN JAVIER', 284),
+	(289, 'MUNICIPIO', 'SAN PEDRO', 284),
+	(290, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 284),
+	(291, 'MUNICIPIO', 'SIN INFORMAR', 284),
+	(292, 'MUNICIPIO', 'APOSTOLES', 284),
+	(293, 'MUNICIPIO', 'CAINGUAS', 284),
+	(294, 'MUNICIPIO', 'CANDELARIA', 284),
+	(295, 'MUNICIPIO', 'POSADAS', 284),
+	(296, 'MUNICIPIO', 'CONCEPCION', 284),
+	(297, 'MUNICIPIO', 'ELDORADO', 284),
+	(298, 'MUNICIPIO', 'GENERAL MANUEL BELGRANO', 284),
+	(299, 'MUNICIPIO', 'GUARANI', 284),
+	(300, 'MUNICIPIO', 'IGUAZU', 284),
+	(301, 'MUNICIPIO', 'LEANDRO N. ALEM', 284),
+	(302, 'MUNICIPIO', 'LIBERTADOR GENERAL SAN MARTIN', 284),
+	(304, 'MUNICIPIO', 'ALUMINE', 303),
+	(305, 'MUNICIPIO', 'AÑELO', 303),
+	(306, 'MUNICIPIO', 'CATAN LIL ', 303),
+	(307, 'MUNICIPIO', 'CHOS MALAL ', 303),
+	(308, 'MUNICIPIO', 'COLLON CURA', 303),
+	(309, 'MUNICIPIO', 'CONFLUENCIA', 303),
+	(310, 'MUNICIPIO', 'HUILICHES', 303),
+	(311, 'MUNICIPIO', 'LACAR', 303),
+	(312, 'MUNICIPIO', 'LONCOPUE', 303),
+	(313, 'MUNICIPIO', 'LOS LAGOS', 303),
+	(314, 'MUNICIPIO', 'MINAS', 303),
+	(315, 'MUNICIPIO', 'ÑORQUIN', 303),
+	(316, 'MUNICIPIO', 'PEHUENCHES', 303),
+	(317, 'MUNICIPIO', 'PICUN LEUFU', 303),
+	(318, 'MUNICIPIO', 'PICUNCHES', 303),
+	(319, 'MUNICIPIO', 'ZAPALA', 303),
+	(320, 'MUNICIPIO', 'SIN INFORMAR', 303),
+	(322, 'MUNICIPIO', 'ADOLFO ALSINA', 321),
+	(323, 'MUNICIPIO', 'AVELLANEDA', 321),
+	(324, 'MUNICIPIO', 'BARILOCHE', 321),
+	(325, 'MUNICIPIO', 'CONESA', 321),
+	(326, 'MUNICIPIO', 'EL CUY', 321),
+	(327, 'MUNICIPIO', 'GENERAL ROCA', 321),
+	(328, 'MUNICIPIO', 'NUEVE DE JULIO', 321),
+	(329, 'MUNICIPIO', 'ÑORQUINCO', 321),
+	(330, 'MUNICIPIO', 'PICHI MAHUIDA', 321),
+	(331, 'MUNICIPIO', 'PILCANIYEU', 321),
+	(332, 'MUNICIPIO', 'SAN ANTONIO', 321),
+	(333, 'MUNICIPIO', 'VALCHETA', 321),
+	(334, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 321),
+	(335, 'MUNICIPIO', 'SIN INFORMAR', 321),
+	(337, 'MUNICIPIO', 'ANTA', 336),
+	(338, 'MUNICIPIO', 'CACHI', 336),
+	(339, 'MUNICIPIO', 'CAFAYATE', 336),
+	(340, 'MUNICIPIO', 'SALTA CAPITAL', 336),
+	(341, 'MUNICIPIO', 'CERRILLOS', 336),
+	(342, 'MUNICIPIO', 'CHICOANA', 336),
+	(343, 'MUNICIPIO', 'GENERAL GüEMES', 336),
+	(344, 'MUNICIPIO', 'GENERAL JOSE DE SAN MARTIN', 336),
+	(345, 'MUNICIPIO', 'GUACHIPAS', 336),
+	(346, 'MUNICIPIO', 'IRUYA', 336),
+	(347, 'MUNICIPIO', 'LA CALDERA', 336),
+	(348, 'MUNICIPIO', 'LA CANDELARIA', 336),
+	(349, 'MUNICIPIO', 'LA POMA', 336),
+	(350, 'MUNICIPIO', 'LA VIÑA', 336),
+	(351, 'MUNICIPIO', 'LOS ANDES', 336),
+	(352, 'MUNICIPIO', 'METAN', 336),
+	(353, 'MUNICIPIO', 'MOLINOS', 336),
+	(354, 'MUNICIPIO', 'ORAN', 336),
+	(355, 'MUNICIPIO', 'RIVADAVIA', 336),
+	(356, 'MUNICIPIO', 'ROSARIO DE LA FRONTERA', 336),
+	(357, 'MUNICIPIO', 'ROSARIO DE LERMA ', 336),
+	(358, 'MUNICIPIO', 'SAN CARLOS', 336),
+	(359, 'MUNICIPIO', 'SANTA VICTORIA', 336),
+	(360, 'MUNICIPIO', 'SIN INFORMAR', 336),
+	(362, 'MUNICIPIO', 'ALBARDON', 361),
+	(363, 'MUNICIPIO', 'ANGACO', 361),
+	(364, 'MUNICIPIO', 'CALINGASTA', 361),
+	(365, 'MUNICIPIO', 'SAN JUAN CAPITAL ', 361),
+	(366, 'MUNICIPIO', 'CAUCETE', 361),
+	(367, 'MUNICIPIO', 'CHIMBAS', 361),
+	(368, 'MUNICIPIO', 'IGLESIA', 361),
+	(369, 'MUNICIPIO', 'JACHAL', 361),
+	(370, 'MUNICIPIO', 'NUEVE DE JULIO', 361),
+	(371, 'MUNICIPIO', 'POCITO', 361),
+	(372, 'MUNICIPIO', 'RAWSON', 361),
+	(373, 'MUNICIPIO', 'RIVADAVIA', 361),
+	(374, 'MUNICIPIO', 'SAN MARTIN', 361),
+	(375, 'MUNICIPIO', 'SANTA LUCIA', 361),
+	(376, 'MUNICIPIO', 'SARMIENTO', 361),
+	(377, 'MUNICIPIO', 'ULLUM', 361),
+	(378, 'MUNICIPIO', 'VALLE FERTIL', 361),
+	(379, 'MUNICIPIO', 'VEINTICINCO DE MAYO', 361),
+	(380, 'MUNICIPIO', 'ZONDA', 361),
+	(381, 'MUNICIPIO', 'SIN INFORMAR', 361),
+	(383, 'MUNICIPIO', 'AYACUCHO ', 382),
+	(384, 'MUNICIPIO', 'BELGRANO ', 382),
+	(385, 'MUNICIPIO', 'CHACABUCO ', 382),
+	(386, 'MUNICIPIO', 'CORONEL PRINGLES', 382),
+	(387, 'MUNICIPIO', 'GENERAL PEDERNERA ', 382),
+	(388, 'MUNICIPIO', 'DUPUY', 382),
+	(389, 'MUNICIPIO', 'JUNIN ', 382),
+	(390, 'MUNICIPIO', 'SAN LUIS CAPITAL', 382),
+	(391, 'MUNICIPIO', 'LIBERTADOR GENERAL SAN MARTIN ', 382),
+	(392, 'MUNICIPIO', 'SIN INFORMAR', 382),
+	(394, 'MUNICIPIO', 'CORPEN AIKE', 393),
+	(395, 'MUNICIPIO', 'DESEADO', 393),
+	(396, 'MUNICIPIO', 'GüER AIKE', 393),
+	(397, 'MUNICIPIO', 'LAGO ARGENTINO ', 393),
+	(398, 'MUNICIPIO', 'LAGO BUENOS AIRES', 393),
+	(399, 'MUNICIPIO', 'MAGALLANES', 393),
+	(400, 'MUNICIPIO', 'RIO CHICO', 393),
+	(401, 'MUNICIPIO', 'SIN INFORMAR', 393),
+	(403, 'MUNICIPIO', 'BELGRANO', 402),
+	(404, 'MUNICIPIO', 'CASEROS', 402),
+	(405, 'MUNICIPIO', 'CASTELLANOS', 402),
+	(406, 'MUNICIPIO', 'CONSTITUCION', 402),
+	(407, 'MUNICIPIO', 'GARAY', 402),
+	(408, 'MUNICIPIO', 'GENERAL LOPEZ', 402),
+	(409, 'MUNICIPIO', 'GENERAL OBLIGADO', 402),
+	(410, 'MUNICIPIO', 'IRIONDO', 402),
+	(411, 'MUNICIPIO', 'LA CAPITAL', 402),
+	(412, 'MUNICIPIO', 'LAS COLONIAS', 402),
+	(413, 'MUNICIPIO', 'NUEVE DE JULIO', 402),
+	(414, 'MUNICIPIO', 'ROSARIO', 402),
+	(415, 'MUNICIPIO', 'SAN CRISTOBAL', 402),
+	(416, 'MUNICIPIO', 'SAN JAVIER', 402),
+	(417, 'MUNICIPIO', 'SAN JERONIMO', 402),
+	(418, 'MUNICIPIO', 'SAN JUSTO', 402),
+	(419, 'MUNICIPIO', 'SAN LORENZO', 402),
+	(420, 'MUNICIPIO', 'SAN MARTIN', 402),
+	(421, 'MUNICIPIO', 'VERA', 402),
+	(422, 'MUNICIPIO', 'SIN INFORMAR', 402),
+	(424, 'MUNICIPIO', 'AGUIRRE ', 423),
+	(425, 'MUNICIPIO', 'ALBERDI ', 423),
+	(426, 'MUNICIPIO', 'ATAMISQUI', 423),
+	(427, 'MUNICIPIO', 'AVELLANEDA', 423),
+	(428, 'MUNICIPIO', 'BANDA', 423),
+	(429, 'MUNICIPIO', 'BELGRANO', 423),
+	(430, 'MUNICIPIO', 'SANTIAGO DEL ESTERO CAPITAL', 423),
+	(431, 'MUNICIPIO', 'CHOYA', 423),
+	(432, 'MUNICIPIO', 'COPO', 423),
+	(433, 'MUNICIPIO', 'FIGUEROA ', 423),
+	(434, 'MUNICIPIO', 'GENERAL TABOADA', 423),
+	(435, 'MUNICIPIO', 'GUASAYAN ', 423),
+	(436, 'MUNICIPIO', 'JIMENEZ', 423),
+	(437, 'MUNICIPIO', 'JUAN FELIPE IBARRA', 423),
+	(438, 'MUNICIPIO', 'LORETO ', 423),
+	(439, 'MUNICIPIO', 'MITRE', 423),
+	(440, 'MUNICIPIO', 'MORENO', 423),
+	(441, 'MUNICIPIO', 'OJO DE AGUA', 423),
+	(442, 'MUNICIPIO', 'PELLEGRINI', 423),
+	(443, 'MUNICIPIO', 'QUEBRACHOS', 423),
+	(444, 'MUNICIPIO', 'RIO HONDO', 423),
+	(445, 'MUNICIPIO', 'RIVADAVIA', 423),
+	(446, 'MUNICIPIO', 'ROBLES', 423),
+	(447, 'MUNICIPIO', 'SALAVINA', 423),
+	(448, 'MUNICIPIO', 'SAN MARTIN', 423),
+	(449, 'MUNICIPIO', 'SARMIENTO', 423),
+	(450, 'MUNICIPIO', 'SILIPICA', 423),
+	(451, 'MUNICIPIO', 'SIN INFORMAR', 423),
+	(453, 'MUNICIPIO', 'ANTARTIDA ARGENTINA', 452),
+	(454, 'MUNICIPIO', 'ISLAS DEL ATLANTICO SUR', 452),
+	(455, 'MUNICIPIO', 'RIO GRANDE', 452),
+	(456, 'MUNICIPIO', 'USHUAIA', 452),
+	(457, 'MUNICIPIO', 'SIN INFORMAR', 452),
+	(459, 'MUNICIPIO', 'BURRUYACU', 458),
+	(460, 'MUNICIPIO', 'SAN MIGUEL DE TUCUMAN', 458),
+	(461, 'MUNICIPIO', 'CHICLIGASTA', 458),
+	(462, 'MUNICIPIO', 'CRUZ ALTA', 458),
+	(463, 'MUNICIPIO', 'FAMAILLA', 458),
+	(464, 'MUNICIPIO', 'GRANEROS', 458),
+	(465, 'MUNICIPIO', 'JUAN BAUTISTA ALBERDI ', 458),
+	(466, 'MUNICIPIO', 'LA COCHA ', 458),
+	(467, 'MUNICIPIO', 'LEALES', 458),
+	(468, 'MUNICIPIO', 'LULES', 458),
+	(469, 'MUNICIPIO', 'MONTEROS ', 458),
+	(470, 'MUNICIPIO', 'RIO CHICO ', 458),
+	(471, 'MUNICIPIO', 'SIMOCA', 458),
+	(472, 'MUNICIPIO', 'TAFI DEL VALLE', 458),
+	(473, 'MUNICIPIO', 'TAFI VIEJO ', 458),
+	(474, 'MUNICIPIO', 'TRANCAS', 458),
+	(475, 'MUNICIPIO', 'YERBA BUENA', 458),
+	(476, 'MUNICIPIO', 'SIN INFORMAR', 458)

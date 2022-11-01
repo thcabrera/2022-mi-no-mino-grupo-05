@@ -18,25 +18,29 @@ INSERT INTO tipo_consumo (factor_emision, unidad, descripcion, tipo_actividad) V
 -- ELECTRICIDAD
 (1.5, 'KWH', 'ELECTRICIDAD', 'ELECTRICIDAD');
 
-INSERT INTO clasificacion (descripcion) values ("Ministerio");
-INSERT INTO clasificacion (descripcion) values ("Universidad");
-INSERT INTO clasificacion (descripcion) values ("Escuela");
-INSERT INTO clasificacion (descripcion) values ("Empresa del sector primario");
-INSERT INTO clasificacion (descripcion) values ("Empresa del sector secundario");
+INSERT INTO clasificacion (descripcion) values
+("Ministerio"),
+("Universidad"),
+("Escuela"),
+("Empresa del sector primario"),
+("Empresa del sector secundario");
 
-INSERT INTO tipo_org (descripcion) VALUES ('Gubernamental');
-INSERT INTO tipo_org (descripcion) VALUES ('ONG');
-INSERT INTO tipo_org (descripcion) VALUES ('Empresa');
-INSERT INTO tipo_org (descripcion) VALUES ('Institución');
+INSERT INTO tipo_org (descripcion) VALUES
+('Gubernamental'),
+('ONG'),
+('Empresa'),
+('Institución');
 
-INSERT INTO tipo_linea (consumo, descripcion) values (2.5, "Colectivo");
-INSERT INTO tipo_linea (consumo, descripcion) values (5, "Tren");
-INSERT INTO tipo_linea (consumo, descripcion) values (4, "Subte");
+INSERT INTO tipo_linea (consumo, descripcion) values
+(2.5, "Colectivo"),
+(5, "Tren"),
+(4, "Subte");
 
-INSERT INTO tipo_particular (consumo, descripcion) values (1, "Auto");
-INSERT INTO tipo_particular (consumo, descripcion) values (0.9, "Moto");
-INSERT INTO tipo_particular (consumo, descripcion) values (1.25, "Camioneta");
-INSERT INTO tipo_particular (consumo, descripcion) values (2, "Camión");
+INSERT INTO tipo_particular (consumo, descripcion) values
+(1, "Auto"),
+(0.9, "Moto"),
+(1.25, "Camioneta"),
+(2, "Camión");
 
 INSERT INTO tipo_servicio (descripcion, consumo) VALUES
 	('Remis', 1.5 ),
@@ -81,6 +85,7 @@ INSERT INTO usuario (nombre_usuario, contrasenia, actor_id, rol)
             ('orgdreamteam', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 1, 'ORGANIZACION'),
 			('lennySW', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 3, 'ORGANIZACION'),
             ('lucascampi', '05bffb1eb29246b5e4351893e254f01f3fc336ae6c136c334fe7cfb00d00ce95', 98, 'PERSONA');
+
 
 INSERT INTO huella_de_carbono.linea 
 		(id, descripcion, tipo_linea_id)

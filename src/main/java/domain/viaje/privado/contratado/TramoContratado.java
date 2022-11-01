@@ -34,9 +34,12 @@ public class TramoContratado extends Tramo {
     @Column(name = "es_compartido")
     private Boolean esCompartido;
 
+    /*
     @Column(name = "consumo")
-    private Double consumoPorKM;
+    private Double consumoPorKM ;
 
+
+     */
     //  ----------  GETTERS & SETTERS  ----------
     public TramoContratado() {
     }
@@ -87,7 +90,7 @@ public class TramoContratado extends Tramo {
 
     @Override
     public Double consumoPorKM() {
-        return this.consumoPorKM;
+        return this.tipoTransporte.getConsumoPorKM();
     }
 
     public boolean getEsCompartido(){

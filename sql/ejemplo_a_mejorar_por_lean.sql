@@ -1,4 +1,7 @@
+-- meto a thiaguin en comercio exterior de mercado pago
+INSERT INTO area_persona values(4,3);
 
+select * from trayecto
 INSERT INTO direccion (id, calle, altura, localidad_id, municipio_id, provincia_id)
 	VALUES(7, 'LAVALLE', 4039, 1, 77, 1),
     (8, 'MAGALLANES', 4038, 1, 77, 1);

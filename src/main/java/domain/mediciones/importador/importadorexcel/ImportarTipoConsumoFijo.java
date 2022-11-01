@@ -2,19 +2,19 @@ package domain.mediciones.importador.importadorexcel;
 
 import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
 import domain.mediciones.consumos.tipoConsumo.Unidad;
+import jdk.nashorn.internal.objects.annotations.Getter;
+import lombok.Setter;
+
+import java.util.Map;
+
 
 public class ImportarTipoConsumoFijo implements ImportarTipoConsumo{
+    @Setter
+    private Map<String, TipoConsumo> map;
 
-    private TipoConsumo carbon;
-    private TipoConsumo carbonLeña;
-    private TipoConsumo fuelOil;
-    private TipoConsumo gasNatural;
-    private TipoConsumo gasoil;
-    private TipoConsumo kerosene;
-    private TipoConsumo leña;
-    private TipoConsumo nafta;
-
-    public ImportarTipoConsumoFijo(){
+    public ImportarTipoConsumoFijo() {
+        //todo: sacarlos del map recien creado por thiaguin
+        /*
         carbon = new TipoConsumo(Unidad.KG, 1.5);
         carbonLeña = new TipoConsumo(Unidad.KG, 1.5);
         fuelOil = new TipoConsumo(Unidad.LT, 3.0);
@@ -23,8 +23,10 @@ public class ImportarTipoConsumoFijo implements ImportarTipoConsumo{
         kerosene  = new TipoConsumo(Unidad.LT, 3.0);
         leña = new TipoConsumo(Unidad.KG, 1.5);
         nafta = new TipoConsumo(Unidad.LT, 2.8);
-    }
 
+         */
+
+    }
     public TipoConsumo importar(String tipo){
         switch(tipo) {
             case ("Gas Natural"):

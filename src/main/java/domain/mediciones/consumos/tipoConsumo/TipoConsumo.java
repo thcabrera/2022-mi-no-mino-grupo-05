@@ -24,6 +24,9 @@ public class TipoConsumo {
     @Column(name = "factor_emision")
     private Double factorEmision;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+
     public TipoConsumo(Unidad unidad, Double factorEmision){
         this.setUnidad(unidad);
         this.factorEmision = factorEmision;

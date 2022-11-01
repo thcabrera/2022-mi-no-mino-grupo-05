@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,7 +93,9 @@ public class Area {
     public AreaDTO convertirADTO(){
         return new AreaDTO(this);
     }
-
+    public ReporteAreaDTO convertirAReporteAreaDTO(){
+        return new ReporteAreaDTO(this);
+    }
     @Getter
     @Setter
     public class AreaDTO{
@@ -104,10 +107,24 @@ public class Area {
             this.id = String.valueOf(area.getId());
             this.nombre = area.getNombre();
         }
+    }
+    @Getter
+    @Setter
+    public class ReporteAreaDTO{
+        public String id;
+        public String nombre;
+        public String calculoHC;
+        public String impactoHCEnSuOrg;
+        public String indicadorHCporMiembro;
 
+        public ReporteAreaDTO(Area area){
 
-
-
+            this.id = String.valueOf(area.getId());
+            this.nombre = area.getNombre();
+            this.calculoHC = new DecimalFormat("#.##").format(area.calculoHC());
+            this.impactoHCEnSuOrg = new DecimalFormat("#.##").format(area.impactoHCEnSuOrg());
+            this.indicadorHCporMiembro = new DecimalFormat("#.##").format(area.indicadorHCporMiembro());
+        }
     }
 
 }

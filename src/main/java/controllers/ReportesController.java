@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ReportesController {
     private RepositorioDeReportes repositorioDeReporte = new RepositorioDeReportes();
@@ -68,10 +69,13 @@ public class ReportesController {
         parametros.put("hcActividades", organizacion.calculoHCActividades(periodicidad));
         parametros.put("hcTrayectos", organizacion.calculoHCTrayectos());
         parametros.put("hcTotal", organizacion.calculoHC(periodicidad));
-        parametros.put("areas", organizacion.getAreas());
+
+        parametros.put("areas", organizacion.getAreas().stream().map(Area::convertirAReporteAreaDTO).collect(Collectors.toList()));
         
         return new ModelAndView(parametros, "org/org_reportes.hbs");
     }
+
+
 
     private Periodicidad buscarPeriodicidad(Integer id){
         Anual anual =  this.repositorioDePeriodicidad.buscarAnual(id);

@@ -6,6 +6,7 @@ import domain.entidades.Persona;
 import domain.mediciones.consumos.actividades.Actividad;
 import domain.mediciones.consumos.actividades.ActividadConsumo;
 import domain.mediciones.consumos.actividades.Logistica;
+import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
 import domain.mediciones.importador.ImportarExcel;
 import helpers.UsuarioHelper;
 import repositorios.RepositorioActividades;
@@ -34,8 +35,16 @@ public class MedicionesController {
         Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
 
         String archivo_path = "src/test/java/resources/" + request.queryParams("archivo_mediciones"); // com odeberia funcar
+        List<TipoConsumo> consumoList = EntityManagerHelper
+                .getEntityManager()
+                .createQuery("from " + TipoConsumo.class.getName())
+                .getResultList();
 
-        //String archivo_path = "src/test/java/resources/Excel para modulo importador.xlsx";
+        Map<String, TipoConsumo> tipoConsumoMap = consumoList
+                .stream()
+                .collect(Collectors.toMap(TipoConsumo::getDescripcion, item -> item));
+
+                //String archivo_path = "src/test/java/resources/Excel para modulo importador.xlsx";
        // "src/test/java/resources/Excel para modulo importador.xlsx"
         System.out.println( " archivo path: "+  archivo_path);
 

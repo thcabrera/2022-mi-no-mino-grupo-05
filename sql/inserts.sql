@@ -20,10 +20,11 @@ INSERT INTO tipo_particular (consumo, descripcion) values (0.9, "Moto");
 INSERT INTO tipo_particular (consumo, descripcion) values (1.25, "Camioneta");
 INSERT INTO tipo_particular (consumo, descripcion) values (2, "Camión");
 
-INSERT INTO tipo_servicio (descripcion) VALUES ('Remis');
-INSERT INTO tipo_servicio (descripcion) VALUES ('Uber');
-INSERT INTO tipo_servicio (descripcion) VALUES ('Didi');
-INSERT INTO tipo_servicio (descripcion) VALUES ('Taxi');
+INSERT INTO tipo_servicio (descripcion, consumo) VALUES 
+	('Remis', 1.5 ),
+	('Uber', 1.5), 
+	('Didi', 1.5), 
+	('Taxi', 1.8);
 
 INSERT INTO combustible (consumo, descripcion) VALUES
     (1.5, 'GNC'),
@@ -77,3 +78,5 @@ values  (1 , 400                  ,  300               ,  0    , "Av. La Plata",
         (4 , 400                  ,  300               ,  0    , "Av. La Plata",  8), -- E
         (5 , 700                  ,  500               ,  0    , "San Pedrito",  8); -- E   
 select * from tramo_limpio
+
+

@@ -1,5 +1,23 @@
 -- tablas independientes
 
+INSERT INTO tipo_consumo (factor_emision, unidad, descripcion, tipo_actividad) VALUES
+-- COMBUSTIÓN FIJA
+(1.5, 'M3', 'GAS NATURAL', 'COMBUSTION_FIJA'),
+(1.5, 'LT', 'DIESEL', 'COMBUSTION_FIJA'),
+(1.5, 'LT', 'GASOIL', 'COMBUSTION_FIJA'),
+(1.5, 'LT', 'KEROSENE', 'COMBUSTION_FIJA'),
+(1.5, 'LT', 'FUEL OIL', 'COMBUSTION_FIJA'),
+(1.5, 'LT', 'NAFTA', 'COMBUSTION_FIJA'),
+(1.5, 'KG', 'CARBÓN', 'COMBUSTION_FIJA'),
+(1.5, 'KG', 'CARBÓN DE LEÑA', 'COMBUSTION_FIJA'),
+(1.5, 'KG', 'LEÑA', 'COMBUSTION_FIJA'),
+-- COMBUSTIÓN MÓVIL
+(1.5, 'LTS', 'GASOIL', 'COMBUSTION_MOVIL'),
+(1.5, 'LTS', 'GNC', 'COMBUSTION_MOVIL'),
+(1.5, 'LTS', 'NAFTA', 'COMBUSTION_MOVIL'),
+-- ELECTRICIDAD
+(1.5, 'KWH', 'ELECTRICIDAD', 'ELECTRICIDAD');
+
 INSERT INTO clasificacion (descripcion) values ("Ministerio");
 INSERT INTO clasificacion (descripcion) values ("Universidad");
 INSERT INTO clasificacion (descripcion) values ("Escuela");

@@ -142,6 +142,12 @@ public class Organizacion extends Actor{
                 .collect(Collectors.toList()); //distinct elimina repetidos
     }
 
+    // MEDICIONES
+    public void agregarMediciones(List<Actividad> mediciones){
+        mediciones.forEach(a -> a.setOrganizacion(this));
+        this.mediciones.addAll(mediciones);
+    }
+
     //  ----------  TRAMOS COMPARTIDOS  ----------
     // No me parece que sirva de nada esta funcion
     public List<Tramo> getTramosCompartidos() {

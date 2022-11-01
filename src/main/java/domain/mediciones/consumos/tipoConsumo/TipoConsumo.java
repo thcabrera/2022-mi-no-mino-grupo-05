@@ -1,5 +1,6 @@
 package domain.mediciones.consumos.tipoConsumo;
 
+import domain.mediciones.consumos.actividades.TipoActividadConsumo;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +27,10 @@ public class TipoConsumo {
 
     @Column(name = "descripcion")
     private String descripcion;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_actividad")
+    private TipoActividadConsumo tipoActividad;
 
     public TipoConsumo(Unidad unidad, Double factorEmision){
         this.setUnidad(unidad);

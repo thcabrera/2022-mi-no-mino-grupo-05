@@ -7,28 +7,16 @@
         </a>
     </div>
 
-<<<<<<< HEAD
-    <form action = "/user/trayectos/tramo/contratado/modificar/{{idTrayecto}}/{{tramo.id}}" method="POST" class = "row">
-    <div class = "d-flex justify-content-center">
-        <h2 >Unirse a Tramo compartido</h2>
-    </div>
-    <div class = "col-sm-8">
-=======
     <form action = "/user/trayectos/tramo/compartido/unirse/{{idTrayecto}}" method="POST" class = "row">
     <div class = "d-flex justify-content-center mb-4 mt-3">
         <h2 >Unirse a Tramo compartido</h2>
     </div>
     <div class = "col-sm-8 my-3">
->>>>>>> a3c0e488dc01d0b636a3de5b9c1d1fefcbf9a5ed
         <strong>Seleccion del Tramo existente:</strong>
         <div class = "form-group my-2 col-sm-8">
             <label for="propietario">Seleccione propietario del Tramo</label>
             <select class="form-control" name="propietario" id = "propietario"
-<<<<<<< HEAD
-                    onchange="getTramosPropietario({{idTrayecto}})" required disabled>
-=======
                     onchange="getTramosPropietario({{organizacion.id}})" required >
->>>>>>> a3c0e488dc01d0b636a3de5b9c1d1fefcbf9a5ed
                 <option value="" disabled selected>Seleccione un propietario...</option>
                 {{#each propietarios}}
                     <option value="{{id}}" >{{nombre}} {{apellido}}</option>
@@ -56,31 +44,12 @@
     </div>
     </form>
     <script>
-<<<<<<< HEAD
-        async function getTramosPropietario( idTrayecto ){ // idTrayecto para lo unico q sirve es obtener la org xd
-=======
         async function getTramosPropietario(idOrganizacion){ // idTrayecto para lo unico q sirve es obtener la org xd
->>>>>>> a3c0e488dc01d0b636a3de5b9c1d1fefcbf9a5ed
             let idPropietario = document.getElementById("propietario").value;
             let selectTramos = document.getElementById("tramo");
             selectTramos.disabled = false;
 
             let tramosPropietario = [];
-<<<<<<< HEAD
-            await fetch('http://localhost:9000/utilidades/tramos/' + idPropietario + '/' + idTrayecto, {
-                        method: 'GET'
-                    }
-            ).then(response => response.json())
-                    .then(json => municipios = json);
-
-            // vaciamos el select
-            // establecemos el predeterminado
-            resetearOpciones(selectMunicipio, "--Seleccione un municipio--");
-            resetearOpciones(selectLocalidad, "--Seleccione una localidad--");
-            selectLocalidad.disabled = true;
-            //Llenar:
-            agregarASelect(selectMunicipio, municipios);
-=======
             await fetch('http://localhost:9000/utilidades/tramos/' + idPropietario + '/' + idOrganizacion, {
                         method: 'GET'
                     }
@@ -89,7 +58,6 @@
 
             resetearOpciones(selectTramos, "--Seleccione un tramo--");
             agregarASelect(selectTramos, tramosPropietario);
->>>>>>> a3c0e488dc01d0b636a3de5b9c1d1fefcbf9a5ed
 
         }
 
@@ -107,15 +75,10 @@
             for(let i = 0; i < arr.length; i++)
             {
                 var opt = document.createElement("option");
-<<<<<<< HEAD
-                opt.value = arr[i].id;
-                opt.text = arr[i].descripcion;
-=======
                 opt.text = "Tipo: " + arr[i].tipo;
                 opt.text += " | Inicio: " + arr[i].puntoInicio;
                 opt.text += " | Fin: " + arr[i].puntoFin;
                 opt.value = arr[i].id;
->>>>>>> a3c0e488dc01d0b636a3de5b9c1d1fefcbf9a5ed
                 selectElement.appendChild(opt);
             }
         }

@@ -4,37 +4,38 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
+
 import domain.mediciones.consumos.actividades.*;
+import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
 import domain.mediciones.importador.importadorexcel.*;
+import lombok.Getter;
 import lombok.Setter;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+@Getter
+@Setter
 public class ImportarExcel implements Importador{
 
-    @Setter
     private ImportarLogistica importarLogistica;
-    @Setter
     private ImportarActividadConsumo importarActividadConsumo;
-    @Setter
     private ImportarConsumo importarConsumo;
-    @Setter
-    private ImportarTipoConsumoFijo importarTipoConsumoFijo;
-    @Setter
-    private ImportarTipoConsumoMovil importarTipoConsumoMovil;
-    @Setter
-    private ImportarTipoConsumoElectricidad importarTipoConsumoElectricidad;
-    @Setter
+    private ImportarTipoConsumo importarTipoConsumoFijo;
+    private ImportarTipoConsumo importarTipoConsumoMovil;
+    private ImportarTipoConsumo importarTipoConsumoElectricidad;
     private ImportarPeriodicidad importarPeriodicidad;
     private Iterator<Row> rowIterator;
 
-    public ImportarExcel(){
+    public ImportarExcel(Map<String, TipoConsumo> consumosFijos,
+                         Map<String, TipoConsumo> consumosMoviles,
+                         Map<String, TipoConsumo> consumosElectricidad){
         importarPeriodicidad = new ImportarPeriodicidad();
-        importarTipoConsumoFijo = new ImportarTipoConsumoFijo();
-        importarTipoConsumoMovil = new ImportarTipoConsumoMovil();
-        importarTipoConsumoElectricidad = new ImportarTipoConsumoElectricidad();
+        importarTipoConsumoFijo = new ImportarTipoConsumo(consumosFijos);
+        importarTipoConsumoMovil = new ImportarTipoConsumo(consumosMoviles);
+        importarTipoConsumoElectricidad = new ImportarTipoConsumo(consumosElectricidad);
         importarConsumo = new ImportarConsumo();
         importarActividadConsumo = new ImportarActividadConsumo(importarPeriodicidad,
                 importarConsumo, importarTipoConsumoFijo, importarTipoConsumoMovil, importarTipoConsumoElectricidad);

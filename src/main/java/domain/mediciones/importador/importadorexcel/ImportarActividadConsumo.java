@@ -13,15 +13,15 @@ import java.util.Iterator;
 public class ImportarActividadConsumo {
 
     private ImportarConsumo importarConsumo;
-    private ImportarTipoConsumoFijo importarTipoConsumoFijo;
-    private ImportarTipoConsumoMovil importarTipoConsumoMovil;
-    private ImportarTipoConsumoElectricidad importarTipoConsumoElectricidad;
+    private ImportarTipoConsumo importarTipoConsumoFijo;
+    private ImportarTipoConsumo importarTipoConsumoMovil;
+    private ImportarTipoConsumo importarTipoConsumoElectricidad;
     private ImportarPeriodicidad importarPeriodicidad;
     public ImportarActividadConsumo(ImportarPeriodicidad importarPeriodicidad,
                                     ImportarConsumo importarConsumo,
-                                    ImportarTipoConsumoFijo importarTipoConsumoFijo,
-                                    ImportarTipoConsumoMovil importarTipoConsumoMovil,
-                                    ImportarTipoConsumoElectricidad importarTipoConsumoElectricidad){
+                                    ImportarTipoConsumo importarTipoConsumoFijo,
+                                    ImportarTipoConsumo importarTipoConsumoMovil,
+                                    ImportarTipoConsumo importarTipoConsumoElectricidad){
         setImportarConsumo(importarConsumo);
         setImportarPeriodicidad(importarPeriodicidad);
         setImportarTipoConsumoFijo(importarTipoConsumoFijo);

@@ -17,7 +17,12 @@ public abstract class Tramo {
     @GeneratedValue
     private Integer id;
 
-    // Returns genericos para poder hacer el override (Previamente era una interfaz).
+    @Column(name = "distancia")
+    private Double distancia;
+
+    public void setDistancia(){
+        this.distancia = calcularDistanciaTramo();
+    }
 
     public abstract Double consumoPorKM();
 

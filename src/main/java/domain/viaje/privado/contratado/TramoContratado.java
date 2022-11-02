@@ -51,6 +51,19 @@ public class TramoContratado extends Tramo {
         this.esCompartido = esCompartido;
         this.propietario = null;
     }
+
+    public TramoContratado(Servicio tipoTransporte,
+                           Direccion direccionInicio, Direccion direccionFin,
+                           boolean esCompartido,
+                           Persona persona) {
+        this.tipoTransporte = tipoTransporte;
+        this.direccionInicio = direccionInicio;
+        this.direccionFin = direccionFin;
+        this.esCompartido = esCompartido;
+        this.propietario = persona;
+        setDistancia();
+    }
+
     public void setPropietario(Persona propietario) {
         this.propietario = propietario;
     }
@@ -58,7 +71,7 @@ public class TramoContratado extends Tramo {
     @Override
     public Double calculoHC(Persona persona){
         if (this.esElPropietario(persona)){
-            return this.consumoPorKM() * this.calcularDistanciaTramo();
+            return this.consumoPorKM() * this.getDistancia();
         }
         else
             return 0.0;

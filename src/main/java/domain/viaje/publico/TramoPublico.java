@@ -34,6 +34,7 @@ public class TramoPublico extends Tramo {
         this.paradaInicio = paradaInicio;
         this.paradaFin = paradaFin;
         this.linea = linea;
+        setDistancia();
     }
 
     public TramoPublico() {
@@ -81,7 +82,7 @@ public class TramoPublico extends Tramo {
     //  ----------  CALCULO HC  ----------
     @Override
     public Double calculoHC(Persona persona){
-        return this.consumoPorKM() * this.calcularDistanciaTramo();
+        return this.consumoPorKM() * this.getDistancia();
     }
 
     @Override

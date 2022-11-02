@@ -32,6 +32,7 @@ public class TramoLimpio extends Tramo {
         this.tipo = tipo;
         this.direccionInicio = direccionInicio;
         this.direccionFin = direccionFin;
+        setDistancia();
     }
 
     public TramoLimpio() {

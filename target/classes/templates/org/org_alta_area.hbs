@@ -5,25 +5,38 @@
         </div>
         <br>
         <div style="width:48%; display: inline-block;">
-            <label>Areas existentes</label>
-            <select class="custom-select" style="width:100%;">
-                <option value="">Areas existentes...</option>
-                {{#each areas}}
-                    <option value="{{id}}" >{{nombre}}</option>
-                {{/each}}
-            </select>
         </div>
         <div class="container">
             <form action="" method="POST">
                 <section class="form-section container">
-                    <div class="form">
-                        <label>Area a dar de alta</label>
-                          <input type="text" id="area" name="nombre" placeholder="Introduzca el nombre..." required>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="row">
+                        <div class="form col-sm-6 form-section align-items-center">
+                            <div class="row form-group">
+                                <label for = "select">Areas existentes</label>
+                                <select id = "select" class="form-control">
+                                    <option value="">Areas existentes...</option>
+                                    {{#each areas}}
+                                        <option value="{{id}}" >{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class = "row form-group">
+                                <label for="area" class =" mt-3 ">Nombre del area a dar de alta:</label>
+                                <input type="text" class="form-control mt-3 " id="area" name="nombre" placeholder="Introduzca el nombre..." required>
+                            </div>
+                            <div class = "row d-flex justify-content-center">
+                                <div class = "col-sm-6">
+                                    <button type="submit" class="btn btn-success mt-3">Dar de alta</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "col-sm-6 d-flex align-items-center justify-content-center">
+                            <figure class="form-section-img">
+                                <img src="/images/undraw_setup_re_y9w8.svg" class="form-section-picture" alt="girl_ride_bike"
+                                style="width:100%">
+                            </figure>
+                        </div>
                     </div>
-                    <figure class="form-section-img">
-                        <img src="/images/undraw_setup_re_y9w8.svg" class="form-section-picture" alt="girl_ride_bike">
-                    </figure>
                 </section>
             </form>
         </div>

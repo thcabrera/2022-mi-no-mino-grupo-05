@@ -238,8 +238,7 @@ public class TramosController {
             Direccion direccionInicio = cargarDireccion(request, "partida");
             Direccion direccionFin = cargarDireccion(request, "destino");
             boolean esCompartido = "true".equals(request.queryParams("es_compartido"));
-            TramoContratado tramo = new TramoContratado(servicio, direccionInicio, direccionFin, esCompartido);
-            tramo.setPropietario(persona);
+            TramoContratado tramo = new TramoContratado(servicio, direccionInicio, direccionFin, esCompartido, persona);
             trayecto.agregarTramos(tramo);
             repositorioDeTrayectos.modificar(trayecto);
             response.redirect("/user/trayectos/editar/" + idTrayecto);
@@ -301,8 +300,7 @@ public class TramosController {
             Direccion direccionInicio = cargarDireccion(request, "partida");
             Direccion direccionFin = cargarDireccion(request, "destino");
             boolean esCompartido = "true".equals(request.queryParams("es_compartido"));
-            TramoParticular tramo = new TramoParticular(tipoCombustible, tipoParticular, direccionInicio, direccionFin, esCompartido);
-            tramo.setPropietario(persona);
+            TramoParticular tramo = new TramoParticular(tipoCombustible, tipoParticular, direccionInicio, direccionFin, esCompartido, persona);
             trayecto.agregarTramos(tramo);
             repositorioDeTrayectos.modificar(trayecto);
             response.redirect("/user/trayectos/editar/" + idTrayecto);

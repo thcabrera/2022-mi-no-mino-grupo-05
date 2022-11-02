@@ -57,10 +57,22 @@ public class TramoParticular extends Tramo {
         this.propietario = null;
     }
 
+    public TramoParticular(Combustible tipoCombustible, TipoParticular tipoParticular,
+                           Direccion direccionInicio, Direccion direccionFin, Boolean esCompartido,
+                           Persona persona) {
+        this.tipoCombustible = tipoCombustible;
+        this.tipoParticular = tipoParticular;
+        this.direccionInicio = direccionInicio;
+        this.direccionFin = direccionFin;
+        this.esCompartido = esCompartido;
+        this.propietario = persona;
+        setDistancia();
+    }
+
     @Override
     public Double calculoHC(Persona persona) {
         if (this.propietario == persona) {
-            return this.consumoPorKM() * this.calcularDistanciaTramo();
+            return this.consumoPorKM() * this.getDistancia();
         }
         return 0.0;
     }
@@ -97,7 +109,7 @@ public class TramoParticular extends Tramo {
     //  ----------  CONSUMO  ----------
     @Override
     public Double consumoPorKM() {
-        return this.tipoCombustible.getConsumo() * this.calcularDistanciaTramo();
+        return this.tipoCombustible.getConsumo();
     }
 
     @Override

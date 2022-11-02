@@ -6,6 +6,7 @@ import helpers.RolHelper;
 import middlewares.AutMiddleware;
 import middlewares.AuthMiddleware;
 import org.checkerframework.checker.units.qual.C;
+import repositorios.RecomendacionesController;
 import repositorios.enMemoria.RepositorioDeTramosEnMemoria;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -42,6 +43,8 @@ public class Router {
         AdministradorController administradorController = new AdministradorController();
         MedicionesController medicionesController = new MedicionesController();
         CalculadoraHCController calculadoraHCController = new CalculadoraHCController();
+        RecomendacionesController recomendacionesController = new RecomendacionesController();
+
         /*-------- Manejo del Login -------*/
         Spark.path("/login", ()->{
             Spark.get("", loginController::pantallaLogin , engine);
@@ -205,6 +208,11 @@ public class Router {
             Spark.get("/tramos/:idPropietario/:idOrganizacion", utilidadesController::obtenerTramosCompartidosPersona, new JsonTransformer());
 
 
+        });
+
+        /*------Envio de Recomendaciones -------*/
+        Spark.path("/recomendaciones", () -> {
+            Spark.get("", recomendacionesController::mostrarRecomendaciones, engine);
         });
 
         /*----------- Ejemplos ---------- */

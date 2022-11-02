@@ -197,4 +197,11 @@ public class Organizacion extends Actor{
         this.contactos.forEach(c -> c.notificar(mensaje));
     }
 
+    public List<Actividad> getMedicionesEn(Periodicidad periodicidad){
+        return mediciones
+                .stream()
+                .filter(actividad -> actividad.getPeriodicidad().coincide(periodicidad))
+                .collect(Collectors.toList());
+
+    }
 }

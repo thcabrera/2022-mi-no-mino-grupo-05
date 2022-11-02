@@ -1,7 +1,7 @@
 -- meto a thiaguin en comercio exterior de mercado pago
 INSERT INTO area_persona values(4,3);
 
-select * from trayecto
+select * from trayectov
 INSERT INTO direccion (id, calle, altura, localidad_id, municipio_id, provincia_id)
 	VALUES(7, 'LAVALLE', 4039, 1, 77, 1),
     (8, 'MAGALLANES', 4038, 1, 77, 1);
@@ -11,7 +11,7 @@ INSERT INTO organizacion (id, nombre, razon_social, clasificacion_id, tipo_org_i
    (2, 'UTN', '3527-4029', 3, 3, 8),
     (5, 'LennySW', '3527-4029', 3, 3, 8);
 
-
+select  * from organizacion
 INSERT INTO area (id, descripcion, org_id)
 	values(1, 'VENTAS', 1),
 	(2, 'RRHH', 1),

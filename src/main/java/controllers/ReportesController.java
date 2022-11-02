@@ -6,6 +6,7 @@ import domain.entidades.Persona;
 import domain.mediciones.consumos.Anual;
 import domain.mediciones.consumos.Mensual;
 import domain.mediciones.consumos.Periodicidad;
+import domain.mediciones.consumos.actividades.Actividad;
 import helpers.OrganizacionHelper;
 import helpers.UsuarioHelper;
 import repositorios.RepositorioDePeriodicidad;
@@ -34,25 +35,15 @@ public class ReportesController {
     }
 
     /* ----------- ORganizacion ----------------*/
+
+
     public ModelAndView mostrarReportesOrganizacion(Request request, Response response) {
         Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
 
+
         //Periodicidad periodo =
-        Map<String, Object> parametros = new HashMap<>();
-        System.out.println("entro a reportes");
-        List<Anual> anuales =  this.repositorioDePeriodicidad.buscarTodosAnuales();
-        List<Mensual> mensuales =  this.repositorioDePeriodicidad.buscarTodosMensuales();
+        Map<String, Object>  parametros = cargarPeriodicidades();
 
-        if(anuales.size() == 0 || mensuales.size() == 0 ){
-            parametros.put("periodicidades", new ArrayList<Periodicidad>());
-            System.out.printf("no hay periodicidadse");
-        }else {
-            parametros.put("anuales", anuales);
-            parametros.put("mensuales", mensuales);
-
-            System.out.printf("hay anuales" + anuales.toString());
-            System.out.printf("hay mensuales" + mensuales.toString());
-        }
         return new ModelAndView(parametros, "org/org_reportes.hbs");
     }
 
@@ -64,7 +55,7 @@ public class ReportesController {
         Periodicidad periodicidad = this.buscarPeriodicidad(idPeriodicidad);
         System.out.printf( " periodicidad = "+ periodicidad);
 
-        Map<String, Object> parametros = new HashMap<>();
+        Map<String, Object>  parametros = cargarPeriodicidades();
         parametros.put("organizacion", organizacion);
         parametros.put("hcActividades", organizacion.calculoHCActividades(periodicidad));
         parametros.put("hcTrayectos", organizacion.calculoHCTrayectos());
@@ -87,5 +78,25 @@ public class ReportesController {
 
             return  this.repositorioDePeriodicidad.buscarMensual(id);
         }
+    }
+    private HashMap<String, Object> cargarPeriodicidades() {
+        HashMap<String, Object> periodicidades = new HashMap<>();
+
+
+        System.out.println("entro a reportes");
+        List<Anual> anuales =  this.repositorioDePeriodicidad.buscarTodosAnuales();
+        List<Mensual> mensuales =  this.repositorioDePeriodicidad.buscarTodosMensuales();
+
+        if(anuales.size() == 0 || mensuales.size() == 0 ){
+            periodicidades.put("periodicidades", new ArrayList<Periodicidad>());
+            System.out.printf("no hay periodicidadse");
+        }else {
+            periodicidades.put("anuales", anuales);
+            periodicidades.put("mensuales", mensuales);
+
+            System.out.printf("hay anuales" + anuales.toString());
+            System.out.printf("hay mensuales" + mensuales.toString());
+        }
+        return periodicidades;
     }
 }

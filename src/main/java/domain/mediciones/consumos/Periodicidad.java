@@ -23,4 +23,6 @@ public abstract class Periodicidad {
     public boolean esMensual(){ // to REVIEW
         return this.getClass() == Mensual.class;
     }
+
+
 }

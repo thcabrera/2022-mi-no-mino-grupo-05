@@ -68,23 +68,38 @@
                         <p class="card-text">{{organizacion.nombre}}</p>
                     </div>
                 {{/if}}
-                {{#if hcTotal}}
+                {{#if hcTrayectos}}
                     <div class="mt-2">
                         <span class="card-text" style="font-weight: bold;">Huella de Carbono Por trayectos</span>
-                        <p class="card-text">64 l/m^3 ||| {{hcTotal}}</p>
+                        <p class="card-text">{{hcTrayectos}}</p>
+                    </div>
+                {{else}}
+                    <div class="mt-2">
+                        <span class="card-text" style="font-weight: bold;">Huella de Carbono Por trayectos</span>
+                        <p class="card-text">0</p>
                     </div>
                 {{/if}}
                 {{#if hcActividades}}
 
                     <div class="mt-2">
                         <span class="card-text" style="font-weight: bold;">Huella de Carbono Por Mediciones</span>
-                        <p class="card-text">0.1% || {{hcActividades}}</p>
+                        <p class="card-text"> {{hcActividades}}</p>
+                    </div>
+                {{else}}
+                    <div class="mt-2">
+                        <span class="card-text" style="font-weight: bold;">Huella de Carbono Por Mediciones</span>
+                        <p class="card-text"> 0 </p>
                     </div>
                 {{/if}}
-                {{#if hcTrayectos}}
+                {{#if hcTotal}}
                     <div class="mt-2">
                         <span class="card-text" style="font-weight: bold;">Huella de Carbono Total</span>
                         <p class="card-text">0.1% || {{hcTrayectos}}</p>
+                    </div>
+                {{else}}
+                    <div class="mt-2">
+                        <span class="card-text"style="font-weight: bolder;">Huella de Carbono Total</span>
+                        <p class="card-text">0<a class="fw-bolder"> Felicitaciones!</a></p>
                     </div>
                 </div>
                 {{/if}}

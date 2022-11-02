@@ -34,4 +34,8 @@ public abstract class Actividad {
 
     public abstract Double calculoHC(Periodicidad periodicidad);
 
+    public boolean creadaEntre(Periodicidad periodicidad) {
+        return this.periodicidad.coincide(periodicidad);
+    }
+
 }

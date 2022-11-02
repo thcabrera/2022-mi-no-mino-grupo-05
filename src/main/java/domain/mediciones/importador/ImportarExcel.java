@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+import domain.mediciones.consumos.MedioTransporte;
 import domain.mediciones.consumos.actividades.*;
 import domain.mediciones.consumos.tipoConsumo.TipoConsumo;
 import domain.mediciones.importador.importadorexcel.*;
@@ -31,7 +32,8 @@ public class ImportarExcel implements Importador{
 
     public ImportarExcel(Map<String, TipoConsumo> consumosFijos,
                          Map<String, TipoConsumo> consumosMoviles,
-                         Map<String, TipoConsumo> consumosElectricidad){
+                         Map<String, TipoConsumo> consumosElectricidad,
+                         Map<String, MedioTransporte> mediosTransporte){
         importarPeriodicidad = new ImportarPeriodicidad();
         importarTipoConsumoFijo = new ImportarTipoConsumo(consumosFijos);
         importarTipoConsumoMovil = new ImportarTipoConsumo(consumosMoviles);
@@ -39,7 +41,7 @@ public class ImportarExcel implements Importador{
         importarConsumo = new ImportarConsumo();
         importarActividadConsumo = new ImportarActividadConsumo(importarPeriodicidad,
                 importarConsumo, importarTipoConsumoFijo, importarTipoConsumoMovil, importarTipoConsumoElectricidad);
-        importarLogistica = new ImportarLogistica(importarPeriodicidad);
+        importarLogistica = new ImportarLogistica(importarPeriodicidad, mediosTransporte);
     }
 
     public ArrayList<Actividad> importar(String path){
@@ -72,8 +74,8 @@ public class ImportarExcel implements Importador{
                 listadoActividades.add(actividad);
             }
         } catch(Exception e) {
-            System.out.println("Archivo de excel no compatible.");
-            e.printStackTrace();
+            System.out.println("Archivo de excel no compatible.\n" + e.getMessage());
+            return null;
         }
 
         return listadoActividades;

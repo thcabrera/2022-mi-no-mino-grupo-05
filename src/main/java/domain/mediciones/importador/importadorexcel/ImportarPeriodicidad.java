@@ -21,7 +21,7 @@ public class ImportarPeriodicidad {
                 cal.setTime(date);
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH) + 1;
-                return new Mensual(year, month);
+                return new Mensual(month, year);
             default:
                 return null;
         }

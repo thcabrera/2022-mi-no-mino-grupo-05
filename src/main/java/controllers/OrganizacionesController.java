@@ -20,7 +20,11 @@ public class OrganizacionesController {
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
 
     public ModelAndView pantallaPrincipal(Request request, Response response) {
-        return new ModelAndView(null, "org/org_principal.hbs");
+        String msg = request.queryParams("msg");
+        Map<String, Object> parametros = new HashMap<>();
+        if (msg != null)
+            parametros.put(msg, true);
+        return new ModelAndView(parametros, "org/org_principal.hbs");
     }
 
     public ModelAndView mostrar(Request request, Response response) {

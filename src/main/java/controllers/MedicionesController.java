@@ -2,6 +2,7 @@ package controllers;
 
 import domain.db.EntityManagerHelper;
 import domain.entidades.Organizacion;
+import domain.mediciones.consumos.MedioTransporte;
 import domain.mediciones.consumos.actividades.Actividad;
 import domain.mediciones.consumos.actividades.ActividadConsumo;
 import domain.mediciones.consumos.actividades.Logistica;
@@ -33,7 +34,7 @@ public class MedicionesController {
                                                             TipoActividadConsumo tipoActividadConsumo){
         return tipoConsumos
                 .stream()
-                .filter(c -> c.getTipoActividad().equals(TipoActividadConsumo.COMBUSTION_FIJA))
+                .filter(c -> c.getTipoActividad().equals(tipoActividadConsumo))
                 .collect(Collectors.toMap(TipoConsumo::getDescripcion, item -> item));
     }
 
@@ -45,6 +46,13 @@ public class MedicionesController {
                 .getEntityManager()
                 .createQuery("from " + TipoConsumo.class.getName())
                 .getResultList();
+        List<MedioTransporte> medioTransportes = EntityManagerHelper
+                .getEntityManager()
+                .createQuery("from " + MedioTransporte.class.getName())
+                .getResultList();
+
+        Map<String, MedioTransporte> medioTransporteMap = medioTransportes
+                .stream().collect(Collectors.toMap(MedioTransporte::getDescripcion, m -> m));
 
         Map<String, TipoConsumo> tiposConsumosFijos = filtrarPorTipoActividad(tiposConsumos,
                 TipoActividadConsumo.COMBUSTION_FIJA);
@@ -59,16 +67,18 @@ public class MedicionesController {
         importador = new ImportarExcel(
                 tiposConsumosFijos,
                 tiposConsumosMoviles,
-                tiposConsumosElectricidad);
+                tiposConsumosElectricidad,
+                medioTransporteMap);
         List<Actividad> mediciones = importador.importar(archivo_path);
-        organizacion.agregarMediciones(mediciones);
-
-        // persistimos las actividades
-        EntityManagerHelper.getEntityManager().getTransaction().begin();
-        mediciones.forEach(m -> EntityManagerHelper.getEntityManager().persist(m));
-        EntityManagerHelper.getEntityManager().getTransaction().commit();
-
-        response.redirect("/organizacion/principal");
+        if (mediciones != null){
+            // persistimos las actividades
+            EntityManagerHelper.getEntityManager().getTransaction().begin();
+            mediciones.forEach(m -> EntityManagerHelper.getEntityManager().persist(m));
+            EntityManagerHelper.getEntityManager().getTransaction().commit();
+            // TODO esto se podría reemplazar por una pegada con fetch mediante javascript
+            response.redirect("/organizacion/principal?msg=importacion-exitosa");
+        }
+        response.redirect("/organizacion/principal?msg=importacion-fallida");
         return response;
     }
 

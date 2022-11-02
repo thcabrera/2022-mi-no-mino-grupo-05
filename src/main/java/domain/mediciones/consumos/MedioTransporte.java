@@ -9,22 +9,19 @@ import javax.persistence.*;
 
 
 @Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "medio_transporte")
 public class MedioTransporte {
 
     @Id
     @GeneratedValue
     private Integer id;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+
     @Column(name = "factor_emision")
     private Double factorEmision;
-
-    public MedioTransporte(Double factorEmision){
-        this.factorEmision = factorEmision;
-    }
 
 }

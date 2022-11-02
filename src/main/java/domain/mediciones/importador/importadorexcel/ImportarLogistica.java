@@ -8,13 +8,18 @@ import lombok.Setter;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
 
+@Setter
 public class ImportarLogistica {
 
-    @Setter
     private ImportarPeriodicidad importarPeriodicidad;
+    private Map<String, MedioTransporte> mediosTransporte;
 
-    public ImportarLogistica(ImportarPeriodicidad importarPeriodicidad){
+    public ImportarLogistica(ImportarPeriodicidad importarPeriodicidad,
+                             Map<String, MedioTransporte> mediosTransporte){
+        setMediosTransporte(mediosTransporte);
         setImportarPeriodicidad(importarPeriodicidad);
     }
 
@@ -34,14 +39,8 @@ public class ImportarLogistica {
     }
 
     private MedioTransporte importarMedioTransporte(Cell celda){
-        switch (celda.getStringCellValue()){
-            case "Camión de carga":
-                return new MedioTransporte(8.0);
-            case "Utilitario liviano":
-                return new MedioTransporte(5.0);
-            default:
-                return null;
-        }
+        String valor = celda.getStringCellValue().toUpperCase();
+        return this.mediosTransporte.get(valor);
     }
 
     public Logistica importar(Row filaActual, Iterator<Row> rowIterator){
@@ -53,15 +52,15 @@ public class ImportarLogistica {
         Periodicidad periodicidad = importarPeriodicidad.importar(iterador);
         iterador = rowIterator.next().cellIterator();
         iterador.next(); // salteamos la celda de tipo de actividad
-        iterador.next(); // salteamos la celda de nombre
+//        iterador.next(); // salteamos la celda de nombre
         MedioTransporte medio = importarMedioTransporte(iterador.next());
         iterador = rowIterator.next().cellIterator();
         iterador.next(); // salteamos la celda de tipo de actividad
-        iterador.next(); // salteamos la celda de nombre
+//        iterador.next(); // salteamos la celda de nombre
         Cell distancia = iterador.next();
         iterador = rowIterator.next().cellIterator();
         iterador.next(); // salteamos la celda de tipo de actividad
-        iterador.next(); // salteamos la celda de nombre
+//        iterador.next(); // salteamos la celda de nombre
         Cell peso = iterador.next();
         return new Logistica(periodicidad, categoria, medio, distancia.getNumericCellValue(), peso.getNumericCellValue());
     }

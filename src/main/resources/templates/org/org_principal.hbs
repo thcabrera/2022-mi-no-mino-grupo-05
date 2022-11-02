@@ -41,5 +41,23 @@
             </div>
         </div>
       </div>
-    {{/partial}}
+
+    {{#if importacion-exitosa}}
+
+        {{#partial "mensaje"}}
+            ¡Actividades importadas correctamente!
+        {{/partial}}
+        {{> ../public/shared/mensaje_alerta.hbs }}
+
+    {{/if}}
+    {{#if importacion-fallida}}
+
+        {{#partial "mensaje"}}
+            ¡Error importando actividades!
+        {{/partial}}
+        {{> ../public/shared/mensaje_alerta.hbs }}
+
+    {{/if}}
+
+{{/partial}}
     {{> ../public/shared/user_base.hbs }}

@@ -19,7 +19,7 @@ INSERT INTO tipo_consumo (factor_emision, unidad, descripcion, tipo_actividad) V
 (1.5, 'KWH', 'ELECTRICIDAD', 'ELECTRICIDAD');
 
 INSERT INTO medio_transporte(descripcion, factor_emision) values
-	('CAMION DE CARGA', 5.0),
+	('CAMIÓN DE CARGA', 5.0),
     ('UTILITARIO LIVIANO', 5.0);
 
 INSERT INTO clasificacion (descripcion) values

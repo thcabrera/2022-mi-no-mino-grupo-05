@@ -71,6 +71,8 @@ public class MedicionesController {
                 medioTransporteMap);
         List<Actividad> mediciones = importador.importar(archivo_path);
         if (mediciones != null){
+            // agregamos las mediciones a la org
+            organizacion.agregarMediciones(mediciones);
             // persistimos las actividades
             EntityManagerHelper.getEntityManager().getTransaction().begin();
             mediciones.forEach(m -> EntityManagerHelper.getEntityManager().persist(m));

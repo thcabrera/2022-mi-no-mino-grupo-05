@@ -7,6 +7,7 @@ import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
 import helpers.HashHelper;
 import org.dom4j.rule.Mode;
+import seguridad.ValidadorContrasenia;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LoginController {
+    private ValidadorContrasenia validadorContrasenia = new ValidadorContrasenia();
 
     public ModelAndView pantallaLogin(Request request, Response response){
         System.out.println("status de la respoonse" + response.status() + "body" + response.body() + " algo amas ");
@@ -84,21 +86,32 @@ public class LoginController {
 
     public ModelAndView pantallacrearUser(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
-        List<Documentacion> tipoDocs = Arrays
-                .stream(Documentacion.values())
-                .collect(Collectors.toList());
 
-
-        parametros.put("tipoDoc",tipoDocs);
-
-
+        parametros.put("tipoDoc", this.getDocumentacionValues());
         return new ModelAndView(parametros, "login/create_user.hbs");
     }
 
     public ModelAndView crearUsuario(Request request, Response response) {
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("tipoDoc", this.getDocumentacionValues());
+        String contra =  request.queryParams("contrasenia");
+
+        if( validadorContrasenia.validarContrasenia(contra) ) {
+            //todo:
+        }else {
+
+            parametros.put("contraseniaDebil", true);
+            return new ModelAndView(parametros, "login/create_user.hbs");
+
+        }
         //todo: persisitir el user bla bla
         response.redirect("user/principal");
 
         return null;
+    }
+    private List<Documentacion> getDocumentacionValues(){
+        return  Arrays
+                .stream(Documentacion.values())
+                .collect(Collectors.toList());
     }
 }

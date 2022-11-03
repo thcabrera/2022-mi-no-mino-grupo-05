@@ -12,7 +12,8 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name="area")
-public class Area {
+public class
+Area {
     @Id
     @GeneratedValue
     private Integer id;

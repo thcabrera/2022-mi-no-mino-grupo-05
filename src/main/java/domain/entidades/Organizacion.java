@@ -204,4 +204,25 @@ public class Organizacion extends Actor{
                 .collect(Collectors.toList());
 
     }
+
+    //---------------- HC ----------------
+
+    public HuellaDeCarbono crearHCActual(){
+        return new HuellaDeCarbono(calculoHCTrayectos(), this);
+    }
+
+    public void agregarHC(HuellaDeCarbono huellaDeCarbono){
+        getHuellasDeCarbono().add(huellaDeCarbono);
+    }
+
+    public HuellaDeCarbono obtenerHCActual(){
+        try{
+            return getHuellasDeCarbono().get(getHuellasDeCarbono().size() -  1);
+        } catch(IndexOutOfBoundsException e){
+            HuellaDeCarbono huellaDeCarbono = crearHCActual();
+            agregarHC(huellaDeCarbono);
+            return huellaDeCarbono;
+        }
+    }
+
 }

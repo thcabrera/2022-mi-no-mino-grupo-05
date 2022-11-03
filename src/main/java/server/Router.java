@@ -48,7 +48,8 @@ public class Router {
         /*-------- Manejo del Login -------*/
         Spark.path("/login", ()->{
             Spark.get("", loginController::pantallaLogin , engine);
-            Spark.post("", loginController::login);
+            Spark.post("", loginController::login, engine);
+
         });
 
         Spark.get("/logout", loginController::logout);

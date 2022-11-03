@@ -4,6 +4,7 @@ import domain.db.EntityManagerHelper;
 import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
 import helpers.HashHelper;
+import org.dom4j.rule.Mode;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -14,14 +15,18 @@ import java.util.Map;
 public class LoginController {
 
     public ModelAndView pantallaLogin(Request request, Response response){
+        System.out.println("status de la respoonse" + response.status() + "body" + response.body() + " algo amas ");
         String estado = request.queryParams("estado");
         Map<String, Object> parametros = new HashMap<>();
-        if (estado != null)
+        if (response.body() == "invalido"){
             parametros.put("contraseñaIncorrecta", true);
+        }
         return new ModelAndView(parametros, "/login/login.hbs");
     }
 
-    public Response login(Request request, Response response){
+
+    public ModelAndView login(Request request, Response response){
+        Map<String, Object> parametros = new HashMap<>();
         try {
             String query = "from "
                     + Usuario.class.getName()
@@ -50,13 +55,15 @@ public class LoginController {
                 else response.redirect("/404");
             }
             else {
-                response.redirect("/login?estado=incorrecto");
+                parametros.put("contraseñaIncorrecta", true);
+                return new ModelAndView(parametros, "/login/login.hbs");
             }
         }
         catch (Exception exception) {
-            response.redirect("/login?estado=incorrecto");
+            parametros.put("contraseñaIncorrecta", true);
+            return new ModelAndView(parametros, "/login/login.hbs");
         }
-        return response;
+        return null;
     }
 
     public Response logout(Request request, Response response){

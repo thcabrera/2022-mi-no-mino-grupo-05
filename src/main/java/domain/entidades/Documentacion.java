@@ -2,5 +2,7 @@ package domain.entidades;
 
 public enum Documentacion {
     DNI,
-    CEDULA
+    CEDULA,
+    LC,
+    LE
 }

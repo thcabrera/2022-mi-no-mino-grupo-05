@@ -50,12 +50,15 @@ public class Router {
             Spark.get("", loginController::pantallaLogin , engine);
             Spark.post("", loginController::login, engine);
 
+            Spark.get("/create", loginController::pantallacrearUser, engine);
+            Spark.post("/create" , loginController::crearUsuario, engine);
         });
 
         Spark.get("/logout", loginController::logout);
 
         /*----------- user ---------- */
         Spark.path("/user", () -> {
+
 
             Spark.before("", AuthMiddleware::verificarSesion);
             Spark.before("/*", AuthMiddleware::verificarSesion);

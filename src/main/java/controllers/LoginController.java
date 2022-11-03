@@ -1,6 +1,8 @@
 package controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import domain.db.EntityManagerHelper;
+import domain.entidades.Documentacion;
 import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
 import helpers.HashHelper;
@@ -9,8 +11,11 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LoginController {
 
@@ -26,7 +31,6 @@ public class LoginController {
 
 
     public ModelAndView login(Request request, Response response){
-        Map<String, Object> parametros = new HashMap<>();
         try {
             String query = "from "
                     + Usuario.class.getName()
@@ -55,13 +59,11 @@ public class LoginController {
                 else response.redirect("/404");
             }
             else {
-                parametros.put("contraseñaIncorrecta", true);
-                return new ModelAndView(parametros, "/login/login.hbs");
+                return mostrarLoginIncorrecto();
             }
         }
         catch (Exception exception) {
-            parametros.put("contraseñaIncorrecta", true);
-            return new ModelAndView(parametros, "/login/login.hbs");
+            return mostrarLoginIncorrecto();
         }
         return null;
     }
@@ -72,4 +74,31 @@ public class LoginController {
         return response;
     }
 
+    public ModelAndView mostrarLoginIncorrecto(){
+        Map<String, Object> parametros = new HashMap<>();
+
+        parametros.put("contraseñaIncorrecta", true);
+        return new ModelAndView(parametros, "/login/login.hbs");
+    }
+
+
+    public ModelAndView pantallacrearUser(Request request, Response response) {
+        Map<String, Object> parametros = new HashMap<>();
+        List<Documentacion> tipoDocs = Arrays
+                .stream(Documentacion.values())
+                .collect(Collectors.toList());
+
+
+        parametros.put("tipoDoc",tipoDocs);
+
+
+        return new ModelAndView(parametros, "login/create_user.hbs");
+    }
+
+    public ModelAndView crearUsuario(Request request, Response response) {
+        //todo: persisitir el user bla bla
+        response.redirect("user/principal");
+
+        return null;
+    }
 }

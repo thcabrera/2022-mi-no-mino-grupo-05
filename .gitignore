@@ -1,4 +1,4 @@
-
 src/main/java/seguridad/exception/desktop.ini
 *.ini
 target/
+.idea/

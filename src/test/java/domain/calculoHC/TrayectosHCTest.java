@@ -92,13 +92,4 @@ public class TrayectosHCTest {
         Assertions.assertEquals(hc, 3000);
     }
 
-    @Test
-    public void calculoHCDePersona(){
-        //TODO
-    }
-
-    @Test
-    public void calculoHCDeOrganizacion(){
-        //TODO
-    }
 }

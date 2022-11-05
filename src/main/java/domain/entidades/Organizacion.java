@@ -100,7 +100,6 @@ public class Organizacion extends Actor{
         Solicitud solicitud = getSolicitudDe(persona, area); // NO Esta funcionando
         if (solicitud != null) {
             this.solicitudes.remove(solicitud);
-            System.out.printf("%s %s aceptado/a y removido/a de solicitantes correctamente", solicitud.getSolicitante().getNombre(), persona.getApellido());
             area.agregarMiembro(persona);
             persona.altaAceptada(area);
         }

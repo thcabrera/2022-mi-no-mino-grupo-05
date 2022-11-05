@@ -19,6 +19,7 @@
                     <select class="form-control" name="id_area" id="areas_select" disabled required>
                         <option disabled selected value="">Seleccione area</option>
                     </select>
+                    <small>Si no aparece ningun area es porque ya pertenece a todas!</small>
                 </div>
                 <div class="row align-items-end">
                     <div class="col-md-6" >
@@ -39,6 +40,7 @@
     </div>
     </section>
 <script>
+    const misAreas = {{misAreasId}}
 
     function resetearOpciones(selectElement, textoPorDefecto){
         selectElement.innerHTML = "";
@@ -51,12 +53,23 @@
     }
 
     function agregarASelect(selectElement, arr){
+        console.log(misAreas);
+
         for(let i = 0; i < arr.length; i++)
         {
-            var opt = document.createElement("option");
-            opt.value = arr[i].id;
-            opt.text = arr[i].nombre;
-            selectElement.appendChild(opt);
+           if(misAreas.includes(parseInt(arr[i].id))){
+               console.log("lo tengo en la lista "+ arr[i].id);
+               // no mostrar
+           }else{
+               console.log("NO lo tengo en la lista "+ arr[i].id);
+               console.log(arr[i].id);
+               console.log(typeof arr[i].id);
+
+               var opt = document.createElement("option");
+               opt.value = arr[i].id;
+               opt.text = arr[i].nombre;
+               selectElement.appendChild(opt);
+           }
         }
     }
 

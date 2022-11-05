@@ -2,12 +2,13 @@ package domain.entidades;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+@ToString
 @Getter
 @Setter
 @Entity
@@ -26,6 +27,7 @@ public class Area {
             joinColumns = @JoinColumn(name = "area_id"),
             inverseJoinColumns = @JoinColumn(name = "persona_id")
     )
+    @ToString.Exclude
     private List<Persona> miembros;
         
     @Column(name="descripcion")

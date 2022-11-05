@@ -16,7 +16,6 @@ public class OrganizacionesController {
     //ABM: A->Alta |B-> Baja |M-> Modificaco  |L->Listado | V->Visualizar
 
     private RepositorioDeAreas repositorioDeAreas = new RepositorioDeAreas();
-
     private RepositorioDeOrganizaciones repositorioDeOrganizaciones = new RepositorioDeOrganizaciones();
 
     public ModelAndView pantallaPrincipal(Request request, Response response) {
@@ -39,8 +38,13 @@ public class OrganizacionesController {
     }
 
     public ModelAndView solicitarAlta(Request request, Response response){
+        Persona persona = (Persona) UsuarioHelper.usuarioLogueado(request).getActor();
         Map<String, Object> parametros = new HashMap<>();
-        parametros.put("organizaciones",repositorioDeOrganizaciones.buscarTodos());
+        parametros.put("organizaciones", repositorioDeOrganizaciones.buscarTodos());
+        parametros.put("misAreasId",
+                persona.getListaAreas()
+                .stream().map(Area::getId)
+                        .collect(Collectors.toList()));
         return new ModelAndView(parametros, "user/us_solicitar_alta.hbs");
     }
 

@@ -1,11 +1,14 @@
 package domain.mediciones.services.creacionReporte;
 
 import domain.entidades.*;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.SneakyThrows;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+@Setter
 public class ReportGenerator{
 
     public void HCTotalPorSectorTerritorial() {
@@ -17,7 +20,7 @@ public class ReportGenerator{
     }
 
     @SneakyThrows
-    public void composicionDeHCTotal(List<Provincia> provincias) throws IOException {
+    public void composicionDeHCTotal(List<Provincia> provincias) {
 
 //        StringBuilder exportText = new StringBuilder();
 //        for (Provincia provincia: provincias){
@@ -55,7 +58,8 @@ public class ReportGenerator{
             String line = "Fecha: " + huella.getFechaMedicion().toString() + "; Valor: " + huella.getValor() + ";";
             exportText.append(line).append("\n");
         }
-        FileWriter file = new FileWriter(organizacion.getRazonSocial() + "_evolucion" + ".txt");
+        FileWriter file = new FileWriter("src/main/resources/reportes/"
+                + organizacion.getRazonSocial() + "_evolucion.txt");
         file.write(exportText.toString());
         file.close();
     }

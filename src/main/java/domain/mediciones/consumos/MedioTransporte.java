@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "medio_transporte")
 public class MedioTransporte {

@@ -100,7 +100,6 @@ public class Organizacion extends Actor{
         Solicitud solicitud = getSolicitudDe(persona, area); // NO Esta funcionando
         if (solicitud != null) {
             this.solicitudes.remove(solicitud);
-            System.out.printf("%s %s aceptado/a y removido/a de solicitantes correctamente", solicitud.getSolicitante().getNombre(), persona.getApellido());
             area.agregarMiembro(persona);
             persona.altaAceptada(area);
         }
@@ -204,4 +203,25 @@ public class Organizacion extends Actor{
                 .collect(Collectors.toList());
 
     }
+
+    //---------------- HC ----------------
+
+    public HuellaDeCarbono crearHCActual(){
+        return new HuellaDeCarbono(calculoHCTrayectos(), this);
+    }
+
+    public void agregarHC(HuellaDeCarbono huellaDeCarbono){
+        getHuellasDeCarbono().add(huellaDeCarbono);
+    }
+
+    public HuellaDeCarbono obtenerHCActual(){
+        try{
+            return getHuellasDeCarbono().get(getHuellasDeCarbono().size() -  1);
+        } catch(IndexOutOfBoundsException e){
+            HuellaDeCarbono huellaDeCarbono = crearHCActual();
+            agregarHC(huellaDeCarbono);
+            return huellaDeCarbono;
+        }
+    }
+
 }

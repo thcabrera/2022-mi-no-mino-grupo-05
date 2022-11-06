@@ -17,7 +17,7 @@ public class ValidadorContrasenia {
     private Pattern pattern;
     private Matcher matcher;
 
-    private static final String PASSWORD_PATTERN = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})";
+    private static final String PASSWORD_PATTERN = "(?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40}";
 
 //    Debe tener entre 8 y 40 caracteres.
 //    Debe contener por lo menos un digito.

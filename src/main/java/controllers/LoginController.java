@@ -3,6 +3,7 @@ package controllers;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import domain.db.EntityManagerHelper;
 import domain.entidades.Documentacion;
+import domain.entidades.Persona;
 import domain.usuarios.Rol;
 import domain.usuarios.Usuario;
 import helpers.HashHelper;
@@ -99,13 +100,37 @@ public class LoginController {
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("tipoDoc", this.getDocumentacionValues());
         String contra =  request.queryParams("contrasenia");
+        System.out.println("contra: " + contra);
+        String tipoDoc =  request.queryParams("tipoDoc");
+        String dni=  request.queryParams("dni");
+        String nombre =  request.queryParams("nombre");
+        String apellido =  request.queryParams("apellido");
+        String nombre_de_usuario =   request.queryParams("nombre_de_usuario");
 
         if( validadorContrasenia.validarContrasenia(contra) ) {
-            //todo:
+
+            Usuario usuario = new Usuario();
+            usuario.setNombreDeUsuario(nombre_de_usuario);
+            usuario.setContrasenia(HashHelper.hashear(contra));
+            Persona persona = new Persona(nombre, apellido,  Integer.parseInt(dni), Documentacion.valueOf(tipoDoc));
+            usuario.setActor(persona);
+            usuario.setRol(Rol.PERSONA);
+
+            EntityManagerHelper.getEntityManager().getTransaction().begin();
+            EntityManagerHelper.getEntityManager().persist(usuario);
+            EntityManagerHelper.getEntityManager().getTransaction().commit();
+
+            System.out.println("la contra es fuerte : "+ contra);
+            System.out.println("Llega tipo doce" + tipoDoc +" dni : " + dni + " nombre: "+ nombre + " apellido: " + apellido);
+
+
+            response.redirect("/login");
         }else {
 
             parametros.put("contraseniaDebil", true);
             parametros.put("loginBase", false);
+            System.out.println("Llega tipo doce" + tipoDoc +" dni : " + dni + " nombre: "+ nombre + " apellido: " + apellido);
+
             return new ModelAndView(parametros, "login/create_user.hbs");
 
         }

@@ -25,6 +25,8 @@ public class LoginController {
         System.out.println("status de la respoonse" + response.status() + "body" + response.body() + " algo amas ");
         String estado = request.queryParams("estado");
         Map<String, Object> parametros = new HashMap<>();
+        parametros.put("loginBase", true);
+
         if (response.body() == "invalido"){
             parametros.put("contraseñaIncorrecta", true);
         }
@@ -80,6 +82,7 @@ public class LoginController {
         Map<String, Object> parametros = new HashMap<>();
 
         parametros.put("contraseñaIncorrecta", true);
+        parametros.put("loginBase", true);
         return new ModelAndView(parametros, "/login/login.hbs");
     }
 
@@ -88,6 +91,7 @@ public class LoginController {
         Map<String, Object> parametros = new HashMap<>();
 
         parametros.put("tipoDoc", this.getDocumentacionValues());
+        parametros.put("loginBase", false);
         return new ModelAndView(parametros, "login/create_user.hbs");
     }
 
@@ -101,6 +105,7 @@ public class LoginController {
         }else {
 
             parametros.put("contraseniaDebil", true);
+            parametros.put("loginBase", false);
             return new ModelAndView(parametros, "login/create_user.hbs");
 
         }

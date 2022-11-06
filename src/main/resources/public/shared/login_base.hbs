@@ -15,7 +15,13 @@
         <a class="navbar-brand" href="/administrador/principal">
             <img src="/images/hc blanca.png" alt="Logo de huella de carbono" width = "50" height="50">
         </a>
-
+        {{#if loginBase}}
+            <a class="link-circle"  style="text-decoration:none;color:black"  href="/login/create">
+                <button type="button" class="btn btn-light float-right" >
+                    Crear nueva cuenta
+                </button>
+            </a>
+        {{/if}}
 
     </div>
 </nav>

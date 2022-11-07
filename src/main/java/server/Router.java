@@ -189,7 +189,7 @@ public class Router {
             });
             Spark.path("/cargar_mediciones", () -> {
                 Spark.get("", medicionesController::mostrarCargarMediciones, engine);
-                Spark.post("", medicionesController::cargarMediciones);
+                Spark.post("", medicionesController::moverArchivo);
 
             });
 

@@ -14,7 +14,13 @@
           Organización a la que se dirige o de la que regresa: <strong>{{organizacion.nombre}}</strong>
       </label>
 </div>
-  <div>
+<div class = "my-2">
+    <label>
+        Distancia total del trayecto: <strong>{{distanciaTrayecto}} km</strong>
+    </label>
+</div>
+
+<div>
       <div class = "my-2">
           <label class = "font-weight-bold" for="exampleInputEmail1" style="font-size: 110%; font-weight: bold;">Agregar nuevo tramo</label>
       </div>
@@ -39,8 +45,9 @@
                         <p class="card-text">{{puntoInicio}}</p>
                         <p class="card-text" style="font-weight: bold;">Destino:</p>
                         <p class="card-text">{{puntoFin}}</p>
-                        <p class="card-text" style="font-weight: bold;">Tipo de tramo:</p>
+                        <p class="card-text" style="font-weight: bold;">Tipo:</p>
                         <p class="card-text">{{tipo}}</p>
+                        <p class="card-text"><strong>Distancia:</strong> {{distancia}} km</p>
                     </div>
                     <div class = "row d-flex mb-4">
                         <div class="col d-flex justify-content-center">

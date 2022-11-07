@@ -51,12 +51,14 @@ public abstract class Tramo {
         public String puntoInicio;
         public String puntoFin;
         public String tipo;
+        public String distancia;
 
         public TramoDTO(Tramo tramo){
             this.id = Integer.toString(tramo.id);
             this.puntoFin = tramo.obtenerFin();
             this.puntoInicio = tramo.obtenerInicio();
             this.tipo = tramo.obtenerTipo();
+            this.distancia = String.format("%.2f", tramo.getDistancia());
         }
 
     }

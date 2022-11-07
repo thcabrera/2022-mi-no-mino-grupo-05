@@ -42,6 +42,7 @@ public class TrayectosController {
                 .collect(Collectors.toList()));
         parametros.put("idTrayecto", idTrayecto);
         parametros.put("organizacion", trayecto.getOrganizacion());
+        parametros.put("distanciaTrayecto", String.format("%.2f", trayecto.obtenerDistanciaTotal()));
         return new ModelAndView(parametros, "trayectos/us_editar_trayecto.hbs");
     }
 

@@ -25,7 +25,7 @@ public class Trayecto {
             joinColumns = @JoinColumn(name = "trayecto_id"),
             inverseJoinColumns = @JoinColumn(name = "tramo_id")
     )
-    private List<Tramo> tramos = new ArrayList<Tramo>();
+    private List<Tramo> tramos = new ArrayList<>();
 
     @ManyToOne()
     @JoinColumn(name="org_id", referencedColumnName = "id")
@@ -42,6 +42,10 @@ public class Trayecto {
 
     public Trayecto(List<Tramo> tramos) {
         this.tramos = tramos;
+    }
+
+    public Double obtenerDistanciaTotal(){
+        return getTramos().stream().mapToDouble(Tramo::getDistancia).sum();
     }
 
     //  ----------  AGREGAR TRAMOS  ----------

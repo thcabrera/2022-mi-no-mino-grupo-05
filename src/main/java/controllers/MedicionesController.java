@@ -54,7 +54,7 @@ public class    MedicionesController {
                 .collect(Collectors.toMap(TipoConsumo::getDescripcion, item -> item));
     }
 
-    public Response cargarMediciones(Request request, Response response) throws IOException {
+    public void importar(Request request, Response response) throws IOException {
         Organizacion organizacion = (Organizacion) UsuarioHelper.usuarioLogueado(request).getActor();
 
         String archivo_path = "archivo_temporal/archivo.xlsx"; // + request.queryParams("archivo_mediciones"); // com odeberia funcar
@@ -79,26 +79,37 @@ public class    MedicionesController {
         Map<String, TipoConsumo> tiposConsumosElectricidad = filtrarPorTipoActividad(tiposConsumos,
                 TipoActividadConsumo.ELECTRICIDAD);
 
-        System.out.println( " archivo path: "+  archivo_path);
+        System.out.println(" archivo path: " + archivo_path);
         importador = new ImportarExcel(
                 tiposConsumosFijos,
                 tiposConsumosMoviles,
                 tiposConsumosElectricidad,
                 medioTransporteMap);
         List<Actividad> mediciones = importador.importar(archivo_path);
-        if (mediciones != null){
+        if (mediciones != null) {
             // agregamos las mediciones a la org
             organizacion.agregarMediciones(mediciones);
             // persistimos las actividades
             EntityManagerHelper.getEntityManager().getTransaction().begin();
             mediciones.forEach(m -> EntityManagerHelper.getEntityManager().persist(m));
             EntityManagerHelper.getEntityManager().getTransaction().commit();
-            // TODO esto se podría reemplazar por una pegada con fetch mediante javascript
-            response.redirect("/organizacion/principal?msg=importacion-exitosa");
+            Date fecha = new Date();
+            moveFile(new File("archivo_temporal/archivo.xlsx"), new File("archivos_cargados/archivo" + fecha + ".xlsx"));
+
+
         }
-        response.redirect("/organizacion/principal?msg=importacion-fallida");
-        Date fecha = new Date();
-        moveFile(new File("archivo_temporal/archivo.xlsx"), new File("archivos_cargados/archivo"+fecha+".xlsx" ));
+    }
+
+    public Response cargarMediciones(Request request, Response response) {
+        Thread thread = new Thread(() -> {
+            try {
+                importar(request, response);
+            } catch (IOException e) {
+                System.out.println("ARCHIVO DE EXCEL NO PUDO SER IMPORTADO");
+            }
+        });
+        thread.start();
+        response.redirect("/organizacion/principal");
         return response;
     }
 

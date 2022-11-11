@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import domain.mediciones.consumos.MedioTransporte;
@@ -44,17 +45,17 @@ public class ImportarExcel implements Importador{
         importarLogistica = new ImportarLogistica(importarPeriodicidad, mediosTransporte);
     }
 
-    public ArrayList<Actividad> importar(String path){
-        try{
-            FileInputStream file = new FileInputStream(path);
-            XSSFWorkbook archivoExcel = new XSSFWorkbook(file);
+    public List<Actividad> importar(String path){
+        List<Actividad> actividades = new ArrayList<>();
+        try (FileInputStream file = new FileInputStream(path); XSSFWorkbook archivoExcel = new XSSFWorkbook(file)) {
             XSSFSheet hoja = archivoExcel.getSheetAt(0);
             this.rowIterator = hoja.iterator();
-            return importarActividades();
-        } catch(IOException e){
+            actividades = importarActividades();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return actividades;
     }
 
     private void advanceIteratorTo(int i){
@@ -63,8 +64,8 @@ public class ImportarExcel implements Importador{
         }
     }
 
-    private ArrayList<Actividad> importarActividades(){
-        ArrayList<Actividad> listadoActividades = new ArrayList<>();
+    private List<Actividad> importarActividades(){
+        List<Actividad> listadoActividades = new ArrayList<>();
         try {
             advanceIteratorTo(2); // salteamos el encabezado
             while (rowIterator.hasNext()) {

@@ -1,10 +1,10 @@
 package domain.mediciones.importador;
 
 import domain.mediciones.consumos.actividades.Actividad;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Importador {
 
-    ArrayList<Actividad> importar(String path);
+    List<Actividad> importar(String path);
 
 }

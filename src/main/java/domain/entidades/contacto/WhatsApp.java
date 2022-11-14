@@ -1,6 +1,6 @@
 package domain.entidades.contacto;
 
-import domain.mediciones.services.whatsApp.WhatsappConcreteAdapter;
+import domain.services.whatsApp.WhatsappConcreteAdapter;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 

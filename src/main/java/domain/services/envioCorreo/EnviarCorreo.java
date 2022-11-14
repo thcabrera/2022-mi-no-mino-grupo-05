@@ -1,4 +1,4 @@
-package domain.mediciones.services.envioCorreo;
+package domain.services.envioCorreo;
 
 
 public class EnviarCorreo {

@@ -1,4 +1,4 @@
-package domain.mediciones.services.whatsApp;
+package domain.services.whatsApp;
 
 import java.io.IOException;
 import java.net.URLEncoder;

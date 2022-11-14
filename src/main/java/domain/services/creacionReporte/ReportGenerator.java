@@ -1,4 +1,4 @@
-package domain.mediciones.services.creacionReporte;
+package domain.services.creacionReporte;
 
 import domain.entidades.*;
 import lombok.NoArgsConstructor;

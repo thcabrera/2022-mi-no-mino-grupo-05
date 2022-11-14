@@ -4,7 +4,7 @@ package domain;
 import domain.entidades.*;
 import domain.entidades.contacto.Email;
 import domain.entidades.contacto.Mensaje;
-import domain.mediciones.services.envioCorreo.ServicioCorreo;
+import domain.services.envioCorreo.ServicioCorreo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
@@ -33,15 +33,17 @@ public class EnviarCorreoTest {
 
     @BeforeEach
     public void init() {
-        destinatario = "ezequielmalfonso@gmail.com"; //A quien le quieres escribir.
+        destinatario = "tcabreralavezzi@frba.utn.edu.ar"; //A quien le quieres escribir.
         asunto = "Correo de prueba enviado desde Java";
         cuerpo = "A continuación se deja link de acceso a recomendaciones: \n" +
                 " https://www.huellaCarbono.org.ar/recomendaciones.html";
-        destinatario2 = new Email("lmarmo@frba.utn.edu.ar");
-        destinatario3 = new Email("llienardguerrisi@frba.utn.edu.ar");
+//        destinatario2 = new Email("lmarmo@frba.utn.edu.ar");
+//        destinatario3 = new Email("llienardguerrisi@frba.utn.edu.ar");
         destinatario4 = new Email("tcabreralavezzi@frba.utn.edu.ar");
-        fedePrandiGod = new Email("fprandi@frba.utn.edu.ar");
-        titoSW.agregarContactos(destinatario2, destinatario3, destinatario4, fedePrandiGod);
+//        fedePrandiGod = new Email("fprandi@frba.utn.edu.ar");
+//        titoSW.agregarContactos(destinatario2, destinatario3, destinatario4, fedePrandiGod);
+        titoSW.agregarContactos(destinatario4);
+
 
     }
 

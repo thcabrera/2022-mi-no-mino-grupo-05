@@ -1,6 +1,6 @@
 import domain.db.EntityManagerHelper;
 import domain.entidades.*;
-import domain.mediciones.services.creacionReporte.ReportGenerator;
+import domain.services.creacionReporte.ReportGenerator;
 import domain.usuarios.Usuario;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;

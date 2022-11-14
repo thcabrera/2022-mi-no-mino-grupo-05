@@ -1,6 +1,6 @@
-package domain.mediciones.services.calculoDistancia.adapters;
+package domain.services.calculoDistancia.adapters;
 
-import domain.mediciones.services.calculoDistancia.entities.Distancia;
+import domain.services.calculoDistancia.entities.Distancia;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

@@ -1,6 +1,6 @@
 package domain.entidades.contacto;
 
-import domain.mediciones.services.envioCorreo.ServicioCorreo;
+import domain.services.envioCorreo.ServicioCorreo;
 import lombok.Getter;
 import lombok.Setter;
 

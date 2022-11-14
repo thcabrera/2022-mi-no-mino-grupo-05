@@ -1,4 +1,4 @@
-package domain.mediciones.services.calculoDistancia.entities;
+package domain.services.calculoDistancia.entities;
 
 public class Distancia {
     public Double valor;

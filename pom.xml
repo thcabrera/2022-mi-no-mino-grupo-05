@@ -8,9 +8,12 @@
     <artifactId>2022-mi-no-mino-grupo-05</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>war</packaging> <!-- agrego para poder crear el .war-->
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>  <!-- agrego para que no falle por la falta del archivo web.xml-->
     </properties>
     <build>
         <plugins>
@@ -20,6 +23,43 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <!-- This tells Maven to include all dependencies -->
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>server.Server</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.5</version>  <!-- agrego la version para que no tire un error. es la ultima version -->
+                <configuration>
+                    <jdkVersion>1.8</jdkVersion>
+                    <!-- Use your own application name -->
+                    <appName>mi-impacto-ambiental-g2-ju-22</appName>
+                    <processTypes>
+                        <!-- Tell Heroku how to launch your application -->
+                        <!-- You might have to remove the ./ in front   -->
+                        <web>java -jar target/2022-mi-no-mino-grupo-05-1.0-SNAPSHOT.jar</web>
+                    </processTypes>
                 </configuration>
             </plugin>
         </plugins>
@@ -156,6 +196,28 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>31.1-jre</version>
+        </dependency>
+
+        <!-- ACA ARRANCA HEROKU (MARMO PONE LA TARJETA) -->
+
+        <!-- agrego para solucionar el error SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder" -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+
+        <!-- agrego para solucionar el error org.hibernate.jpa.boot.archive.spi.ArchiveException: Could not build ClassFile -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.22.0-GA</version>
         </dependency>
     </dependencies>
 </project>

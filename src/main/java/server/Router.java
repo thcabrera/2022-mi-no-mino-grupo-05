@@ -220,7 +220,7 @@ public class Router {
         });
 
         /*----------- Ejemplos ---------- */
-        Spark.get("/hola", controllerDefault::saludoController);
+        Spark.get("/hola", controllerDefault::saludoController, engine);
         Spark.get("/saluda", (request, response) -> "hola" + request.queryParams("nombre"));
 
         Spark.path("/organizaciones", ()-> {

@@ -1,0 +1,48 @@
+<!--<div class="position-fixed bottom-0 end-0 p-3 container" style="z-index: 11">-->
+<!--    <div class="row">-->
+<!--        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">-->
+<!--            <div class="toast-header">-->
+<!--                <img src="/images/hc.png" class="rounded me-2" height="30px" width="30px" alt="hc logo">-->
+<!--                <strong class="me-auto">Dream Team</strong>-->
+<!--                <button type="button" id="toast-close" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--    </div>-->
+<!--    <div class="toast-body row">-->
+<!--        {{#block "mensaje"}}-->
+<!--        {{/block}}-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <button type="button" id = "toast-close" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{#block "mensaje"}}
+            {{/block}}
+        </div>
+    </div>
+</div>
+<script>
+
+    let isToastShowing = true
+
+    const dismissToast = () => {
+        if (!isToastShowing)
+            return
+        document.getElementById("liveToast").style.display = "none";
+        {{#block "hacerDespues"}}
+        {{/block}}
+        isToastShowing = false
+    }
+
+    {{#block "hacerAntes"}}
+    {{/block}}
+
+    document.getElementById("liveToast").style.display = "flex";
+    document.getElementById("toast-close").onclick = dismissToast;
+
+    setTimeout(dismissToast, 10000)
+
+</script>

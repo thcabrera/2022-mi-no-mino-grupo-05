@@ -1,17 +1,7 @@
 {{#partial "contenido"}}
 
-  <script>
-  $(function(){
-    $("#header").load("../shared/us-header.html");
-    $("#footer").load("../shared/footer.html");
-    $("#partida").load("../shared/direccion_partida.html");
-    $("#destino").load("../shared/direccion_destino.html");
-  });
-  </script>
-
  <body class="d-flex flex-column min-vh-100">
   <!-- User Navbar -->
-  <div id="header"></div>
 
       <section class="form-section container">
             <div class="row">
@@ -62,10 +52,7 @@
               </div>
             </div>
       </section>
-  </div>
   <!-- Footer -->
-      <div id="footer" class="mt-auto"></div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
  <script>
 
@@ -141,6 +128,6 @@
 
   </script>
 {{/partial}}
-{{> ../public/shared/user_base.hbs }}
+{{> shared/user_base.hbs }}
 
 

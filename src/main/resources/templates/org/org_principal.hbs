@@ -47,7 +47,7 @@
         {{#partial "mensaje"}}
             ¡Actividades importadas correctamente!
         {{/partial}}
-        {{> ../public/shared/mensaje_alerta.hbs }}
+        {{> shared/mensaje_alerta.hbs }}
 
     {{/if}}
     {{#if importacion-fallida}}
@@ -55,9 +55,9 @@
         {{#partial "mensaje"}}
             ¡Error importando actividades!
         {{/partial}}
-        {{> ../public/shared/mensaje_alerta.hbs }}
+        {{> shared/mensaje_alerta.hbs }}
 
     {{/if}}
 
 {{/partial}}
-    {{> ../public/shared/org_base.hbs }}
+    {{> shared/org_base.hbs }}

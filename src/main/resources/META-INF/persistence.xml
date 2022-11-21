@@ -11,13 +11,20 @@
     	<!--<class></class>-->
 
         <properties> 
-	    <property name="hibernate.archive.autodetection" value="class"/>        
-        
-            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/huella_de_carbono" />
-            <property name="hibernate.connection.username" value="root" />
-            <property name="hibernate.connection.password" value="123456" />
-                        
+	    <property name="hibernate.archive.autodetection" value="class"/>
+
+            <!--<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/huella_de_carbono" />
+           <property name="hibernate.connection.username" value="root" />
+           <property name="hibernate.connection.password" value="123456" /> -->
+
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://n2r7pwxjeynl9eud:tk41gei0xcklv123@t07cxyau6qg7o5nz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vebnvfo6ndztapvs"/>
+            <property name="hibernate.connection.username" value="n2r7pwxjeynl9eud"/>
+            <property name="hibernate.connection.password" value="tk41gei0xcklv123"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+
+
             <property name="hibernate.show_sql" value="true" />
             <!-- Enable the logging of all the generated SQL statements to the console -->
 

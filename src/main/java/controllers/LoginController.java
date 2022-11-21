@@ -105,7 +105,7 @@ public class LoginController {
         String dni=  request.queryParams("dni");
         String nombre =  request.queryParams("nombre");
         String apellido =  request.queryParams("apellido");
-        String nombre_de_usuario =   request.queryParams("nombre_de_usuario");
+        String nombre_de_usuario =   request.queryParams("usuario");
 
         if( validadorContrasenia.validarContrasenia(contra) ) {
 

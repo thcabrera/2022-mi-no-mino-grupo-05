@@ -72,27 +72,32 @@ public class ImportadorTest {
         String EXCEL_PATH = "src/test/java/resources/Excel para modulo importador.xlsx";
         actividadesImportadas = importador.importar(EXCEL_PATH);
         actividadConsumoGasNatural = new ActividadConsumo(
-                new Anual(2002),
+                2002,
+                null,
                 new Consumo(tiposConsumoFijos.get("GAS NATURAL"), 1000.0),
                 TipoActividadConsumo.COMBUSTION_FIJA);
         actividadConsumoGNC = new ActividadConsumo(
-                new Mensual(5, 2020),
+                2020,
+                5,
                 new Consumo(tiposConsumoMoviles.get("GNC"), 15.0),
                 TipoActividadConsumo.COMBUSTION_MOVIL
         );
         actividadConsumoElectricidad = new ActividadConsumo(
-                new Mensual(11, 2021),
+                2021,
+                11,
                 new Consumo(tiposConsumoElectricidad.get("ELECTRICIDAD"), 10.0),
                 TipoActividadConsumo.ELECTRICIDAD
         );
         actividadLogisticaCamion = new Logistica(
-                new Anual(1977),
+                1977,
+                null,
                 ProductoTransportado.MATERIA_PRIMA,
                 mediosDeTransporte.get("CAMIÓN DE CARGA"),
                 100.0,
                 4500.0);
         actividadLogisticaUtilitario = new Logistica(
-                new Anual(1977),
+                1977,
+                null,
                 ProductoTransportado.MATERIA_PRIMA,
                 mediosDeTransporte.get("UTILITARIO LIVIANO"),
                 100.0,
@@ -131,14 +136,14 @@ public class ImportadorTest {
 
     private void testearPeriodicidad(Actividad actividadReal, Actividad actividadEsperada) {
         Assertions.assertEquals(
-                actividadEsperada.getPeriodicidad().getAnio(),
-                actividadReal.getPeriodicidad().getAnio(),
+                actividadEsperada.getAnio(),
+                actividadReal.getAnio(),
                 "Falla el mappeo del año de la periodicidad"
         );
-        if (actividadEsperada.getPeriodicidad().esMensual()){
+        if (Periodicidad.esMensual(actividadEsperada.getAnio(), actividadEsperada.getMes())){
             Assertions.assertEquals(
-                    ((Mensual) actividadEsperada.getPeriodicidad()).getMes(),
-                    ((Mensual) actividadReal.getPeriodicidad()).getMes(),
+                    actividadEsperada.getMes(),
+                    actividadReal.getMes(),
                     "Falla el mappeo del mes de la periodicidad"
             );
 

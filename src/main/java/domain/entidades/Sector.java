@@ -20,6 +20,6 @@ public abstract class Sector {
     @Column(name = "descripcion")
     protected String descripcion;
 
-    public abstract Double calculoHC(Periodicidad periodo);
+    public abstract Double calculoHC(Integer anio, Integer mes);
 
 }

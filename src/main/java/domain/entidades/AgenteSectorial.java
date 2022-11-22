@@ -30,8 +30,8 @@ public class AgenteSectorial extends Actor{
     }
 
 
-    public Double calculoHC(Periodicidad periodo){
-        return this.sector.calculoHC(periodo);
+    public Double calculoHC(Integer anio, Integer mes){
+        return this.sector.calculoHC(anio, mes);
     }
 
 }

@@ -29,9 +29,9 @@ public class Logistica extends Actividad {
     @Column(name = "peso")
     private Double peso;                      //PESO	800	MENSUAL	jun-22
 
-    public Logistica(Periodicidad periodicidad, ProductoTransportado categoria,
+    public Logistica(Integer anio, Integer mes, ProductoTransportado categoria,
                      MedioTransporte medioTransporte, Double distanciaMedia, Double peso) {
-        super(periodicidad);
+        super(anio, mes);
         this.categoria = categoria;
         this.medioTransporte = medioTransporte;
         this.distanciaMedia = distanciaMedia;
@@ -39,8 +39,8 @@ public class Logistica extends Actividad {
     }
 
     @Override
-    public Double calculoHC(Periodicidad periodicidad) {
-        return distanciaMedia * peso * medioTransporte.getFactorEmision() * this.getPeriodicidad().obtenerPorcentaje(periodicidad);
+    public Double calculoHC(Integer anio, Integer mes) {
+        return distanciaMedia * peso * medioTransporte.getFactorEmision() * Periodicidad.obtenerPorcentaje(anio, mes, getAnio(), getMes());
     }
 
     /*

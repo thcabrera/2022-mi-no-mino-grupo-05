@@ -165,8 +165,8 @@ public class Organizacion extends Actor{
 
     //  ----------  CALCULO HC  ----------
 
-    public Double calculoHC(Periodicidad periodo){
-        return this.calculoHCActividades(periodo) + this.calculoHCTrayectos();
+    public Double calculoHC(Integer anio, Integer mes){
+        return this.calculoHCActividades(anio, mes) + this.calculoHCTrayectos();
     }
 
     // no le pedimos el calculo directamente a las areas porque puede ser que una persona
@@ -178,9 +178,9 @@ public class Organizacion extends Actor{
         return result == null? 0.0 :result ;
     }
 
-    public Double calculoHCActividades(Periodicidad periodo) {
+    public Double calculoHCActividades(Integer anio, Integer mes) {
         Double result =  this.mediciones.stream()
-                .mapToDouble(a -> a.calculoHC(periodo))
+                .mapToDouble(a -> a.calculoHC(anio, mes))
                 .sum();
         return result == null? 0.0 :result ;
     }
@@ -196,10 +196,10 @@ public class Organizacion extends Actor{
         this.contactos.forEach(c -> c.notificar(mensaje));
     }
 
-    public List<Actividad> getMedicionesEn(Periodicidad periodicidad){
+    public List<Actividad> getMedicionesEn(Integer anio, Integer mes){
         return mediciones
                 .stream()
-                .filter(actividad -> actividad.getPeriodicidad().coincide(periodicidad))
+                .filter(actividad -> actividad.creadaEntre(anio, mes))
                 .collect(Collectors.toList());
 
     }

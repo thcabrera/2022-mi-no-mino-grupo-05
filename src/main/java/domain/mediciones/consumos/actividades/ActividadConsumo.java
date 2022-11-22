@@ -24,15 +24,15 @@ public class ActividadConsumo extends Actividad{
     @Column(name="tipo_actividad")
     private TipoActividadConsumo tipo;
 
-    public ActividadConsumo(Periodicidad periodicidad, Consumo consumo, TipoActividadConsumo tipo) {
-        super(periodicidad);
+    public ActividadConsumo(Integer anio, Integer mes, Consumo consumo, TipoActividadConsumo tipo) {
+        super(anio, mes);
         this.tipo = tipo;
         this.consumo = consumo;
     }
 
     @Override
-    public Double calculoHC(Periodicidad periodicidad) {
-        return consumo.getValor() * consumo.valorFactorEmision() * this.getPeriodicidad().obtenerPorcentaje(periodicidad);
+    public Double calculoHC(Integer anio, Integer mes) {
+        return consumo.getValor() * consumo.valorFactorEmision() * Periodicidad.obtenerPorcentaje(anio, mes, getAnio(), getMes());
     }
 
 }

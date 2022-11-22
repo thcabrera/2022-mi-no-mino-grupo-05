@@ -25,8 +25,8 @@ public class Provincia extends Sector{
     }
 
     @Override
-    public Double calculoHC(Periodicidad periodo) {
-        return this.getMunicipios().stream().mapToDouble(mun->mun.calculoHC(periodo)).sum();
+    public Double calculoHC(Integer anio, Integer mes) {
+        return this.getMunicipios().stream().mapToDouble(mun->mun.calculoHC(anio, mes)).sum();
     }
 
     public ProvinciaDTO convertirADTO(){

@@ -1,27 +1,46 @@
 package domain.mediciones.consumos;
 
-import lombok.Getter;
+import java.util.Objects;
 
-import javax.persistence.*;
-@Getter
-@Entity
-@Table(name = "periodicidad")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "discriminador")
-public abstract class Periodicidad {
+public class Periodicidad {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+    public static boolean coincide(Integer anioBuscado, Integer mesBuscado, Integer anio, Integer mes){
+        if (esMensual(anioBuscado, mesBuscado) && esMensual(anio, mes)) {
+            return Objects.equals(anioBuscado, anio) && Objects.equals(mesBuscado, mes);
+        }
+        return Objects.equals(anioBuscado, anio);
+    }
 
-    public abstract boolean coincide(Periodicidad periodicidad);
+    public static Double obtenerPorcentaje(Integer anioBuscado, Integer mesBuscado,
+                                           Integer anio, Integer mes){
+        if (esAnual(anioBuscado, mesBuscado) && esAnual(anio, mes)){
+            if (!coincide(anioBuscado, mesBuscado, anio, mes))
+                return 0.0;
+            return 1.0;
+        }
+        if (esMensual(anioBuscado, mesBuscado) && esMensual(anio, mes)){
+            if (!coincide(anioBuscado, mesBuscado, anio, mes))
+                return 0.0;
+            return 1.0;
+        }
+        if (esMensual(anioBuscado, mesBuscado) && esAnual(anio, mes)){
+            if (!coincide(anioBuscado, mesBuscado, anio, mes))
+                return 0.0;
+            return 1.0/12.0;
+        }
+//        la unica opcion que queda es:
+//        esAnual(anioBuscado, mesBuscado) && esMensual(anio, mes)
+        if (!coincide(anioBuscado, mesBuscado, anio, mes))
+            return 0.0;
+        return 1.0;
+    }
 
-    public abstract Integer getAnio();
+    public static boolean esMensual(Integer anio, Integer mes){
+        return mes != null;
+    }
 
-    public abstract Double obtenerPorcentaje(Periodicidad periodicidad);
-
-    public boolean esMensual(){ // to REVIEW
-        return this.getClass() == Mensual.class;
+    public static boolean esAnual(Integer anio, Integer mes){
+        return !esMensual(anio, mes);
     }
 
 

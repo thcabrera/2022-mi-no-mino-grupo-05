@@ -20,22 +20,25 @@ public abstract class Actividad {
     @GeneratedValue
     private Integer id;
 
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "periodicidad_id", referencedColumnName = "id")
-    private Periodicidad periodicidad;
+    @Column(name = "anio")
+    private Integer anio;
+
+    @Column(name = "mes")
+    private Integer mes = null;
 
     @ManyToOne
     @JoinColumn(name = "org_id", referencedColumnName = "id")
     private Organizacion organizacion;
 
-    public Actividad(Periodicidad periodicidad){
-        this.periodicidad = periodicidad;
+    public Actividad(Integer anio, Integer mes){
+        this.anio = anio;
+        this.mes = mes;
     }
 
-    public abstract Double calculoHC(Periodicidad periodicidad);
+    public abstract Double calculoHC(Integer anio, Integer mes);
 
-    public boolean creadaEntre(Periodicidad periodicidad) {
-        return this.periodicidad.coincide(periodicidad);
+    public boolean creadaEntre(Integer anio, Integer mes) {
+        return Periodicidad.coincide(anio, mes, getAnio(), getMes());
     }
 
 }

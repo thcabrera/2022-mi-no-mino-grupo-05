@@ -12,7 +12,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        Spark.port(getHerokuAssignedPort()); // si queres que sea local reemplazalo por 9000
+        Spark.port(9000); // si queres que sea local reemplazalo por 9000
         Router.init();
         DebugScreen.enableDebugScreen();
         configurar();

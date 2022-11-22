@@ -28,21 +28,19 @@ public class ImportarExcel implements Importador{
     private ImportarTipoConsumo importarTipoConsumoFijo;
     private ImportarTipoConsumo importarTipoConsumoMovil;
     private ImportarTipoConsumo importarTipoConsumoElectricidad;
-    private ImportarPeriodicidad importarPeriodicidad;
     private Iterator<Row> rowIterator;
 
     public ImportarExcel(Map<String, TipoConsumo> consumosFijos,
                          Map<String, TipoConsumo> consumosMoviles,
                          Map<String, TipoConsumo> consumosElectricidad,
                          Map<String, MedioTransporte> mediosTransporte){
-        importarPeriodicidad = new ImportarPeriodicidad();
         importarTipoConsumoFijo = new ImportarTipoConsumo(consumosFijos);
         importarTipoConsumoMovil = new ImportarTipoConsumo(consumosMoviles);
         importarTipoConsumoElectricidad = new ImportarTipoConsumo(consumosElectricidad);
         importarConsumo = new ImportarConsumo();
-        importarActividadConsumo = new ImportarActividadConsumo(importarPeriodicidad,
-                importarConsumo, importarTipoConsumoFijo, importarTipoConsumoMovil, importarTipoConsumoElectricidad);
-        importarLogistica = new ImportarLogistica(importarPeriodicidad, mediosTransporte);
+        importarActividadConsumo = new ImportarActividadConsumo(importarConsumo,
+                importarTipoConsumoFijo, importarTipoConsumoMovil, importarTipoConsumoElectricidad);
+        importarLogistica = new ImportarLogistica(mediosTransporte);
     }
 
     public List<Actividad> importar(String path){

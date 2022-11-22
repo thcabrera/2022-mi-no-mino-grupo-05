@@ -42,9 +42,9 @@ public class Municipio extends Sector{
     // --------------------------------------------------------------------------
 
     @Override
-    public Double calculoHC(Periodicidad periodo) {
+    public Double calculoHC(Integer anio, Integer mes) {
         return
-                this.getOrganizaciones().stream().mapToDouble(org->org.calculoHC(periodo)).sum();
+                this.getOrganizaciones().stream().mapToDouble(org->org.calculoHC(anio, mes)).sum();
     }
 
     public MunicipioDTO convertirADTO(){
